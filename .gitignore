@@ -1,0 +1,25 @@
+# This research workspace contains large datasets, model outputs, and local
+# connection details. Only explicitly listed source and documentation is tracked.
+*
+!/.gitignore
+!/README.md
+!/requirements-unet-moe.txt
+!/requirements-preprocessing.txt
+!/EXPERIMENT_V6_PROTOCOL.md
+!/PAPER5_THREE_MODEL_ANALYSIS.md
+!/REMOTE_4090.md
+!/ultrasound_segmentation_strategy.md
+!/资源导航.md
+!/fcs_to_csv_raw.py
+!/transform_flow_events.py
+!/unet_moe/
+!/unet_moe/**
+!/scripts/
+!/scripts/**
+!/tests/
+!/tests/**
+
+# Generated Python files remain excluded inside allowlisted directories.
+**/__pycache__/
+**/*.py[cod]
+**/.pytest_cache/
