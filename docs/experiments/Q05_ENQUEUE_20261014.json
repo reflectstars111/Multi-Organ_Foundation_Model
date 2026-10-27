@@ -1,0 +1,27 @@
+{
+  "enqueued_at": "2026-10-14T11:44:50.384966+08:00",
+  "pid": 1730462,
+  "command": [
+    "/ssd1/code/Multi-Organ_Foundation_Model/.conda/bin/python",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q05_visual_context_task_film_80_512_20261014/source_snapshot/scripts/run_moe_refinement.py",
+    "--output",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q05_visual_context_task_film_80_512_20261014",
+    "--reference-root",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q02_routing_80_512_20261013",
+    "--after-root",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q02_routing_80_512_20261013",
+    "--gpus",
+    "0,1"
+  ],
+  "cwd": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q05_visual_context_task_film_80_512_20261014/source_snapshot",
+  "protocol_sha256": "5f1dc7ab5b81d49ac605413862f4072de06b59c885e872618a6f6d0d0fdc4124",
+  "main_selection_sha256": "f3a54173311148b0470b598f2342e960f990377d1bbcc49fbf411d52bda6817f",
+  "expected_dependency": "Q04 -> Q02 -> Q05",
+  "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q05_visual_context_task_film_80_512_20261014/controller.log",
+  "verified_state": "waiting_q02",
+  "dependency_reason": "Q02 controller is waiting_q04",
+  "training_jobs": 12,
+  "gpu_preflights": 4,
+  "all_jobs_pending": true,
+  "controller_alive": true
+}

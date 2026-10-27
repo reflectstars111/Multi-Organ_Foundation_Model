@@ -1,0 +1,1150 @@
+{
+  "snapshot_at": "2026-10-14T09:49:34.842337+08:00",
+  "q04_controller": {
+    "schema": "external_baseline_controller_v1",
+    "state": "preparing_and_training",
+    "output": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013",
+    "reference_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007",
+    "evaluation_reference_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/medical_metrics_dsc_hd95_assd_20261012",
+    "protocol_sha256": "9a5857ebb6fc1f17e40e2a46da231514ec009b98e84928fe0477695b9f7e0216",
+    "controller_pid": 869636,
+    "started_at": "2026-10-12T17:18:56.855614+00:00",
+    "gpu_indices": [
+      0,
+      1
+    ],
+    "jobs": [
+      {
+        "method": "lanzhou",
+        "seed": 42,
+        "prior_state": "not_applicable",
+        "train_state": "complete",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": 1,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/lanzhou_seed42_train.log",
+        "free_mib_at_admission": 48496,
+        "completed_at": "2026-10-13T07:37:17.557945+00:00"
+      },
+      {
+        "method": "lanzhou",
+        "seed": 43,
+        "prior_state": "not_applicable",
+        "train_state": "complete",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": 0,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/lanzhou_seed43_train.log",
+        "free_mib_at_admission": 48118,
+        "completed_at": "2026-10-13T10:35:23.186534+00:00"
+      },
+      {
+        "method": "lanzhou",
+        "seed": 44,
+        "prior_state": "not_applicable",
+        "train_state": "complete",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": 1,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/lanzhou_seed44_train.log",
+        "free_mib_at_admission": 48496,
+        "completed_at": "2026-10-13T11:41:27.036098+00:00"
+      },
+      {
+        "method": "aimagelab",
+        "seed": 42,
+        "prior_state": "not_applicable",
+        "train_state": "complete",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": 0,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/aimagelab_seed42_train.log",
+        "free_mib_at_admission": 48118,
+        "completed_at": "2026-10-13T17:52:38.998221+00:00"
+      },
+      {
+        "method": "aimagelab",
+        "seed": 43,
+        "prior_state": "not_applicable",
+        "train_state": "complete",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": 1,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/aimagelab_seed43_train.log",
+        "free_mib_at_admission": 48496,
+        "completed_at": "2026-10-13T18:52:43.991087+00:00"
+      },
+      {
+        "method": "aimagelab",
+        "seed": 44,
+        "prior_state": "not_applicable",
+        "train_state": "complete",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": 0,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/aimagelab_seed44_train.log",
+        "free_mib_at_admission": 48118,
+        "completed_at": "2026-10-14T01:06:56.367375+00:00"
+      },
+      {
+        "method": "universeg",
+        "seed": 42,
+        "prior_state": "not_applicable",
+        "train_state": "running",
+        "evaluate_state": "pending",
+        "pid": 1564601,
+        "gpu": 1,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/universeg_seed42_train.log",
+        "free_mib_at_admission": 48496
+      },
+      {
+        "method": "universeg",
+        "seed": 43,
+        "prior_state": "not_applicable",
+        "train_state": "running",
+        "evaluate_state": "pending",
+        "pid": 1647790,
+        "gpu": 0,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/universeg_seed43_train.log",
+        "free_mib_at_admission": 48118
+      },
+      {
+        "method": "universeg",
+        "seed": 44,
+        "prior_state": "not_applicable",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "method": "smart",
+        "seed": 42,
+        "prior_state": "not_applicable",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "method": "smart",
+        "seed": 43,
+        "prior_state": "not_applicable",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "method": "smart",
+        "seed": 44,
+        "prior_state": "not_applicable",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "method": "mofo",
+        "seed": 42,
+        "prior_state": "complete",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": 0,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/mofo_seed42_mofo-prior.log",
+        "free_mib_at_admission": 48118,
+        "completed_at": "2026-10-13T06:29:13.220878+00:00"
+      },
+      {
+        "method": "mofo",
+        "seed": 43,
+        "prior_state": "pending",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "method": "mofo",
+        "seed": 44,
+        "prior_state": "pending",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      }
+    ],
+    "preflights": {
+      "lanzhou": {
+        "method": "lanzhou",
+        "state": "complete",
+        "pid": null,
+        "gpu": 0,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/lanzhou_seed42_preflight.log",
+        "free_mib_at_admission": 48118,
+        "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/preflight/lanzhou.json",
+        "required_free_mib": 8192,
+        "completed_at": "2026-10-13T03:32:39.018950+00:00"
+      },
+      "aimagelab": {
+        "method": "aimagelab",
+        "state": "complete",
+        "pid": null,
+        "gpu": 1,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/aimagelab_seed42_preflight.log",
+        "free_mib_at_admission": 48496,
+        "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/preflight/aimagelab.json",
+        "required_free_mib": 12500,
+        "completed_at": "2026-10-13T03:32:39.023935+00:00"
+      },
+      "universeg": {
+        "method": "universeg",
+        "state": "complete",
+        "pid": null,
+        "gpu": 0,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/universeg_seed42_preflight.log",
+        "free_mib_at_admission": 48118,
+        "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/preflight/universeg.json",
+        "required_free_mib": 14882,
+        "completed_at": "2026-10-13T03:32:54.082476+00:00"
+      },
+      "smart": {
+        "method": "smart",
+        "state": "complete",
+        "pid": null,
+        "gpu": 1,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/smart_seed42_preflight.log",
+        "free_mib_at_admission": 48496,
+        "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/preflight/smart.json",
+        "required_free_mib": 8192,
+        "completed_at": "2026-10-13T03:32:54.087513+00:00"
+      },
+      "mofo": {
+        "method": "mofo",
+        "state": "complete",
+        "pid": null,
+        "gpu": 0,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/mofo_seed42_preflight.log",
+        "free_mib_at_admission": 48118,
+        "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/preflight/mofo.json",
+        "required_free_mib": 8192,
+        "completed_at": "2026-10-13T06:29:28.256356+00:00"
+      }
+    },
+    "required_free_mib": {
+      "lanzhou": 8192,
+      "aimagelab": 12500,
+      "universeg": 14882,
+      "smart": 8192,
+      "mofo": 8192
+    },
+    "gpu_observations": {
+      "0": {
+        "state": "available",
+        "free_mib": 48118,
+        "time": "2026-10-14T01:06:56.395694+00:00"
+      },
+      "1": {
+        "state": "available",
+        "free_mib": 48496,
+        "time": "2026-10-13T18:52:44.018753+00:00"
+      }
+    },
+    "updated_at": "2026-10-14T01:49:27.401767+00:00",
+    "dependency_reason": "Q01 train/test and metric backfill are complete",
+    "dependencies_verified_at": "2026-10-13T03:32:23.957866+00:00",
+    "waiting_tasks": 7,
+    "control_child_pid": null
+  },
+  "q02_controller": {
+    "schema": "routing_optimization_controller_v1",
+    "state": "waiting_q04",
+    "output": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q02_routing_80_512_20261013",
+    "reference_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007",
+    "after_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013",
+    "protocol_sha256": "45f429a7652b4e30581cf2236d21749f20701c5acdb91d4bb1d8c056b0471d77",
+    "controller_pid": 893009,
+    "started_at": "2026-10-12T17:51:45.882243+00:00",
+    "gpu_indices": [
+      0,
+      1
+    ],
+    "jobs": [
+      {
+        "kind": "region",
+        "seed": 42,
+        "arm": "control",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "region",
+        "seed": 42,
+        "arm": "auxiliary",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "task_id",
+        "seed": 42,
+        "arm": "control",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "task_id",
+        "seed": 42,
+        "arm": "auxiliary",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "region",
+        "seed": 43,
+        "arm": "control",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "region",
+        "seed": 43,
+        "arm": "auxiliary",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "task_id",
+        "seed": 43,
+        "arm": "control",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "task_id",
+        "seed": 43,
+        "arm": "auxiliary",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "region",
+        "seed": 44,
+        "arm": "control",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "region",
+        "seed": 44,
+        "arm": "auxiliary",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "task_id",
+        "seed": 44,
+        "arm": "control",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "task_id",
+        "seed": 44,
+        "arm": "auxiliary",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      }
+    ],
+    "preflights": {
+      "region_control": {
+        "kind": "region",
+        "arm": "control",
+        "state": "pending"
+      },
+      "region_auxiliary": {
+        "kind": "region",
+        "arm": "auxiliary",
+        "state": "pending"
+      },
+      "task_id_control": {
+        "kind": "task_id",
+        "arm": "control",
+        "state": "pending"
+      },
+      "task_id_auxiliary": {
+        "kind": "task_id",
+        "arm": "auxiliary",
+        "state": "pending"
+      }
+    },
+    "required_free_mib": {},
+    "gpu_observations": {},
+    "updated_at": "2026-10-14T01:49:24.580621+00:00",
+    "selection_reason": "All 27 Q01 validation histories reached 80 epochs",
+    "control_child_pid": null,
+    "main_loss_arm": "organ_exposure_fg_bg",
+    "selection_sha256": "1e8b0705079039cf75ffa788b1e540f0837188b1e93578c5bb62a22077becad9",
+    "dependency_reason": "Q04 controller is preparing_and_training"
+  },
+  "backfill_status": {
+    "state": "complete",
+    "updated_at": "2026-10-13T11:32:19.697618+08:00",
+    "controller_pid": 1060118,
+    "gpu_indices": [
+      0,
+      1
+    ],
+    "gpu": null,
+    "protocol_sha256": "96266238af40d9e73adca4d09008a8b503bd4820bd92357fdc67028cfc83060f",
+    "scheduler_sha256": "d1d93d2dd387f53c7909b15f1ad2059432de367c48e386198640196acc13457a",
+    "completed_jobs": 439,
+    "failed_jobs": 0,
+    "active_jobs": [],
+    "gpu_observations": {
+      "0": {
+        "state": "evaluating",
+        "free_mib_at_admission": 48118,
+        "job_id": "d8693ef05bd9138ee395ae4d2fed9c868062cebc4e7236bf45fbf2f6f1a7d538",
+        "worker_pid": 1061014
+      },
+      "1": {
+        "state": "evaluating",
+        "free_mib_at_admission": 48496,
+        "job_id": "cb62f78be10a5e116d080494fe08ec81c0382624542ba750775c06d470a53d8e",
+        "worker_pid": 1061017
+      }
+    },
+    "counts": {
+      "excluded": 97,
+      "complete": 439,
+      "not_selected": 24
+    },
+    "pending_jobs": 0
+  },
+  "q04_runs": [
+    {
+      "method": "lanzhou",
+      "seed": 42,
+      "train_state": "complete",
+      "gpu": 1,
+      "pid": null,
+      "epochs_completed": 80,
+      "best_epoch": 47,
+      "best_validation_union_dsc_percent": 85.61030451487375,
+      "best_validation_abdomen_union_dsc_percent": 73.1342924792857,
+      "per_domain_at_best": {
+        "BUSI": {
+          "n": 86,
+          "n_positive": 69,
+          "positive_dsc_percent": 75.46775144463588,
+          "all_dsc_percent": 72.17761453116135
+        },
+        "MMOTU": {
+          "n": 121,
+          "n_positive": 121,
+          "positive_dsc_percent": 81.4348857250763,
+          "all_dsc_percent": 81.4348857250763
+        },
+        "DDTI": {
+          "n": 62,
+          "n_positive": 62,
+          "positive_dsc_percent": 83.79047423418858,
+          "all_dsc_percent": 83.79047423418858
+        },
+        "AUL": {
+          "n": 62,
+          "n_positive": 62,
+          "positive_dsc_percent": 90.79261648691626,
+          "all_dsc_percent": 90.79261648691626
+        },
+        "FALLMUD": {
+          "n": 70,
+          "n_positive": 70,
+          "positive_dsc_percent": 81.13549294821503,
+          "all_dsc_percent": 81.13549294821503
+        },
+        "Fetal_HC": {
+          "n": 100,
+          "n_positive": 100,
+          "positive_dsc_percent": 96.33787782088311,
+          "all_dsc_percent": 96.33787782088311
+        },
+        "CCA": {
+          "n": 150,
+          "n_positive": 150,
+          "positive_dsc_percent": 93.95575157948636,
+          "all_dsc_percent": 93.95575157948636
+        },
+        "CAMUS": {
+          "n": 200,
+          "n_positive": 200,
+          "positive_dsc_percent": 94.44359791517645,
+          "all_dsc_percent": 94.44359791517645
+        },
+        "AbdomenUS": {
+          "n": 156,
+          "n_positive": 155,
+          "positive_dsc_percent": 73.1342924792857,
+          "all_dsc_percent": 72.6654829121108
+        }
+      },
+      "last_validation_union_dsc_percent": 84.97044125771963,
+      "parameter_count": 50871312,
+      "train_val_elapsed_hours": 4.057728463307334,
+      "recent_epoch_minutes": 3.041916667955617,
+      "progress": {
+        "state": "training",
+        "epoch": 80,
+        "optimizer_step": 282,
+        "optimizer_steps_per_epoch": 282,
+        "completed_epochs": 79,
+        "updated_at": "2026-10-13T07:36:39.427740+00:00"
+      },
+      "source_summary": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/lanzhou/seed_42/run_summary.json",
+      "source_summary_sha256": "47d4fd4d4a707ada08447feacfd1d504399c987dfc4300a9331fc5aef6fdcd70",
+      "source_metrics_sha256": "97ba3f78c60b799355938426a8cb82d84f9b3a655d73095ed1e4a9c0ca31e3f5",
+      "checkpoints_exist": {
+        "best.pt": true,
+        "last.pt": true
+      }
+    },
+    {
+      "method": "lanzhou",
+      "seed": 43,
+      "train_state": "complete",
+      "gpu": 0,
+      "pid": null,
+      "epochs_completed": 80,
+      "best_epoch": 71,
+      "best_validation_union_dsc_percent": 85.5169006722361,
+      "best_validation_abdomen_union_dsc_percent": 71.55802703534677,
+      "per_domain_at_best": {
+        "BUSI": {
+          "n": 86,
+          "n_positive": 69,
+          "positive_dsc_percent": 74.24861629302855,
+          "all_dsc_percent": 72.3622619095229
+        },
+        "MMOTU": {
+          "n": 121,
+          "n_positive": 121,
+          "positive_dsc_percent": 82.29935548222855,
+          "all_dsc_percent": 82.29935548222855
+        },
+        "DDTI": {
+          "n": 62,
+          "n_positive": 62,
+          "positive_dsc_percent": 84.71717631468378,
+          "all_dsc_percent": 84.71717631468378
+        },
+        "AUL": {
+          "n": 62,
+          "n_positive": 62,
+          "positive_dsc_percent": 92.11148841917615,
+          "all_dsc_percent": 92.11148841917615
+        },
+        "FALLMUD": {
+          "n": 70,
+          "n_positive": 70,
+          "positive_dsc_percent": 80.1460166864579,
+          "all_dsc_percent": 80.1460166864579
+        },
+        "Fetal_HC": {
+          "n": 100,
+          "n_positive": 100,
+          "positive_dsc_percent": 96.44555093140653,
+          "all_dsc_percent": 96.44555093140653
+        },
+        "CCA": {
+          "n": 150,
+          "n_positive": 150,
+          "positive_dsc_percent": 93.70569866480102,
+          "all_dsc_percent": 93.70569866480102
+        },
+        "CAMUS": {
+          "n": 200,
+          "n_positive": 200,
+          "positive_dsc_percent": 94.42017622299574,
+          "all_dsc_percent": 94.42017622299574
+        },
+        "AbdomenUS": {
+          "n": 156,
+          "n_positive": 155,
+          "positive_dsc_percent": 71.55802703534677,
+          "all_dsc_percent": 71.09932173383812
+        }
+      },
+      "last_validation_union_dsc_percent": 83.12634290334834,
+      "parameter_count": 50871312,
+      "train_val_elapsed_hours": 4.083919360302647,
+      "recent_epoch_minutes": 3.0751319314042727,
+      "progress": {
+        "state": "training",
+        "epoch": 80,
+        "optimizer_step": 282,
+        "optimizer_steps_per_epoch": 282,
+        "completed_epochs": 79,
+        "updated_at": "2026-10-13T10:34:48.052871+00:00"
+      },
+      "source_summary": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/lanzhou/seed_43/run_summary.json",
+      "source_summary_sha256": "359af423a7808d94375c8ba34e0205c4ef2a228611956544b2ad4aefaca11d76",
+      "source_metrics_sha256": "fd4fc91391e790ec2ff967ed5426acee8279a08c3a9af0ed8c04c7ac18cb9aa0",
+      "checkpoints_exist": {
+        "best.pt": true,
+        "last.pt": true
+      }
+    },
+    {
+      "method": "lanzhou",
+      "seed": 44,
+      "train_state": "complete",
+      "gpu": 1,
+      "pid": null,
+      "epochs_completed": 80,
+      "best_epoch": 43,
+      "best_validation_union_dsc_percent": 85.10506654616229,
+      "best_validation_abdomen_union_dsc_percent": 70.51110840889264,
+      "per_domain_at_best": {
+        "BUSI": {
+          "n": 86,
+          "n_positive": 69,
+          "positive_dsc_percent": 76.24049723003847,
+          "all_dsc_percent": 77.44877103340295
+        },
+        "MMOTU": {
+          "n": 121,
+          "n_positive": 121,
+          "positive_dsc_percent": 82.03969897419798,
+          "all_dsc_percent": 82.03969897419798
+        },
+        "DDTI": {
+          "n": 62,
+          "n_positive": 62,
+          "positive_dsc_percent": 84.56315497116272,
+          "all_dsc_percent": 84.56315497116272
+        },
+        "AUL": {
+          "n": 62,
+          "n_positive": 62,
+          "positive_dsc_percent": 91.9903970839284,
+          "all_dsc_percent": 91.9903970839284
+        },
+        "FALLMUD": {
+          "n": 70,
+          "n_positive": 70,
+          "positive_dsc_percent": 76.50268579458915,
+          "all_dsc_percent": 76.50268579458915
+        },
+        "Fetal_HC": {
+          "n": 100,
+          "n_positive": 100,
+          "positive_dsc_percent": 96.49962875407815,
+          "all_dsc_percent": 96.49962875407815
+        },
+        "CCA": {
+          "n": 150,
+          "n_positive": 150,
+          "positive_dsc_percent": 93.13123112083862,
+          "all_dsc_percent": 93.13123112083862
+        },
+        "CAMUS": {
+          "n": 200,
+          "n_positive": 200,
+          "positive_dsc_percent": 94.46719657773455,
+          "all_dsc_percent": 94.46719657773455
+        },
+        "AbdomenUS": {
+          "n": 156,
+          "n_positive": 155,
+          "positive_dsc_percent": 70.51110840889264,
+          "all_dsc_percent": 70.05911412422024
+        }
+      },
+      "last_validation_union_dsc_percent": 84.51936558099723,
+      "parameter_count": 50871312,
+      "train_val_elapsed_hours": 4.0539219439068495,
+      "recent_epoch_minutes": 3.071348297952985,
+      "progress": {
+        "state": "training",
+        "epoch": 80,
+        "optimizer_step": 282,
+        "optimizer_steps_per_epoch": 282,
+        "completed_epochs": 79,
+        "updated_at": "2026-10-13T11:40:48.589953+00:00"
+      },
+      "source_summary": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/lanzhou/seed_44/run_summary.json",
+      "source_summary_sha256": "8581a9e6bfe92d807e6dbac2610fc04083eb0589af5b3a92e08193b0d6a2f010",
+      "source_metrics_sha256": "ac72a5c145f2b8f6493a5ba89fe126f1c39ac2fbd849149e60be475d31a2b358",
+      "checkpoints_exist": {
+        "best.pt": true,
+        "last.pt": true
+      }
+    },
+    {
+      "method": "aimagelab",
+      "seed": 42,
+      "train_state": "complete",
+      "gpu": 0,
+      "pid": null,
+      "epochs_completed": 80,
+      "best_epoch": 68,
+      "best_validation_union_dsc_percent": 87.71500565143806,
+      "best_validation_abdomen_union_dsc_percent": 79.78364889307949,
+      "per_domain_at_best": {
+        "BUSI": {
+          "n": 86,
+          "n_positive": 69,
+          "positive_dsc_percent": 77.47496342066012,
+          "all_dsc_percent": 62.160145070064516
+        },
+        "MMOTU": {
+          "n": 121,
+          "n_positive": 121,
+          "positive_dsc_percent": 85.3787945517004,
+          "all_dsc_percent": 85.3787945517004
+        },
+        "DDTI": {
+          "n": 62,
+          "n_positive": 62,
+          "positive_dsc_percent": 85.30513926092436,
+          "all_dsc_percent": 85.30513926092436
+        },
+        "AUL": {
+          "n": 62,
+          "n_positive": 62,
+          "positive_dsc_percent": 91.73915110266978,
+          "all_dsc_percent": 91.73915110266978
+        },
+        "FALLMUD": {
+          "n": 70,
+          "n_positive": 70,
+          "positive_dsc_percent": 81.57563576112646,
+          "all_dsc_percent": 81.57563576112646
+        },
+        "Fetal_HC": {
+          "n": 100,
+          "n_positive": 100,
+          "positive_dsc_percent": 97.55234561395032,
+          "all_dsc_percent": 97.55234561395032
+        },
+        "CCA": {
+          "n": 150,
+          "n_positive": 150,
+          "positive_dsc_percent": 95.29176870199538,
+          "all_dsc_percent": 95.29176870199538
+        },
+        "CAMUS": {
+          "n": 200,
+          "n_positive": 200,
+          "positive_dsc_percent": 95.33360355683621,
+          "all_dsc_percent": 95.33360355683621
+        },
+        "AbdomenUS": {
+          "n": 156,
+          "n_positive": 155,
+          "positive_dsc_percent": 79.78364889307949,
+          "all_dsc_percent": 79.27221524632897
+        }
+      },
+      "last_validation_union_dsc_percent": 87.5868881270367,
+      "parameter_count": 163134744,
+      "train_val_elapsed_hours": 7.247698296963548,
+      "recent_epoch_minutes": 5.420286043944458,
+      "progress": {
+        "state": "training",
+        "epoch": 80,
+        "optimizer_step": 282,
+        "optimizer_steps_per_epoch": 282,
+        "completed_epochs": 79,
+        "updated_at": "2026-10-13T17:51:59.374130+00:00"
+      },
+      "source_summary": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/aimagelab/seed_42/run_summary.json",
+      "source_summary_sha256": "c782fdd6f48c91dcbfe8f3b439b98a6a0ddce8a9f07aad48808fa17af9987750",
+      "source_metrics_sha256": "46e74dc330cf82abdecd7bd0e5cb9d138165da2266202c5ab4c28fe52b62b9f1",
+      "checkpoints_exist": {
+        "best.pt": true,
+        "last.pt": true
+      }
+    },
+    {
+      "method": "aimagelab",
+      "seed": 43,
+      "train_state": "complete",
+      "gpu": 1,
+      "pid": null,
+      "epochs_completed": 80,
+      "best_epoch": 47,
+      "best_validation_union_dsc_percent": 87.60853167244858,
+      "best_validation_abdomen_union_dsc_percent": 79.61595187497542,
+      "per_domain_at_best": {
+        "BUSI": {
+          "n": 86,
+          "n_positive": 69,
+          "positive_dsc_percent": 77.03633543399621,
+          "all_dsc_percent": 61.80822261564812
+        },
+        "MMOTU": {
+          "n": 121,
+          "n_positive": 121,
+          "positive_dsc_percent": 84.54132485914279,
+          "all_dsc_percent": 84.54132485914279
+        },
+        "DDTI": {
+          "n": 62,
+          "n_positive": 62,
+          "positive_dsc_percent": 85.51332012023096,
+          "all_dsc_percent": 85.51332012023096
+        },
+        "AUL": {
+          "n": 62,
+          "n_positive": 62,
+          "positive_dsc_percent": 92.05786853190403,
+          "all_dsc_percent": 92.05786853190403
+        },
+        "FALLMUD": {
+          "n": 70,
+          "n_positive": 70,
+          "positive_dsc_percent": 81.68435146713024,
+          "all_dsc_percent": 81.68435146713024
+        },
+        "Fetal_HC": {
+          "n": 100,
+          "n_positive": 100,
+          "positive_dsc_percent": 97.36890569392953,
+          "all_dsc_percent": 97.36890569392953
+        },
+        "CCA": {
+          "n": 150,
+          "n_positive": 150,
+          "positive_dsc_percent": 95.30683866161674,
+          "all_dsc_percent": 95.30683866161674
+        },
+        "CAMUS": {
+          "n": 200,
+          "n_positive": 200,
+          "positive_dsc_percent": 95.35188840911128,
+          "all_dsc_percent": 95.35188840911128
+        },
+        "AbdomenUS": {
+          "n": 156,
+          "n_positive": 155,
+          "positive_dsc_percent": 79.61595187497542,
+          "all_dsc_percent": 79.1055932091102
+        }
+      },
+      "last_validation_union_dsc_percent": 87.27447797163627,
+      "parameter_count": 163134744,
+      "train_val_elapsed_hours": 7.143591079121042,
+      "recent_epoch_minutes": 5.341038679924483,
+      "progress": {
+        "state": "training",
+        "epoch": 80,
+        "optimizer_step": 282,
+        "optimizer_steps_per_epoch": 282,
+        "completed_epochs": 79,
+        "updated_at": "2026-10-13T18:51:57.957928+00:00"
+      },
+      "source_summary": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/aimagelab/seed_43/run_summary.json",
+      "source_summary_sha256": "28edf9c98ea12bd224c0aced46550970ee5ee1e156d510b9e6364bc989e9d99d",
+      "source_metrics_sha256": "453ef08f99e640ee235910466e74b71ae14df528224eadd5521a18e364e4a215",
+      "checkpoints_exist": {
+        "best.pt": true,
+        "last.pt": true
+      }
+    },
+    {
+      "method": "aimagelab",
+      "seed": 44,
+      "train_state": "complete",
+      "gpu": 0,
+      "pid": null,
+      "epochs_completed": 80,
+      "best_epoch": 79,
+      "best_validation_union_dsc_percent": 87.76221960520398,
+      "best_validation_abdomen_union_dsc_percent": 79.59729505716892,
+      "per_domain_at_best": {
+        "BUSI": {
+          "n": 86,
+          "n_positive": 69,
+          "positive_dsc_percent": 78.36204032919032,
+          "all_dsc_percent": 62.871869566443394
+        },
+        "MMOTU": {
+          "n": 121,
+          "n_positive": 121,
+          "positive_dsc_percent": 85.75066482454638,
+          "all_dsc_percent": 85.75066482454638
+        },
+        "DDTI": {
+          "n": 62,
+          "n_positive": 62,
+          "positive_dsc_percent": 84.74869060422722,
+          "all_dsc_percent": 84.74869060422722
+        },
+        "AUL": {
+          "n": 62,
+          "n_positive": 62,
+          "positive_dsc_percent": 91.94756516128469,
+          "all_dsc_percent": 91.94756516128469
+        },
+        "FALLMUD": {
+          "n": 70,
+          "n_positive": 70,
+          "positive_dsc_percent": 81.52716250363225,
+          "all_dsc_percent": 81.52716250363225
+        },
+        "Fetal_HC": {
+          "n": 100,
+          "n_positive": 100,
+          "positive_dsc_percent": 97.56559130915177,
+          "all_dsc_percent": 97.56559130915177
+        },
+        "CCA": {
+          "n": 150,
+          "n_positive": 150,
+          "positive_dsc_percent": 95.09454954512763,
+          "all_dsc_percent": 95.09454954512763
+        },
+        "CAMUS": {
+          "n": 200,
+          "n_positive": 200,
+          "positive_dsc_percent": 95.2664171125067,
+          "all_dsc_percent": 95.2664171125067
+        },
+        "AbdomenUS": {
+          "n": 156,
+          "n_positive": 155,
+          "positive_dsc_percent": 79.59729505716892,
+          "all_dsc_percent": 79.08705598628963
+        }
+      },
+      "last_validation_union_dsc_percent": 87.74845717363343,
+      "parameter_count": 163134744,
+      "train_val_elapsed_hours": 7.196909427479582,
+      "recent_epoch_minutes": 5.426193859164292,
+      "progress": {
+        "state": "training",
+        "epoch": 80,
+        "optimizer_step": 282,
+        "optimizer_steps_per_epoch": 282,
+        "completed_epochs": 79,
+        "updated_at": "2026-10-14T01:06:15.954610+00:00"
+      },
+      "source_summary": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/aimagelab/seed_44/run_summary.json",
+      "source_summary_sha256": "cfb202b52187803392d3253412eac425dc35ce3e27341d939ae7ce01e60b6a8d",
+      "source_metrics_sha256": "973ad25d7ea9891e12865216c2b59d084f074988d29b29653f4de03ea0c7060c",
+      "checkpoints_exist": {
+        "best.pt": true,
+        "last.pt": true
+      }
+    },
+    {
+      "method": "universeg",
+      "seed": 42,
+      "train_state": "running",
+      "gpu": 1,
+      "pid": 1564601,
+      "epochs_completed": 16,
+      "best_epoch": 15,
+      "best_validation_union_dsc_percent": 74.84246875927732,
+      "best_validation_abdomen_union_dsc_percent": 61.280854161970986,
+      "per_domain_at_best": {
+        "BUSI": {
+          "n": 86,
+          "n_positive": 69,
+          "positive_dsc_percent": 55.404120166884006,
+          "all_dsc_percent": 45.6149336222674
+        },
+        "MMOTU": {
+          "n": 121,
+          "n_positive": 121,
+          "positive_dsc_percent": 65.0307273151042,
+          "all_dsc_percent": 65.0307273151042
+        },
+        "DDTI": {
+          "n": 62,
+          "n_positive": 62,
+          "positive_dsc_percent": 78.72804085559318,
+          "all_dsc_percent": 78.72804085559318
+        },
+        "AUL": {
+          "n": 62,
+          "n_positive": 62,
+          "positive_dsc_percent": 81.99770799221737,
+          "all_dsc_percent": 81.99770799221737
+        },
+        "FALLMUD": {
+          "n": 70,
+          "n_positive": 70,
+          "positive_dsc_percent": 76.12474584255123,
+          "all_dsc_percent": 76.12474584255123
+        },
+        "Fetal_HC": {
+          "n": 100,
+          "n_positive": 100,
+          "positive_dsc_percent": 85.1137068725817,
+          "all_dsc_percent": 85.1137068725817
+        },
+        "CCA": {
+          "n": 150,
+          "n_positive": 150,
+          "positive_dsc_percent": 84.25220791919455,
+          "all_dsc_percent": 84.25220791919455
+        },
+        "CAMUS": {
+          "n": 200,
+          "n_positive": 200,
+          "positive_dsc_percent": 85.65010770739863,
+          "all_dsc_percent": 85.65010770739863
+        },
+        "AbdomenUS": {
+          "n": 156,
+          "n_positive": 155,
+          "positive_dsc_percent": 61.280854161970986,
+          "all_dsc_percent": 60.88802817375322
+        }
+      },
+      "last_validation_union_dsc_percent": 74.66495140165969,
+      "parameter_count": 1182785,
+      "train_val_elapsed_hours": 6.9006214376650234,
+      "recent_epoch_minutes": 26.04916194303582,
+      "progress": {
+        "state": "training",
+        "epoch": 17,
+        "optimizer_step": 30,
+        "optimizer_steps_per_epoch": 282,
+        "completed_epochs": 16,
+        "updated_at": "2026-10-14T01:49:18.287926+00:00"
+      },
+      "source_summary": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/universeg/seed_42/run_summary.json",
+      "source_summary_sha256": "c7f24af1fa7dc5980b32e75a7846e9c1e2f2fa2d3d7c6b69e1697c2ba0cfa0da",
+      "source_metrics_sha256": "66726216c66df41eaac9c79f1d7dd3217a707c61141be675d2ec54157b906d50",
+      "checkpoints_exist": {
+        "best.pt": true,
+        "last.pt": true
+      }
+    },
+    {
+      "method": "universeg",
+      "seed": 43,
+      "train_state": "running",
+      "gpu": 0,
+      "pid": 1647790,
+      "epochs_completed": 1,
+      "best_epoch": 1,
+      "best_validation_union_dsc_percent": 49.1339326505017,
+      "best_validation_abdomen_union_dsc_percent": 44.951206171321665,
+      "per_domain_at_best": {
+        "BUSI": {
+          "n": 86,
+          "n_positive": 69,
+          "positive_dsc_percent": 30.95901091574356,
+          "all_dsc_percent": 27.164787827747737
+        },
+        "MMOTU": {
+          "n": 121,
+          "n_positive": 121,
+          "positive_dsc_percent": 56.86302236985901,
+          "all_dsc_percent": 56.86302236985901
+        },
+        "DDTI": {
+          "n": 62,
+          "n_positive": 62,
+          "positive_dsc_percent": 74.76818267642324,
+          "all_dsc_percent": 74.76818267642324
+        },
+        "AUL": {
+          "n": 62,
+          "n_positive": 62,
+          "positive_dsc_percent": 67.62577429514953,
+          "all_dsc_percent": 67.62577429514953
+        },
+        "FALLMUD": {
+          "n": 70,
+          "n_positive": 70,
+          "positive_dsc_percent": 1.3628039740862095,
+          "all_dsc_percent": 1.3628039740862095
+        },
+        "Fetal_HC": {
+          "n": 100,
+          "n_positive": 100,
+          "positive_dsc_percent": 76.6628600090312,
+          "all_dsc_percent": 76.6628600090312
+        },
+        "CCA": {
+          "n": 150,
+          "n_positive": 150,
+          "positive_dsc_percent": 8.887929788908004,
+          "all_dsc_percent": 8.887929788908004
+        },
+        "CAMUS": {
+          "n": 200,
+          "n_positive": 200,
+          "positive_dsc_percent": 80.12460365399285,
+          "all_dsc_percent": 80.12460365399285
+        },
+        "AbdomenUS": {
+          "n": 156,
+          "n_positive": 155,
+          "positive_dsc_percent": 44.951206171321665,
+          "all_dsc_percent": 44.66305741381319
+        }
+      },
+      "last_validation_union_dsc_percent": 49.1339326505017,
+      "parameter_count": 1182785,
+      "train_val_elapsed_hours": 0.44440769410123016,
+      "recent_epoch_minutes": 26.664461646073807,
+      "progress": {
+        "state": "training",
+        "epoch": 2,
+        "optimizer_step": 190,
+        "optimizer_steps_per_epoch": 282,
+        "completed_epochs": 1,
+        "updated_at": "2026-10-14T01:49:34.151248+00:00"
+      },
+      "source_summary": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/universeg/seed_43/run_summary.json",
+      "source_summary_sha256": "2fea8fcbe4f325554082eacf525b851099c8dce0a424970a8152bd3808716298",
+      "source_metrics_sha256": "cb930295a3fe0047e82bd4b2168c6285c6c28e17bde2bb5b990a02d7866728de",
+      "checkpoints_exist": {
+        "best.pt": true,
+        "last.pt": true
+      }
+    }
+  ],
+  "source_files_sha256": {
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/medical_metrics_dsc_hd95_assd_20261012/metrics.csv": "c52265b9622c332bc962faf7552bc6a224365031e020eebecdbc8dda0964de96",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/medical_metrics_dsc_hd95_assd_20261012/summary.json": "8ff433f4f522186e5edae9fe2aa1c31a1dc6b359862ae591b3427afc225ab6af",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/summary.json": "c2e3ee46ba40db8f82e474392679d938febcd72611e6f6b7609b703d9925e263",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/summary.json": "a828cd25ae038195b6b8ea7446b7e897d193b6d4fb997716013c33cb7f71fe0f"
+  },
+  "core_test_results_unchanged_since_20261013": true,
+  "gpus": "0, NVIDIA GeForce RTX 4090, 99 %, 11623 MiB, 49140 MiB\n1, NVIDIA GeForce RTX 4090, 52 %, 11267 MiB, 49140 MiB\n",
+  "q04_test_files": [],
+  "failed_markers": [],
+  "read_only_training_check": true
+}

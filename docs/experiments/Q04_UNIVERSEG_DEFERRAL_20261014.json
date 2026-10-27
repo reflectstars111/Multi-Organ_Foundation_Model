@@ -1,0 +1,100 @@
+{
+  "schema": "q04_user_deferral_v1",
+  "q04_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013",
+  "q04_protocol_sha256": "9a5857ebb6fc1f17e40e2a46da231514ec009b98e84928fe0477695b9f7e0216",
+  "q02_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q02_routing_80_512_20261013",
+  "q02_protocol_sha256": "45f429a7652b4e30581cf2236d21749f20701c5acdb91d4bb1d8c056b0471d77",
+  "active_methods": [
+    "lanzhou",
+    "aimagelab",
+    "smart",
+    "mofo"
+  ],
+  "deferred_methods": [
+    "universeg"
+  ],
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "created_at": "2026-10-14T14:32:20.158267+08:00",
+  "reason": "用户要求：先终止跳过本项UniverSeg训练，待别的任务都做完了之后我们再来看",
+  "resume_policy": "manual_review_after_remaining_queue",
+  "checkpoint_inventory": [
+    {
+      "seed": 42,
+      "state": "deferred_by_user",
+      "completed_epochs": 26,
+      "files": {
+        "last.pt": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/universeg/seed_42/last.pt",
+          "bytes": 13987802,
+          "sha256": "288d303f8ac8d690cdc5573f6d9646a59279a8ccb5f99fe05c255466096b9bfb"
+        },
+        "best.pt": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/universeg/seed_42/best.pt",
+          "bytes": 13985434,
+          "sha256": "12ba379112d2c6412aef570b87980cd252e8a5bb1b3c3686130ca35096b9e98d"
+        },
+        "metrics.jsonl": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/universeg/seed_42/metrics.jsonl",
+          "bytes": 41882,
+          "sha256": "701afdaa5c6d5859a0e7b98a711b324b4ea148313e57baab882a846e39f5dd4b"
+        },
+        "run_summary.json": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/universeg/seed_42/run_summary.json",
+          "bytes": 326,
+          "sha256": "2e64d17e8e8435d72b643b0ca07af90299c3ceaa27fbc50c390d19981024fe11"
+        },
+        "progress.json": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/universeg/seed_42/progress.json",
+          "bytes": 180,
+          "sha256": "ac1e575382a969b8b814339567f1a7f3f00409a94d821ea29b5abdd20a22e6e2"
+        }
+      }
+    },
+    {
+      "seed": 43,
+      "state": "deferred_by_user",
+      "completed_epochs": 12,
+      "files": {
+        "last.pt": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/universeg/seed_43/last.pt",
+          "bytes": 13976602,
+          "sha256": "1920bf1f35174157cabcf1435030a24a984c6c8ecd20871b6f1b9fc34c53b3b1"
+        },
+        "best.pt": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/universeg/seed_43/best.pt",
+          "bytes": 13975834,
+          "sha256": "72ce7cc28bf8519e2d7598d94ed52da91bc079b1407f794544562f3699b2337f"
+        },
+        "metrics.jsonl": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/universeg/seed_43/metrics.jsonl",
+          "bytes": 19324,
+          "sha256": "7b49555882ee5387850f9dca1ccfdb9744b350cb42ca18085f2877c083f94697"
+        },
+        "run_summary.json": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/universeg/seed_43/run_summary.json",
+          "bytes": 326,
+          "sha256": "ac3abd576a9964d18f2cd70bddae44f76b810b3b05bb343a467c488c1ead7aaf"
+        },
+        "progress.json": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/universeg/seed_43/progress.json",
+          "bytes": 179,
+          "sha256": "8875fe8b0a5afcaee1fd48cb1479c3d8b6694ae29478b56548d04b751f5a04c6"
+        }
+      }
+    },
+    {
+      "seed": 44,
+      "state": "deferred_by_user",
+      "completed_epochs": 0,
+      "files": {}
+    }
+  ],
+  "original_matrix_complete": false,
+  "evaluation_policy": "Open active-method tests only after all 12 active-method training runs are verified; UniverSeg remains deferred and incomplete.",
+  "test_evaluated_before_deferral": false,
+  "deferral_sha256": "12748dc6f0c20ae7951f975ea0a086784b010affbd71d08285220a3cebb6bfc9"
+}

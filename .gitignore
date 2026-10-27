@@ -5,6 +5,8 @@
 !/README.md
 !/requirements-unet-moe.txt
 !/requirements-preprocessing.txt
+!/requirements-evaluation.txt
+!/requirements-q04.txt
 !/EXPERIMENT_V6_PROTOCOL.md
 !/PAPER5_THREE_MODEL_ANALYSIS.md
 !/REMOTE_4090.md
@@ -18,6 +20,13 @@
 !/scripts/**
 !/tests/
 !/tests/**
+!/docs/
+!/docs/**
+!/relate_baseline/
+!/relate_baseline/README.md
+!/relate_baseline/baseline_registry.json
+!/radar_vla/
+!/radar_vla/**
 
 # Generated Python files remain excluded inside allowlisted directories.
 **/__pycache__/

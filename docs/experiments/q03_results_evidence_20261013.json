@@ -1,0 +1,3356 @@
+{
+  "generated_at": "2026-10-13T14:41:36.516491+08:00",
+  "sources": [
+    {
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/summary.json",
+      "sha256": "a828cd25ae038195b6b8ea7446b7e897d193b6d4fb997716013c33cb7f71fe0f"
+    },
+    {
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/medical_metrics_dsc_hd95_assd_20261012/metrics.csv",
+      "sha256": "c52265b9622c332bc962faf7552bc6a224365031e020eebecdbc8dda0964de96"
+    }
+  ],
+  "experiment": "region_domain_norm_80_512_20261010",
+  "protocol_sha256": "13835cabeb0fb18e06905b4d7aa55618aaae3ea378b824c6712b602cda536442",
+  "complete": true,
+  "selection": "best (16-structure positive validation DSC)",
+  "split": "test",
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "loss_arm": "image_mean",
+  "main_cohort": "positive_surface_defined",
+  "aggregation": "Per-image mean within each structure/domain, then unweighted structure/domain macro; mean and sample SD across 3 seeds. Metrics CSV is rounded to 4 decimals; reported calculated means inherit that rounding.",
+  "cohort_note": "positive_surface_defined retains positive GT with at least one observable target boundary. GT-only selection independent of predictions. Empty predictions remain and receive 512-grid diagonal 722.6631 pixel penalty. Structure: 2501/2501; union: 1601/1603 excluding 2 AUL images whose GT boundary is unknown. positive retains all 1603 union positives and undefined distances.",
+  "scope": "Dense shared path normalization only; sparse experts remain GN. Domain variants require dataset ID. All 4 arms share image_mean; these are not Q01 organ-weighted arms.",
+  "arms": {
+    "shared_gn": {
+      "metrics": {
+        "structure:macro:all_groups": {
+          "mean": {
+            "DSC (%)": 71.12053333333333,
+            "HD95 (pixel)": 97.98473333333334,
+            "ASSD (pixel)": 66.56003333333334
+          },
+          "sample_std": {
+            "DSC (%)": 0.4025739352383972,
+            "HD95 (pixel)": 5.219632264186176,
+            "ASSD (pixel)": 6.26208400800671
+          },
+          "seeds": [
+            {
+              "seed": "42",
+              "DSC (%)": "71.5670",
+              "HD95 (pixel)": "102.3532",
+              "ASSD (pixel)": "71.9192",
+              "samples": "2501",
+              "coverage_denominator": "2501",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "158",
+              "undefined_count": "0",
+              "job_id": "63860897f17b477b26dd3afcd3c01b501f022a62e2ed43361269ae0d17103c5d",
+              "checkpoint_sha256": "5eaab9b790bd372e18519deb664ab84d3b7b38f07c64e086b788dabfaa30a475"
+            },
+            {
+              "seed": "43",
+              "DSC (%)": "71.0094",
+              "HD95 (pixel)": "99.3966",
+              "ASSD (pixel)": "68.0844",
+              "samples": "2501",
+              "coverage_denominator": "2501",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "144",
+              "undefined_count": "0",
+              "job_id": "5f07d7dc68b866cfff520ab193dcd45637cd8d3ca61ee47ee82c784f9e3dba7c",
+              "checkpoint_sha256": "c6207a0829fdc399e1eb1fce09c14450f6b161d593a11436023fa36ce64acdc1"
+            },
+            {
+              "seed": "44",
+              "DSC (%)": "70.7852",
+              "HD95 (pixel)": "92.2044",
+              "ASSD (pixel)": "59.6765",
+              "samples": "2501",
+              "coverage_denominator": "2501",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "105",
+              "undefined_count": "0",
+              "job_id": "b1f1a4700689d09035ae65733d2961800aeeb14b838d148bd9d14fc5dbb4832d",
+              "checkpoint_sha256": "d17e7d11536ec8e063be3fe7d196f6b49360f06b71fe9684cf621e824c83b186"
+            }
+          ]
+        },
+        "union:macro:all_groups": {
+          "mean": {
+            "DSC (%)": 84.9283,
+            "HD95 (pixel)": 45.102666666666664,
+            "ASSD (pixel)": 15.8153
+          },
+          "sample_std": {
+            "DSC (%)": 0.6433542336846746,
+            "HD95 (pixel)": 3.368666408734076,
+            "ASSD (pixel)": 2.95489427391235
+          },
+          "seeds": [
+            {
+              "seed": "42",
+              "DSC (%)": "85.6706",
+              "HD95 (pixel)": "41.8398",
+              "ASSD (pixel)": "13.7916",
+              "samples": "1601",
+              "coverage_denominator": "1603",
+              "target_boundary_undefined_excluded": "2",
+              "penalized_count": "1",
+              "undefined_count": "0",
+              "job_id": "63860897f17b477b26dd3afcd3c01b501f022a62e2ed43361269ae0d17103c5d",
+              "checkpoint_sha256": "5eaab9b790bd372e18519deb664ab84d3b7b38f07c64e086b788dabfaa30a475"
+            },
+            {
+              "seed": "43",
+              "DSC (%)": "84.5826",
+              "HD95 (pixel)": "48.5680",
+              "ASSD (pixel)": "19.2062",
+              "samples": "1601",
+              "coverage_denominator": "1603",
+              "target_boundary_undefined_excluded": "2",
+              "penalized_count": "7",
+              "undefined_count": "0",
+              "job_id": "5f07d7dc68b866cfff520ab193dcd45637cd8d3ca61ee47ee82c784f9e3dba7c",
+              "checkpoint_sha256": "c6207a0829fdc399e1eb1fce09c14450f6b161d593a11436023fa36ce64acdc1"
+            },
+            {
+              "seed": "44",
+              "DSC (%)": "84.5317",
+              "HD95 (pixel)": "44.9002",
+              "ASSD (pixel)": "14.4481",
+              "samples": "1601",
+              "coverage_denominator": "1603",
+              "target_boundary_undefined_excluded": "2",
+              "penalized_count": "0",
+              "undefined_count": "0",
+              "job_id": "b1f1a4700689d09035ae65733d2961800aeeb14b838d148bd9d14fc5dbb4832d",
+              "checkpoint_sha256": "d17e7d11536ec8e063be3fe7d196f6b49360f06b71fe9684cf621e824c83b186"
+            }
+          ]
+        },
+        "structure:abdomen_macro:abdomen": {
+          "mean": {
+            "DSC (%)": 43.675133333333335,
+            "HD95 (pixel)": 228.87733333333333,
+            "ASSD (pixel)": 180.0676
+          },
+          "sample_std": {
+            "DSC (%)": 0.09173289122955251,
+            "HD95 (pixel)": 16.94771121548079,
+            "ASSD (pixel)": 18.765855236572612
+          },
+          "seeds": [
+            {
+              "seed": "42",
+              "DSC (%)": "43.6116",
+              "HD95 (pixel)": "247.1371",
+              "ASSD (pixel)": "199.4662",
+              "samples": "717",
+              "coverage_denominator": "717",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "156",
+              "undefined_count": "0",
+              "job_id": "63860897f17b477b26dd3afcd3c01b501f022a62e2ed43361269ae0d17103c5d",
+              "checkpoint_sha256": "5eaab9b790bd372e18519deb664ab84d3b7b38f07c64e086b788dabfaa30a475"
+            },
+            {
+              "seed": "43",
+              "DSC (%)": "43.7803",
+              "HD95 (pixel)": "225.8434",
+              "ASSD (pixel)": "178.7306",
+              "samples": "717",
+              "coverage_denominator": "717",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "137",
+              "undefined_count": "0",
+              "job_id": "5f07d7dc68b866cfff520ab193dcd45637cd8d3ca61ee47ee82c784f9e3dba7c",
+              "checkpoint_sha256": "c6207a0829fdc399e1eb1fce09c14450f6b161d593a11436023fa36ce64acdc1"
+            },
+            {
+              "seed": "44",
+              "DSC (%)": "43.6335",
+              "HD95 (pixel)": "213.6515",
+              "ASSD (pixel)": "162.0060",
+              "samples": "717",
+              "coverage_denominator": "717",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "105",
+              "undefined_count": "0",
+              "job_id": "b1f1a4700689d09035ae65733d2961800aeeb14b838d148bd9d14fc5dbb4832d",
+              "checkpoint_sha256": "d17e7d11536ec8e063be3fe7d196f6b49360f06b71fe9684cf621e824c83b186"
+            }
+          ]
+        },
+        "structure:group:abdomen_vessels": {
+          "mean": {
+            "DSC (%)": 10.872066666666667,
+            "HD95 (pixel)": 495.2033,
+            "ASSD (pixel)": 483.8765
+          },
+          "sample_std": {
+            "DSC (%)": 1.2017668048890908,
+            "HD95 (pixel)": 69.7003532267233,
+            "ASSD (pixel)": 75.85207362465447
+          },
+          "seeds": [
+            {
+              "seed": "42",
+              "DSC (%)": "12.0096",
+              "HD95 (pixel)": "526.6390",
+              "ASSD (pixel)": "519.8559",
+              "samples": "151",
+              "coverage_denominator": "151",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "106",
+              "undefined_count": "0",
+              "job_id": "63860897f17b477b26dd3afcd3c01b501f022a62e2ed43361269ae0d17103c5d",
+              "checkpoint_sha256": "5eaab9b790bd372e18519deb664ab84d3b7b38f07c64e086b788dabfaa30a475"
+            },
+            {
+              "seed": "43",
+              "DSC (%)": "9.6150",
+              "HD95 (pixel)": "543.6492",
+              "ASSD (pixel)": "535.0435",
+              "samples": "151",
+              "coverage_denominator": "151",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "109",
+              "undefined_count": "0",
+              "job_id": "5f07d7dc68b866cfff520ab193dcd45637cd8d3ca61ee47ee82c784f9e3dba7c",
+              "checkpoint_sha256": "c6207a0829fdc399e1eb1fce09c14450f6b161d593a11436023fa36ce64acdc1"
+            },
+            {
+              "seed": "44",
+              "DSC (%)": "10.9916",
+              "HD95 (pixel)": "415.3217",
+              "ASSD (pixel)": "396.7301",
+              "samples": "151",
+              "coverage_denominator": "151",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "74",
+              "undefined_count": "0",
+              "job_id": "b1f1a4700689d09035ae65733d2961800aeeb14b838d148bd9d14fc5dbb4832d",
+              "checkpoint_sha256": "d17e7d11536ec8e063be3fe7d196f6b49360f06b71fe9684cf621e824c83b186"
+            }
+          ]
+        }
+      },
+      "union_full_positive": [
+        {
+          "seed": "42",
+          "DSC (%)": "85.6573",
+          "HD95 (pixel)": "NA",
+          "ASSD (pixel)": "NA",
+          "samples": "1603",
+          "undefined_count": "2",
+          "distance_status": "undefined"
+        },
+        {
+          "seed": "43",
+          "DSC (%)": "84.5695",
+          "HD95 (pixel)": "NA",
+          "ASSD (pixel)": "NA",
+          "samples": "1603",
+          "undefined_count": "2",
+          "distance_status": "undefined"
+        },
+        {
+          "seed": "44",
+          "DSC (%)": "84.4796",
+          "HD95 (pixel)": "NA",
+          "ASSD (pixel)": "NA",
+          "samples": "1603",
+          "undefined_count": "2",
+          "distance_status": "undefined"
+        }
+      ],
+      "original_positive_organ_diagnostics": {
+        "abdomen_liver": {
+          "positive_dice": {
+            "mean_percent": 70.1370925792001,
+            "sample_std_percent": 2.5329187499977217
+          },
+          "positive_miss_rate": {
+            "mean_percent": 3.0837004405286343,
+            "sample_std_percent": 2.679631070615956
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 61.11111111111111,
+            "sample_std_percent": 4.373865675678985
+          }
+        },
+        "abdomen_kidney": {
+          "positive_dice": {
+            "mean_percent": 40.98936716563564,
+            "sample_std_percent": 4.573453062911957
+          },
+          "positive_miss_rate": {
+            "mean_percent": 2.681992337164751,
+            "sample_std_percent": 2.322673496739874
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 90.75630252100841,
+            "sample_std_percent": 6.72268907563025
+          }
+        },
+        "abdomen_vessels": {
+          "positive_dice": {
+            "mean_percent": 10.872247554855235,
+            "sample_std_percent": 1.2013339275493196
+          },
+          "positive_miss_rate": {
+            "mean_percent": 63.796909492273734,
+            "sample_std_percent": 12.847226955365528
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 11.032863849765258,
+            "sample_std_percent": 8.162130821931319
+          }
+        },
+        "abdomen_gallbladder": {
+          "positive_dice": {
+            "mean_percent": 63.1042887615385,
+            "sample_std_percent": 4.018881669938219
+          },
+          "positive_miss_rate": {
+            "mean_percent": 15.185185185185182,
+            "sample_std_percent": 6.318045225641473
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 21.67487684729064,
+            "sample_std_percent": 9.043132882111241
+          }
+        },
+        "abdomen_spleen": {
+          "positive_dice": {
+            "mean_percent": 33.27241814509034,
+            "sample_std_percent": 7.109755442865373
+          },
+          "positive_miss_rate": {
+            "mean_percent": 15.11111111111111,
+            "sample_std_percent": 7.812620369443087
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 25.382262996941897,
+            "sample_std_percent": 7.802661053316864
+          }
+        }
+      },
+      "run_summary": [
+        {
+          "seed": 42,
+          "epochs_completed": 80,
+          "best_epoch": 53,
+          "guardrail_epoch": null,
+          "vessel_positive_dice_percent": 12.010102524169234,
+          "vessel_positive_miss_rate_percent": 70.19867549668875,
+          "vessel_empty_false_positive_rate_percent": 7.042253521126761
+        },
+        {
+          "seed": 43,
+          "epochs_completed": 80,
+          "best_epoch": 47,
+          "guardrail_epoch": 76,
+          "vessel_positive_dice_percent": 9.616175429611806,
+          "vessel_positive_miss_rate_percent": 72.18543046357617,
+          "vessel_empty_false_positive_rate_percent": 5.633802816901409
+        },
+        {
+          "seed": 44,
+          "epochs_completed": 80,
+          "best_epoch": 44,
+          "guardrail_epoch": null,
+          "vessel_positive_dice_percent": 10.990464710784668,
+          "vessel_positive_miss_rate_percent": 49.00662251655629,
+          "vessel_empty_false_positive_rate_percent": 20.422535211267608
+        }
+      ],
+      "per_structure_or_domain_recomputed": {
+        "structure": {
+          "abdomen_gallbladder": {
+            "mean": {
+              "DSC (%)": 63.10353333333334,
+              "HD95 (pixel)": 152.1905,
+              "ASSD (pixel)": 132.3853
+            },
+            "sample_std": {
+              "DSC (%)": 4.018380700398278,
+              "HD95 (pixel)": 38.04434382309676,
+              "ASSD (pixel)": 44.08525062240204
+            }
+          },
+          "abdomen_kidney": {
+            "mean": {
+              "DSC (%)": 40.990066666666664,
+              "HD95 (pixel)": 124.62423333333334,
+              "ASSD (pixel)": 59.89276666666667
+            },
+            "sample_std": {
+              "DSC (%)": 4.573315178656871,
+              "HD95 (pixel)": 12.280876964750252,
+              "ASSD (pixel)": 15.57053258765844
+            }
+          },
+          "abdomen_liver": {
+            "mean": {
+              "DSC (%)": 70.137,
+              "HD95 (pixel)": 132.74263333333334,
+              "ASSD (pixel)": 58.77333333333333
+            },
+            "sample_std": {
+              "DSC (%)": 2.5339804715111804,
+              "HD95 (pixel)": 12.591628835989937,
+              "ASSD (pixel)": 17.23352415506861
+            }
+          },
+          "abdomen_spleen": {
+            "mean": {
+              "DSC (%)": 33.273066666666665,
+              "HD95 (pixel)": 239.62609999999998,
+              "ASSD (pixel)": 165.41
+            },
+            "sample_std": {
+              "DSC (%)": 7.109567690326419,
+              "HD95 (pixel)": 43.02722492887497,
+              "ASSD (pixel)": 52.39336457424737
+            }
+          },
+          "abdomen_vessels": {
+            "mean": {
+              "DSC (%)": 10.872066666666667,
+              "HD95 (pixel)": 495.2033,
+              "ASSD (pixel)": 483.8765
+            },
+            "sample_std": {
+              "DSC (%)": 1.2017668048890908,
+              "HD95 (pixel)": 69.7003532267233,
+              "ASSD (pixel)": 75.85207362465447
+            }
+          },
+          "aponeurosis": {
+            "mean": {
+              "DSC (%)": 82.22176666666667,
+              "HD95 (pixel)": 9.365266666666667,
+              "ASSD (pixel)": 2.5245
+            },
+            "sample_std": {
+              "DSC (%)": 0.05410696196731971,
+              "HD95 (pixel)": 1.812237689524565,
+              "ASSD (pixel)": 0.24052860536742823
+            }
+          },
+          "breast_lesion": {
+            "mean": {
+              "DSC (%)": 72.62303333333334,
+              "HD95 (pixel)": 91.86126666666667,
+              "ASSD (pixel)": 47.31133333333333
+            },
+            "sample_std": {
+              "DSC (%)": 3.9839249068391505,
+              "HD95 (pixel)": 26.801740849118982,
+              "ASSD (pixel)": 27.100607102117348
+            }
+          },
+          "carotid": {
+            "mean": {
+              "DSC (%)": 93.92273333333334,
+              "HD95 (pixel)": 14.145,
+              "ASSD (pixel)": 4.109766666666666
+            },
+            "sample_std": {
+              "DSC (%)": 0.9076265605045544,
+              "HD95 (pixel)": 0.23986573327593147,
+              "ASSD (pixel)": 0.7222830770088231
+            }
+          },
+          "head_contour": {
+            "mean": {
+              "DSC (%)": 96.65033333333334,
+              "HD95 (pixel)": 17.815133333333335,
+              "ASSD (pixel)": 5.295566666666667
+            },
+            "sample_std": {
+              "DSC (%)": 0.18922646044708655,
+              "HD95 (pixel)": 2.579870873383653,
+              "ASSD (pixel)": 0.42089815078393167
+            }
+          },
+          "left_atrium": {
+            "mean": {
+              "DSC (%)": 88.5957,
+              "HD95 (pixel)": 20.795666666666666,
+              "ASSD (pixel)": 6.824066666666667
+            },
+            "sample_std": {
+              "DSC (%)": 0.9367508099809676,
+              "HD95 (pixel)": 0.2030673369435213,
+              "ASSD (pixel)": 0.3693474019582826
+            }
+          },
+          "liver": {
+            "mean": {
+              "DSC (%)": 89.67186666666666,
+              "HD95 (pixel)": 38.771633333333334,
+              "ASSD (pixel)": 11.0909
+            },
+            "sample_std": {
+              "DSC (%)": 0.19556467813317474,
+              "HD95 (pixel)": 2.1423036720627016,
+              "ASSD (pixel)": 0.41122717565841865
+            }
+          },
+          "liver_mass": {
+            "mean": {
+              "DSC (%)": 52.681533333333334,
+              "HD95 (pixel)": 74.47923333333333,
+              "ASSD (pixel)": 34.8735
+            },
+            "sample_std": {
+              "DSC (%)": 1.0235011545344384,
+              "HD95 (pixel)": 9.453257124575282,
+              "ASSD (pixel)": 7.462212682576126
+            }
+          },
+          "lv_cavity": {
+            "mean": {
+              "DSC (%)": 92.23646666666667,
+              "HD95 (pixel)": 15.465533333333333,
+              "ASSD (pixel)": 5.4031
+            },
+            "sample_std": {
+              "DSC (%)": 0.19853909774483827,
+              "HD95 (pixel)": 0.6610584719473253,
+              "ASSD (pixel)": 0.06644719708159284
+            }
+          },
+          "myocardium": {
+            "mean": {
+              "DSC (%)": 85.1673,
+              "HD95 (pixel)": 17.823633333333333,
+              "ASSD (pixel)": 6.104
+            },
+            "sample_std": {
+              "DSC (%)": 0.6802588551426593,
+              "HD95 (pixel)": 2.178834462122658,
+              "ASSD (pixel)": 0.3932638173033464
+            }
+          },
+          "ovarian_lesion": {
+            "mean": {
+              "DSC (%)": 81.74936666666666,
+              "HD95 (pixel)": 62.4618,
+              "ASSD (pixel)": 19.482766666666667
+            },
+            "sample_std": {
+              "DSC (%)": 0.7976428168881994,
+              "HD95 (pixel)": 1.5377597048954044,
+              "ASSD (pixel)": 0.5157787736358814
+            }
+          },
+          "thyroid_nodule": {
+            "mean": {
+              "DSC (%)": 84.03276666666666,
+              "HD95 (pixel)": 60.3847,
+              "ASSD (pixel)": 21.603366666666666
+            },
+            "sample_std": {
+              "DSC (%)": 0.5052353939831792,
+              "HD95 (pixel)": 3.4057008104059854,
+              "ASSD (pixel)": 0.5691863344576492
+            }
+          }
+        },
+        "union": {
+          "AUL": {
+            "mean": {
+              "DSC (%)": 89.67086666666667,
+              "HD95 (pixel)": 38.775333333333336,
+              "ASSD (pixel)": 11.098233333333333
+            },
+            "sample_std": {
+              "DSC (%)": 0.19705593960429676,
+              "HD95 (pixel)": 2.1485424183230206,
+              "ASSD (pixel)": 0.4189948965480765
+            }
+          },
+          "AbdomenUS": {
+            "mean": {
+              "DSC (%)": 69.66446666666667,
+              "HD95 (pixel)": 84.0099,
+              "ASSD (pixel)": 22.980600000000003
+            },
+            "sample_std": {
+              "DSC (%)": 0.8461012015907673,
+              "HD95 (pixel)": 3.141812962287855,
+              "ASSD (pixel)": 1.0470411309972498
+            }
+          },
+          "BUSI": {
+            "mean": {
+              "DSC (%)": 72.62303333333334,
+              "HD95 (pixel)": 91.86126666666667,
+              "ASSD (pixel)": 47.31133333333333
+            },
+            "sample_std": {
+              "DSC (%)": 3.9839249068391505,
+              "HD95 (pixel)": 26.801740849118982,
+              "ASSD (pixel)": 27.100607102117348
+            }
+          },
+          "CAMUS": {
+            "mean": {
+              "DSC (%)": 93.81923333333333,
+              "HD95 (pixel)": 27.105866666666667,
+              "ASSD (pixel)": 7.931666666666667
+            },
+            "sample_std": {
+              "DSC (%)": 0.4208393557324905,
+              "HD95 (pixel)": 2.978304696187636,
+              "ASSD (pixel)": 0.6642611032819343
+            }
+          },
+          "CCA": {
+            "mean": {
+              "DSC (%)": 93.92273333333334,
+              "HD95 (pixel)": 14.145,
+              "ASSD (pixel)": 4.109766666666666
+            },
+            "sample_std": {
+              "DSC (%)": 0.9076265605045544,
+              "HD95 (pixel)": 0.23986573327593147,
+              "ASSD (pixel)": 0.7222830770088231
+            }
+          },
+          "DDTI": {
+            "mean": {
+              "DSC (%)": 84.03276666666666,
+              "HD95 (pixel)": 60.3847,
+              "ASSD (pixel)": 21.603366666666666
+            },
+            "sample_std": {
+              "DSC (%)": 0.5052353939831792,
+              "HD95 (pixel)": 3.4057008104059854,
+              "ASSD (pixel)": 0.5691863344576492
+            }
+          },
+          "FALLMUD": {
+            "mean": {
+              "DSC (%)": 82.22176666666667,
+              "HD95 (pixel)": 9.365266666666667,
+              "ASSD (pixel)": 2.5245
+            },
+            "sample_std": {
+              "DSC (%)": 0.05410696196731971,
+              "HD95 (pixel)": 1.812237689524565,
+              "ASSD (pixel)": 0.24052860536742823
+            }
+          },
+          "Fetal_HC": {
+            "mean": {
+              "DSC (%)": 96.65033333333334,
+              "HD95 (pixel)": 17.815133333333335,
+              "ASSD (pixel)": 5.295566666666667
+            },
+            "sample_std": {
+              "DSC (%)": 0.18922646044708655,
+              "HD95 (pixel)": 2.579870873383653,
+              "ASSD (pixel)": 0.42089815078393167
+            }
+          },
+          "MMOTU": {
+            "mean": {
+              "DSC (%)": 81.74936666666666,
+              "HD95 (pixel)": 62.4618,
+              "ASSD (pixel)": 19.482766666666667
+            },
+            "sample_std": {
+              "DSC (%)": 0.7976428168881994,
+              "HD95 (pixel)": 1.5377597048954044,
+              "ASSD (pixel)": 0.5157787736358814
+            }
+          }
+        }
+      }
+    },
+    "domain_gn": {
+      "metrics": {
+        "structure:macro:all_groups": {
+          "mean": {
+            "DSC (%)": 71.75723333333333,
+            "HD95 (pixel)": 98.54793333333333,
+            "ASSD (pixel)": 67.51236666666667
+          },
+          "sample_std": {
+            "DSC (%)": 1.450367182245009,
+            "HD95 (pixel)": 7.44356218643556,
+            "ASSD (pixel)": 8.498168328724335
+          },
+          "seeds": [
+            {
+              "seed": "42",
+              "DSC (%)": "70.6436",
+              "HD95 (pixel)": "94.5223",
+              "ASSD (pixel)": "60.2532",
+              "samples": "2501",
+              "coverage_denominator": "2501",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "105",
+              "undefined_count": "0",
+              "job_id": "dc78ee8bfa6f66bd4f67781d90eaa49bbf2f4e71c688a79884112c22be88dada",
+              "checkpoint_sha256": "640bacfb24c1f4f177e7525dbf29345c16e344e8d3ad374f2b16df123733ec73"
+            },
+            {
+              "seed": "43",
+              "DSC (%)": "73.3973",
+              "HD95 (pixel)": "93.9841",
+              "ASSD (pixel)": "65.4238",
+              "samples": "2501",
+              "coverage_denominator": "2501",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "143",
+              "undefined_count": "0",
+              "job_id": "1f93dc5bc31d4896adcb73c3f3f8c05babaab0b04c1d79c7fc30749e3c106054",
+              "checkpoint_sha256": "f9f0ba43238d3ce8f217666623a47ce79d7efdde030fbaafdffcede0021b8059"
+            },
+            {
+              "seed": "44",
+              "DSC (%)": "71.2308",
+              "HD95 (pixel)": "107.1374",
+              "ASSD (pixel)": "76.8601",
+              "samples": "2501",
+              "coverage_denominator": "2501",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "171",
+              "undefined_count": "0",
+              "job_id": "9031efcee265686e6e792ccdc9759b246a452b5540adbe049310644d872ce4bc",
+              "checkpoint_sha256": "3297c60c1bc6a7f3acfbc5263f53601e4cddc67fe244153502101503c7cac6b6"
+            }
+          ]
+        },
+        "union:macro:all_groups": {
+          "mean": {
+            "DSC (%)": 85.3442,
+            "HD95 (pixel)": 45.2457,
+            "ASSD (pixel)": 16.525266666666667
+          },
+          "sample_std": {
+            "DSC (%)": 0.5639460878488305,
+            "HD95 (pixel)": 4.0795404679939145,
+            "ASSD (pixel)": 3.5768900211403385
+          },
+          "seeds": [
+            {
+              "seed": "42",
+              "DSC (%)": "85.0659",
+              "HD95 (pixel)": "42.4286",
+              "ASSD (pixel)": "12.8703",
+              "samples": "1601",
+              "coverage_denominator": "1603",
+              "target_boundary_undefined_excluded": "2",
+              "penalized_count": "0",
+              "undefined_count": "0",
+              "job_id": "dc78ee8bfa6f66bd4f67781d90eaa49bbf2f4e71c688a79884112c22be88dada",
+              "checkpoint_sha256": "640bacfb24c1f4f177e7525dbf29345c16e344e8d3ad374f2b16df123733ec73"
+            },
+            {
+              "seed": "43",
+              "DSC (%)": "85.9932",
+              "HD95 (pixel)": "43.3846",
+              "ASSD (pixel)": "16.6869",
+              "samples": "1601",
+              "coverage_denominator": "1603",
+              "target_boundary_undefined_excluded": "2",
+              "penalized_count": "5",
+              "undefined_count": "0",
+              "job_id": "1f93dc5bc31d4896adcb73c3f3f8c05babaab0b04c1d79c7fc30749e3c106054",
+              "checkpoint_sha256": "f9f0ba43238d3ce8f217666623a47ce79d7efdde030fbaafdffcede0021b8059"
+            },
+            {
+              "seed": "44",
+              "DSC (%)": "84.9735",
+              "HD95 (pixel)": "49.9239",
+              "ASSD (pixel)": "20.0186",
+              "samples": "1601",
+              "coverage_denominator": "1603",
+              "target_boundary_undefined_excluded": "2",
+              "penalized_count": "7",
+              "undefined_count": "0",
+              "job_id": "9031efcee265686e6e792ccdc9759b246a452b5540adbe049310644d872ce4bc",
+              "checkpoint_sha256": "3297c60c1bc6a7f3acfbc5263f53601e4cddc67fe244153502101503c7cac6b6"
+            }
+          ]
+        },
+        "structure:abdomen_macro:abdomen": {
+          "mean": {
+            "DSC (%)": 44.65456666666667,
+            "HD95 (pixel)": 232.17233333333334,
+            "ASSD (pixel)": 182.83089999999999
+          },
+          "sample_std": {
+            "DSC (%)": 2.994406554450037,
+            "HD95 (pixel)": 18.743624975263806,
+            "ASSD (pixel)": 20.72553855054194
+          },
+          "seeds": [
+            {
+              "seed": "42",
+              "DSC (%)": "42.1535",
+              "HD95 (pixel)": "222.7412",
+              "ASSD (pixel)": "166.1393",
+              "samples": "717",
+              "coverage_denominator": "717",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "105",
+              "undefined_count": "0",
+              "job_id": "dc78ee8bfa6f66bd4f67781d90eaa49bbf2f4e71c688a79884112c22be88dada",
+              "checkpoint_sha256": "640bacfb24c1f4f177e7525dbf29345c16e344e8d3ad374f2b16df123733ec73"
+            },
+            {
+              "seed": "43",
+              "DSC (%)": "47.9727",
+              "HD95 (pixel)": "220.0174",
+              "ASSD (pixel)": "176.3244",
+              "samples": "717",
+              "coverage_denominator": "717",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "138",
+              "undefined_count": "0",
+              "job_id": "1f93dc5bc31d4896adcb73c3f3f8c05babaab0b04c1d79c7fc30749e3c106054",
+              "checkpoint_sha256": "f9f0ba43238d3ce8f217666623a47ce79d7efdde030fbaafdffcede0021b8059"
+            },
+            {
+              "seed": "44",
+              "DSC (%)": "43.8375",
+              "HD95 (pixel)": "253.7584",
+              "ASSD (pixel)": "206.0290",
+              "samples": "717",
+              "coverage_denominator": "717",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "163",
+              "undefined_count": "0",
+              "job_id": "9031efcee265686e6e792ccdc9759b246a452b5540adbe049310644d872ce4bc",
+              "checkpoint_sha256": "3297c60c1bc6a7f3acfbc5263f53601e4cddc67fe244153502101503c7cac6b6"
+            }
+          ]
+        },
+        "structure:group:abdomen_vessels": {
+          "mean": {
+            "DSC (%)": 18.80343333333333,
+            "HD95 (pixel)": 429.90993333333336,
+            "ASSD (pixel)": 413.99533333333335
+          },
+          "sample_std": {
+            "DSC (%)": 4.090952180523909,
+            "HD95 (pixel)": 54.44841819835845,
+            "ASSD (pixel)": 57.97104492437008
+          },
+          "seeds": [
+            {
+              "seed": "42",
+              "DSC (%)": "23.1226",
+              "HD95 (pixel)": "368.2318",
+              "ASSD (pixel)": "347.5057",
+              "samples": "151",
+              "coverage_denominator": "151",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "66",
+              "undefined_count": "0",
+              "job_id": "dc78ee8bfa6f66bd4f67781d90eaa49bbf2f4e71c688a79884112c22be88dada",
+              "checkpoint_sha256": "640bacfb24c1f4f177e7525dbf29345c16e344e8d3ad374f2b16df123733ec73"
+            },
+            {
+              "seed": "43",
+              "DSC (%)": "18.3005",
+              "HD95 (pixel)": "450.1903",
+              "ASSD (pixel)": "440.5328",
+              "samples": "151",
+              "coverage_denominator": "151",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "90",
+              "undefined_count": "0",
+              "job_id": "1f93dc5bc31d4896adcb73c3f3f8c05babaab0b04c1d79c7fc30749e3c106054",
+              "checkpoint_sha256": "f9f0ba43238d3ce8f217666623a47ce79d7efdde030fbaafdffcede0021b8059"
+            },
+            {
+              "seed": "44",
+              "DSC (%)": "14.9872",
+              "HD95 (pixel)": "471.3077",
+              "ASSD (pixel)": "453.9475",
+              "samples": "151",
+              "coverage_denominator": "151",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "90",
+              "undefined_count": "0",
+              "job_id": "9031efcee265686e6e792ccdc9759b246a452b5540adbe049310644d872ce4bc",
+              "checkpoint_sha256": "3297c60c1bc6a7f3acfbc5263f53601e4cddc67fe244153502101503c7cac6b6"
+            }
+          ]
+        }
+      },
+      "union_full_positive": [
+        {
+          "seed": "42",
+          "DSC (%)": "84.9634",
+          "HD95 (pixel)": "NA",
+          "ASSD (pixel)": "NA",
+          "samples": "1603",
+          "undefined_count": "2",
+          "distance_status": "undefined"
+        },
+        {
+          "seed": "43",
+          "DSC (%)": "85.9729",
+          "HD95 (pixel)": "NA",
+          "ASSD (pixel)": "NA",
+          "samples": "1603",
+          "undefined_count": "2",
+          "distance_status": "undefined"
+        },
+        {
+          "seed": "44",
+          "DSC (%)": "84.8475",
+          "HD95 (pixel)": "NA",
+          "ASSD (pixel)": "NA",
+          "samples": "1603",
+          "undefined_count": "1",
+          "distance_status": "undefined"
+        }
+      ],
+      "original_positive_organ_diagnostics": {
+        "abdomen_liver": {
+          "positive_dice": {
+            "mean_percent": 68.48355325864318,
+            "sample_std_percent": 6.738642998604962
+          },
+          "positive_miss_rate": {
+            "mean_percent": 3.377386196769457,
+            "sample_std_percent": 3.5878977159678755
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 59.5959595959596,
+            "sample_std_percent": 22.995055429964058
+          }
+        },
+        "abdomen_kidney": {
+          "positive_dice": {
+            "mean_percent": 37.3098934835621,
+            "sample_std_percent": 6.955356627534444
+          },
+          "positive_miss_rate": {
+            "mean_percent": 10.153256704980844,
+            "sample_std_percent": 4.464053715605764
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 64.70588235294117,
+            "sample_std_percent": 16.785701139023683
+          }
+        },
+        "abdomen_vessels": {
+          "positive_dice": {
+            "mean_percent": 18.804869548752738,
+            "sample_std_percent": 4.091376546900394
+          },
+          "positive_miss_rate": {
+            "mean_percent": 54.3046357615894,
+            "sample_std_percent": 9.176428119570213
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 17.6056338028169,
+            "sample_std_percent": 7.936216668721581
+          }
+        },
+        "abdomen_gallbladder": {
+          "positive_dice": {
+            "mean_percent": 69.2946779589962,
+            "sample_std_percent": 0.8500034154267663
+          },
+          "positive_miss_rate": {
+            "mean_percent": 10.74074074074074,
+            "sample_std_percent": 7.56317698394894
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 35.79638752052545,
+            "sample_std_percent": 24.887006330933602
+          }
+        },
+        "abdomen_spleen": {
+          "positive_dice": {
+            "mean_percent": 29.384491292345853,
+            "sample_std_percent": 7.656328311116158
+          },
+          "positive_miss_rate": {
+            "mean_percent": 24.444444444444446,
+            "sample_std_percent": 9.459465179463452
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 19.877675840978593,
+            "sample_std_percent": 4.359809611432188
+          }
+        }
+      },
+      "run_summary": [
+        {
+          "seed": 42,
+          "epochs_completed": 80,
+          "best_epoch": 25,
+          "guardrail_epoch": null,
+          "vessel_positive_dice_percent": 23.123676347120707,
+          "vessel_positive_miss_rate_percent": 43.70860927152318,
+          "vessel_empty_false_positive_rate_percent": 22.535211267605636
+        },
+        {
+          "seed": 43,
+          "epochs_completed": 80,
+          "best_epoch": 58,
+          "guardrail_epoch": 19,
+          "vessel_positive_dice_percent": 18.303866863300076,
+          "vessel_positive_miss_rate_percent": 59.60264900662252,
+          "vessel_empty_false_positive_rate_percent": 8.450704225352112
+        },
+        {
+          "seed": 44,
+          "epochs_completed": 80,
+          "best_epoch": 66,
+          "guardrail_epoch": 23,
+          "vessel_positive_dice_percent": 14.987065435837435,
+          "vessel_positive_miss_rate_percent": 59.60264900662252,
+          "vessel_empty_false_positive_rate_percent": 21.830985915492956
+        }
+      ],
+      "per_structure_or_domain_recomputed": {
+        "structure": {
+          "abdomen_gallbladder": {
+            "mean": {
+              "DSC (%)": 69.29476666666666,
+              "HD95 (pixel)": 134.24453333333332,
+              "ASSD (pixel)": 99.49006666666666
+            },
+            "sample_std": {
+              "DSC (%)": 0.8491879081412603,
+              "HD95 (pixel)": 31.68040332703063,
+              "ASSD (pixel)": 43.89960287432375
+            }
+          },
+          "abdomen_kidney": {
+            "mean": {
+              "DSC (%)": 37.308566666666664,
+              "HD95 (pixel)": 162.90826666666666,
+              "ASSD (pixel)": 112.38093333333333
+            },
+            "sample_std": {
+              "DSC (%)": 6.957627889829502,
+              "HD95 (pixel)": 12.059250460262154,
+              "ASSD (pixel)": 24.171448049368763
+            }
+          },
+          "abdomen_liver": {
+            "mean": {
+              "DSC (%)": 68.4833,
+              "HD95 (pixel)": 145.76793333333333,
+              "ASSD (pixel)": 64.0341
+            },
+            "sample_std": {
+              "DSC (%)": 6.739026975016499,
+              "HD95 (pixel)": 31.450970696360603,
+              "ASSD (pixel)": 27.51582090561719
+            }
+          },
+          "abdomen_spleen": {
+            "mean": {
+              "DSC (%)": 29.3828,
+              "HD95 (pixel)": 288.03113333333334,
+              "ASSD (pixel)": 224.254
+            },
+            "sample_std": {
+              "DSC (%)": 7.657976800696123,
+              "HD95 (pixel)": 59.07379591615331,
+              "ASSD (pixel)": 68.10949722527688
+            }
+          },
+          "abdomen_vessels": {
+            "mean": {
+              "DSC (%)": 18.80343333333333,
+              "HD95 (pixel)": 429.90993333333336,
+              "ASSD (pixel)": 413.99533333333335
+            },
+            "sample_std": {
+              "DSC (%)": 4.090952180523909,
+              "HD95 (pixel)": 54.44841819835845,
+              "ASSD (pixel)": 57.97104492437008
+            }
+          },
+          "aponeurosis": {
+            "mean": {
+              "DSC (%)": 81.66906666666667,
+              "HD95 (pixel)": 7.7838666666666665,
+              "ASSD (pixel)": 2.4031666666666665
+            },
+            "sample_std": {
+              "DSC (%)": 1.024793151486357,
+              "HD95 (pixel)": 1.9186019945088486,
+              "ASSD (pixel)": 0.2676456114591333
+            }
+          },
+          "breast_lesion": {
+            "mean": {
+              "DSC (%)": 74.34583333333333,
+              "HD95 (pixel)": 93.18843333333334,
+              "ASSD (pixel)": 54.13783333333333
+            },
+            "sample_std": {
+              "DSC (%)": 2.4733543747981854,
+              "HD95 (pixel)": 26.33171708877591,
+              "ASSD (pixel)": 29.909280871718284
+            }
+          },
+          "carotid": {
+            "mean": {
+              "DSC (%)": 94.6708,
+              "HD95 (pixel)": 10.178266666666666,
+              "ASSD (pixel)": 3.1666666666666665
+            },
+            "sample_std": {
+              "DSC (%)": 0.28405110455691,
+              "HD95 (pixel)": 0.7627151914924295,
+              "ASSD (pixel)": 0.13403347840496166
+            }
+          },
+          "head_contour": {
+            "mean": {
+              "DSC (%)": 96.963,
+              "HD95 (pixel)": 14.7066,
+              "ASSD (pixel)": 4.6742
+            },
+            "sample_std": {
+              "DSC (%)": 0.13891968902931118,
+              "HD95 (pixel)": 2.520765266739448,
+              "ASSD (pixel)": 0.5866102283458756
+            }
+          },
+          "left_atrium": {
+            "mean": {
+              "DSC (%)": 89.29126666666666,
+              "HD95 (pixel)": 21.96463333333333,
+              "ASSD (pixel)": 6.734733333333334
+            },
+            "sample_std": {
+              "DSC (%)": 0.7903938849291134,
+              "HD95 (pixel)": 4.240761611236044,
+              "ASSD (pixel)": 0.9130229697731228
+            }
+          },
+          "liver": {
+            "mean": {
+              "DSC (%)": 90.32613333333333,
+              "HD95 (pixel)": 38.87846666666667,
+              "ASSD (pixel)": 10.659
+            },
+            "sample_std": {
+              "DSC (%)": 0.5895554624743367,
+              "HD95 (pixel)": 4.041209118980769,
+              "ASSD (pixel)": 0.9015809836060212
+            }
+          },
+          "liver_mass": {
+            "mean": {
+              "DSC (%)": 54.43246666666667,
+              "HD95 (pixel)": 72.85813333333334,
+              "ASSD (pixel)": 31.942066666666665
+            },
+            "sample_std": {
+              "DSC (%)": 5.701154362349201,
+              "HD95 (pixel)": 9.944471309392636,
+              "ASSD (pixel)": 7.768992704548853
+            }
+          },
+          "lv_cavity": {
+            "mean": {
+              "DSC (%)": 92.1957,
+              "HD95 (pixel)": 15.888533333333333,
+              "ASSD (pixel)": 5.4962
+            },
+            "sample_std": {
+              "DSC (%)": 0.8887198658745009,
+              "HD95 (pixel)": 2.3952867768460075,
+              "ASSD (pixel)": 0.7332804852169459
+            }
+          },
+          "myocardium": {
+            "mean": {
+              "DSC (%)": 84.94593333333333,
+              "HD95 (pixel)": 17.0361,
+              "ASSD (pixel)": 5.991533333333333
+            },
+            "sample_std": {
+              "DSC (%)": 1.4505195528959014,
+              "HD95 (pixel)": 2.2163385278427126,
+              "ASSD (pixel)": 0.630383766711464
+            }
+          },
+          "ovarian_lesion": {
+            "mean": {
+              "DSC (%)": 81.71433333333333,
+              "HD95 (pixel)": 64.65393333333333,
+              "ASSD (pixel)": 20.039566666666666
+            },
+            "sample_std": {
+              "DSC (%)": 0.7204358773224261,
+              "HD95 (pixel)": 5.24731444677497,
+              "ASSD (pixel)": 1.9545283429342568
+            }
+          },
+          "thyroid_nodule": {
+            "mean": {
+              "DSC (%)": 84.2881,
+              "HD95 (pixel)": 58.76793333333333,
+              "ASSD (pixel)": 20.7985
+            },
+            "sample_std": {
+              "DSC (%)": 1.7759608863936145,
+              "HD95 (pixel)": 3.694928662820613,
+              "ASSD (pixel)": 1.5542600265077915
+            }
+          }
+        },
+        "union": {
+          "AUL": {
+            "mean": {
+              "DSC (%)": 90.32613333333333,
+              "HD95 (pixel)": 38.87846666666667,
+              "ASSD (pixel)": 10.659
+            },
+            "sample_std": {
+              "DSC (%)": 0.5895554624743367,
+              "HD95 (pixel)": 4.041209118980769,
+              "ASSD (pixel)": 0.9015809836060212
+            }
+          },
+          "AbdomenUS": {
+            "mean": {
+              "DSC (%)": 70.10986666666666,
+              "HD95 (pixel)": 88.27436666666667,
+              "ASSD (pixel)": 23.664133333333332
+            },
+            "sample_std": {
+              "DSC (%)": 3.514816294393394,
+              "HD95 (pixel)": 6.62230006140867,
+              "ASSD (pixel)": 2.1735842802461867
+            }
+          },
+          "BUSI": {
+            "mean": {
+              "DSC (%)": 74.34583333333333,
+              "HD95 (pixel)": 93.18843333333334,
+              "ASSD (pixel)": 54.13783333333333
+            },
+            "sample_std": {
+              "DSC (%)": 2.4733543747981854,
+              "HD95 (pixel)": 26.33171708877591,
+              "ASSD (pixel)": 29.909280871718284
+            }
+          },
+          "CAMUS": {
+            "mean": {
+              "DSC (%)": 94.01066666666667,
+              "HD95 (pixel)": 30.779533333333333,
+              "ASSD (pixel)": 9.184433333333333
+            },
+            "sample_std": {
+              "DSC (%)": 0.3017067671321529,
+              "HD95 (pixel)": 12.691940068536935,
+              "ASSD (pixel)": 3.3584053021238116
+            }
+          },
+          "CCA": {
+            "mean": {
+              "DSC (%)": 94.6708,
+              "HD95 (pixel)": 10.178266666666666,
+              "ASSD (pixel)": 3.1666666666666665
+            },
+            "sample_std": {
+              "DSC (%)": 0.28405110455691,
+              "HD95 (pixel)": 0.7627151914924295,
+              "ASSD (pixel)": 0.13403347840496166
+            }
+          },
+          "DDTI": {
+            "mean": {
+              "DSC (%)": 84.2881,
+              "HD95 (pixel)": 58.76793333333333,
+              "ASSD (pixel)": 20.7985
+            },
+            "sample_std": {
+              "DSC (%)": 1.7759608863936145,
+              "HD95 (pixel)": 3.694928662820613,
+              "ASSD (pixel)": 1.5542600265077915
+            }
+          },
+          "FALLMUD": {
+            "mean": {
+              "DSC (%)": 81.66906666666667,
+              "HD95 (pixel)": 7.7838666666666665,
+              "ASSD (pixel)": 2.4031666666666665
+            },
+            "sample_std": {
+              "DSC (%)": 1.024793151486357,
+              "HD95 (pixel)": 1.9186019945088486,
+              "ASSD (pixel)": 0.2676456114591333
+            }
+          },
+          "Fetal_HC": {
+            "mean": {
+              "DSC (%)": 96.963,
+              "HD95 (pixel)": 14.7066,
+              "ASSD (pixel)": 4.6742
+            },
+            "sample_std": {
+              "DSC (%)": 0.13891968902931118,
+              "HD95 (pixel)": 2.520765266739448,
+              "ASSD (pixel)": 0.5866102283458756
+            }
+          },
+          "MMOTU": {
+            "mean": {
+              "DSC (%)": 81.71433333333333,
+              "HD95 (pixel)": 64.65393333333333,
+              "ASSD (pixel)": 20.039566666666666
+            },
+            "sample_std": {
+              "DSC (%)": 0.7204358773224261,
+              "HD95 (pixel)": 5.24731444677497,
+              "ASSD (pixel)": 1.9545283429342568
+            }
+          }
+        }
+      }
+    },
+    "shared_bn": {
+      "metrics": {
+        "structure:macro:all_groups": {
+          "mean": {
+            "DSC (%)": 71.565,
+            "HD95 (pixel)": 83.2187,
+            "ASSD (pixel)": 46.1314
+          },
+          "sample_std": {
+            "DSC (%)": 0.9393310811423228,
+            "HD95 (pixel)": 3.5211176762499763,
+            "ASSD (pixel)": 1.1433609972357832
+          },
+          "seeds": [
+            {
+              "seed": "42",
+              "DSC (%)": "71.2846",
+              "HD95 (pixel)": "85.9762",
+              "ASSD (pixel)": "45.7731",
+              "samples": "2501",
+              "coverage_denominator": "2501",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "61",
+              "undefined_count": "0",
+              "job_id": "73a82254745dfc11903893851d0ae31d78be0ad9835f3031ad421c21ec0140df",
+              "checkpoint_sha256": "a62747b56d19eeebcbd9bef9ae5ef1222dcefb10a87939a2fafdcc5219bc33df"
+            },
+            {
+              "seed": "43",
+              "DSC (%)": "72.6126",
+              "HD95 (pixel)": "79.2524",
+              "ASSD (pixel)": "45.2101",
+              "samples": "2501",
+              "coverage_denominator": "2501",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "57",
+              "undefined_count": "0",
+              "job_id": "bb25968dbf328a25e7ab1ae52ecd413309cf940054c70269d6de3ff86f2bf88d",
+              "checkpoint_sha256": "67ab389da57711e087e58ab86cc7dc446d57a3a0a9202730bcd0a0911aa960d0"
+            },
+            {
+              "seed": "44",
+              "DSC (%)": "70.7978",
+              "HD95 (pixel)": "84.4275",
+              "ASSD (pixel)": "47.4110",
+              "samples": "2501",
+              "coverage_denominator": "2501",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "59",
+              "undefined_count": "0",
+              "job_id": "020b925e43f187ca0c6ebd550c646b776aefe6b45885438e9a3a1d5bb4906671",
+              "checkpoint_sha256": "a250d8821c4f477c597df3db7f723e35cb6b6cfc4516217917e4230555352596"
+            }
+          ]
+        },
+        "union:macro:all_groups": {
+          "mean": {
+            "DSC (%)": 83.97653333333334,
+            "HD95 (pixel)": 47.75483333333334,
+            "ASSD (pixel)": 16.229266666666668
+          },
+          "sample_std": {
+            "DSC (%)": 0.7813973786322368,
+            "HD95 (pixel)": 3.2151504931081134,
+            "ASSD (pixel)": 1.9954520949733008
+          },
+          "seeds": [
+            {
+              "seed": "42",
+              "DSC (%)": "83.8673",
+              "HD95 (pixel)": "47.8451",
+              "ASSD (pixel)": "15.0847",
+              "samples": "1601",
+              "coverage_denominator": "1603",
+              "target_boundary_undefined_excluded": "2",
+              "penalized_count": "0",
+              "undefined_count": "0",
+              "job_id": "73a82254745dfc11903893851d0ae31d78be0ad9835f3031ad421c21ec0140df",
+              "checkpoint_sha256": "a62747b56d19eeebcbd9bef9ae5ef1222dcefb10a87939a2fafdcc5219bc33df"
+            },
+            {
+              "seed": "43",
+              "DSC (%)": "84.8068",
+              "HD95 (pixel)": "44.4955",
+              "ASSD (pixel)": "15.0697",
+              "samples": "1601",
+              "coverage_denominator": "1603",
+              "target_boundary_undefined_excluded": "2",
+              "penalized_count": "2",
+              "undefined_count": "0",
+              "job_id": "bb25968dbf328a25e7ab1ae52ecd413309cf940054c70269d6de3ff86f2bf88d",
+              "checkpoint_sha256": "67ab389da57711e087e58ab86cc7dc446d57a3a0a9202730bcd0a0911aa960d0"
+            },
+            {
+              "seed": "44",
+              "DSC (%)": "83.2555",
+              "HD95 (pixel)": "50.9239",
+              "ASSD (pixel)": "18.5334",
+              "samples": "1601",
+              "coverage_denominator": "1603",
+              "target_boundary_undefined_excluded": "2",
+              "penalized_count": "4",
+              "undefined_count": "0",
+              "job_id": "020b925e43f187ca0c6ebd550c646b776aefe6b45885438e9a3a1d5bb4906671",
+              "checkpoint_sha256": "a250d8821c4f477c597df3db7f723e35cb6b6cfc4516217917e4230555352596"
+            }
+          ]
+        },
+        "structure:abdomen_macro:abdomen": {
+          "mean": {
+            "DSC (%)": 48.822266666666664,
+            "HD95 (pixel)": 168.99166666666667,
+            "ASSD (pixel)": 108.2072
+          },
+          "sample_std": {
+            "DSC (%)": 0.17518191497221974,
+            "HD95 (pixel)": 4.845912704881654,
+            "ASSD (pixel)": 3.5366735402069573
+          },
+          "seeds": [
+            {
+              "seed": "42",
+              "DSC (%)": "48.7585",
+              "HD95 (pixel)": "173.3854",
+              "ASSD (pixel)": "104.6780",
+              "samples": "717",
+              "coverage_denominator": "717",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "55",
+              "undefined_count": "0",
+              "job_id": "73a82254745dfc11903893851d0ae31d78be0ad9835f3031ad421c21ec0140df",
+              "checkpoint_sha256": "a62747b56d19eeebcbd9bef9ae5ef1222dcefb10a87939a2fafdcc5219bc33df"
+            },
+            {
+              "seed": "43",
+              "DSC (%)": "49.0204",
+              "HD95 (pixel)": "163.7941",
+              "ASSD (pixel)": "108.1923",
+              "samples": "717",
+              "coverage_denominator": "717",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "52",
+              "undefined_count": "0",
+              "job_id": "bb25968dbf328a25e7ab1ae52ecd413309cf940054c70269d6de3ff86f2bf88d",
+              "checkpoint_sha256": "67ab389da57711e087e58ab86cc7dc446d57a3a0a9202730bcd0a0911aa960d0"
+            },
+            {
+              "seed": "44",
+              "DSC (%)": "48.6879",
+              "HD95 (pixel)": "169.7955",
+              "ASSD (pixel)": "111.7513",
+              "samples": "717",
+              "coverage_denominator": "717",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "54",
+              "undefined_count": "0",
+              "job_id": "020b925e43f187ca0c6ebd550c646b776aefe6b45885438e9a3a1d5bb4906671",
+              "checkpoint_sha256": "a250d8821c4f477c597df3db7f723e35cb6b6cfc4516217917e4230555352596"
+            }
+          ]
+        },
+        "structure:group:abdomen_vessels": {
+          "mean": {
+            "DSC (%)": 41.9349,
+            "HD95 (pixel)": 225.75783333333334,
+            "ASSD (pixel)": 176.17183333333332
+          },
+          "sample_std": {
+            "DSC (%)": 2.8854417148852596,
+            "HD95 (pixel)": 23.229415328271465,
+            "ASSD (pixel)": 26.604898295113497
+          },
+          "seeds": [
+            {
+              "seed": "42",
+              "DSC (%)": "38.6642",
+              "HD95 (pixel)": "241.8295",
+              "ASSD (pixel)": "191.8315",
+              "samples": "151",
+              "coverage_denominator": "151",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "31",
+              "undefined_count": "0",
+              "job_id": "73a82254745dfc11903893851d0ae31d78be0ad9835f3031ad421c21ec0140df",
+              "checkpoint_sha256": "a62747b56d19eeebcbd9bef9ae5ef1222dcefb10a87939a2fafdcc5219bc33df"
+            },
+            {
+              "seed": "43",
+              "DSC (%)": "44.1204",
+              "HD95 (pixel)": "199.1241",
+              "ASSD (pixel)": "145.4531",
+              "samples": "151",
+              "coverage_denominator": "151",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "22",
+              "undefined_count": "0",
+              "job_id": "bb25968dbf328a25e7ab1ae52ecd413309cf940054c70269d6de3ff86f2bf88d",
+              "checkpoint_sha256": "67ab389da57711e087e58ab86cc7dc446d57a3a0a9202730bcd0a0911aa960d0"
+            },
+            {
+              "seed": "44",
+              "DSC (%)": "43.0201",
+              "HD95 (pixel)": "236.3199",
+              "ASSD (pixel)": "191.2309",
+              "samples": "151",
+              "coverage_denominator": "151",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "32",
+              "undefined_count": "0",
+              "job_id": "020b925e43f187ca0c6ebd550c646b776aefe6b45885438e9a3a1d5bb4906671",
+              "checkpoint_sha256": "a250d8821c4f477c597df3db7f723e35cb6b6cfc4516217917e4230555352596"
+            }
+          ]
+        }
+      },
+      "union_full_positive": [
+        {
+          "seed": "42",
+          "DSC (%)": "83.7807",
+          "HD95 (pixel)": "NA",
+          "ASSD (pixel)": "NA",
+          "samples": "1603",
+          "undefined_count": "2",
+          "distance_status": "undefined"
+        },
+        {
+          "seed": "43",
+          "DSC (%)": "84.7529",
+          "HD95 (pixel)": "NA",
+          "ASSD (pixel)": "NA",
+          "samples": "1603",
+          "undefined_count": "2",
+          "distance_status": "undefined"
+        },
+        {
+          "seed": "44",
+          "DSC (%)": "83.2450",
+          "HD95 (pixel)": "NA",
+          "ASSD (pixel)": "NA",
+          "samples": "1603",
+          "undefined_count": "2",
+          "distance_status": "undefined"
+        }
+      ],
+      "original_positive_organ_diagnostics": {
+        "abdomen_liver": {
+          "positive_dice": {
+            "mean_percent": 68.8913059580207,
+            "sample_std_percent": 1.4755925786763722
+          },
+          "positive_miss_rate": {
+            "mean_percent": 1.3215859030837005,
+            "sample_std_percent": 0.4405286343612335
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 84.84848484848484,
+            "sample_std_percent": 11.833711630161593
+          }
+        },
+        "abdomen_kidney": {
+          "positive_dice": {
+            "mean_percent": 40.930793956605676,
+            "sample_std_percent": 3.8760281006914754
+          },
+          "positive_miss_rate": {
+            "mean_percent": 3.065134099616858,
+            "sample_std_percent": 2.5915228464499394
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 85.71428571428572,
+            "sample_std_percent": 8.733029281859887
+          }
+        },
+        "abdomen_vessels": {
+          "positive_dice": {
+            "mean_percent": 41.93473283518065,
+            "sample_std_percent": 2.885990602652203
+          },
+          "positive_miss_rate": {
+            "mean_percent": 18.76379690949227,
+            "sample_std_percent": 3.6473977134345046
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 44.60093896713615,
+            "sample_std_percent": 5.9059838616944225
+          }
+        },
+        "abdomen_gallbladder": {
+          "positive_dice": {
+            "mean_percent": 66.999978594206,
+            "sample_std_percent": 1.7878799366980602
+          },
+          "positive_miss_rate": {
+            "mean_percent": 10.0,
+            "sample_std_percent": 4.006168083848876
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 40.39408866995074,
+            "sample_std_percent": 12.256015078448009
+          }
+        },
+        "abdomen_spleen": {
+          "positive_dice": {
+            "mean_percent": 25.356049522317743,
+            "sample_std_percent": 7.109167640899897
+          },
+          "positive_miss_rate": {
+            "mean_percent": 10.666666666666668,
+            "sample_std_percent": 4.0
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 35.16819571865444,
+            "sample_std_percent": 7.051897588746304
+          }
+        }
+      },
+      "run_summary": [
+        {
+          "seed": 42,
+          "epochs_completed": 80,
+          "best_epoch": 21,
+          "guardrail_epoch": null,
+          "vessel_positive_dice_percent": 38.66338389401404,
+          "vessel_positive_miss_rate_percent": 20.52980132450331,
+          "vessel_empty_false_positive_rate_percent": 40.845070422535215
+        },
+        {
+          "seed": 43,
+          "epochs_completed": 80,
+          "best_epoch": 25,
+          "guardrail_epoch": null,
+          "vessel_positive_dice_percent": 44.120542595890775,
+          "vessel_positive_miss_rate_percent": 14.56953642384106,
+          "vessel_empty_false_positive_rate_percent": 41.54929577464789
+        },
+        {
+          "seed": 44,
+          "epochs_completed": 80,
+          "best_epoch": 21,
+          "guardrail_epoch": null,
+          "vessel_positive_dice_percent": 43.02027201563712,
+          "vessel_positive_miss_rate_percent": 21.192052980132452,
+          "vessel_empty_false_positive_rate_percent": 51.40845070422535
+        }
+      ],
+      "per_structure_or_domain_recomputed": {
+        "structure": {
+          "abdomen_gallbladder": {
+            "mean": {
+              "DSC (%)": 66.9994,
+              "HD95 (pixel)": 135.53566666666666,
+              "ASSD (pixel)": 99.23623333333333
+            },
+            "sample_std": {
+              "DSC (%)": 1.7886116766922828,
+              "HD95 (pixel)": 14.225555904896426,
+              "ASSD (pixel)": 23.459948048606876
+            }
+          },
+          "abdomen_kidney": {
+            "mean": {
+              "DSC (%)": 40.9303,
+              "HD95 (pixel)": 133.69463333333334,
+              "ASSD (pixel)": 66.25846666666666
+            },
+            "sample_std": {
+              "DSC (%)": 3.8752291454828853,
+              "HD95 (pixel)": 18.80637452151087,
+              "ASSD (pixel)": 18.43404912392645
+            }
+          },
+          "abdomen_liver": {
+            "mean": {
+              "DSC (%)": 68.89063333333333,
+              "HD95 (pixel)": 120.96856666666667,
+              "ASSD (pixel)": 46.56283333333333
+            },
+            "sample_std": {
+              "DSC (%)": 1.475823540716613,
+              "HD95 (pixel)": 9.993053640070858,
+              "ASSD (pixel)": 4.441650770077867
+            }
+          },
+          "abdomen_spleen": {
+            "mean": {
+              "DSC (%)": 25.356033333333333,
+              "HD95 (pixel)": 229.00166666666667,
+              "ASSD (pixel)": 152.8066
+            },
+            "sample_std": {
+              "DSC (%)": 7.109238669740478,
+              "HD95 (pixel)": 20.992185455624508,
+              "ASSD (pixel)": 34.77825522765626
+            }
+          },
+          "abdomen_vessels": {
+            "mean": {
+              "DSC (%)": 41.9349,
+              "HD95 (pixel)": 225.75783333333334,
+              "ASSD (pixel)": 176.17183333333332
+            },
+            "sample_std": {
+              "DSC (%)": 2.8854417148852596,
+              "HD95 (pixel)": 23.229415328271465,
+              "ASSD (pixel)": 26.604898295113497
+            }
+          },
+          "aponeurosis": {
+            "mean": {
+              "DSC (%)": 81.7085,
+              "HD95 (pixel)": 11.615566666666666,
+              "ASSD (pixel)": 2.8868
+            },
+            "sample_std": {
+              "DSC (%)": 0.3156580269848962,
+              "HD95 (pixel)": 0.8696744927461847,
+              "ASSD (pixel)": 0.20148607892358214
+            }
+          },
+          "breast_lesion": {
+            "mean": {
+              "DSC (%)": 70.52316666666667,
+              "HD95 (pixel)": 89.97463333333334,
+              "ASSD (pixel)": 44.1852
+            },
+            "sample_std": {
+              "DSC (%)": 5.17424982034433,
+              "HD95 (pixel)": 17.396509312311288,
+              "ASSD (pixel)": 16.786500313049174
+            }
+          },
+          "carotid": {
+            "mean": {
+              "DSC (%)": 93.9353,
+              "HD95 (pixel)": 12.3678,
+              "ASSD (pixel)": 3.5792333333333333
+            },
+            "sample_std": {
+              "DSC (%)": 0.45046323934367855,
+              "HD95 (pixel)": 3.6798697300312138,
+              "ASSD (pixel)": 0.6818398663420417
+            }
+          },
+          "head_contour": {
+            "mean": {
+              "DSC (%)": 96.08416666666668,
+              "HD95 (pixel)": 24.151633333333333,
+              "ASSD (pixel)": 6.552933333333334
+            },
+            "sample_std": {
+              "DSC (%)": 0.19861612052734406,
+              "HD95 (pixel)": 1.1423207532621185,
+              "ASSD (pixel)": 0.3877701037126678
+            }
+          },
+          "left_atrium": {
+            "mean": {
+              "DSC (%)": 86.41486666666667,
+              "HD95 (pixel)": 25.889033333333334,
+              "ASSD (pixel)": 9.320266666666667
+            },
+            "sample_std": {
+              "DSC (%)": 0.9870781444917794,
+              "HD95 (pixel)": 1.8930343508064855,
+              "ASSD (pixel)": 2.15261184688121
+            }
+          },
+          "liver": {
+            "mean": {
+              "DSC (%)": 89.0322,
+              "HD95 (pixel)": 46.6419,
+              "ASSD (pixel)": 12.545133333333334
+            },
+            "sample_std": {
+              "DSC (%)": 0.4610755794877939,
+              "HD95 (pixel)": 4.591654476329856,
+              "ASSD (pixel)": 0.7183826301723425
+            }
+          },
+          "liver_mass": {
+            "mean": {
+              "DSC (%)": 46.69363333333334,
+              "HD95 (pixel)": 104.09660000000001,
+              "ASSD (pixel)": 60.89803333333333
+            },
+            "sample_std": {
+              "DSC (%)": 3.8142451472517247,
+              "HD95 (pixel)": 18.150461605975757,
+              "ASSD (pixel)": 18.68373766068592
+            }
+          },
+          "lv_cavity": {
+            "mean": {
+              "DSC (%)": 90.54753333333333,
+              "HD95 (pixel)": 20.42,
+              "ASSD (pixel)": 6.975233333333334
+            },
+            "sample_std": {
+              "DSC (%)": 1.0104417763203088,
+              "HD95 (pixel)": 2.130128871688283,
+              "ASSD (pixel)": 0.7672935379197023
+            }
+          },
+          "myocardium": {
+            "mean": {
+              "DSC (%)": 81.82743333333333,
+              "HD95 (pixel)": 22.5854,
+              "ASSD (pixel)": 7.5353666666666665
+            },
+            "sample_std": {
+              "DSC (%)": 1.7472384763773186,
+              "HD95 (pixel)": 2.8980903246793406,
+              "ASSD (pixel)": 0.7706245021625858
+            }
+          },
+          "ovarian_lesion": {
+            "mean": {
+              "DSC (%)": 80.63226666666667,
+              "HD95 (pixel)": 66.84273333333333,
+              "ASSD (pixel)": 20.807
+            },
+            "sample_std": {
+              "DSC (%)": 0.9938639863348229,
+              "HD95 (pixel)": 5.559929461183239,
+              "ASSD (pixel)": 2.251945734248498
+            }
+          },
+          "thyroid_nodule": {
+            "mean": {
+              "DSC (%)": 83.52943333333333,
+              "HD95 (pixel)": 61.95526666666667,
+              "ASSD (pixel)": 21.781466666666667
+            },
+            "sample_std": {
+              "DSC (%)": 0.3194952477476558,
+              "HD95 (pixel)": 1.6769471379066607,
+              "ASSD (pixel)": 0.3618296053853714
+            }
+          }
+        },
+        "union": {
+          "AUL": {
+            "mean": {
+              "DSC (%)": 89.0322,
+              "HD95 (pixel)": 46.6419,
+              "ASSD (pixel)": 12.545133333333334
+            },
+            "sample_std": {
+              "DSC (%)": 0.4610755794877939,
+              "HD95 (pixel)": 4.591654476329856,
+              "ASSD (pixel)": 0.7183826301723425
+            }
+          },
+          "AbdomenUS": {
+            "mean": {
+              "DSC (%)": 68.2416,
+              "HD95 (pixel)": 84.54473333333334,
+              "ASSD (pixel)": 23.989266666666666
+            },
+            "sample_std": {
+              "DSC (%)": 0.6687335194230897,
+              "HD95 (pixel)": 2.674148130402157,
+              "ASSD (pixel)": 0.5390307257785345
+            }
+          },
+          "BUSI": {
+            "mean": {
+              "DSC (%)": 70.52316666666667,
+              "HD95 (pixel)": 89.97463333333334,
+              "ASSD (pixel)": 44.1852
+            },
+            "sample_std": {
+              "DSC (%)": 5.17424982034433,
+              "HD95 (pixel)": 17.396509312311288,
+              "ASSD (pixel)": 16.786500313049174
+            }
+          },
+          "CAMUS": {
+            "mean": {
+              "DSC (%)": 92.1019,
+              "HD95 (pixel)": 31.6991,
+              "ASSD (pixel)": 9.7364
+            },
+            "sample_std": {
+              "DSC (%)": 0.8625196751379124,
+              "HD95 (pixel)": 3.251303663148062,
+              "ASSD (pixel)": 1.0008154725022984
+            }
+          },
+          "CCA": {
+            "mean": {
+              "DSC (%)": 93.9353,
+              "HD95 (pixel)": 12.3678,
+              "ASSD (pixel)": 3.5792333333333333
+            },
+            "sample_std": {
+              "DSC (%)": 0.45046323934367855,
+              "HD95 (pixel)": 3.6798697300312138,
+              "ASSD (pixel)": 0.6818398663420417
+            }
+          },
+          "DDTI": {
+            "mean": {
+              "DSC (%)": 83.52943333333333,
+              "HD95 (pixel)": 61.95526666666667,
+              "ASSD (pixel)": 21.781466666666667
+            },
+            "sample_std": {
+              "DSC (%)": 0.3194952477476558,
+              "HD95 (pixel)": 1.6769471379066607,
+              "ASSD (pixel)": 0.3618296053853714
+            }
+          },
+          "FALLMUD": {
+            "mean": {
+              "DSC (%)": 81.7085,
+              "HD95 (pixel)": 11.615566666666666,
+              "ASSD (pixel)": 2.8868
+            },
+            "sample_std": {
+              "DSC (%)": 0.3156580269848962,
+              "HD95 (pixel)": 0.8696744927461847,
+              "ASSD (pixel)": 0.20148607892358214
+            }
+          },
+          "Fetal_HC": {
+            "mean": {
+              "DSC (%)": 96.08416666666668,
+              "HD95 (pixel)": 24.151633333333333,
+              "ASSD (pixel)": 6.552933333333334
+            },
+            "sample_std": {
+              "DSC (%)": 0.19861612052734406,
+              "HD95 (pixel)": 1.1423207532621185,
+              "ASSD (pixel)": 0.3877701037126678
+            }
+          },
+          "MMOTU": {
+            "mean": {
+              "DSC (%)": 80.63226666666667,
+              "HD95 (pixel)": 66.84273333333333,
+              "ASSD (pixel)": 20.807
+            },
+            "sample_std": {
+              "DSC (%)": 0.9938639863348229,
+              "HD95 (pixel)": 5.559929461183239,
+              "ASSD (pixel)": 2.251945734248498
+            }
+          }
+        }
+      }
+    },
+    "domain_bn": {
+      "metrics": {
+        "structure:macro:all_groups": {
+          "mean": {
+            "DSC (%)": 70.54096666666666,
+            "HD95 (pixel)": 105.4352,
+            "ASSD (pixel)": 71.62806666666667
+          },
+          "sample_std": {
+            "DSC (%)": 0.3194714749916387,
+            "HD95 (pixel)": 18.859973110532263,
+            "ASSD (pixel)": 26.460914214050376
+          },
+          "seeds": [
+            {
+              "seed": "42",
+              "DSC (%)": "70.7986",
+              "HD95 (pixel)": "83.7753",
+              "ASSD (pixel)": "41.1263",
+              "samples": "2501",
+              "coverage_denominator": "2501",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "38",
+              "undefined_count": "0",
+              "job_id": "fe11b589464260c015d97148ffd66cd49fa0d3c833bc2280f1f3e718fc480772",
+              "checkpoint_sha256": "dd1e8bcc6354e3b5e8f5f4d49e8ad3af28a1cf2d004a21e9237189edeaa7ebb6"
+            },
+            {
+              "seed": "43",
+              "DSC (%)": "70.6408",
+              "HD95 (pixel)": "118.2235",
+              "ASSD (pixel)": "88.4319",
+              "samples": "2501",
+              "coverage_denominator": "2501",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "220",
+              "undefined_count": "0",
+              "job_id": "1cac97ef78cbe75f8be64afc90e18314abc306457a2a3cfac9f7b1d6df739753",
+              "checkpoint_sha256": "6ff2c83de503d4c30b6a223c6531637824287158bf69a26785b881f663310619"
+            },
+            {
+              "seed": "44",
+              "DSC (%)": "70.1835",
+              "HD95 (pixel)": "114.3068",
+              "ASSD (pixel)": "85.3260",
+              "samples": "2501",
+              "coverage_denominator": "2501",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "213",
+              "undefined_count": "0",
+              "job_id": "9c4e15cddc09f6db674a67cea281fa76a0e6349bad385cde5af33450c007974e",
+              "checkpoint_sha256": "a5c2bffea54d6feead441515f6129c2c43171f7781df7e257cab14976e18b08d"
+            }
+          ]
+        },
+        "union:macro:all_groups": {
+          "mean": {
+            "DSC (%)": 84.16333333333334,
+            "HD95 (pixel)": 48.44866666666667,
+            "ASSD (pixel)": 16.6595
+          },
+          "sample_std": {
+            "DSC (%)": 0.5853094594599813,
+            "HD95 (pixel)": 1.595143909913253,
+            "ASSD (pixel)": 0.7891043847299299
+          },
+          "seeds": [
+            {
+              "seed": "42",
+              "DSC (%)": "83.5621",
+              "HD95 (pixel)": "50.0506",
+              "ASSD (pixel)": "15.7564",
+              "samples": "1601",
+              "coverage_denominator": "1603",
+              "target_boundary_undefined_excluded": "2",
+              "penalized_count": "1",
+              "undefined_count": "0",
+              "job_id": "fe11b589464260c015d97148ffd66cd49fa0d3c833bc2280f1f3e718fc480772",
+              "checkpoint_sha256": "dd1e8bcc6354e3b5e8f5f4d49e8ad3af28a1cf2d004a21e9237189edeaa7ebb6"
+            },
+            {
+              "seed": "43",
+              "DSC (%)": "84.7313",
+              "HD95 (pixel)": "48.4350",
+              "ASSD (pixel)": "17.2159",
+              "samples": "1601",
+              "coverage_denominator": "1603",
+              "target_boundary_undefined_excluded": "2",
+              "penalized_count": "4",
+              "undefined_count": "0",
+              "job_id": "1cac97ef78cbe75f8be64afc90e18314abc306457a2a3cfac9f7b1d6df739753",
+              "checkpoint_sha256": "6ff2c83de503d4c30b6a223c6531637824287158bf69a26785b881f663310619"
+            },
+            {
+              "seed": "44",
+              "DSC (%)": "84.1966",
+              "HD95 (pixel)": "46.8604",
+              "ASSD (pixel)": "17.0062",
+              "samples": "1601",
+              "coverage_denominator": "1603",
+              "target_boundary_undefined_excluded": "2",
+              "penalized_count": "4",
+              "undefined_count": "0",
+              "job_id": "9c4e15cddc09f6db674a67cea281fa76a0e6349bad385cde5af33450c007974e",
+              "checkpoint_sha256": "a5c2bffea54d6feead441515f6129c2c43171f7781df7e257cab14976e18b08d"
+            }
+          ]
+        },
+        "structure:abdomen_macro:abdomen": {
+          "mean": {
+            "DSC (%)": 44.290333333333336,
+            "HD95 (pixel)": 245.78,
+            "ASSD (pixel)": 194.14823333333334
+          },
+          "sample_std": {
+            "DSC (%)": 3.0189597617943402,
+            "HD95 (pixel)": 65.63148458407747,
+            "ASSD (pixel)": 83.29047902349545
+          },
+          "seeds": [
+            {
+              "seed": "42",
+              "DSC (%)": "47.7231",
+              "HD95 (pixel)": "170.2081",
+              "ASSD (pixel)": "98.1248",
+              "samples": "717",
+              "coverage_denominator": "717",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "37",
+              "undefined_count": "0",
+              "job_id": "fe11b589464260c015d97148ffd66cd49fa0d3c833bc2280f1f3e718fc480772",
+              "checkpoint_sha256": "dd1e8bcc6354e3b5e8f5f4d49e8ad3af28a1cf2d004a21e9237189edeaa7ebb6"
+            },
+            {
+              "seed": "43",
+              "DSC (%)": "43.0995",
+              "HD95 (pixel)": "288.4810",
+              "ASSD (pixel)": "246.8428",
+              "samples": "717",
+              "coverage_denominator": "717",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "215",
+              "undefined_count": "0",
+              "job_id": "1cac97ef78cbe75f8be64afc90e18314abc306457a2a3cfac9f7b1d6df739753",
+              "checkpoint_sha256": "6ff2c83de503d4c30b6a223c6531637824287158bf69a26785b881f663310619"
+            },
+            {
+              "seed": "44",
+              "DSC (%)": "42.0484",
+              "HD95 (pixel)": "278.6509",
+              "ASSD (pixel)": "237.4771",
+              "samples": "717",
+              "coverage_denominator": "717",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "208",
+              "undefined_count": "0",
+              "job_id": "9c4e15cddc09f6db674a67cea281fa76a0e6349bad385cde5af33450c007974e",
+              "checkpoint_sha256": "a5c2bffea54d6feead441515f6129c2c43171f7781df7e257cab14976e18b08d"
+            }
+          ]
+        },
+        "structure:group:abdomen_vessels": {
+          "mean": {
+            "DSC (%)": 10.8974,
+            "HD95 (pixel)": 564.0095,
+            "ASSD (pixel)": 537.7306333333333
+          },
+          "sample_std": {
+            "DSC (%)": 18.874850470401082,
+            "HD95 (pixel)": 274.79609600370964,
+            "ASSD (pixel)": 320.3124282357045
+          },
+          "seeds": [
+            {
+              "seed": "42",
+              "DSC (%)": "32.6922",
+              "HD95 (pixel)": "246.7023",
+              "ASSD (pixel)": "167.8657",
+              "samples": "151",
+              "coverage_denominator": "151",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "22",
+              "undefined_count": "0",
+              "job_id": "fe11b589464260c015d97148ffd66cd49fa0d3c833bc2280f1f3e718fc480772",
+              "checkpoint_sha256": "dd1e8bcc6354e3b5e8f5f4d49e8ad3af28a1cf2d004a21e9237189edeaa7ebb6"
+            },
+            {
+              "seed": "43",
+              "DSC (%)": "0.0000",
+              "HD95 (pixel)": "722.6631",
+              "ASSD (pixel)": "722.6631",
+              "samples": "151",
+              "coverage_denominator": "151",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "151",
+              "undefined_count": "0",
+              "job_id": "1cac97ef78cbe75f8be64afc90e18314abc306457a2a3cfac9f7b1d6df739753",
+              "checkpoint_sha256": "6ff2c83de503d4c30b6a223c6531637824287158bf69a26785b881f663310619"
+            },
+            {
+              "seed": "44",
+              "DSC (%)": "0.0000",
+              "HD95 (pixel)": "722.6631",
+              "ASSD (pixel)": "722.6631",
+              "samples": "151",
+              "coverage_denominator": "151",
+              "target_boundary_undefined_excluded": "0",
+              "penalized_count": "151",
+              "undefined_count": "0",
+              "job_id": "9c4e15cddc09f6db674a67cea281fa76a0e6349bad385cde5af33450c007974e",
+              "checkpoint_sha256": "a5c2bffea54d6feead441515f6129c2c43171f7781df7e257cab14976e18b08d"
+            }
+          ]
+        }
+      },
+      "union_full_positive": [
+        {
+          "seed": "42",
+          "DSC (%)": "83.5205",
+          "HD95 (pixel)": "NA",
+          "ASSD (pixel)": "NA",
+          "samples": "1603",
+          "undefined_count": "2",
+          "distance_status": "undefined"
+        },
+        {
+          "seed": "43",
+          "DSC (%)": "84.6879",
+          "HD95 (pixel)": "NA",
+          "ASSD (pixel)": "NA",
+          "samples": "1603",
+          "undefined_count": "2",
+          "distance_status": "undefined"
+        },
+        {
+          "seed": "44",
+          "DSC (%)": "84.1307",
+          "HD95 (pixel)": "NA",
+          "ASSD (pixel)": "NA",
+          "samples": "1603",
+          "undefined_count": "2",
+          "distance_status": "undefined"
+        }
+      ],
+      "original_positive_organ_diagnostics": {
+        "abdomen_liver": {
+          "positive_dice": {
+            "mean_percent": 73.51244604776589,
+            "sample_std_percent": 1.085312063651764
+          },
+          "positive_miss_rate": {
+            "mean_percent": 2.2026431718061676,
+            "sample_std_percent": 1.762114537444934
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 72.72727272727272,
+            "sample_std_percent": 18.370235837851727
+          }
+        },
+        "abdomen_kidney": {
+          "positive_dice": {
+            "mean_percent": 39.82021032498705,
+            "sample_std_percent": 1.9112777656209552
+          },
+          "positive_miss_rate": {
+            "mean_percent": 15.517241379310345,
+            "sample_std_percent": 10.534656770013425
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 56.30252100840336,
+            "sample_std_percent": 15.426520798895648
+          }
+        },
+        "abdomen_vessels": {
+          "positive_dice": {
+            "mean_percent": 10.89735075087563,
+            "sample_std_percent": 18.874765168415447
+          },
+          "positive_miss_rate": {
+            "mean_percent": 71.52317880794703,
+            "sample_std_percent": 49.323301142689886
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 22.769953051643192,
+            "sample_std_percent": 39.43871557140402
+          }
+        },
+        "abdomen_gallbladder": {
+          "positive_dice": {
+            "mean_percent": 67.50148576805023,
+            "sample_std_percent": 1.6737124936489638
+          },
+          "positive_miss_rate": {
+            "mean_percent": 8.88888888888889,
+            "sample_std_percent": 5.091750772173156
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 45.64860426929392,
+            "sample_std_percent": 24.877253731905498
+          }
+        },
+        "abdomen_spleen": {
+          "positive_dice": {
+            "mean_percent": 29.721418444481156,
+            "sample_std_percent": 3.939613411436705
+          },
+          "positive_miss_rate": {
+            "mean_percent": 7.111111111111111,
+            "sample_std_percent": 3.079201435678004
+          },
+          "empty_false_positive_rate": {
+            "mean_percent": 52.752293577981646,
+            "sample_std_percent": 37.85723984305559
+          }
+        }
+      },
+      "run_summary": [
+        {
+          "seed": 42,
+          "epochs_completed": 80,
+          "best_epoch": 17,
+          "guardrail_epoch": 16,
+          "vessel_positive_dice_percent": 32.692052252626894,
+          "vessel_positive_miss_rate_percent": 14.56953642384106,
+          "vessel_empty_false_positive_rate_percent": 68.30985915492957
+        },
+        {
+          "seed": 43,
+          "epochs_completed": 80,
+          "best_epoch": 60,
+          "guardrail_epoch": null,
+          "vessel_positive_dice_percent": 0.0,
+          "vessel_positive_miss_rate_percent": 100.0,
+          "vessel_empty_false_positive_rate_percent": 0.0
+        },
+        {
+          "seed": 44,
+          "epochs_completed": 80,
+          "best_epoch": 56,
+          "guardrail_epoch": null,
+          "vessel_positive_dice_percent": 0.0,
+          "vessel_positive_miss_rate_percent": 100.0,
+          "vessel_empty_false_positive_rate_percent": 0.0
+        }
+      ],
+      "per_structure_or_domain_recomputed": {
+        "structure": {
+          "abdomen_gallbladder": {
+            "mean": {
+              "DSC (%)": 67.5005,
+              "HD95 (pixel)": 144.19086666666666,
+              "ASSD (pixel)": 94.43743333333333
+            },
+            "sample_std": {
+              "DSC (%)": 1.6742779906574663,
+              "HD95 (pixel)": 8.080037637494845,
+              "ASSD (pixel)": 23.58405012573823
+            }
+          },
+          "abdomen_kidney": {
+            "mean": {
+              "DSC (%)": 39.820766666666664,
+              "HD95 (pixel)": 190.97156666666666,
+              "ASSD (pixel)": 146.89943333333332
+            },
+            "sample_std": {
+              "DSC (%)": 1.9117452689449341,
+              "HD95 (pixel)": 59.41574263310468,
+              "ASSD (pixel)": 68.91045106697048
+            }
+          },
+          "abdomen_liver": {
+            "mean": {
+              "DSC (%)": 73.51196666666667,
+              "HD95 (pixel)": 110.24136666666666,
+              "ASSD (pixel)": 45.7945
+            },
+            "sample_std": {
+              "DSC (%)": 1.0856709691860296,
+              "HD95 (pixel)": 7.8250176321420115,
+              "ASSD (pixel)": 7.641418878061848
+            }
+          },
+          "abdomen_spleen": {
+            "mean": {
+              "DSC (%)": 29.721066666666665,
+              "HD95 (pixel)": 219.48673333333332,
+              "ASSD (pixel)": 145.87923333333333
+            },
+            "sample_std": {
+              "DSC (%)": 3.9391093693033365,
+              "HD95 (pixel)": 15.242564030481654,
+              "ASSD (pixel)": 2.125811210651915
+            }
+          },
+          "abdomen_vessels": {
+            "mean": {
+              "DSC (%)": 10.8974,
+              "HD95 (pixel)": 564.0095,
+              "ASSD (pixel)": 537.7306333333333
+            },
+            "sample_std": {
+              "DSC (%)": 18.874850470401082,
+              "HD95 (pixel)": 274.79609600370964,
+              "ASSD (pixel)": 320.3124282357045
+            }
+          },
+          "aponeurosis": {
+            "mean": {
+              "DSC (%)": 77.61993333333334,
+              "HD95 (pixel)": 25.920266666666667,
+              "ASSD (pixel)": 9.068766666666667
+            },
+            "sample_std": {
+              "DSC (%)": 1.8993308435692127,
+              "HD95 (pixel)": 6.6213660164148385,
+              "ASSD (pixel)": 4.0662693717132585
+            }
+          },
+          "breast_lesion": {
+            "mean": {
+              "DSC (%)": 71.7992,
+              "HD95 (pixel)": 92.26083333333334,
+              "ASSD (pixel)": 44.241733333333336
+            },
+            "sample_std": {
+              "DSC (%)": 0.9420156739672616,
+              "HD95 (pixel)": 6.201966270734894,
+              "ASSD (pixel)": 13.561459136218835
+            }
+          },
+          "carotid": {
+            "mean": {
+              "DSC (%)": 93.68873333333333,
+              "HD95 (pixel)": 16.895333333333333,
+              "ASSD (pixel)": 4.186566666666667
+            },
+            "sample_std": {
+              "DSC (%)": 0.47826660277854777,
+              "HD95 (pixel)": 9.649637036870004,
+              "ASSD (pixel)": 1.287940023189486
+            }
+          },
+          "head_contour": {
+            "mean": {
+              "DSC (%)": 96.72576666666667,
+              "HD95 (pixel)": 17.440133333333332,
+              "ASSD (pixel)": 5.338133333333333
+            },
+            "sample_std": {
+              "DSC (%)": 0.21489305091913208,
+              "HD95 (pixel)": 2.714027218605836,
+              "ASSD (pixel)": 0.7250999678205298
+            }
+          },
+          "left_atrium": {
+            "mean": {
+              "DSC (%)": 88.20736666666667,
+              "HD95 (pixel)": 21.880933333333335,
+              "ASSD (pixel)": 7.1415999999999995
+            },
+            "sample_std": {
+              "DSC (%)": 1.9100808473290716,
+              "HD95 (pixel)": 3.5337944087529114,
+              "ASSD (pixel)": 1.1959444008815792
+            }
+          },
+          "liver": {
+            "mean": {
+              "DSC (%)": 89.1503,
+              "HD95 (pixel)": 41.1218,
+              "ASSD (pixel)": 11.900533333333334
+            },
+            "sample_std": {
+              "DSC (%)": 0.9260491293662567,
+              "HD95 (pixel)": 3.5900294302414837,
+              "ASSD (pixel)": 1.2991521478769652
+            }
+          },
+          "liver_mass": {
+            "mean": {
+              "DSC (%)": 49.829566666666665,
+              "HD95 (pixel)": 80.88623333333334,
+              "ASSD (pixel)": 39.60373333333334
+            },
+            "sample_std": {
+              "DSC (%)": 2.490983264362356,
+              "HD95 (pixel)": 4.0786115313098055,
+              "ASSD (pixel)": 2.6221131751572675
+            }
+          },
+          "lv_cavity": {
+            "mean": {
+              "DSC (%)": 91.32873333333333,
+              "HD95 (pixel)": 17.043966666666666,
+              "ASSD (pixel)": 5.9886333333333335
+            },
+            "sample_std": {
+              "DSC (%)": 1.364009062775363,
+              "HD95 (pixel)": 3.2867344832421947,
+              "ASSD (pixel)": 1.04896090171814
+            }
+          },
+          "myocardium": {
+            "mean": {
+              "DSC (%)": 83.68730000000001,
+              "HD95 (pixel)": 19.4618,
+              "ASSD (pixel)": 6.736566666666667
+            },
+            "sample_std": {
+              "DSC (%)": 2.0677075131652436,
+              "HD95 (pixel)": 4.685159980192779,
+              "ASSD (pixel)": 1.2004297244459314
+            }
+          },
+          "ovarian_lesion": {
+            "mean": {
+              "DSC (%)": 81.68263333333333,
+              "HD95 (pixel)": 62.43763333333333,
+              "ASSD (pixel)": 19.3081
+            },
+            "sample_std": {
+              "DSC (%)": 0.7468321252686804,
+              "HD95 (pixel)": 2.3004362028392236,
+              "ASSD (pixel)": 0.9460914702078221
+            }
+          },
+          "thyroid_nodule": {
+            "mean": {
+              "DSC (%)": 83.4844,
+              "HD95 (pixel)": 62.71426666666667,
+              "ASSD (pixel)": 21.793166666666668
+            },
+            "sample_std": {
+              "DSC (%)": 1.0491972979378095,
+              "HD95 (pixel)": 7.557897073481044,
+              "ASSD (pixel)": 1.444228189495459
+            }
+          }
+        },
+        "union": {
+          "AUL": {
+            "mean": {
+              "DSC (%)": 89.1503,
+              "HD95 (pixel)": 41.1218,
+              "ASSD (pixel)": 11.900533333333334
+            },
+            "sample_std": {
+              "DSC (%)": 0.9260491293662567,
+              "HD95 (pixel)": 3.5900294302414837,
+              "ASSD (pixel)": 1.2991521478769652
+            }
+          },
+          "AbdomenUS": {
+            "mean": {
+              "DSC (%)": 69.9061,
+              "HD95 (pixel)": 89.0188,
+              "ASSD (pixel)": 25.440833333333334
+            },
+            "sample_std": {
+              "DSC (%)": 0.3507861029174352,
+              "HD95 (pixel)": 2.9800215888479706,
+              "ASSD (pixel)": 0.5484387325247321
+            }
+          },
+          "BUSI": {
+            "mean": {
+              "DSC (%)": 71.7992,
+              "HD95 (pixel)": 92.26083333333334,
+              "ASSD (pixel)": 44.241733333333336
+            },
+            "sample_std": {
+              "DSC (%)": 0.9420156739672616,
+              "HD95 (pixel)": 6.201966270734894,
+              "ASSD (pixel)": 13.561459136218835
+            }
+          },
+          "CAMUS": {
+            "mean": {
+              "DSC (%)": 93.41286666666667,
+              "HD95 (pixel)": 28.228766666666665,
+              "ASSD (pixel)": 8.657566666666666
+            },
+            "sample_std": {
+              "DSC (%)": 0.9322265407793013,
+              "HD95 (pixel)": 3.0365959796017217,
+              "ASSD (pixel)": 0.8320438830574581
+            }
+          },
+          "CCA": {
+            "mean": {
+              "DSC (%)": 93.68873333333333,
+              "HD95 (pixel)": 16.895333333333333,
+              "ASSD (pixel)": 4.186566666666667
+            },
+            "sample_std": {
+              "DSC (%)": 0.47826660277854777,
+              "HD95 (pixel)": 9.649637036870004,
+              "ASSD (pixel)": 1.287940023189486
+            }
+          },
+          "DDTI": {
+            "mean": {
+              "DSC (%)": 83.4844,
+              "HD95 (pixel)": 62.71426666666667,
+              "ASSD (pixel)": 21.793166666666668
+            },
+            "sample_std": {
+              "DSC (%)": 1.0491972979378095,
+              "HD95 (pixel)": 7.557897073481044,
+              "ASSD (pixel)": 1.444228189495459
+            }
+          },
+          "FALLMUD": {
+            "mean": {
+              "DSC (%)": 77.61993333333334,
+              "HD95 (pixel)": 25.920266666666667,
+              "ASSD (pixel)": 9.068766666666667
+            },
+            "sample_std": {
+              "DSC (%)": 1.8993308435692127,
+              "HD95 (pixel)": 6.6213660164148385,
+              "ASSD (pixel)": 4.0662693717132585
+            }
+          },
+          "Fetal_HC": {
+            "mean": {
+              "DSC (%)": 96.72576666666667,
+              "HD95 (pixel)": 17.440133333333332,
+              "ASSD (pixel)": 5.338133333333333
+            },
+            "sample_std": {
+              "DSC (%)": 0.21489305091913208,
+              "HD95 (pixel)": 2.714027218605836,
+              "ASSD (pixel)": 0.7250999678205298
+            }
+          },
+          "MMOTU": {
+            "mean": {
+              "DSC (%)": 81.68263333333333,
+              "HD95 (pixel)": 62.43763333333333,
+              "ASSD (pixel)": 19.3081
+            },
+            "sample_std": {
+              "DSC (%)": 0.7468321252686804,
+              "HD95 (pixel)": 2.3004362028392236,
+              "ASSD (pixel)": 0.9460914702078221
+            }
+          }
+        }
+      }
+    }
+  },
+  "paired_recomputed_metrics": {
+    "domain_bn_minus_shared_bn": {
+      "structure:macro:all_groups": {
+        "DSC (%)": {
+          "paired_deltas": [
+            -0.4860000000000042,
+            -1.9718000000000018,
+            -0.6143000000000001
+          ],
+          "mean": -1.0240333333333353,
+          "sample_std": 0.8232930604185442
+        },
+        "HD95 (pixel)": {
+          "paired_deltas": [
+            -2.2009000000000043,
+            38.97110000000001,
+            29.8793
+          ],
+          "mean": 22.2165,
+          "sample_std": 21.629199566327003
+        },
+        "ASSD (pixel)": {
+          "paired_deltas": [
+            -4.646799999999999,
+            43.2218,
+            37.91499999999999
+          ],
+          "mean": 25.496666666666666,
+          "sample_std": 26.23951159174525
+        }
+      },
+      "union:macro:all_groups": {
+        "DSC (%)": {
+          "paired_deltas": [
+            -0.30519999999999925,
+            -0.07549999999999102,
+            0.9411000000000058
+          ],
+          "mean": 0.18680000000000518,
+          "sample_std": 0.6632623085929138
+        },
+        "HD95 (pixel)": {
+          "paired_deltas": [
+            2.2055000000000007,
+            3.9395000000000024,
+            -4.063500000000005
+          ],
+          "mean": 0.6938333333333327,
+          "sample_std": 4.21020834797203
+        },
+        "ASSD (pixel)": {
+          "paired_deltas": [
+            0.6716999999999995,
+            2.146200000000002,
+            -1.5272000000000006
+          ],
+          "mean": 0.4302333333333337,
+          "sample_std": 1.8485660668024115
+        }
+      },
+      "structure:abdomen_macro:abdomen": {
+        "DSC (%)": {
+          "paired_deltas": [
+            -1.0353999999999957,
+            -5.920900000000003,
+            -6.639499999999998
+          ],
+          "mean": -4.531933333333332,
+          "sample_std": 3.0493286971616143
+        },
+        "HD95 (pixel)": {
+          "paired_deltas": [
+            -3.1773000000000025,
+            124.68690000000001,
+            108.85539999999997
+          ],
+          "mean": 76.78833333333333,
+          "sample_std": 69.70319923693125
+        },
+        "ASSD (pixel)": {
+          "paired_deltas": [
+            -6.553200000000004,
+            138.65050000000002,
+            125.7258
+          ],
+          "mean": 85.94103333333334,
+          "sample_std": 80.36261175113297
+        }
+      },
+      "structure:group:abdomen_vessels": {
+        "DSC (%)": {
+          "paired_deltas": [
+            -5.972000000000001,
+            -44.1204,
+            -43.0201
+          ],
+          "mean": -31.037499999999998,
+          "sample_std": 21.71433012344613
+        },
+        "HD95 (pixel)": {
+          "paired_deltas": [
+            4.872800000000012,
+            523.539,
+            486.3432
+          ],
+          "mean": 338.25166666666667,
+          "sample_std": 289.31295069418053
+        },
+        "ASSD (pixel)": {
+          "paired_deltas": [
+            -23.9658,
+            577.21,
+            531.4322
+          ],
+          "mean": 361.5588,
+          "sample_std": 334.6577574882734
+        }
+      }
+    },
+    "domain_gn_minus_shared_gn": {
+      "structure:macro:all_groups": {
+        "DSC (%)": {
+          "paired_deltas": [
+            -0.9233999999999867,
+            2.387900000000002,
+            0.4455999999999989
+          ],
+          "mean": 0.6367000000000047,
+          "sample_std": 1.6639009375560743
+        },
+        "HD95 (pixel)": {
+          "paired_deltas": [
+            -7.8309,
+            -5.4125000000000085,
+            14.932999999999993
+          ],
+          "mean": 0.5631999999999948,
+          "sample_std": 12.503220731875444
+        },
+        "ASSD (pixel)": {
+          "paired_deltas": [
+            -11.666000000000004,
+            -2.6606000000000023,
+            17.183600000000006
+          ],
+          "mean": 0.9523333333333331,
+          "sample_std": 14.760244594630993
+        }
+      },
+      "union:macro:all_groups": {
+        "DSC (%)": {
+          "paired_deltas": [
+            -0.604699999999994,
+            1.4106000000000023,
+            0.44180000000000064
+          ],
+          "mean": 0.415900000000003,
+          "sample_std": 1.0078996130567748
+        },
+        "HD95 (pixel)": {
+          "paired_deltas": [
+            0.5888000000000062,
+            -5.183399999999999,
+            5.023700000000005
+          ],
+          "mean": 0.14303333333333748,
+          "sample_std": 5.118129887305846
+        },
+        "ASSD (pixel)": {
+          "paired_deltas": [
+            -0.9213000000000005,
+            -2.5192999999999977,
+            5.570499999999999
+          ],
+          "mean": 0.709966666666667,
+          "sample_std": 4.284505714004046
+        }
+      },
+      "structure:abdomen_macro:abdomen": {
+        "DSC (%)": {
+          "paired_deltas": [
+            -1.4581000000000017,
+            4.192400000000006,
+            0.20400000000000063
+          ],
+          "mean": 0.979433333333335,
+          "sample_std": 2.903964566473454
+        },
+        "HD95 (pixel)": {
+          "paired_deltas": [
+            -24.39590000000001,
+            -5.825999999999993,
+            40.106899999999996
+          ],
+          "mean": 3.294999999999997,
+          "sample_std": 33.20462742917017
+        },
+        "ASSD (pixel)": {
+          "paired_deltas": [
+            -33.326899999999995,
+            -2.4062000000000126,
+            44.022999999999996
+          ],
+          "mean": 2.763299999999996,
+          "sample_std": 38.933206330714654
+        }
+      },
+      "structure:group:abdomen_vessels": {
+        "DSC (%)": {
+          "paired_deltas": [
+            11.112999999999998,
+            8.6855,
+            3.9955999999999996
+          ],
+          "mean": 7.931366666666666,
+          "sample_std": 3.6181325989152646
+        },
+        "HD95 (pixel)": {
+          "paired_deltas": [
+            -158.4072,
+            -93.45889999999997,
+            55.98599999999999
+          ],
+          "mean": -65.29336666666666,
+          "sample_std": 109.93672726856721
+        },
+        "ASSD (pixel)": {
+          "paired_deltas": [
+            -172.35020000000003,
+            -94.51069999999999,
+            57.2174
+          ],
+          "mean": -69.88116666666667,
+          "sample_std": 116.74879518266275
+        }
+      }
+    },
+    "shared_bn_minus_shared_gn": {
+      "structure:macro:all_groups": {
+        "DSC (%)": {
+          "paired_deltas": [
+            -0.28239999999999554,
+            1.603200000000001,
+            0.012599999999991951
+          ],
+          "mean": 0.44446666666666584,
+          "sample_std": 1.0142748411221363
+        },
+        "HD95 (pixel)": {
+          "paired_deltas": [
+            -16.376999999999995,
+            -20.144200000000012,
+            -7.776900000000012
+          ],
+          "mean": -14.76603333333334,
+          "sample_std": 6.339080179594931
+        },
+        "ASSD (pixel)": {
+          "paired_deltas": [
+            -26.146100000000004,
+            -22.874300000000005,
+            -12.265499999999996
+          ],
+          "mean": -20.428633333333334,
+          "sample_std": 7.256288870582083
+        }
+      },
+      "union:macro:all_groups": {
+        "DSC (%)": {
+          "paired_deltas": [
+            -1.803299999999993,
+            0.22419999999999618,
+            -1.2762000000000029
+          ],
+          "mean": -0.9517666666666665,
+          "sample_std": 1.0519656854352826
+        },
+        "HD95 (pixel)": {
+          "paired_deltas": [
+            6.005300000000005,
+            -4.072499999999998,
+            6.023700000000005
+          ],
+          "mean": 2.652166666666671,
+          "sample_std": 5.823739432128927
+        },
+        "ASSD (pixel)": {
+          "paired_deltas": [
+            1.293099999999999,
+            -4.1365,
+            4.0853
+          ],
+          "mean": 0.4139666666666664,
+          "sample_std": 4.180807980921072
+        }
+      },
+      "structure:abdomen_macro:abdomen": {
+        "DSC (%)": {
+          "paired_deltas": [
+            5.146899999999995,
+            5.240100000000005,
+            5.054400000000001
+          ],
+          "mean": 5.147133333333334,
+          "sample_std": 0.09285021988845113
+        },
+        "HD95 (pixel)": {
+          "paired_deltas": [
+            -73.7517,
+            -62.04930000000002,
+            -43.855999999999995
+          ],
+          "mean": -59.88566666666667,
+          "sample_std": 15.064833272337715
+        },
+        "ASSD (pixel)": {
+          "paired_deltas": [
+            -94.78819999999999,
+            -70.5383,
+            -50.2547
+          ],
+          "mean": -71.8604,
+          "sample_std": 22.29616821047957
+        }
+      },
+      "structure:group:abdomen_vessels": {
+        "DSC (%)": {
+          "paired_deltas": [
+            26.654600000000002,
+            34.505399999999995,
+            32.0285
+          ],
+          "mean": 31.062833333333334,
+          "sample_std": 4.0134958880424065
+        },
+        "HD95 (pixel)": {
+          "paired_deltas": [
+            -284.8095,
+            -344.52509999999995,
+            -179.00180000000003
+          ],
+          "mean": -269.4454666666667,
+          "sample_std": 83.82440486471305
+        },
+        "ASSD (pixel)": {
+          "paired_deltas": [
+            -328.0244,
+            -389.5904,
+            -205.4992
+          ],
+          "mean": -307.70466666666664,
+          "sample_std": 93.71265203489511
+        }
+      }
+    },
+    "domain_bn_minus_domain_gn": {
+      "structure:macro:all_groups": {
+        "DSC (%)": {
+          "paired_deltas": [
+            0.15499999999998693,
+            -2.7565000000000026,
+            -1.047300000000007
+          ],
+          "mean": -1.2162666666666742,
+          "sample_std": 1.4630859042904207
+        },
+        "HD95 (pixel)": {
+          "paired_deltas": [
+            -10.747,
+            24.239400000000003,
+            7.169399999999996
+          ],
+          "mean": 6.887266666666666,
+          "sample_std": 17.494906277352086
+        },
+        "ASSD (pixel)": {
+          "paired_deltas": [
+            -19.1269,
+            23.0081,
+            8.46589999999999
+          ],
+          "mean": 4.115699999999997,
+          "sample_std": 21.4016993783204
+        }
+      },
+      "union:macro:all_groups": {
+        "DSC (%)": {
+          "paired_deltas": [
+            -1.5037999999999982,
+            -1.2618999999999971,
+            -0.7768999999999977
+          ],
+          "mean": -1.1808666666666643,
+          "sample_std": 0.37016307667477244
+        },
+        "HD95 (pixel)": {
+          "paired_deltas": [
+            7.622,
+            5.050400000000003,
+            -3.0635000000000048
+          ],
+          "mean": 3.2029666666666663,
+          "sample_std": 5.577161912956568
+        },
+        "ASSD (pixel)": {
+          "paired_deltas": [
+            2.886099999999999,
+            0.5289999999999999,
+            -3.0123999999999995
+          ],
+          "mean": 0.13423333333333312,
+          "sample_std": 2.968999175367573
+        }
+      },
+      "structure:abdomen_macro:abdomen": {
+        "DSC (%)": {
+          "paired_deltas": [
+            5.569600000000001,
+            -4.873200000000004,
+            -1.7890999999999977
+          ],
+          "mean": -0.3642333333333336,
+          "sample_std": 5.365230817339861
+        },
+        "HD95 (pixel)": {
+          "paired_deltas": [
+            -52.53309999999999,
+            68.46359999999999,
+            24.892499999999984
+          ],
+          "mean": 13.60766666666666,
+          "sample_std": 61.28263171766803
+        },
+        "ASSD (pixel)": {
+          "paired_deltas": [
+            -68.0145,
+            70.51840000000001,
+            31.44810000000001
+          ],
+          "mean": 11.317333333333343,
+          "sample_std": 71.42672413420158
+        }
+      },
+      "structure:group:abdomen_vessels": {
+        "DSC (%)": {
+          "paired_deltas": [
+            9.569600000000001,
+            -18.3005,
+            -14.9872
+          ],
+          "mean": -7.906033333333332,
+          "sample_std": 15.22474333193612
+        },
+        "HD95 (pixel)": {
+          "paired_deltas": [
+            -121.52950000000001,
+            272.4728,
+            251.35539999999997
+          ],
+          "mean": 134.09956666666665,
+          "sample_std": 221.63291934941284
+        },
+        "ASSD (pixel)": {
+          "paired_deltas": [
+            -179.64,
+            282.1303,
+            268.7156
+          ],
+          "mean": 123.7353,
+          "sample_std": 262.81631994910435
+        }
+      }
+    }
+  },
+  "paired_original_positive_dice": {
+    "domain_bn_minus_shared_bn": {
+      "abdomen_macro_positive_dice": {
+        "n": 3,
+        "mean": -0.04531989906034153,
+        "sample_std": 0.030497063275951777,
+        "pairs": [
+          {
+            "seed": 42,
+            "delta": -0.010350205603488372
+          },
+          {
+            "seed": 43,
+            "delta": -0.05921151978589856
+          },
+          {
+            "seed": 44,
+            "delta": -0.06639797179163764
+          }
+        ]
+      },
+      "macro_positive_dice": {
+        "n": 3,
+        "mean": -0.010239698491146884,
+        "sample_std": 0.00823379559030547,
+        "pairs": [
+          {
+            "seed": 42,
+            "delta": -0.0048589884379048875
+          },
+          {
+            "seed": 43,
+            "delta": -0.01971837873943627
+          },
+          {
+            "seed": 44,
+            "delta": -0.006141728296099491
+          }
+        ]
+      },
+      "per_structure.abdomen_vessels.positive_dice": {
+        "n": 3,
+        "mean": -0.31037382084305015,
+        "sample_std": 0.21714806295305056,
+        "pairs": [
+          {
+            "seed": 42,
+            "delta": -0.05971331641387151
+          },
+          {
+            "seed": 43,
+            "delta": -0.44120542595890777
+          },
+          {
+            "seed": 44,
+            "delta": -0.4302027201563712
+          }
+        ]
+      }
+    },
+    "domain_gn_minus_shared_gn": {
+      "abdomen_macro_positive_dice": {
+        "n": 3,
+        "mean": 0.009804142671960578,
+        "sample_std": 0.029038668973944665,
+        "pairs": [
+          {
+            "seed": 42,
+            "delta": -0.014564713001424923
+          },
+          {
+            "seed": 43,
+            "delta": 0.041935085258243465
+          },
+          {
+            "seed": 44,
+            "delta": 0.0020420557590631883
+          }
+        ]
+      },
+      "macro_positive_dice": {
+        "n": 3,
+        "mean": 0.006370184388754807,
+        "sample_std": 0.01663736488149442,
+        "pairs": [
+          {
+            "seed": 42,
+            "delta": -0.009227309500386638
+          },
+          {
+            "seed": 43,
+            "delta": 0.023881837617421464
+          },
+          {
+            "seed": 44,
+            "delta": 0.004456025049229595
+          }
+        ]
+      },
+      "per_structure.abdomen_vessels.positive_dice": {
+        "n": 3,
+        "mean": 0.07932621993897504,
+        "sample_std": 0.03618069086299063,
+        "pairs": [
+          {
+            "seed": 42,
+            "delta": 0.11113573822951475
+          },
+          {
+            "seed": 43,
+            "delta": 0.08687691433688269
+          },
+          {
+            "seed": 44,
+            "delta": 0.039966007250527666
+          }
+        ]
+      }
+    },
+    "shared_bn_minus_shared_gn": {
+      "abdomen_macro_positive_dice": {
+        "n": 3,
+        "mean": 0.0514748933200219,
+        "sample_std": 0.0009274697949063957,
+        "pairs": [
+          {
+            "seed": 42,
+            "delta": 0.05146540568830177
+          },
+          {
+            "seed": 43,
+            "delta": 0.05240707053462118
+          },
+          {
+            "seed": 44,
+            "delta": 0.050552203737142754
+          }
+        ]
+      },
+      "macro_positive_dice": {
+        "n": 3,
+        "mean": 0.004445502311004675,
+        "sample_std": 0.010143577645801805,
+        "pairs": [
+          {
+            "seed": 42,
+            "delta": -0.0028248647912852975
+          },
+          {
+            "seed": 43,
+            "delta": 0.016033577732712523
+          },
+          {
+            "seed": 44,
+            "delta": 0.00012779399158679983
+          }
+        ]
+      },
+      "per_structure.abdomen_vessels.positive_dice": {
+        "n": 3,
+        "mean": 0.3106248528032541,
+        "sample_std": 0.04013934599628386,
+        "pairs": [
+          {
+            "seed": 42,
+            "delta": 0.26653281369844806
+          },
+          {
+            "seed": 43,
+            "delta": 0.3450436716627897
+          },
+          {
+            "seed": 44,
+            "delta": 0.3202980730485245
+          }
+        ]
+      }
+    },
+    "domain_bn_minus_domain_gn": {
+      "abdomen_macro_positive_dice": {
+        "n": 3,
+        "mean": -0.003649148412280201,
+        "sample_std": 0.05364615705656921,
+        "pairs": [
+          {
+            "seed": 42,
+            "delta": 0.05567991308623832
+          },
+          {
+            "seed": 43,
+            "delta": -0.04873953450952084
+          },
+          {
+            "seed": 44,
+            "delta": -0.01788782381355808
+          }
+        ]
+      },
+      "macro_positive_dice": {
+        "n": 3,
+        "mean": -0.012164380568897015,
+        "sample_std": 0.014628831246710177,
+        "pairs": [
+          {
+            "seed": 42,
+            "delta": 0.0015434562711964528
+          },
+          {
+            "seed": 43,
+            "delta": -0.027566638624145212
+          },
+          {
+            "seed": 44,
+            "delta": -0.010469959353742286
+          }
+        ]
+      },
+      "per_structure.abdomen_vessels.positive_dice": {
+        "n": 3,
+        "mean": -0.0790751879787711,
+        "sample_std": 0.1522515893809026,
+        "pairs": [
+          {
+            "seed": 42,
+            "delta": 0.09568375905506182
+          },
+          {
+            "seed": 43,
+            "delta": -0.18303866863300075
+          },
+          {
+            "seed": 44,
+            "delta": -0.14987065435837435
+          }
+        ]
+      }
+    }
+  },
+  "findings": [
+    "Domain BN is worse than shared BN on all three seeds for both overall and abdomen positive DSC; vessel output collapses on seeds 43 and 44 (100% empty prediction on vessel-positive test images).",
+    "Shared BN improves abdomen/vessels over shared GN on all three seeds, but worsens spleen and increases false positives; union DSC decreases. This is not a universal improvement.",
+    "Domain GN slightly improves mean overall DSC but only 2/3 seed gains; vessel gains consistent, but kidney and spleen DSC decrease; surface distances do not consistently improve.",
+    "Only 3 seeds, same fixed data split, no confidence interval or significance claim. Domain subbatches are usually one image; possible running-statistics instability is a hypothesis, not causal proof. No mixed normalization + weighted-loss result yet."
+  ]
+}

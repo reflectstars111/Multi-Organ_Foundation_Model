@@ -1,99 +1,71 @@
 # 4090 服务器运行约定
 
-## 2026-09-29：v6 / 512 / Top-1 双路线训练（进行中）
+更新日期：2026-09-30。代码与项目环境在 `/ssd1/code/Multi-Organ_Foundation_Model/`；训练数据、checkpoint、日志与迁移包在 `/ssd1/data/Multi-Organ_Foundation_Model/`。训练不写入 `/hdd`；`/ssd2` 保留为 `/ssd1` 空间不足时的备用盘。环境使用项目 `.conda/bin/python`，避免修改其他项目环境。运行前查看 `nvidia-smi`，只选择空闲 GPU，不终止其他项目任务。
 
-新任务分别使用物理 GPU 0（旧 task-ID MoE）与物理 GPU 1（无 task-ID 区域 MoT），**均为 Top-1**、80 epoch、512×512、base 24、batch 16、9 专家、AdamW 学习率 1e-4、seed 42。两条路线使用完全相同的 17,698 条图像—结构记录（独立图像数 6893/851/1618），`paper5` 共 16 类、`trainmore_v6 + ct_final`；腹部最终训练 633 张，原发布测试 293 张不动。最终固定使用第 80 轮而非腹部缺席的验证集挑最佳轮，测试只在训练结束后运行。旧 task-ID 路线每轮 282 次更新（4512 条单任务抽样）；区域 MoT 每域抽 500 张图，合计约 282 次更新，但一张图可有多个目标，因此两者仍不是严格等信息量对照。
+## 当前状态
 
-服务器目录：代码 `/ssd1/code/Multi-Organ_Foundation_Model`；数据、日志与 checkpoint 位于 `/ssd1/data/Multi-Organ_Foundation_Model/runs`。启动脚本为 `scripts/run_top1_512_v6_remote.sh`，单步真实数据显存检查脚本为 `scripts/smoke_top1_512.py`。真实数据 batch 16 的训练单步峰值显存：旧 task-ID 约 21.2 GiB，区域 MoT 约 29.8 GiB。其他进程仍会占用部分显存，需关注是否出现 OOM。
+2026-09-30 本轮已启动 GPU1 的 512×512 自动实验队列。先运行两组各 12 轮的腹部空标签惩罚消融，只做验证；汇总后自动运行三模型×三种子、各 50 轮的公平对照，全部训练完成才评估冻结测试。实时阶段在 `/ssd1/data/Multi-Organ_Foundation_Model/runs/research_512_20260930-logs/status.json`，详细日志为同目录 `ablation.log` 和 `fair.log`。启动不表示准确率问题已经解决。
 
-```bash
-LOG=/ssd1/data/Multi-Organ_Foundation_Model/runs/top1_512_v6_logs
-tail -f "$LOG/task_id.stdout.log"
-tail -f "$LOG/region.stdout.log"
-ps -p "$(cat "$LOG/task_id.pid")","$(cat "$LOG/region.pid")" -o pid,etime,stat,%cpu,args
-nvidia-smi
-```
+队列入口为 `bash scripts/run_512_research_remote.sh /ssd1/data/Multi-Organ_Foundation_Model/runs 1`；只有中断后才用相同命令加 `--resume`。正在运行时不要重复启动。源码快照保存在数据目录的 `transfer/research_512_source_20260930.tar.gz`，续训必须保持源码和协议一致。
 
-输出目录：`runs/task_id_top1_512_v6_final_seed42` 与 `runs/region_top1_512_v6_final_seed42`。每轮写 `last.pt`、验证指标，完成后写 `test_metrics.json`。如果任务被外部原因打断，先核对日志和 `last.pt`，随后在**相同参数与输出目录**下为相应 Python 命令加 `--resume`；不可新开第二个进程同时写入同一目录。服务器原代码已在 `/ssd1/code/Multi-Organ_Foundation_Model/.backup_top1_512_20260929/` 备份，新旧实验输出均未覆盖。
+本轮改为两卡分片：GPU0 运行现有协议的**16 通道多头共享 U-Net**（代码代号 `shared`）与 task-ID MoE 的三个种子；GPU1 完成腹部消融后运行 Region MoE 的三个种子。仍保持 512×512、base16、batch4、50 轮、每域每轮 500 张以及全部辅助损失为零。用户指定的纯单通道 U-Net 另作前景并集实验，其指标口径不同。GPU0 同时保留另一个项目的既有任务，因此计时仅为实际运行耗时，不能用于证明架构速度优势。
 
-## 新版三方案实验（2026-09-29）
+公平对照根目录 `runs/fair_512_seed42_43_44_20260930/` 的 `parallel_plan.json` 保存任务分配；`shards/gpu0/`、`shards/gpu1/` 各自保存协议、checkpoint 与指标。两卡分别写 `worker_gpu0.json` / `worker_gpu1.json` 状态和 `logs/gpu0.log` / `logs/gpu1.log`。全部九次训练通过完整性及抽样一致性检查后才允许测试，最终根目录 `summary.json` 统一汇总。上层研究队列的 `status.json` 主要表示 GPU1 的阶段，GPU0 的并行进度应另看 worker 状态。
 
-服务器代码已更新并通过 23 项相关测试。新实验统一使用 `paper5/ct7_2`、16 个结构、9 个数据集、256×256、base 16、batch 2、50 epoch、每个数据集每轮抽样 500 张、相同随机种子 42；三方案的训练图像抽样和主分割损失一致。主线为图像区域特征 Top-1 MoE（9 专家），另外两组为共享 U-Net 和 9 个独立 U-Net。MoE 另有粗分割与路由辅助损失，架构本身不同。
+GPU0 分片已经启动。手动查看其日志可运行 `tail -n 30 -F /ssd1/data/Multi-Organ_Foundation_Model/runs/fair_512_seed42_43_44_20260930/logs/gpu0.log`。并行版本源码快照为 `transfer/research_512_parallel_source_20260930.tar.gz`，本次完整测试为 108 项通过。单卡 worker 中断后可在项目目录运行 `.conda/bin/python -m scripts.fair_parallel --output /ssd1/data/Multi-Organ_Foundation_Model/runs/fair_512_seed42_43_44_20260930 --gpu 0` 恢复对应分片；GPU1 对应参数为 `--gpu 1`，已有 worker 正在运行时不要重复启动。
 
-本地和服务器真实数据审计均通过：腹部训练/验证/测试为 477/156/293 张、按 CT 来源隔离；第 1 轮三方案各数据集抽样图像一致。旧实验不覆盖。
+`unet_baseline_9v1` 的共享及九个独立模型均已完成。`unet_paper5_ct7_2_v1` 当前服务器有九个独立模型完成产物，但缺该批共享/区域模型原始结果。两条 `*_top1_512_v6_final_seed42` 均已完成 80 轮并用 last80 评估；腹部没有 validation，五折计划尚未完成。完整结果和指标差异见 [实验状态](docs/EXPERIMENT_STATUS.md)。旧迁移文档的“共享完成、BUSI 21轮”和继续启动 worker 指令属于历史，不再是当前任务。
 
-两卡曾被其他 GPU 任务占满，旧的服务器三方案等待队列尚未创建训练输出就已停止。随后在本地启动三方案训练；2026-09-29 17:30 本地 Top-1 MoE 和共享 U-Net 均已完成。用户要求把 9 个独立 U-Net 改在服务器跑；本地串行队列停止，保留已完成的 BUSI、MMOTU 和 DDTI 中断前 checkpoint。**目前是 MoE/共享 U-Net 在本地、9 个独立 U-Net 在服务器的新混合执行方案。**
+本轮新训练统一为 **512×512、base16、batch4**。旧 256 候选目录 `empty_ablation_20260930` 已停止并标记 `superseded`，保留其产物供追溯，不在其 checkpoint 上改变尺寸续训。512 候选使用新目录 `empty_ablation_512_20260930` 重跑，完整比较尚未完成；正式三架构三种子使用 `fair_512_seed42_43_44_20260930`，当前待启动。小尺寸 `fair_smoke_20260930` 是已完成的旧源码链路检查，不能当作 512 精度结果或用于当前源码续训。
 
-本地 RTX 5070 Laptop GPU（8GB）的 Top-1 MoE 测试集 16 类阳性 Dice 宏平均为 0.7199，共享 U-Net 为 0.7108。结果在本地 `runs/region_paper5_ct7_2_v1` 和 `runs/unet_paper5_ct7_2_v1/shared`。服务器独立模型输出在 `/ssd1/data/Multi-Organ_Foundation_Model/runs/unet_paper5_ct7_2_v1`，日志在 `/ssd1/data/Multi-Organ_Foundation_Model/runs/paper5_ct7_2_independent-logs`。服务器 GPU 0 分配 BUSI/MMOTU/DDTI/AUL/FALLMUD，GPU 1 分配 Fetal_HC/CCA/CAMUS/AbdomenUS；启动脚本会检查 GPU 利用率和温度，全部完成后生成 `independent_comparison.json`。
+## 固定划分的三架构比较
 
-本地与服务器 `records.json` 中的绝对路径不同，因此原始 SHA-256 不同。最终三方案比较前须按 `scripts/rebase_baseline_run.py` 的 `semantic_key` 逻辑验证记录在去除机器路径前缀后完全一致，不能直接把不同哈希的结果混在一起。
+新入口 `unet_moe.fair_suite` 固定 `paper5 + ct7_2 + trainmore_v6`，划分 seed 固定为 42，训练种子独立控制。本轮正式脚本采用 512×512、base16、batch4、Top-1、9 专家、每域每轮 500 张图、50 轮、AdamW lr=3e-4、weight decay=1e-4。三架构每轮均看相同 4500 张抽样图像，以相同逐图像 BCE+Dice 训练，使用验证阳性 Dice 选模，runner 默认不读 test PNG 或计算 test 指标。
 
-本地查看进度（PowerShell）：
-
-```powershell
-Get-Content runs/paper5_ct7_2_local_v1-logs/controller.stdout.log -Tail 20
-Get-Content runs/paper5_ct7_2_local_v1-logs/moe.stdout.log -Tail 20
-Get-Content runs/paper5_ct7_2_local_v1-logs/controller.stderr.log -Tail 20
-```
-
-服务器独立模型队列进度：
-
-```bash
-LOG=/ssd1/data/Multi-Organ_Foundation_Model/runs/paper5_ct7_2_independent-logs
-tail -f "$LOG/controller_gpu0.log" "$LOG/controller_gpu1.log"
-tail -f "$LOG/BUSI.log" "$LOG/Fetal_HC.log"
-tail -f "$LOG/finalizer.log"
-```
-
-`scripts/run_independent_paper5_remote.sh` 与 `scripts/finalize_independent_paper5_remote.sh` 是当前服务器任务。旧的 `run_three_way_paper5_remote.sh` 和 `finalize_three_way_paper5_remote.sh` 未运行，不要重启，以免重复训练。
-
-代码与项目环境：`/ssd1/code/Multi-Organ_Foundation_Model/`。
-
-训练用的 `pointed_data`、checkpoint、日志与迁移包：`/ssd1/data/Multi-Organ_Foundation_Model/`。不把训练内容放到 `/hdd`；`/ssd2` 保留为 `/ssd1` 空间不足时的备用盘。迁移仅包含九个数据集本项目实际使用的 `processed_png` 图像、标签、索引及 CAMUS 原版患者划分文件；原始发布包、论文等不参与本次训练。
-
-项目 Python：`/ssd1/code/Multi-Organ_Foundation_Model/.conda/bin/python`。环境由服务器现有 `pytorch_bin` 环境克隆到项目目录，避免修改其他项目环境。
+以下是另开单进程实验的命令模板，不适用于已经配置 `parallel_plan.json` 的本轮根目录，也不表示完整三种子实验已完成。先固定全程预算、只运行第一轮估算开销；重新运行同一命令增加 `--resume` 并移除 `--stop-after-epoch 1` 即继续。
 
 ```bash
 cd /ssd1/code/Multi-Organ_Foundation_Model
-DATA=/ssd1/data/Multi-Organ_Foundation_Model
-PY=$PWD/.conda/bin/python
+DATA_ROOT=/ssd1/data/Multi-Organ_Foundation_Model
+PROJECT_PY="$PWD/.conda/bin/python"
 
-# 若训练中断，检查已有最后一轮 checkpoint 后运行 --resume。
-CUDA_VISIBLE_DEVICES=0 OMP_NUM_THREADS=2 "$PY" -u -m unet_moe.baseline_suite \
-  --data-root "$DATA/pointed_data" --output "$DATA/runs/unet_baseline_9v1" \
-  --mode all --epochs 50 --size 256 --base 16 --batch-size 2 \
-  --quota 500 --workers 2 --seed 42 --device cuda --resume
+CUDA_VISIBLE_DEVICES=1 OMP_NUM_THREADS=2 "$PROJECT_PY" -u -m unet_moe.fair_suite \
+  --data-root "$DATA_ROOT/pointed_data" \
+  --output "$DATA_ROOT/runs/fair_512_single_example" \
+  --models shared,task_id,region --seeds 42,43,44 --split-seed 42 \
+  --size 512 --base 16 --batch-size 4 --top-k 1 --experts 9 \
+  --epochs 50 --quota-per-domain 500 --lr 0.0003 --workers 2 \
+  --device cuda:0 --stop-after-epoch 1
 ```
 
-训练和验证按数据集来源使用相同图像抽样；独立模型有九份参数，推理时需知道图像对应哪个数据集。`comparison.json` 在全部测试完成后汇总 19 个结构的 Dice 和参数量。日志在 `/ssd1/data/Multi-Organ_Foundation_Model/runs/unet_baseline_9v1-logs/`。
+`CUDA_VISIBLE_DEVICES=1` 将物理 GPU1 映射为进程内 `cuda:0`。示例应按实际空闲 GPU 调整。默认辅助损失为 0；`--coarse-weight`、`--route-weight`、`--balance-weight`、`--router-z-weight` 的非零设置须另设输出目录。`--empty-weight 0.1 --empty-fraction 0.01` 是已标注腹部空通道的候选困难负像素损失，只能当作待验证消融；不把缺失标签当作背景，也没有证实能提升性能。
 
-本批基线已全部完成，`runs/unet_baseline_9v1/comparison.json` 已生成。共享 U-Net 的 19 类阳性 Dice 宏平均为 0.5694，九个独立 U-Net 合并后为 0.6125；AbdomenUS 八类分别为 0.1952 和 0.2836。上述 `--resume` 命令仅用于原实验复现，不需要再次启动。脚本 `scripts/run_remote_worker.sh 0` / `1` 与 `mofm_summary` 用于原实验的两卡续训和结果汇总，日志分别在 `gpu0.log`、`gpu1.log`、`finalizer.log`。
-
-`mofm_summary` tmux 会话已启动，执行 `scripts/finalize_remote_baselines.sh`，待全部 10 个测试结果齐备后自动生成 `comparison.json`，过程写入 `finalizer.log`。下述命令可在需要时手动重算汇总：
+封装脚本可顺序执行；未配置并行计划时检查 GPU 空闲，已配置时进入对应 GPU 分片并按剩余显存准入。两种方式均保留进程锁：
 
 ```bash
-cd /ssd1/code/Multi-Organ_Foundation_Model
-DATA=/ssd1/data/Multi-Organ_Foundation_Model
-.conda/bin/python -m unet_moe.baseline_suite \
-  --data-root "$DATA/pointed_data" --output "$DATA/runs/unet_baseline_9v1" \
-  --mode summarize --epochs 50 --size 256 --base 16 --batch-size 2 \
-  --quota 500 --workers 2 --seed 42 --device cpu --resume
+bash scripts/run_empty_ablation_remote.sh "$DATA_ROOT/runs/empty_ablation_512_20260930" 1
+bash scripts/run_fair_suite_remote.sh "$DATA_ROOT/runs/fair_512_seed42_43_44_20260930" 1
 ```
 
-迁移流程校验：本地数据 tar 和服务器数据 tar 做 SHA-256 比较；服务器解压后重新扫描图像、mask；Windows 与 Linux 记录逐条比较数据集、任务、划分、标签版本和相对路径。仅路径前缀不同才重写 checkpoint 中的记录校验值。`migration.json` 记录新旧校验值。
+候选脚本对比区域 MoE 的 `empty_weight=0/0.1`，均为 512×512、base16、batch4、12 epoch、每域每轮 128 图、seed42、coarse/route=0.3/0.1，只计算验证集。正式脚本使用上方 50 轮、三种子、三架构配置、辅助项全为 0，并在全部训练结束后显式追加 `--evaluate-test`。两个脚本的协议与预算不同，不能混合汇总。目录已存在时须以原配置加第三个参数 `--resume`；运行脚本与上方逐轮暂停示例应择一使用，不并行操作同一目录。
 
-## 腹部稀有类修复（已部署，尚未正式训练）
+只检查协议与划分时，可在上述命令加 `--dry-run`：写入 protocol/records，不读取 PNG、不训练。以后必须使用完全相同配置加 `--resume` 开始实际运行。`--stop-after-epoch` 只是暂停点，不能改变预设 `--epochs`、模型集合、种子列表、输入尺寸或损失。源码、记录、配置校验不一致时拒绝续训；需保留原代码或使用新目录。依赖环境版本会记录，但代码哈希不代表 PNG 内容哈希。
 
-`unet_moe/region.py` 和 `unet_moe/region_train.py` 已针对主线 Top-1 MoE 修改损失：每张图先平均有效标注通道，腹部各类的阳性图再按训练集阳性/空图数量比加权（上限 8），同一权重同时用于最终分割和四级粗区域监督；空标签仍参与负例约束，`-1` 缺失/忽略区域仍不参与损失。训练启动前强制检查 HC18 的 999 条记录使用实心标签。权重从训练划分自动计算，不读取验证或测试标签。
+冻结配置并完成全部预算后，复用相同命令、移除暂停参数并加 `--resume --evaluate-test`，才对验证选中的 checkpoint 计算 test。训练 seed、模型清单和设备参数也须保持一致。测试已在历史项目中被查看过，不能称为全新外部测试。
 
-2026-09-29 已同步上述两个代码文件和对应测试到服务器，逐文件 SHA-256 与本地一致。服务器项目环境补装了 `pytest`，相关 19 项测试通过；真实肾上腺阳性训练样本的单步 GPU 前向/反向有限且粗区域提议分支收到梯度。旧版三个文件备份在服务器代码目录 `.backup_abdomen_fix_20260929/`，旧 `region_top1_v1` 权重与结果保持不变。
+输出顶层为 `protocol.json`、`records.json`、`summary.json`；模型子目录为 `<model>/seed_<seed>/`，包含 `last.pt`、`best.pt`、`metrics.jsonl` 和显式评估时的 `test_metrics.json`。协议记录代码摘要、Git 提交、依赖版本、图像/分组数和预算；每轮保存样本顺序摘要、参数量及训练/验证时间。checkpoint 保存模型、优化器与 Python/NumPy/PyTorch CPU/CUDA RNG。CUDA 跨版本不保证逐位一致。
 
-服务器数据审计：AbdomenUS 的 926 对图像/索引 mask 均尺寸匹配且类别值仅为 0–8/255；13 个 CT 来源按训练/验证/测试 5/4/4 分开，无交叉。HC18 共 999 条记录均使用 `hc18_filled_v1`，mask 文件存在。训练划分中，肾上腺仅 44/321 张图有前景，自动阳性权重为 6.295；血管 93/321、权重 2.452；骨骼 115/321、权重 1.791。
+`summary.json` 汇总种子均值和样本标准差；只有一个种子时标准差为 null。阳性 Dice、含空 Dice、空图误报比例/面积与阳性漏检分别报告。新 checkpoint 当前通过 `fair_suite` 统一评估，不能直接传给旧 `predict`/`region_predict`。
 
-**边界：**数据格式、路径及已知类别映射通过检查，稀有类损失权重的代码问题已修复；但训练数据仅来自 5 个模拟 CT 来源，类别稀少与跨来源分布差异仍在。没有新模型测试成绩，因此不能断言分割效果已改善，也不能声称真实超声泛化问题已解决。后续必须使用新输出目录进行受控验证，不能覆盖旧实验。
+## 检查与历史续训
 
-## 论文范围对齐的新协议（已通过服务器数据审计，等待训练）
+```bash
+"$PROJECT_PY" -m pip install -r requirements-unet-moe.txt -r requirements-preprocessing.txt
+UNET_MOE_DATA_ROOT="$DATA_ROOT/pointed_data" "$PROJECT_PY" -m pytest tests -q
+```
 
-原 8 类 AbdomenUS 实验保留。新增可选 `--abdomen-labels paper5 --abdomen-split ct7_2`：腹部只监督肝、肾、血管、胆囊、脾，连同其他数据集共 16 个输出，仍为 9 个专家。当地数据的红色标签是“血管”，不保证只含主动脉；黄色标签是整肾，不能等同于论文细分的肾盂/皮质。因此这是按本地可用标签**近似对齐**论文器官范围，不是逐像素复现论文标注。
+设置 `UNET_MOE_DATA_ROOT` 才能在本服务器执行依赖真实数据的划分检查；只看到 skip 不能认为真实数据协议已验证。训练不会因文档示例自动启动。
 
-原发布包测试 CT `ct1/ct10/ct11/ct12` 及其 293 张图保持不动；原训练包中 `ct3/ct4` 的 156 张作验证，其余 7 个 CT 的 477 张作训练。分割协议与旧 5/4/4 划分独立记录；`--abdomen-positive-sampling 0.5` 仅在训练抽样时按 CT 均衡并温和提高稀有前景样本概率，验证/测试不使用真值选图。旧命令默认 `legacy/all8`，旧实验不应覆写。后续共享 U-Net、9 个独立 U-Net 和主线 MoE 都应使用同一新协议才能正式比较。
+旧 `train`、`region_train`、`baseline_suite` 均支持 `--resume`，但其 `--seed` 同时改变项目划分；不得用改变旧 seed 的方式声称固定 test 的多种子对照。旧区域/基线 checkpoint 也没有完整 RNG 状态。只有确实未完成且配置一致的旧任务才应续训；现有完成目录应保持不动。
+
+迁移核对仍包括数据 tar 的 SHA-256、图像和 mask 路径扫描、Windows/Linux 记录的相对路径语义键比较。仅路径前缀变化才可按迁移脚本重建记录哈希，`migration.json` 保留新旧对应；迁移不改变样本划分或标签语义。旧脚本 `scripts/run_remote_worker.sh` 面向已完成的历史基线，不是新公平对照的启动入口。

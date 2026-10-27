@@ -1,0 +1,111 @@
+{
+  "snapshot_date": "2026-10-27",
+  "timezone": "Asia/Shanghai",
+  "scope": "Completed experiment aggregate metrics and Q06/Q07 evaluation evidence. No new training or test-based model selection.",
+  "provenance": "docs/experiments/MEDICAL_MAINLINE_BASELINE_PROVENANCE_20261026.json",
+  "verified_provenance_sources": 12,
+  "files": [
+    {
+      "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/medical_metrics_dsc_hd95_assd_20261012/metrics.csv",
+      "file": "docs/experiments/results_20261027/medical_metrics_dsc_hd95_assd_20261012/metrics.csv",
+      "sha256": "c52265b9622c332bc962faf7552bc6a224365031e020eebecdbc8dda0964de96",
+      "bytes": 23012210
+    },
+    {
+      "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q02_routing_80_512_20261013/evaluation_metrics.csv",
+      "file": "docs/experiments/results_20261027/q02_routing_80_512_20261013/evaluation_metrics.csv",
+      "sha256": "44fe31adcea44a14dce21dab56b6fa8210fabdb80bedd2b163d733c9e93b69cf",
+      "bytes": 2748932
+    },
+    {
+      "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q05_visual_context_task_film_80_512_20261014/evaluation_metrics.csv",
+      "file": "docs/experiments/results_20261027/q05_visual_context_task_film_80_512_20261014/evaluation_metrics.csv",
+      "sha256": "e076e9d97177a932f1caad16dc2d055eefa91cf1d0cedbee8145215253036df2",
+      "bytes": 2730678
+    },
+    {
+      "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q06_region_reverse_kl_80_512_seed42_20261025/evaluation_metrics.csv",
+      "file": "docs/experiments/results_20261027/q06_region_reverse_kl_80_512_seed42_20261025/evaluation_metrics.csv",
+      "sha256": "cca103a5af03371f216bdabab5454ad71b529e760bf053dc8ff1a2fdb427d2c1",
+      "bytes": 1216450
+    },
+    {
+      "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q07_task_experts_80_512_seed42_20261025/evaluation_metrics.csv",
+      "file": "docs/experiments/results_20261027/q07_task_experts_80_512_seed42_20261025/evaluation_metrics.csv",
+      "sha256": "2634e38a8a11220486e0a9073db2676e94fe3d418d6b02bfae0d59c3a4efa159",
+      "bytes": 1853455
+    },
+    {
+      "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/remaining_reports/metrics.csv",
+      "file": "docs/experiments/results_20261027/q04_external_baselines_80_512_20261013/remaining_reports/metrics.csv",
+      "sha256": "90ed2842170d418efae84d909f7f775718b350a1be4345ff1322ecf8b8ed62cf",
+      "bytes": 7030
+    },
+    {
+      "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q07_task_experts_80_512_seed42_20261025/experts0/task_id/seed_42/benchmark.json",
+      "file": "docs/experiments/results_20261027/q07_task_experts_80_512_seed42_20261025/experts0/task_id/seed_42/benchmark.json",
+      "sha256": "46553cc976e1dc3441166834553843a5c608db8ef0599848a8cc7edc474deb43",
+      "bytes": 10473
+    },
+    {
+      "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q07_task_experts_80_512_seed42_20261025/experts1/task_id/seed_42/benchmark.json",
+      "file": "docs/experiments/results_20261027/q07_task_experts_80_512_seed42_20261025/experts1/task_id/seed_42/benchmark.json",
+      "sha256": "7fcff3a3529217cb2fffd8d3f498a3fd81f061d75b20cc3b67e2b4670c23876d",
+      "bytes": 10485
+    },
+    {
+      "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q07_task_experts_80_512_seed42_20261025/experts9/task_id/seed_42/benchmark.json",
+      "file": "docs/experiments/results_20261027/q07_task_experts_80_512_seed42_20261025/experts9/task_id/seed_42/benchmark.json",
+      "sha256": "8b2a3887fe60d4887a9097ba8a427c31319b2e5cf39b91598089b406b303bcf9",
+      "bytes": 8670
+    },
+    {
+      "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q06_region_reverse_kl_80_512_seed42_20261025/evaluation_per_group.csv",
+      "file": "docs/experiments/results_20261027/q06_region_reverse_kl_80_512_seed42_20261025/evaluation_per_group.csv",
+      "sha256": "0ffb63f4d300a15858fa3fb87765c67d7c8fa9842012776aafdddee33d084560",
+      "bytes": 247579
+    },
+    {
+      "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q06_region_reverse_kl_80_512_seed42_20261025/evaluation_paired.csv",
+      "file": "docs/experiments/results_20261027/q06_region_reverse_kl_80_512_seed42_20261025/evaluation_paired.csv",
+      "sha256": "a9222399999559baf389e469c43a4d1010b4b871422c8a0ef60fa6f99a153e4d",
+      "bytes": 757048
+    },
+    {
+      "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q06_region_reverse_kl_80_512_seed42_20261025/EVALUATION_REPORT.md",
+      "file": "docs/experiments/results_20261027/q06_region_reverse_kl_80_512_seed42_20261025/EVALUATION_REPORT.md",
+      "sha256": "33864002111b952339a5bcda8df73c79ca68a2a65f7c3db5f159e71297cef590",
+      "bytes": 3924
+    },
+    {
+      "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q06_region_reverse_kl_80_512_seed42_20261025/protocol.json",
+      "file": "docs/experiments/results_20261027/q06_region_reverse_kl_80_512_seed42_20261025/protocol.json",
+      "sha256": "3e26032c8f3dbaa4270ffcf6bd0fc02cd64ef4ef57f60b09bb4ea3b63b574d92",
+      "bytes": 16646
+    },
+    {
+      "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q07_task_experts_80_512_seed42_20261025/evaluation_per_group.csv",
+      "file": "docs/experiments/results_20261027/q07_task_experts_80_512_seed42_20261025/evaluation_per_group.csv",
+      "sha256": "b2a523e7df3c738f38cb486a3f5d003eaa825925088751b1cb8dd8860b3652a5",
+      "bytes": 376473
+    },
+    {
+      "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q07_task_experts_80_512_seed42_20261025/evaluation_paired.csv",
+      "file": "docs/experiments/results_20261027/q07_task_experts_80_512_seed42_20261025/evaluation_paired.csv",
+      "sha256": "4a80b774de76ebe28e2f4b4107a34ddad2de88fd657d8f978bb23c338628e6d4",
+      "bytes": 2343614
+    },
+    {
+      "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q07_task_experts_80_512_seed42_20261025/EVALUATION_REPORT.md",
+      "file": "docs/experiments/results_20261027/q07_task_experts_80_512_seed42_20261025/EVALUATION_REPORT.md",
+      "sha256": "3e041cad9e981ada396fa0cfce6d7ec5b16bc2d2a42b75405593081a73ce8485",
+      "bytes": 5104
+    },
+    {
+      "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q07_task_experts_80_512_seed42_20261025/protocol.json",
+      "file": "docs/experiments/results_20261027/q07_task_experts_80_512_seed42_20261025/protocol.json",
+      "sha256": "4d9a18dd77671c46ee0c381fc4130a302ecfd843b6cc7eac49846ca436270ab3",
+      "bytes": 16842
+    }
+  ]
+}

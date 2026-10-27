@@ -1,10 +1,12 @@
-"""Image-only, soft-region pooled routing. No task IDs enter forward()."""
+"""Soft-region pooled routing; optional normalization uses explicit data-domain IDs."""
 from collections import defaultdict
 import torch
 from torch import nn
 from torch.nn import functional as F
 from .model import block
 from .data import TASKS, SegmentationDataset
+from .normalization import (normalization_block, forward_normalized_block,
+                            validate_normalization, validate_domain_ids)
 
 DOMAINS = ['BUSI', 'MMOTU', 'DDTI', 'AUL', 'FALLMUD', 'Fetal_HC', 'CCA', 'CAMUS', 'AbdomenUS']
 TASK_IDS = [0, 1, 2, 3, 4, 6, 8, 9, 10, 11, 12] + list(range(13, 21))
@@ -15,7 +17,7 @@ PAPER_ALIGNED_TASK_IDS = [task for task in TASK_IDS if task not in (15, 17, 19)]
 
 class RegionDataset(torch.utils.data.Dataset):
     """One image with all available targets; absent annotations stay -1."""
-    def __init__(self, records, size=256, task_ids=None):
+    def __init__(self, records, size=512, task_ids=None):
         self.task_ids = list(TASK_IDS if task_ids is None else task_ids)
         if not self.task_ids or len(set(self.task_ids)) != len(self.task_ids) or not set(self.task_ids).issubset(TASK_IDS):
             raise ValueError('Invalid region task IDs')
@@ -38,15 +40,17 @@ class RegionDataset(torch.utils.data.Dataset):
 
 
 class RegionMoE(nn.Module):
-    def __init__(self, channels, regions, top_k):
+    def __init__(self, channels, regions, top_k, normalization='shared_gn',
+                 norm_eps=1e-5, norm_momentum=.1):
         super().__init__()
         self.top_k = top_k
         self.proposals = nn.Conv2d(channels, regions, 1)
         self.router = nn.Sequential(nn.Linear(channels, channels), nn.SiLU(), nn.Linear(channels, 9))
-        self.shared = block(channels, channels)
+        self.shared = normalization_block(channels, channels, normalization,
+                                          norm_eps, norm_momentum, len(DOMAINS))
         self.experts = nn.ModuleList([block(channels, channels) for _ in range(9)])
 
-    def forward(self, x):
+    def forward(self, x, domain_ids=None):
         coarse = self.proposals(x)
         masks = coarse.sigmoid()
         # Each predicted region independently pools its visual features.
@@ -58,7 +62,7 @@ class RegionMoE(nn.Module):
         # Region probabilities localize expert contributions spatially.
         weights = torch.einsum('brhw,bre->behw', masks, gates.to(x.dtype))
         weights = weights / masks.sum(1, keepdim=True).clamp_min(1e-6)
-        output = self.shared(x)
+        output = forward_normalized_block(self.shared, x, domain_ids)
         for i, expert in enumerate(self.experts):
             batch = torch.where((indices == i).any((1, 2)))[0]
             if batch.numel():
@@ -68,30 +72,44 @@ class RegionMoE(nn.Module):
 
 
 class RegionUNet(nn.Module):
-    def __init__(self, base=16, top_k=2, task_ids=None):
+    def __init__(self, base=16, top_k=2, task_ids=None, normalization='shared_gn',
+                 norm_eps=1e-5, norm_momentum=.1):
         super().__init__()
         if base <= 0 or base % 4 or not 1 <= top_k <= 9:
             raise ValueError('Require positive base divisible by 4 and 1 <= top_k <= 9')
+        validate_normalization(normalization, norm_eps, norm_momentum)
+        self.normalization = normalization
+        self.norm_eps, self.norm_momentum = norm_eps, norm_momentum
+        self.domain_names = tuple(DOMAINS)
         self.task_ids = list(TASK_IDS if task_ids is None else task_ids)
         if not self.task_ids or len(set(self.task_ids)) != len(self.task_ids) or not set(self.task_ids).issubset(TASK_IDS):
             raise ValueError('Invalid region task IDs')
         self.structures = [TASKS[i] for i in self.task_ids]
         self.expert_for_region = [EXPERT_FOR_REGION[TASK_IDS.index(i)] for i in self.task_ids]
         widths = [base*2**i for i in range(5)]
-        self.encoders = nn.ModuleList([block(1 if i == 0 else widths[i-1], w) for i, w in enumerate(widths)])
-        self.fusions = nn.ModuleList([block(widths[i+1]+widths[i], widths[i]) for i in reversed(range(4))])
-        self.moes = nn.ModuleList([RegionMoE(widths[i], len(self.task_ids), top_k) for i in reversed(range(4))])
+        self.encoders = nn.ModuleList([
+            normalization_block(1 if i == 0 else widths[i-1], w, normalization,
+                                norm_eps, norm_momentum, len(DOMAINS)) for i, w in enumerate(widths)])
+        self.fusions = nn.ModuleList([
+            normalization_block(widths[i+1]+widths[i], widths[i], normalization,
+                                norm_eps, norm_momentum, len(DOMAINS)) for i in reversed(range(4))])
+        self.moes = nn.ModuleList([
+            RegionMoE(widths[i], len(self.task_ids), top_k, normalization,
+                      norm_eps, norm_momentum) for i in reversed(range(4))])
         self.head = nn.Conv2d(base, len(self.task_ids), 1)
 
-    def forward(self, image):
+    def forward(self, image, domain_ids=None):
+        if self.normalization.startswith('domain_'):
+            validate_domain_ids(domain_ids, image, len(self.domain_names))
         features, x = [], image
         for i, encoder in enumerate(self.encoders):
-            x = encoder(F.max_pool2d(x, 2) if i else x)
+            x = forward_normalized_block(encoder, F.max_pool2d(x, 2) if i else x, domain_ids)
             features.append(x)
         coarse, routing, loads = [], [], []
         for skip, fusion, moe in zip(reversed(features[:-1]), self.fusions, self.moes):
-            x = fusion(torch.cat([F.interpolate(x, size=skip.shape[-2:], mode='bilinear', align_corners=False), skip], 1))
-            x, c, r, load = moe(x)
+            x = forward_normalized_block(fusion, torch.cat([
+                F.interpolate(x, size=skip.shape[-2:], mode='bilinear', align_corners=False), skip], 1), domain_ids)
+            x, c, r, load = moe(x, domain_ids)
             coarse.append(F.interpolate(c, size=image.shape[-2:], mode='bilinear', align_corners=False))
             routing.append(r); loads.append(load)
         return dict(logits=self.head(x), coarse=coarse, routing=routing, expert_load=torch.stack(loads))
@@ -134,4 +152,3 @@ def region_loss(output, target, positive_weights=None, expert_for_region=None,
         route.append((ce*present).sum()/present.sum().clamp_min(1))
     routing = torch.stack(route).mean()
     return segmentation + coarse_weight*coarse + route_weight*routing
-

@@ -1,0 +1,1447 @@
+{
+  "schema": "task_id_routing_probe_v1",
+  "created_at": "2026-10-09T22:04:35.225563+08:00",
+  "checkpoint": {
+    "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/organ_exposure/task_id/seed_42/best.pt",
+    "sha256": "7f1aaa4dfb8853c598eb44be9c3b8863fa33702b1ff37bce43a6759f312cd9dc",
+    "epoch": 51,
+    "best_epoch": 51,
+    "kind": "task_id",
+    "seed": 42,
+    "arm": "organ_exposure",
+    "protocol_sha256": "80bb6228ed72d1400be050cc60adda2a2dbea58db1f988913a8a2d6d72f553a5",
+    "metric_macro_positive_dice": 0.7488845241003456
+  },
+  "source_model_sha256": "779fb81b16ee6c49aae2a383f99fe17149520b80da3fc2a5eaa804a678f84d9e",
+  "method": {
+    "device": "cpu",
+    "mode": "eval + torch.inference_mode",
+    "input_size": 512,
+    "top_k": 1,
+    "experts": 9,
+    "split": "val",
+    "validation_total_images": 1007,
+    "selection": "one fixed first validation image per domain, identical indices to Region probe; no class balancing or random sampling",
+    "indices": [
+      0,
+      62,
+      148,
+      298,
+      360,
+      430,
+      530,
+      651,
+      807
+    ],
+    "image_count": 9,
+    "query_count": 16,
+    "query_selection": "all annotated channels, including empty masks; foreground presence never selects queries",
+    "query_batch_size": 1,
+    "layer_order": "decoder blocks from coarse to fine: widths 192,96,48,24",
+    "routing_values": "softmax of router logits before top-k; exact selected mixture probability",
+    "file_read_consistency": "checkpoint loaded and hashed from the same immutable in-memory byte snapshot; on-disk best.pt may advance during continuing training",
+    "changes": "no training, no parameter updates, no test split reads"
+  },
+  "summary": {
+    "layer_expert_counts": [
+      {
+        "0": 1,
+        "1": 1,
+        "3": 5,
+        "4": 7,
+        "5": 1,
+        "6": 1
+      },
+      {
+        "0": 5,
+        "1": 2,
+        "2": 2,
+        "7": 4,
+        "8": 3
+      },
+      {
+        "0": 10,
+        "1": 1,
+        "3": 1,
+        "4": 3,
+        "8": 1
+      },
+      {
+        "2": 8,
+        "5": 5,
+        "6": 3
+      }
+    ],
+    "layer_active_experts": [
+      6,
+      5,
+      5,
+      3
+    ],
+    "layer_max_query_fraction": [
+      0.4375,
+      0.3125,
+      0.625,
+      0.5
+    ]
+  },
+  "limitations": [
+    "Checkpoint belongs to an ongoing training run; results describe only the recorded snapshot.",
+    "Nine selected validation images are a small nonrandom probe, not complete validation routing statistics.",
+    "A repeated selected expert does not prove Task ID is unused: gate probabilities can differ.",
+    "Expert use imbalance is not proof that it causes segmentation errors; paired intervention is needed."
+  ],
+  "images": [
+    {
+      "validation_index": 0,
+      "dataset": "AUL",
+      "image_path": "/ssd1/data/Multi-Organ_Foundation_Model/pointed_data/肝脏超声标注数据集 (AUL)/processed_png/images/Benign/108.png",
+      "group": "AUL/images/Benign/108.png",
+      "split": "val",
+      "queries": [
+        {
+          "task_id": 3,
+          "structure": "liver",
+          "channel": 3,
+          "target_has_foreground": true,
+          "layers": [
+            {
+              "layer": 0,
+              "selected_expert": 4,
+              "selected_probability": 0.3416516184806824,
+              "probabilities": [
+                0.05196043476462364,
+                0.11224941909313202,
+                0.045692820101976395,
+                0.13871809840202332,
+                0.3416516184806824,
+                0.1584903746843338,
+                0.07345814257860184,
+                0.035352107137441635,
+                0.04242696985602379
+              ],
+              "entropy_nats": 1.9170665740966797
+            },
+            {
+              "layer": 1,
+              "selected_expert": 0,
+              "selected_probability": 0.4758276343345642,
+              "probabilities": [
+                0.4758276343345642,
+                0.06525731086730957,
+                0.08980724215507507,
+                0.06134993955492973,
+                0.05072366073727608,
+                0.053584955632686615,
+                0.044684309512376785,
+                0.07389276474714279,
+                0.0848722830414772
+              ],
+              "entropy_nats": 1.767966389656067
+            },
+            {
+              "layer": 2,
+              "selected_expert": 0,
+              "selected_probability": 0.17935578525066376,
+              "probabilities": [
+                0.17935578525066376,
+                0.1539347618818283,
+                0.06848996877670288,
+                0.09819120913743973,
+                0.09597955644130707,
+                0.07316695898771286,
+                0.09534236788749695,
+                0.15399855375289917,
+                0.08154071867465973
+              ],
+              "entropy_nats": 2.140611171722412
+            },
+            {
+              "layer": 3,
+              "selected_expert": 2,
+              "selected_probability": 0.6064265370368958,
+              "probabilities": [
+                0.03822852671146393,
+                0.03409118205308914,
+                0.6064265370368958,
+                0.05317912995815277,
+                0.04142145812511444,
+                0.09079384803771973,
+                0.02443237043917179,
+                0.06543203443288803,
+                0.045994874089956284
+              ],
+              "entropy_nats": 1.4597662687301636
+            }
+          ]
+        },
+        {
+          "task_id": 4,
+          "structure": "liver_mass",
+          "channel": 4,
+          "target_has_foreground": true,
+          "layers": [
+            {
+              "layer": 0,
+              "selected_expert": 1,
+              "selected_probability": 0.31692537665367126,
+              "probabilities": [
+                0.04758928343653679,
+                0.31692537665367126,
+                0.035798244178295135,
+                0.1235879436135292,
+                0.13301651179790497,
+                0.13288752734661102,
+                0.11421418935060501,
+                0.04796616733074188,
+                0.04801478236913681
+              ],
+              "entropy_nats": 1.9625037908554077
+            },
+            {
+              "layer": 1,
+              "selected_expert": 2,
+              "selected_probability": 0.20963126420974731,
+              "probabilities": [
+                0.06949180364608765,
+                0.10797901451587677,
+                0.20963126420974731,
+                0.13251225650310516,
+                0.11273887008428574,
+                0.11103124171495438,
+                0.09757748991250992,
+                0.10086383670568466,
+                0.058174245059490204
+              ],
+              "entropy_nats": 2.135024309158325
+            },
+            {
+              "layer": 2,
+              "selected_expert": 4,
+              "selected_probability": 0.26661232113838196,
+              "probabilities": [
+                0.07171022146940231,
+                0.12920714914798737,
+                0.08333640545606613,
+                0.09292270243167877,
+                0.26661232113838196,
+                0.10038726776838303,
+                0.08986108750104904,
+                0.1019163429737091,
+                0.06404654681682587
+              ],
+              "entropy_nats": 2.089708089828491
+            },
+            {
+              "layer": 3,
+              "selected_expert": 5,
+              "selected_probability": 0.9424240589141846,
+              "probabilities": [
+                0.0020555586088448763,
+                0.0042744288221001625,
+                0.008385139517486095,
+                0.004644144792109728,
+                0.00483283493667841,
+                0.9424240589141846,
+                0.023503974080085754,
+                0.0046170721761882305,
+                0.00526284659281373
+              ],
+              "entropy_nats": 0.32333123683929443
+            }
+          ]
+        }
+      ],
+      "distinct_experts_across_annotated_queries_per_layer": [
+        2,
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "validation_index": 62,
+      "dataset": "BUSI",
+      "image_path": "/ssd1/data/Multi-Organ_Foundation_Model/pointed_data/乳腺超声数据集 (BUSI)/processed_png/images/benign/benign (10).png",
+      "group": "BUSI/images/benign/benign (10).png",
+      "split": "val",
+      "queries": [
+        {
+          "task_id": 0,
+          "structure": "breast_lesion",
+          "channel": 0,
+          "target_has_foreground": true,
+          "layers": [
+            {
+              "layer": 0,
+              "selected_expert": 0,
+              "selected_probability": 0.14829617738723755,
+              "probabilities": [
+                0.14829617738723755,
+                0.11756561696529388,
+                0.0360201895236969,
+                0.11197911947965622,
+                0.11648130416870117,
+                0.12316368520259857,
+                0.111602783203125,
+                0.11466986685991287,
+                0.12022121250629425
+              ],
+              "entropy_nats": 2.1557159423828125
+            },
+            {
+              "layer": 1,
+              "selected_expert": 1,
+              "selected_probability": 0.19095970690250397,
+              "probabilities": [
+                0.1249663382768631,
+                0.19095970690250397,
+                0.12480311095714569,
+                0.08084544539451599,
+                0.11174678057432175,
+                0.09132180362939835,
+                0.0635274350643158,
+                0.09349729865789413,
+                0.11833205074071884
+              ],
+              "entropy_nats": 2.15181040763855
+            },
+            {
+              "layer": 2,
+              "selected_expert": 0,
+              "selected_probability": 0.21701189875602722,
+              "probabilities": [
+                0.21701189875602722,
+                0.07862362265586853,
+                0.08651329576969147,
+                0.1689504086971283,
+                0.10209832340478897,
+                0.12892064452171326,
+                0.03578991815447807,
+                0.09896896034479141,
+                0.08312295377254486
+              ],
+              "entropy_nats": 2.0955824851989746
+            },
+            {
+              "layer": 3,
+              "selected_expert": 5,
+              "selected_probability": 0.9532565474510193,
+              "probabilities": [
+                0.006123886909335852,
+                0.006231385283172131,
+                0.005521715153008699,
+                0.0051116240210831165,
+                0.006638119928538799,
+                0.9532565474510193,
+                0.006491048727184534,
+                0.0058716414496302605,
+                0.004753966350108385
+              ],
+              "entropy_nats": 0.2857414484024048
+            }
+          ]
+        }
+      ],
+      "distinct_experts_across_annotated_queries_per_layer": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "validation_index": 148,
+      "dataset": "CCA",
+      "image_path": "/ssd1/data/Multi-Organ_Foundation_Model/pointed_data/颈总动脉超声数据集 (CCA)/processed_png/images/CCA/202201121748100022VAS_slice_1069.png",
+      "group": "CCA/202201121748100022VAS",
+      "split": "val",
+      "queries": [
+        {
+          "task_id": 9,
+          "structure": "carotid",
+          "channel": 7,
+          "target_has_foreground": true,
+          "layers": [
+            {
+              "layer": 0,
+              "selected_expert": 3,
+              "selected_probability": 0.21787279844284058,
+              "probabilities": [
+                0.07973583042621613,
+                0.10783033072948456,
+                0.06121642142534256,
+                0.21787279844284058,
+                0.13573794066905975,
+                0.08909348398447037,
+                0.1804463118314743,
+                0.06693917512893677,
+                0.06112769991159439
+              ],
+              "entropy_nats": 2.092146396636963
+            },
+            {
+              "layer": 1,
+              "selected_expert": 7,
+              "selected_probability": 0.18860729038715363,
+              "probabilities": [
+                0.08771392703056335,
+                0.06045788526535034,
+                0.15314346551895142,
+                0.17531396448612213,
+                0.05633626878261566,
+                0.053144969046115875,
+                0.058793313801288605,
+                0.18860729038715363,
+                0.16648894548416138
+              ],
+              "entropy_nats": 2.073424816131592
+            },
+            {
+              "layer": 2,
+              "selected_expert": 4,
+              "selected_probability": 0.322303831577301,
+              "probabilities": [
+                0.2482282668352127,
+                0.051753245294094086,
+                0.06442313641309738,
+                0.05066316947340965,
+                0.322303831577301,
+                0.06281883269548416,
+                0.0598573237657547,
+                0.03866598382592201,
+                0.10128628462553024
+              ],
+              "entropy_nats": 1.891937255859375
+            },
+            {
+              "layer": 3,
+              "selected_expert": 6,
+              "selected_probability": 0.9554113149642944,
+              "probabilities": [
+                0.004232614766806364,
+                0.0034664550330489874,
+                0.014698058366775513,
+                0.002522369846701622,
+                0.004101115744560957,
+                0.006651951000094414,
+                0.9554113149642944,
+                0.00484660267829895,
+                0.0040693748742341995
+              ],
+              "entropy_nats": 0.26757895946502686
+            }
+          ]
+        }
+      ],
+      "distinct_experts_across_annotated_queries_per_layer": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "validation_index": 298,
+      "dataset": "DDTI",
+      "image_path": "/ssd1/data/Multi-Organ_Foundation_Model/pointed_data/甲状腺超声数据集 (DDTI)/processed_png/images/thyroid/10007.png",
+      "group": "DDTI/images/thyroid/10007.png",
+      "split": "val",
+      "queries": [
+        {
+          "task_id": 2,
+          "structure": "thyroid_nodule",
+          "channel": 2,
+          "target_has_foreground": true,
+          "layers": [
+            {
+              "layer": 0,
+              "selected_expert": 4,
+              "selected_probability": 0.5490994453430176,
+              "probabilities": [
+                0.06082344427704811,
+                0.064162977039814,
+                0.039920344948768616,
+                0.03195212408900261,
+                0.5490994453430176,
+                0.05501561611890793,
+                0.11506262421607971,
+                0.04665995389223099,
+                0.03730347007513046
+              ],
+              "entropy_nats": 1.5883183479309082
+            },
+            {
+              "layer": 1,
+              "selected_expert": 1,
+              "selected_probability": 0.3038831651210785,
+              "probabilities": [
+                0.09576874226331711,
+                0.3038831651210785,
+                0.11403823643922806,
+                0.08075655251741409,
+                0.03999326750636101,
+                0.04892425239086151,
+                0.03718595206737518,
+                0.14775896072387695,
+                0.1316908299922943
+              ],
+              "entropy_nats": 1.9857213497161865
+            },
+            {
+              "layer": 2,
+              "selected_expert": 0,
+              "selected_probability": 0.14577631652355194,
+              "probabilities": [
+                0.14577631652355194,
+                0.12615922093391418,
+                0.05658053234219551,
+                0.11957316845655441,
+                0.12999393045902252,
+                0.1238623857498169,
+                0.05114024132490158,
+                0.12717893719673157,
+                0.11973532289266586
+              ],
+              "entropy_nats": 2.150719165802002
+            },
+            {
+              "layer": 3,
+              "selected_expert": 5,
+              "selected_probability": 0.6174151301383972,
+              "probabilities": [
+                0.03833983466029167,
+                0.020070338621735573,
+                0.09727952629327774,
+                0.028331724926829338,
+                0.0320109948515892,
+                0.6174151301383972,
+                0.099158376455307,
+                0.045666635036468506,
+                0.02172747440636158
+              ],
+              "entropy_nats": 1.3923263549804688
+            }
+          ]
+        }
+      ],
+      "distinct_experts_across_annotated_queries_per_layer": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "validation_index": 360,
+      "dataset": "FALLMUD",
+      "image_path": "/ssd1/data/Multi-Organ_Foundation_Model/pointed_data/下肢肌肉超声数据集 (FALLMUD)/processed_png/images/NeilCronin/img_00027.png",
+      "group": "FALLMUD/images/NeilCronin/img_00027.png",
+      "split": "val",
+      "queries": [
+        {
+          "task_id": 6,
+          "structure": "aponeurosis",
+          "channel": 5,
+          "target_has_foreground": true,
+          "layers": [
+            {
+              "layer": 0,
+              "selected_expert": 6,
+              "selected_probability": 0.5985662937164307,
+              "probabilities": [
+                0.05672367289662361,
+                0.03943571820855141,
+                0.028731748461723328,
+                0.03338044136762619,
+                0.08024932444095612,
+                0.08428015559911728,
+                0.5985662937164307,
+                0.04112153872847557,
+                0.03751107305288315
+              ],
+              "entropy_nats": 1.478238821029663
+            },
+            {
+              "layer": 1,
+              "selected_expert": 7,
+              "selected_probability": 0.49673980474472046,
+              "probabilities": [
+                0.06958294659852982,
+                0.07913482934236526,
+                0.07566285133361816,
+                0.06034679338335991,
+                0.04346229135990143,
+                0.03793620318174362,
+                0.04992716759443283,
+                0.49673980474472046,
+                0.08720713108778
+              ],
+              "entropy_nats": 1.721299171447754
+            },
+            {
+              "layer": 2,
+              "selected_expert": 4,
+              "selected_probability": 0.5067055821418762,
+              "probabilities": [
+                0.08601028472185135,
+                0.08018951863050461,
+                0.05878157913684845,
+                0.07126257568597794,
+                0.5067055821418762,
+                0.053582239896059036,
+                0.03297347202897072,
+                0.08409266918897629,
+                0.02640204317867756
+              ],
+              "entropy_nats": 1.686111569404602
+            },
+            {
+              "layer": 3,
+              "selected_expert": 5,
+              "selected_probability": 0.9553738832473755,
+              "probabilities": [
+                0.0028426835779100657,
+                0.002132267924025655,
+                0.021264106035232544,
+                0.004152319859713316,
+                0.0013594633201137185,
+                0.9553738832473755,
+                0.006018575746566057,
+                0.004829127807170153,
+                0.002027559094130993
+              ],
+              "entropy_nats": 0.2561233639717102
+            }
+          ]
+        }
+      ],
+      "distinct_experts_across_annotated_queries_per_layer": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "validation_index": 430,
+      "dataset": "Fetal_HC",
+      "image_path": "/ssd1/data/Multi-Organ_Foundation_Model/pointed_data/胎儿头围测量数据集 (Fetal HC - HC18 Challenge)/processed_png/images/train/104_HC.png",
+      "group": "Fetal_HC/104",
+      "split": "val",
+      "queries": [
+        {
+          "task_id": 8,
+          "structure": "head_contour",
+          "channel": 6,
+          "target_has_foreground": true,
+          "layers": [
+            {
+              "layer": 0,
+              "selected_expert": 4,
+              "selected_probability": 0.63338303565979,
+              "probabilities": [
+                0.04360886663198471,
+                0.05745834484696388,
+                0.027663521468639374,
+                0.06755159050226212,
+                0.63338303565979,
+                0.05671731382608414,
+                0.05014335736632347,
+                0.032568320631980896,
+                0.030905596911907196
+              ],
+              "entropy_nats": 1.4031012058258057
+            },
+            {
+              "layer": 1,
+              "selected_expert": 7,
+              "selected_probability": 0.2061341553926468,
+              "probabilities": [
+                0.13561668992042542,
+                0.13816556334495544,
+                0.0907457023859024,
+                0.04944121092557907,
+                0.06879119575023651,
+                0.11333917826414108,
+                0.05186837166547775,
+                0.2061341553926468,
+                0.1458979845046997
+              ],
+              "entropy_nats": 2.101611852645874
+            },
+            {
+              "layer": 2,
+              "selected_expert": 1,
+              "selected_probability": 0.4212426245212555,
+              "probabilities": [
+                0.08018507063388824,
+                0.4212426245212555,
+                0.048641812056303024,
+                0.08530481159687042,
+                0.07007778435945511,
+                0.04723269119858742,
+                0.047842759639024734,
+                0.10350210964679718,
+                0.09597029536962509
+              ],
+              "entropy_nats": 1.8591455221176147
+            },
+            {
+              "layer": 3,
+              "selected_expert": 5,
+              "selected_probability": 0.9063756465911865,
+              "probabilities": [
+                0.00808078795671463,
+                0.008936307393014431,
+                0.02128981612622738,
+                0.008600584231317043,
+                0.010821712203323841,
+                0.9063756465911865,
+                0.015250555239617825,
+                0.010725670494139194,
+                0.009918910451233387
+              ],
+              "entropy_nats": 0.5002287030220032
+            }
+          ]
+        }
+      ],
+      "distinct_experts_across_annotated_queries_per_layer": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "validation_index": 530,
+      "dataset": "MMOTU",
+      "image_path": "/ssd1/data/Multi-Organ_Foundation_Model/pointed_data/卵巢肿瘤多模态超声数据集 (MMOTU)/processed_png/images/OTU_2D/train/100.png",
+      "group": "MMOTU/images/OTU_2D/train/100.png",
+      "split": "val",
+      "queries": [
+        {
+          "task_id": 1,
+          "structure": "ovarian_lesion",
+          "channel": 1,
+          "target_has_foreground": true,
+          "layers": [
+            {
+              "layer": 0,
+              "selected_expert": 5,
+              "selected_probability": 0.5135927200317383,
+              "probabilities": [
+                0.03889036923646927,
+                0.08614005893468857,
+                0.04003550484776497,
+                0.06814178079366684,
+                0.10622406005859375,
+                0.5135927200317383,
+                0.07803438603878021,
+                0.031586579978466034,
+                0.03735457360744476
+              ],
+              "entropy_nats": 1.6607062816619873
+            },
+            {
+              "layer": 1,
+              "selected_expert": 0,
+              "selected_probability": 0.1769479662179947,
+              "probabilities": [
+                0.1769479662179947,
+                0.11152228713035583,
+                0.13461007177829742,
+                0.11214926838874817,
+                0.09427131712436676,
+                0.09167780727148056,
+                0.07908593863248825,
+                0.09826800227165222,
+                0.10146729648113251
+              ],
+              "entropy_nats": 2.1688971519470215
+            },
+            {
+              "layer": 2,
+              "selected_expert": 3,
+              "selected_probability": 0.16744008660316467,
+              "probabilities": [
+                0.10759173333644867,
+                0.11098826676607132,
+                0.117585688829422,
+                0.16744008660316467,
+                0.11189734935760498,
+                0.061073675751686096,
+                0.07734896242618561,
+                0.13235530257225037,
+                0.11371903121471405
+              ],
+              "entropy_nats": 2.163466215133667
+            },
+            {
+              "layer": 3,
+              "selected_expert": 2,
+              "selected_probability": 0.42633411288261414,
+              "probabilities": [
+                0.047343675047159195,
+                0.0243308637291193,
+                0.42633411288261414,
+                0.05749465897679329,
+                0.09646017849445343,
+                0.20227529108524323,
+                0.01065663993358612,
+                0.07705463469028473,
+                0.058049798011779785
+              ],
+              "entropy_nats": 1.7224880456924438
+            }
+          ]
+        }
+      ],
+      "distinct_experts_across_annotated_queries_per_layer": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "validation_index": 651,
+      "dataset": "AbdomenUS",
+      "image_path": "/ssd1/data/Multi-Organ_Foundation_Model/pointed_data/腹部多器官超声数据集(AbdomenUS)/processed_png/images/AUS/train/ct3-1.png",
+      "group": "AbdomenUS/ct3",
+      "split": "val",
+      "queries": [
+        {
+          "task_id": 13,
+          "structure": "abdomen_liver",
+          "channel": 11,
+          "target_has_foreground": true,
+          "layers": [
+            {
+              "layer": 0,
+              "selected_expert": 4,
+              "selected_probability": 0.3517214059829712,
+              "probabilities": [
+                0.05449933558702469,
+                0.12526960670948029,
+                0.07602637261152267,
+                0.14034077525138855,
+                0.3517214059829712,
+                0.07765723019838333,
+                0.052460603415966034,
+                0.06372027099132538,
+                0.058304477483034134
+              ],
+              "entropy_nats": 1.952020287513733
+            },
+            {
+              "layer": 1,
+              "selected_expert": 0,
+              "selected_probability": 0.2870491147041321,
+              "probabilities": [
+                0.2870491147041321,
+                0.10203969478607178,
+                0.10766968131065369,
+                0.0899382084608078,
+                0.08073057979345322,
+                0.05969589203596115,
+                0.06423893570899963,
+                0.08745359629392624,
+                0.12118441611528397
+              ],
+              "entropy_nats": 2.0643649101257324
+            },
+            {
+              "layer": 2,
+              "selected_expert": 8,
+              "selected_probability": 0.510842502117157,
+              "probabilities": [
+                0.06691747903823853,
+                0.06084853410720825,
+                0.039189357310533524,
+                0.07543622702360153,
+                0.06491878628730774,
+                0.0804770290851593,
+                0.04805738478899002,
+                0.05331271514296532,
+                0.510842502117157
+              ],
+              "entropy_nats": 1.6988171339035034
+            },
+            {
+              "layer": 3,
+              "selected_expert": 6,
+              "selected_probability": 0.6432079672813416,
+              "probabilities": [
+                0.049939967691898346,
+                0.045434415340423584,
+                0.019929025322198868,
+                0.04208406060934067,
+                0.06007412075996399,
+                0.023901036009192467,
+                0.6432079672813416,
+                0.05453140288591385,
+                0.06089795008301735
+              ],
+              "entropy_nats": 1.3725640773773193
+            }
+          ]
+        },
+        {
+          "task_id": 14,
+          "structure": "abdomen_kidney",
+          "channel": 12,
+          "target_has_foreground": false,
+          "layers": [
+            {
+              "layer": 0,
+              "selected_expert": 3,
+              "selected_probability": 0.6716054677963257,
+              "probabilities": [
+                0.030115216970443726,
+                0.039268285036087036,
+                0.03364047780632973,
+                0.6716054677963257,
+                0.055492885410785675,
+                0.05002090707421303,
+                0.06490002572536469,
+                0.02989177219569683,
+                0.025064999237656593
+              ],
+              "entropy_nats": 1.2991784811019897
+            },
+            {
+              "layer": 1,
+              "selected_expert": 8,
+              "selected_probability": 0.28683191537857056,
+              "probabilities": [
+                0.10799876600503922,
+                0.03489888459444046,
+                0.1783205270767212,
+                0.09523104131221771,
+                0.057270392775535583,
+                0.0466371588408947,
+                0.062019579112529755,
+                0.13079173862934113,
+                0.28683191537857056
+              ],
+              "entropy_nats": 1.992295503616333
+            },
+            {
+              "layer": 2,
+              "selected_expert": 0,
+              "selected_probability": 0.42393115162849426,
+              "probabilities": [
+                0.42393115162849426,
+                0.08516845852136612,
+                0.08265171200037003,
+                0.10833199322223663,
+                0.14436866343021393,
+                0.02756034955382347,
+                0.05479643866419792,
+                0.03372548520565033,
+                0.03946581482887268
+              ],
+              "entropy_nats": 1.799829125404358
+            },
+            {
+              "layer": 3,
+              "selected_expert": 2,
+              "selected_probability": 0.9580577611923218,
+              "probabilities": [
+                0.0006347347516566515,
+                0.0005309123662300408,
+                0.9580577611923218,
+                0.0007843042840249836,
+                0.001752931741066277,
+                0.006875996012240648,
+                0.029261307790875435,
+                0.001271714922040701,
+                0.0008303630747832358
+              ],
+              "entropy_nats": 0.21840587258338928
+            }
+          ]
+        },
+        {
+          "task_id": 16,
+          "structure": "abdomen_vessels",
+          "channel": 13,
+          "target_has_foreground": false,
+          "layers": [
+            {
+              "layer": 0,
+              "selected_expert": 3,
+              "selected_probability": 0.48823991417884827,
+              "probabilities": [
+                0.044081516563892365,
+                0.09373116493225098,
+                0.03922867029905319,
+                0.48823991417884827,
+                0.11411266773939133,
+                0.10642517358064651,
+                0.03761258348822594,
+                0.04297734424471855,
+                0.0335908979177475
+              ],
+              "entropy_nats": 1.6953248977661133
+            },
+            {
+              "layer": 1,
+              "selected_expert": 0,
+              "selected_probability": 0.17321428656578064,
+              "probabilities": [
+                0.17321428656578064,
+                0.06922779232263565,
+                0.14899545907974243,
+                0.14703881740570068,
+                0.09353365004062653,
+                0.09793650358915329,
+                0.0885167270898819,
+                0.07797077298164368,
+                0.10356595367193222
+              ],
+              "entropy_nats": 2.1516542434692383
+            },
+            {
+              "layer": 2,
+              "selected_expert": 0,
+              "selected_probability": 0.6284821629524231,
+              "probabilities": [
+                0.6284821629524231,
+                0.04609287530183792,
+                0.044734254479408264,
+                0.05387681722640991,
+                0.09103261679410934,
+                0.02949412912130356,
+                0.036101315170526505,
+                0.03254934027791023,
+                0.037636514753103256
+              ],
+              "entropy_nats": 1.407012701034546
+            },
+            {
+              "layer": 3,
+              "selected_expert": 2,
+              "selected_probability": 0.9823050498962402,
+              "probabilities": [
+                0.0006875480758026242,
+                0.0005501607083715498,
+                0.9823050498962402,
+                0.0007235947996377945,
+                0.0015933690592646599,
+                0.001709083211608231,
+                0.010590496473014355,
+                0.0011929161846637726,
+                0.0006477897986769676
+              ],
+              "entropy_nats": 0.11400976777076721
+            }
+          ]
+        },
+        {
+          "task_id": 18,
+          "structure": "abdomen_gallbladder",
+          "channel": 14,
+          "target_has_foreground": false,
+          "layers": [
+            {
+              "layer": 0,
+              "selected_expert": 4,
+              "selected_probability": 0.14300192892551422,
+              "probabilities": [
+                0.08473875373601913,
+                0.11631155014038086,
+                0.11988863348960876,
+                0.12231755256652832,
+                0.14300192892551422,
+                0.12816599011421204,
+                0.10923869162797928,
+                0.09528140723705292,
+                0.08105550706386566
+              ],
+              "entropy_nats": 2.1816768646240234
+            },
+            {
+              "layer": 1,
+              "selected_expert": 7,
+              "selected_probability": 0.43446600437164307,
+              "probabilities": [
+                0.10646062344312668,
+                0.05905443802475929,
+                0.11277734488248825,
+                0.05947134271264076,
+                0.03826722502708435,
+                0.05145591124892235,
+                0.036326661705970764,
+                0.43446600437164307,
+                0.10172031074762344
+              ],
+              "entropy_nats": 1.812159538269043
+            },
+            {
+              "layer": 2,
+              "selected_expert": 0,
+              "selected_probability": 0.3639250695705414,
+              "probabilities": [
+                0.3639250695705414,
+                0.15137724578380585,
+                0.0606808103621006,
+                0.05905742198228836,
+                0.12118236720561981,
+                0.046361252665519714,
+                0.060978688299655914,
+                0.0471365824341774,
+                0.08930056542158127
+              ],
+              "entropy_nats": 1.9192054271697998
+            },
+            {
+              "layer": 3,
+              "selected_expert": 2,
+              "selected_probability": 0.9796916842460632,
+              "probabilities": [
+                0.0004167085571680218,
+                0.00045907171443104744,
+                0.9796916842460632,
+                0.0005104123265482485,
+                0.0011387290433049202,
+                0.007882793433964252,
+                0.008663286454975605,
+                0.0006577184540219605,
+                0.0005797169869765639
+              ],
+              "entropy_nats": 0.12691524624824524
+            }
+          ]
+        },
+        {
+          "task_id": 20,
+          "structure": "abdomen_spleen",
+          "channel": 15,
+          "target_has_foreground": false,
+          "layers": [
+            {
+              "layer": 0,
+              "selected_expert": 4,
+              "selected_probability": 0.17390280961990356,
+              "probabilities": [
+                0.09745195508003235,
+                0.10019893199205399,
+                0.12089791893959045,
+                0.1175142452120781,
+                0.17390280961990356,
+                0.14545360207557678,
+                0.13709580898284912,
+                0.049750011414289474,
+                0.057734739035367966
+              ],
+              "entropy_nats": 2.135460376739502
+            },
+            {
+              "layer": 1,
+              "selected_expert": 8,
+              "selected_probability": 0.3134773373603821,
+              "probabilities": [
+                0.13721345365047455,
+                0.09261051565408707,
+                0.1383984237909317,
+                0.08311297744512558,
+                0.0396365225315094,
+                0.04930263012647629,
+                0.05130890756845474,
+                0.09493916481733322,
+                0.3134773373603821
+              ],
+              "entropy_nats": 1.989233374595642
+            },
+            {
+              "layer": 2,
+              "selected_expert": 0,
+              "selected_probability": 0.33934226632118225,
+              "probabilities": [
+                0.33934226632118225,
+                0.1088886708021164,
+                0.09095653146505356,
+                0.0777871385216713,
+                0.12267114222049713,
+                0.0596780925989151,
+                0.07421580702066422,
+                0.06416255980730057,
+                0.062297720462083817
+              ],
+              "entropy_nats": 1.9926769733428955
+            },
+            {
+              "layer": 3,
+              "selected_expert": 2,
+              "selected_probability": 0.9489519596099854,
+              "probabilities": [
+                0.0011788803385570645,
+                0.0008951909840106964,
+                0.9489519596099854,
+                0.0015206965617835522,
+                0.0024288566783070564,
+                0.015024017542600632,
+                0.025819828733801842,
+                0.002205068711191416,
+                0.0019753980450332165
+              ],
+              "entropy_nats": 0.2717190086841583
+            }
+          ]
+        }
+      ],
+      "distinct_experts_across_annotated_queries_per_layer": [
+        2,
+        3,
+        2,
+        2
+      ]
+    },
+    {
+      "validation_index": 807,
+      "dataset": "CAMUS",
+      "image_path": "/ssd1/data/Multi-Organ_Foundation_Model/pointed_data/心脏超声心动图数据集 (CAMUS)/processed_png/images/patient0200/patient0200_2CH_ED.png",
+      "group": "CAMUS/patient0200",
+      "split": "val",
+      "queries": [
+        {
+          "task_id": 10,
+          "structure": "lv_cavity",
+          "channel": 8,
+          "target_has_foreground": true,
+          "layers": [
+            {
+              "layer": 0,
+              "selected_expert": 3,
+              "selected_probability": 0.329769104719162,
+              "probabilities": [
+                0.06679876893758774,
+                0.11051354557275772,
+                0.06121733784675598,
+                0.329769104719162,
+                0.11998723447322845,
+                0.106600821018219,
+                0.08854614198207855,
+                0.05724284052848816,
+                0.05932425335049629
+              ],
+              "entropy_nats": 2.0000476837158203
+            },
+            {
+              "layer": 1,
+              "selected_expert": 0,
+              "selected_probability": 0.23022465407848358,
+              "probabilities": [
+                0.23022465407848358,
+                0.11644894629716873,
+                0.13810625672340393,
+                0.07446189969778061,
+                0.10514841973781586,
+                0.07825054973363876,
+                0.058565203100442886,
+                0.11830072849988937,
+                0.08049333095550537
+              ],
+              "entropy_nats": 2.113072395324707
+            },
+            {
+              "layer": 2,
+              "selected_expert": 0,
+              "selected_probability": 0.27459391951560974,
+              "probabilities": [
+                0.27459391951560974,
+                0.09142214804887772,
+                0.09027223289012909,
+                0.10737118870019913,
+                0.1800984889268875,
+                0.07005532830953598,
+                0.06183059513568878,
+                0.09060916304588318,
+                0.03374692425131798
+              ],
+              "entropy_nats": 2.029306411743164
+            },
+            {
+              "layer": 3,
+              "selected_expert": 2,
+              "selected_probability": 0.7053471803665161,
+              "probabilities": [
+                0.011822867207229137,
+                0.014969631098210812,
+                0.7053471803665161,
+                0.012514929287135601,
+                0.015450228936970234,
+                0.1880142241716385,
+                0.016831325367093086,
+                0.017880162224173546,
+                0.01716935820877552
+              ],
+              "entropy_nats": 1.0055346488952637
+            }
+          ]
+        },
+        {
+          "task_id": 11,
+          "structure": "myocardium",
+          "channel": 9,
+          "target_has_foreground": true,
+          "layers": [
+            {
+              "layer": 0,
+              "selected_expert": 3,
+              "selected_probability": 0.4065430760383606,
+              "probabilities": [
+                0.04486382007598877,
+                0.15273964405059814,
+                0.05148867145180702,
+                0.4065430760383606,
+                0.06422676146030426,
+                0.10237134993076324,
+                0.05906910449266434,
+                0.04581198841333389,
+                0.07288553565740585
+              ],
+              "entropy_nats": 1.8537929058074951
+            },
+            {
+              "layer": 1,
+              "selected_expert": 2,
+              "selected_probability": 0.6834375262260437,
+              "probabilities": [
+                0.047512270510196686,
+                0.034167900681495667,
+                0.6834375262260437,
+                0.03918108716607094,
+                0.03215495124459267,
+                0.03858817368745804,
+                0.02928892709314823,
+                0.04577309265732765,
+                0.04989609122276306
+              ],
+              "entropy_nats": 1.2774569988250732
+            },
+            {
+              "layer": 2,
+              "selected_expert": 0,
+              "selected_probability": 0.19683535397052765,
+              "probabilities": [
+                0.19683535397052765,
+                0.07373280078172684,
+                0.08365126699209213,
+                0.15989071130752563,
+                0.16539961099624634,
+                0.07241525501012802,
+                0.10445462912321091,
+                0.08884813636541367,
+                0.054772213101387024
+              ],
+              "entropy_nats": 2.1107189655303955
+            },
+            {
+              "layer": 3,
+              "selected_expert": 2,
+              "selected_probability": 0.7059529423713684,
+              "probabilities": [
+                0.01885368674993515,
+                0.01725098304450512,
+                0.7059529423713684,
+                0.023310091346502304,
+                0.03138774633407593,
+                0.07176844030618668,
+                0.06865611672401428,
+                0.03051176853477955,
+                0.03230833634734154
+              ],
+              "entropy_nats": 1.177323579788208
+            }
+          ]
+        },
+        {
+          "task_id": 12,
+          "structure": "left_atrium",
+          "channel": 10,
+          "target_has_foreground": true,
+          "layers": [
+            {
+              "layer": 0,
+              "selected_expert": 4,
+              "selected_probability": 0.6907033920288086,
+              "probabilities": [
+                0.034226853400468826,
+                0.04884175956249237,
+                0.02486875280737877,
+                0.06673619896173477,
+                0.6907033920288086,
+                0.052349869161844254,
+                0.025839895009994507,
+                0.028252286836504936,
+                0.028180977329611778
+              ],
+              "entropy_nats": 1.2413171529769897
+            },
+            {
+              "layer": 1,
+              "selected_expert": 8,
+              "selected_probability": 0.2716030776500702,
+              "probabilities": [
+                0.134858176112175,
+                0.1317850649356842,
+                0.09971611946821213,
+                0.07776085287332535,
+                0.058556873351335526,
+                0.07696418464183807,
+                0.05033266544342041,
+                0.09842293709516525,
+                0.2716030776500702
+              ],
+              "entropy_nats": 2.061955213546753
+            },
+            {
+              "layer": 2,
+              "selected_expert": 0,
+              "selected_probability": 0.16577783226966858,
+              "probabilities": [
+                0.16577783226966858,
+                0.08182783424854279,
+                0.07158684730529785,
+                0.13844585418701172,
+                0.10924368351697922,
+                0.12071411311626434,
+                0.09544868022203445,
+                0.070146843791008,
+                0.14680832624435425
+              ],
+              "entropy_nats": 2.1546568870544434
+            },
+            {
+              "layer": 3,
+              "selected_expert": 6,
+              "selected_probability": 0.866693913936615,
+              "probabilities": [
+                0.011170378886163235,
+                0.00893244706094265,
+                0.027633866295218468,
+                0.006077284924685955,
+                0.012277319096028805,
+                0.05193071439862251,
+                0.866693913936615,
+                0.00983809120953083,
+                0.005445954855531454
+              ],
+              "entropy_nats": 0.6280089616775513
+            }
+          ]
+        }
+      ],
+      "distinct_experts_across_annotated_queries_per_layer": [
+        2,
+        3,
+        1,
+        2
+      ]
+    }
+  ]
+}

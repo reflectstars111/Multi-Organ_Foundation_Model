@@ -1,0 +1,14 @@
+# Isolated environment, cloned from the project's medical environment.
+# Full resolved versions are frozen into each Q04 run/environment.lock.txt.
+torch==2.5.1
+torchvision==0.20.1
+timm==1.0.20
+transformers>=4.44,<5
+einops
+numpy
+scipy
+Pillow
+pydantic
+safetensors
+ftfy
+pytest

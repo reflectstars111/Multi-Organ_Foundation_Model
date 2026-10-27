@@ -1,0 +1,13 @@
+{
+  "verified_at": "2026-10-13T14:49:46.613202+08:00",
+  "source_metric_sha256_unchanged": true,
+  "aggregate_rows": 4772,
+  "all_aggregates_best_test": true,
+  "all_seed_identities_unique": true,
+  "local_markdown_links_valid": true,
+  "independent_review": [
+    "Q01 main table, diagnostic definitions, selection and paired claims verified",
+    "Q03 100 per-group rows and 600 metric values matched source"
+  ],
+  "modified_training_or_queue_configuration": false
+}

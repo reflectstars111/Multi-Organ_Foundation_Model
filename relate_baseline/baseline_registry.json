@@ -1,0 +1,439 @@
+{
+  "schema": "external_medical_baseline_registration_v1",
+  "registered_at": "2026-10-12T15:46:04.301193+08:00",
+  "queue_id": "Q04",
+  "status": "queued_waiting_reference_completion",
+  "scope_approved": true,
+  "primary_target": "annotated_foreground_union",
+  "primary_target_approved": true,
+  "configuration_approved": {
+    "size": 512,
+    "epochs": 80,
+    "seeds": [
+      42,
+      43,
+      44
+    ],
+    "retrain_on_existing_splits": true,
+    "preserve_method_architecture": true
+  },
+  "reference_protocol": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/protocol.json",
+  "reference_records_sha256": "f621896f10234777d3067a019d96a7cb1dae3b6add305bca32815298744315e0",
+  "shared_budget": {
+    "batch_size": 16,
+    "quota_per_domain": 500,
+    "domains": 9,
+    "query_images_per_epoch": 4500,
+    "updates_per_epoch": 282,
+    "query_draws_per_training": 360000,
+    "optimizer": "AdamW",
+    "lr": 0.0001,
+    "weight_decay": 0.0001,
+    "augmentation": "none",
+    "primary_selection": "best_validation_positive_union_domain_macro_dsc",
+    "threshold": 0.5
+  },
+  "evaluation": {
+    "metrics": [
+      "DSC (%)",
+      "HD95 (pixel)",
+      "ASSD (pixel)"
+    ],
+    "grid": [
+      512,
+      512
+    ],
+    "one_empty_policy": "hypot(H-1,W-1)",
+    "split_barrier": "all primary matrix training complete before test",
+    "cohorts": [
+      "all",
+      "positive",
+      "all_surface_defined",
+      "positive_surface_defined"
+    ]
+  },
+  "models": [
+    {
+      "id": "mofo",
+      "display_name": "MOFO-512-adapted",
+      "source_directory": "relate_baseline/多器官超声基础模型 (MOFO)",
+      "upstream": "https://github.com/Git-HB-CHEN/MOFO",
+      "source_commit": "c5076f087ae68bfb7ba19d976def2dcd5224f1c8",
+      "source_files_sha256": {
+        "LICENSE": "230184f60bae2feaf244f10a8bac053c8ff33a183bcc365b4d8b876d2b7f4809",
+        "README.md": "1881102a8e146720fed2d540d14db5eb083256df38fdd32db7c0b22dba7ca231",
+        "dataset/augmenter.py": "491dae9252207b509d61cfe6a6771ebddcb66da290a34a49a21c2b14a35c90f9",
+        "dataset/mutlidomain_baseloader.py": "5c5b44a5c403bbc118fc047f0ca3dc8af7ba940e1de1c80d74556c0e3847d599",
+        "infer.py": "2e68d5c2fba75fff105cf6057a7c55558e4beaa1d85455c00d9273f6c63acbf2",
+        "model/MOFO.py": "0c8ecf289edaee67fcf373f3b35513e8049ec161e81c1126430c20a79f84f7ed",
+        "prior_model/pUNet.py": "423be0ea8fae471a5cc9d90ea9391437e210c62901344478768b1d9584454203",
+        "requirements.txt": "b644a85d7f98f76a0f11ce5ac96db1b2326c567877c5a5a1847200da015f1c3d",
+        "test.py": "0071d198c582ce04e42575c38325765e9c1bf147249162a96c3f8543805cf500",
+        "train.py": "f8cff519a6981a6692e1c4c620eeee06dc702c66a0fe69f2ed5df2838d2e2c34",
+        "utils/loss.py": "c5f25252017d6da86943abc16ea723fd93e2f8ab74abd2d6f70a49ec41392643",
+        "utils/lr_scheduler.py": "fbd3e66539543e585676fdf767dfdaf7304c78ed3dc976381f2f22490e35c77b",
+        "utils/metric.py": "fea1bd9822bc87c6bb4527f1ab9b97101f8f6c5eeab319273f4509fbf98bb9f7",
+        "utils/prior_loss.py": "b30db241436922b53a47eb5b9d08c0f1d80cfc2c5274f8c66a6fafd6baaa7d14"
+      },
+      "source_manifest_sha256": "5bddbdc660e5d5ada2d698c75c37025679c8e3ed6dc8d0ad225670cafc10a41d",
+      "conditioning": "domain_selected_mask_and_task_prompts",
+      "status": "implemented_pending_gpu_admission",
+      "can_run": false,
+      "remaining": [
+        "queued real CUDA full-batch preflight",
+        "three separately budgeted 80-epoch train-only prior stages"
+      ],
+      "ready_for_queue": true,
+      "implementation": "unet_moe/external_baselines/mofo.py"
+    },
+    {
+      "id": "smart",
+      "display_name": "SMART-seg-512",
+      "source_directory": "relate_baseline/挑战赛与资源索引 (Challenge Resources)/UUSIC 2025 第一名源码解析 (SMART Rank-1 Source)",
+      "upstream": "https://zenodo.org/records/21807962",
+      "source_commit": null,
+      "source_files_sha256": {
+        "Dockerfile": "9cf8bf9e22137a5b8694737aec4c406dfeb87982895de27b34940c44b679ac3d",
+        "model.py": "461125c32e68cb12e9186c1c59f5092846b25bb984ac35d6c42abf207b7713ac",
+        "requirements.txt": "99a133e389179083cef763b808545a3c8fd66865ba782f4c12e3bba18c2d315c",
+        "utils/QClassifier.py": "50524037d2cee514f33165432af5f5ca0f2bb958956cac96deb2d7dbd74bea1d",
+        "utils/QMOS.py": "7bf85d9354d148b82247a6fa1f6d2a9202adc066a67c0e05ef0430e7fc209604",
+        "utils/QSegmenter.py": "f712d3d9850e3caaf253801694538ec86edd69bd70b7cfdbdbebd11102292532",
+        "utils/drop.py": "c8e3fb21646f5e919bd823b0f5a82516a21c48bcf5ecb3611db5e2856b5bf797",
+        "utils/grid.py": "94c33c6ccde0831ba7bd016a40207de3749901f63b370d38c3e94568c064c6df",
+        "utils/helpers.py": "f552ea203f238ddc3f527dbbd05deb40bbcdcfdbd032137d9adb3b924fcc6bf6",
+        "utils/weight_init.py": "160c28c37b76405ea2ebb9944108584f525866e33c563718f6862615f4f4f4d8"
+      },
+      "source_manifest_sha256": "88410b4ce57fb54cd0008d3b85d2b924ff83af862756eadeb5af38eb17f24a14",
+      "conditioning": "image_only",
+      "status": "implemented_pending_gpu_admission",
+      "can_run": false,
+      "remaining": [
+        "queued real CUDA full-batch preflight"
+      ],
+      "ready_for_queue": true,
+      "implementation": "unet_moe/external_baselines/smart.py"
+    },
+    {
+      "id": "aimagelab",
+      "display_name": "AImageLab-zip-seg-512",
+      "source_directory": "relate_baseline/挑战赛与资源索引 (Challenge Resources)/UUSIC 2025 第二名源码解析 (AImageLab Rank-2 Source)",
+      "upstream": "https://zenodo.org/records/21807962",
+      "source_commit": null,
+      "source_files_sha256": {
+        "Dockerfile": "4ea3fc9fc867e6edf68dacff13fa98d510d9bc90ae93f3c1daf36e93ce69b626",
+        "README.md": "3ed9c4d6a030e6c1c06ee726daea9354d7fa419e580e324f99fc3efcc361ed69",
+        "model.py": "cc18894811ed098921f26202802b350d8a5590a30fe24358d03e56e5fabb3d69",
+        "nets/net.py": "5a446a4d2dd0ee1f6af1eef0abfce8af07ef022a97d1341eb6f20635f3706fc6",
+        "requirements.txt": "5336675f062b81304d41a0f43abb04ee5c687f0a1ca4f2994bfa2f52f0561358",
+        "utils/util.py": "4f6162e7604becca313e5998a51b4dcf0305c3afcdbc0f6fb42729fd3b996b42"
+      },
+      "source_manifest_sha256": "e16f5b549c7b59c2f9595fa67d1edd53713ef64de5a35c7a37b01d03b8578494",
+      "conditioning": "nine_domain_film",
+      "status": "implemented_pending_gpu_admission",
+      "can_run": false,
+      "remaining": [
+        "queued real CUDA full-batch preflight"
+      ],
+      "ready_for_queue": true,
+      "implementation": "unet_moe/external_baselines/aimagelab.py"
+    },
+    {
+      "id": "lanzhou",
+      "display_name": "Lanzhou-exact-seg-512",
+      "source_directory": "relate_baseline/挑战赛与资源索引 (Challenge Resources)/UUSIC 2025 第三名源码解析 (Lanzhou Rank-3 Source)",
+      "upstream": "https://zenodo.org/records/21807962",
+      "source_commit": null,
+      "source_files_sha256": {
+        "Dockerfile": "eb1546aec3ccc92b56114ee0e8e17eabba1608fe0e3d10cd4948b7b806fbc47d",
+        "LICENSE.txt": "15cd49e331249fef5734e5c8140a5983a123d4a58a4b5941b82b2fce77bf939a",
+        "README.md": "ce2867a3eed0cb9224be4c5dfe005f1604368a7f9836f9684b06b1d779891215",
+        "eval_competition_test.py": "4101ef7aecfb196bf6a994a95c3d0099ad76c35831c1eb3caf7a2c2e3c35dee7",
+        "eval_private_cls.py": "e2a499ba2f3bfa9a7fa046290d49cbf59be2307e66b2be404361b5544d7291be",
+        "exact_model.py": "2fda3b471f11187ff29707bbe25985cdd7e3348ce822c83190ec33b1d062a12c",
+        "model_fused_swin_unet.py": "5b8b5ea6aa09c687283d874632b8705be43c7f65e229fbb6b2fc602c13fd3cac",
+        "requirements.txt": "b3cc54657d38d6683019d357275bd8164a65035b8b84160ec0cb877b6879a8e6",
+        "train_fused_swin_unet.py": "bb4b99387930b76825e96f633fc331400c241fe89e7367c926870afb921064f9"
+      },
+      "source_manifest_sha256": "6e01cdc96f5da1de32478bbc5ba868fbd5f73a61c652ade485895f1c3a768c59",
+      "conditioning": "image_only",
+      "status": "implemented_pending_gpu_admission",
+      "can_run": false,
+      "remaining": [
+        "queued real CUDA full-batch preflight"
+      ],
+      "ready_for_queue": true,
+      "implementation": "unet_moe/external_baselines/lanzhou.py"
+    },
+    {
+      "id": "universeg",
+      "display_name": "UniverSeg-union-512-retrained",
+      "source_directory": "relate_baseline/UniverSeg",
+      "upstream": "https://github.com/JJGO/UniverSeg",
+      "source_commit": "833a0c34c65e38d675e21bd48ddec6797cc03259",
+      "source_files_sha256": {
+        "LICENSE": "a6cba85bc92e0cff7a450b1d873c0eaa2e9fc96bf472df0247a26bec77bf3ff9",
+        "LICENSE-model": "df3a82cd54007e3523e70dc0feda19de7b06231ceea689658700569e5cf7c2ae",
+        "README.md": "524282f6df7ee1ad81f9bcc9014677f8aa04c902270c6aa10171f8fd3def3dc4",
+        "example_data/oasis.py": "b12667142591109dea739d5fa9958d663dca6016c200412bb0c170c5faef9594",
+        "example_data/wbc.py": "7bbd31a2a5123bb8acb1d871e959c6fe70c9f58ed7cf2200b0a7084dd693e86e",
+        "requirements.txt": "93497bb2d53090992ef52a4a3246bb31fa1a19cc4e452d0724df9c9b6a5c6921",
+        "setup.py": "675c1c1c2f2b98293651eb347cce67f42b0e4dff3a4a120993a6385eb2b50785",
+        "universeg/__init__.py": "839fd315834bb61609819ce92498d4189eea9c77693d704ca039702d6d319e06",
+        "universeg/model.py": "6df2930a343aef0022975b20f572cf3f7cf1bfe1eb47992b7cff7d19940be7b9",
+        "universeg/nn/__init__.py": "494bc64b25fc3af4ef0d7cf2d723959fdfeb1a01110e318bb0235f3c9695ac09",
+        "universeg/nn/cross_conv.py": "aa0c5df3685288caf3ca1ec8914f024d63408dbeeb78dab8efb12d9ac7a8f50c",
+        "universeg/nn/init.py": "a625dcff0420e4ef02577bacf1fa1c33b5d3ac8c391c649ad29c2ec3e599cec2",
+        "universeg/nn/vmap.py": "fb4c4fa8bf5d5ea9d4f01de40b09993b5697e33d0c8d53cb5785dd3e136ff391",
+        "universeg/validation.py": "9feb1f047aef039ed54baa7b865ebce45d89eb679b02ccc4b284e903a90915b7"
+      },
+      "source_manifest_sha256": "5411801e0f452ab112cd20627f2ab04d92d7935cb5db35090b20960ebcaa5678",
+      "conditioning": "train_only_labeled_support_set",
+      "status": "implemented_pending_gpu_admission",
+      "can_run": false,
+      "remaining": [
+        "queued real CUDA full-batch preflight"
+      ],
+      "ready_for_queue": true,
+      "implementation": "unet_moe/external_baselines/universeg.py"
+    }
+  ],
+  "training_matrix": [
+    {
+      "job_id": "Q04-mofo-seed42",
+      "method": "mofo",
+      "seed": 42,
+      "status": "queued_pending_runtime_gates",
+      "can_run": false,
+      "ready_for_queue": true,
+      "execution_gate": "reference queues complete; method CUDA preflight passed; same-seed prior complete for MOFO"
+    },
+    {
+      "job_id": "Q04-mofo-seed43",
+      "method": "mofo",
+      "seed": 43,
+      "status": "queued_pending_runtime_gates",
+      "can_run": false,
+      "ready_for_queue": true,
+      "execution_gate": "reference queues complete; method CUDA preflight passed; same-seed prior complete for MOFO"
+    },
+    {
+      "job_id": "Q04-mofo-seed44",
+      "method": "mofo",
+      "seed": 44,
+      "status": "queued_pending_runtime_gates",
+      "can_run": false,
+      "ready_for_queue": true,
+      "execution_gate": "reference queues complete; method CUDA preflight passed; same-seed prior complete for MOFO"
+    },
+    {
+      "job_id": "Q04-smart-seed42",
+      "method": "smart",
+      "seed": 42,
+      "status": "queued_pending_runtime_gates",
+      "can_run": false,
+      "ready_for_queue": true,
+      "execution_gate": "reference queues complete; method CUDA preflight passed; same-seed prior complete for MOFO"
+    },
+    {
+      "job_id": "Q04-smart-seed43",
+      "method": "smart",
+      "seed": 43,
+      "status": "queued_pending_runtime_gates",
+      "can_run": false,
+      "ready_for_queue": true,
+      "execution_gate": "reference queues complete; method CUDA preflight passed; same-seed prior complete for MOFO"
+    },
+    {
+      "job_id": "Q04-smart-seed44",
+      "method": "smart",
+      "seed": 44,
+      "status": "queued_pending_runtime_gates",
+      "can_run": false,
+      "ready_for_queue": true,
+      "execution_gate": "reference queues complete; method CUDA preflight passed; same-seed prior complete for MOFO"
+    },
+    {
+      "job_id": "Q04-aimagelab-seed42",
+      "method": "aimagelab",
+      "seed": 42,
+      "status": "queued_pending_runtime_gates",
+      "can_run": false,
+      "ready_for_queue": true,
+      "execution_gate": "reference queues complete; method CUDA preflight passed; same-seed prior complete for MOFO"
+    },
+    {
+      "job_id": "Q04-aimagelab-seed43",
+      "method": "aimagelab",
+      "seed": 43,
+      "status": "queued_pending_runtime_gates",
+      "can_run": false,
+      "ready_for_queue": true,
+      "execution_gate": "reference queues complete; method CUDA preflight passed; same-seed prior complete for MOFO"
+    },
+    {
+      "job_id": "Q04-aimagelab-seed44",
+      "method": "aimagelab",
+      "seed": 44,
+      "status": "queued_pending_runtime_gates",
+      "can_run": false,
+      "ready_for_queue": true,
+      "execution_gate": "reference queues complete; method CUDA preflight passed; same-seed prior complete for MOFO"
+    },
+    {
+      "job_id": "Q04-lanzhou-seed42",
+      "method": "lanzhou",
+      "seed": 42,
+      "status": "queued_pending_runtime_gates",
+      "can_run": false,
+      "ready_for_queue": true,
+      "execution_gate": "reference queues complete; method CUDA preflight passed; same-seed prior complete for MOFO"
+    },
+    {
+      "job_id": "Q04-lanzhou-seed43",
+      "method": "lanzhou",
+      "seed": 43,
+      "status": "queued_pending_runtime_gates",
+      "can_run": false,
+      "ready_for_queue": true,
+      "execution_gate": "reference queues complete; method CUDA preflight passed; same-seed prior complete for MOFO"
+    },
+    {
+      "job_id": "Q04-lanzhou-seed44",
+      "method": "lanzhou",
+      "seed": 44,
+      "status": "queued_pending_runtime_gates",
+      "can_run": false,
+      "ready_for_queue": true,
+      "execution_gate": "reference queues complete; method CUDA preflight passed; same-seed prior complete for MOFO"
+    },
+    {
+      "job_id": "Q04-universeg-seed42",
+      "method": "universeg",
+      "seed": 42,
+      "status": "queued_pending_runtime_gates",
+      "can_run": false,
+      "ready_for_queue": true,
+      "execution_gate": "reference queues complete; method CUDA preflight passed; same-seed prior complete for MOFO"
+    },
+    {
+      "job_id": "Q04-universeg-seed43",
+      "method": "universeg",
+      "seed": 43,
+      "status": "queued_pending_runtime_gates",
+      "can_run": false,
+      "ready_for_queue": true,
+      "execution_gate": "reference queues complete; method CUDA preflight passed; same-seed prior complete for MOFO"
+    },
+    {
+      "job_id": "Q04-universeg-seed44",
+      "method": "universeg",
+      "seed": 44,
+      "status": "queued_pending_runtime_gates",
+      "can_run": false,
+      "ready_for_queue": true,
+      "execution_gate": "reference queues complete; method CUDA preflight passed; same-seed prior complete for MOFO"
+    }
+  ],
+  "primary_trainings": 15,
+  "extra_stages": [
+    {
+      "method": "mofo",
+      "stage": "anatomical_prior",
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "epochs": 80,
+      "query_masks_per_epoch": 4500,
+      "effective_batch": 16,
+      "two_passes_per_draw": true
+    },
+    {
+      "method": "universeg",
+      "support_size": 8,
+      "support_draws_per_primary_training": 2880000,
+      "train_only": true,
+      "minimum_retained_foreground_fraction": 0.25
+    }
+  ],
+  "pending_before_freeze": [],
+  "assets": [
+    {
+      "path": "relate_baseline/挑战赛与资源索引 (Challenge Resources)/UUSIC 2025 前三名 Docker (Top-3 Docker)/UUSIC25_AImageLab-zip_rank2_docker_image.tar.gz",
+      "bytes": 2744123392,
+      "previous_observed_bytes": 2398355456,
+      "expected_bytes": 5569974727,
+      "verification": "growing_archive_not_verified"
+    },
+    {
+      "path": "relate_baseline/挑战赛与资源索引 (Challenge Resources)/UUSIC 2025 前三名 Docker (Top-3 Docker)/UUSIC25_Lanzhou_rank3_docker_image.tar.gz",
+      "bytes": 2744123392,
+      "previous_observed_bytes": 2398355456,
+      "expected_bytes": 3184022244,
+      "verification": "growing_archive_not_verified"
+    },
+    {
+      "path": "relate_baseline/挑战赛与资源索引 (Challenge Resources)/UUSIC 2025 前三名 Docker (Top-3 Docker)/UUSIC25_SMART_rank1_docker_image.tar.gz",
+      "bytes": 2743861248,
+      "previous_observed_bytes": 2397831168,
+      "expected_bytes": 4304635010,
+      "verification": "growing_archive_not_verified"
+    },
+    {
+      "path": "relate_baseline/挑战赛与资源索引 (Challenge Resources)/UUSIC 2025 第一名源码解析 (SMART Rank-1 Source)/utils/best_model.pth",
+      "bytes": 308317499,
+      "sha256": "4641a14ca68d287675fbaedd5a4640647de2fff22c74bdba6cae662de4304a5a",
+      "verification": "local_hash_recorded_but_manifest_reference_has_63_hex_characters"
+    },
+    {
+      "path": "relate_baseline/挑战赛与资源索引 (Challenge Resources)/UUSIC 2025 第三名源码解析 (Lanzhou Rank-3 Source)/fused_swin_unet_best.pth",
+      "bytes": 203934462,
+      "sha256": "431f4ff430efbc428ffc34df0ceb6929a481fc7b659d945fbf89b80a14b45a36",
+      "verification": "sha256_matches_existing_local_resource_manifest"
+    },
+    {
+      "path": "relate_baseline/挑战赛与资源索引 (Challenge Resources)/UUSIC 2025 第二名源码解析 (AImageLab Rank-2 Source)/checkpoints/fusionwrapper.pt",
+      "bytes": 652694011,
+      "sha256": "42931d63cf3f0ee37b3f3695ed99e06e8fe24cb5185e16392938e4e4d632bb60",
+      "verification": "sha256_matches_existing_local_resource_manifest"
+    }
+  ],
+  "live_controllers_modified": false,
+  "notes": [
+    "Primary training is guarded by mandatory GPU preflight and dependency completion. ready_for_queue does not mean primary training has started.",
+    "Only query sampling/update budgets are matched; prior and support costs are reported separately.",
+    "SMART/AImageLab/Lanzhou ranks are overall joint classification-segmentation ranks.",
+    "No pretrained competition segmentation checkpoint initializes primary retraining. MOFO uses fixed official CLIP text semantics."
+  ],
+  "checkpoint_policy": {
+    "retain": [
+      "best",
+      "last"
+    ],
+    "best_selection": "validation_positive_union_domain_macro_dsc",
+    "last_epoch": 80,
+    "fixed_epoch_comparison": {
+      "selection": "last",
+      "epoch": 80,
+      "applies_to": "all external and existing internal methods",
+      "purpose": "compare a common fixed training horizon without different validation selection metrics"
+    },
+    "historical_best_selections": "preserve original selection and label it; do not rewrite existing experiments"
+  },
+  "updated_at": "2026-10-13T01:19:25.961262+08:00",
+  "implementation_document": "docs/Q04_EXECUTION_20261013.md",
+  "runtime_gates": [
+    "Q01 complete train/test matrix",
+    "existing DSC/HD95/ASSD backfill complete with zero failures",
+    "CUDA two real batch16 updates and strict reload per model",
+    "MOFO corresponding seed 80-epoch prior completed"
+  ],
+  "queue_runtime": {
+    "output": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013",
+    "controller_pid": 869636,
+    "protocol_sha256": "9a5857ebb6fc1f17e40e2a46da231514ec009b98e84928fe0477695b9f7e0216",
+    "status_file": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/controller_status.json"
+  }
+}

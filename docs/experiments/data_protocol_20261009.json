@@ -1,0 +1,105 @@
+{
+  "snapshot_at": "2026-10-09T11:00:09.092916+08:00",
+  "source": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20261001_fix/shards/gpu0/protocol.json",
+  "source_sha256": "a44af2c7e63f6a137421f681dbd2b116a4479d76825efaeb39300a38e5d72990",
+  "record_sha256": "f621896f10234777d3067a019d96a7cb1dae3b6add305bca32815298744315e0",
+  "split_seed": 42,
+  "labels": "paper5",
+  "split_policy": "trainmore_v6",
+  "abdomen_split": "ct7_2",
+  "domains": [
+    {
+      "domain": "BUSI",
+      "structures": "乳腺病灶",
+      "train": 590,
+      "val": 86,
+      "test": 104
+    },
+    {
+      "domain": "MMOTU",
+      "structures": "卵巢病灶",
+      "train": 838,
+      "val": 121,
+      "test": 413
+    },
+    {
+      "domain": "DDTI",
+      "structures": "甲状腺结节",
+      "train": 469,
+      "val": 62,
+      "test": 106
+    },
+    {
+      "domain": "AUL",
+      "structures": "肝脏、肝占位",
+      "train": 581,
+      "val": 62,
+      "test": 92
+    },
+    {
+      "domain": "FALLMUD",
+      "structures": "腱膜",
+      "train": 613,
+      "val": 70,
+      "test": 130
+    },
+    {
+      "domain": "Fetal_HC",
+      "structures": "胎儿头部填实区域",
+      "train": 760,
+      "val": 100,
+      "test": 139
+    },
+    {
+      "domain": "CCA",
+      "structures": "颈动脉",
+      "train": 809,
+      "val": 150,
+      "test": 141
+    },
+    {
+      "domain": "CAMUS",
+      "structures": "左室腔、心肌、左心房",
+      "train": 1600,
+      "val": 200,
+      "test": 200
+    },
+    {
+      "domain": "AbdomenUS",
+      "structures": "肝、肾、血管、胆囊、脾",
+      "train": 477,
+      "val": 156,
+      "test": 293
+    }
+  ],
+  "totals": {
+    "train": 6737,
+    "val": 1007,
+    "test": 1618
+  },
+  "abdomen_sources": {
+    "train": [
+      "AbdomenUS/ct14",
+      "AbdomenUS/ct15",
+      "AbdomenUS/ct2",
+      "AbdomenUS/ct5",
+      "AbdomenUS/ct7",
+      "AbdomenUS/ct8",
+      "AbdomenUS/ct9"
+    ],
+    "val": [
+      "AbdomenUS/ct3",
+      "AbdomenUS/ct4"
+    ],
+    "test": [
+      "AbdomenUS/ct1",
+      "AbdomenUS/ct10",
+      "AbdomenUS/ct11",
+      "AbdomenUS/ct12"
+    ]
+  },
+  "notes": [
+    "Counts are unique images, not task records or independent patients.",
+    "Hash of records metadata is not a content hash of PNG files."
+  ]
+}

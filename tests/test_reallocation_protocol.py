@@ -1,6 +1,7 @@
 from collections import defaultdict
 from pathlib import Path
 from argparse import Namespace
+import os
 
 import pytest
 import numpy as np
@@ -14,7 +15,8 @@ from unet_moe.region import RegionDataset, PAPER_ALIGNED_TASK_IDS
 from unet_moe.schedule import epoch_lr
 
 
-DATA_ROOT = Path(__file__).resolve().parents[1] / '数据集 (Datasets)' / 'pointed_data'
+DATA_ROOT = Path(os.environ.get('UNET_MOE_DATA_ROOT',
+    str(Path(__file__).resolve().parents[1] / '数据集 (Datasets)' / 'pointed_data')))
 
 
 @pytest.mark.skipif(not DATA_ROOT.exists(), reason='Local datasets not installed')

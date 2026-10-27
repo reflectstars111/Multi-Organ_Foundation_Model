@@ -1,0 +1,1437 @@
+{
+  "schema": "medical_moe_optimization_evidence_v1",
+  "observed_at_utc": "2026-10-09T14:02:35.522931+00:00",
+  "observed_at_asia_shanghai": "2026-10-09T22:02:35.522931+08:00",
+  "measurement_policy": {
+    "read_only_existing_artifacts": true,
+    "new_test_evaluation_performed": false,
+    "checkpoints_loaded": false,
+    "gpu_used": false,
+    "metric_units": "fractions in [0,1]; percentage = value * 100",
+    "warnings": [
+      "Q01 values are validation metrics, seed 42 only; do not compare numerically as test gains against earlier fair80 test values.",
+      "Task-ID runs are incomplete; interim best metrics are not completed 80-epoch outcomes.",
+      "Q01 test remains deferred until all 27 training/validation selections complete.",
+      "The controller and metrics are read separately while training continues; timestamps identify each snapshot."
+    ]
+  },
+  "q01": {
+    "root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007",
+    "protocol_sha256": "80bb6228ed72d1400be050cc60adda2a2dbea58db1f988913a8a2d6d72f553a5",
+    "guardrail_definition": {
+      "minimum_positive_dice": 0.1,
+      "minimum_vessels_positive_dice": 0.2,
+      "minimum_abdomen_macro_positive_dice": 0.4,
+      "maximum_positive_zero_overlap_rate": 0.5,
+      "maximum_empty_false_positive_area_fraction": 0.02,
+      "require_all_five_organs": true
+    },
+    "config": {
+      "size": 512,
+      "base": 24,
+      "epochs": 80,
+      "batch_size": 16,
+      "micro_batch_size": 4,
+      "quota_per_domain": 500,
+      "workers": 0,
+      "lr": 0.0001,
+      "weight_decay": 0.0001,
+      "experts": 9,
+      "top_k": 1,
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "models": [
+        "shared",
+        "region",
+        "task_id"
+      ],
+      "arms": [
+        "image_mean",
+        "organ_exposure",
+        "organ_exposure_fg_bg"
+      ],
+      "split_seed": 42,
+      "split_policy": "trainmore_v6",
+      "abdomen_split": "ct7_2",
+      "task_ids": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        6,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        16,
+        18,
+        20
+      ],
+      "dtype": "float32",
+      "gradient_clip_norm": 5.0,
+      "lr_schedule": "constant",
+      "augmentation": "none",
+      "auxiliary_loss_weights": 0.0,
+      "threshold": 0.5,
+      "optimizer": "AdamW",
+      "optimizer_betas": [
+        0.9,
+        0.999
+      ],
+      "optimizer_eps": 1e-08,
+      "primary_selection": "best_validation_macro_positive_dice",
+      "diagnostic_epochs": [
+        0,
+        1,
+        10,
+        20,
+        40,
+        60,
+        80
+      ],
+      "data_root": "/ssd1/data/Multi-Organ_Foundation_Model/pointed_data"
+    },
+    "controller_snapshot": {
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/controller_status.json",
+      "mtime_asia_shanghai": "2026-10-09T22:02:25.303018+08:00",
+      "sha256": "eb387e30036b95556a0ff76c5f9c594da4be78e52cabe86c300d5a37f28fbf48",
+      "updated_at_utc": "2026-10-09T14:02:25.302926+00:00",
+      "updated_at_asia_shanghai": "2026-10-09T22:02:25.302926+08:00",
+      "state": "training",
+      "completed": 6,
+      "running": 2,
+      "pending": 19,
+      "jobs": [
+        {
+          "kind": "shared",
+          "seed": 42,
+          "arm": "image_mean",
+          "train_state": "complete",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu0.log",
+          "free_mib_at_admission": 36738
+        },
+        {
+          "kind": "shared",
+          "seed": 42,
+          "arm": "organ_exposure",
+          "train_state": "complete",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 38116
+        },
+        {
+          "kind": "shared",
+          "seed": 42,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "complete",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 37494
+        },
+        {
+          "kind": "region",
+          "seed": 42,
+          "arm": "image_mean",
+          "train_state": "complete",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu0.log",
+          "free_mib_at_admission": 37116
+        },
+        {
+          "kind": "region",
+          "seed": 42,
+          "arm": "organ_exposure",
+          "train_state": "complete",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 33006
+        },
+        {
+          "kind": "region",
+          "seed": 42,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "complete",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu0.log",
+          "free_mib_at_admission": 27496
+        },
+        {
+          "kind": "task_id",
+          "seed": 42,
+          "arm": "image_mean",
+          "train_state": "running",
+          "test_state": "pending",
+          "pid": 3099145,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 42923
+        },
+        {
+          "kind": "task_id",
+          "seed": 42,
+          "arm": "organ_exposure",
+          "train_state": "running",
+          "test_state": "pending",
+          "pid": 3182870,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu0.log",
+          "free_mib_at_admission": 48115
+        },
+        {
+          "kind": "task_id",
+          "seed": 42,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "shared",
+          "seed": 43,
+          "arm": "image_mean",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "shared",
+          "seed": 43,
+          "arm": "organ_exposure",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "shared",
+          "seed": 43,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "region",
+          "seed": 43,
+          "arm": "image_mean",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "region",
+          "seed": 43,
+          "arm": "organ_exposure",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "region",
+          "seed": 43,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "task_id",
+          "seed": 43,
+          "arm": "image_mean",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "task_id",
+          "seed": 43,
+          "arm": "organ_exposure",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "task_id",
+          "seed": 43,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "shared",
+          "seed": 44,
+          "arm": "image_mean",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "shared",
+          "seed": 44,
+          "arm": "organ_exposure",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "shared",
+          "seed": 44,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "region",
+          "seed": 44,
+          "arm": "image_mean",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "region",
+          "seed": 44,
+          "arm": "organ_exposure",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "region",
+          "seed": 44,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "task_id",
+          "seed": 44,
+          "arm": "image_mean",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "task_id",
+          "seed": 44,
+          "arm": "organ_exposure",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "task_id",
+          "seed": 44,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "pending",
+          "test_state": "pending",
+          "pid": null,
+          "gpu": null
+        }
+      ]
+    },
+    "runs": [
+      {
+        "kind": "region",
+        "arm": "image_mean",
+        "seed": 42,
+        "train_state_in_controller": "complete",
+        "test_state_in_controller": "pending",
+        "metrics_source": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/image_mean/region/seed_42/metrics.jsonl",
+          "mtime_asia_shanghai": "2026-10-09T02:02:34.297713+08:00",
+          "sha256": "e17e8e472a8d0d47641e92c0e0cf4bc8e4f103c7756e7c0cddf4f9f27424cd2a"
+        },
+        "epochs_completed_in_metrics": 80,
+        "primary_best": {
+          "epoch": 46,
+          "macro_positive_dice": 0.7301547657131906,
+          "abdomen_macro_positive_dice": 0.4820303484285107,
+          "guardrail_passed": false,
+          "abdomen": {
+            "abdomen_liver": {
+              "positive_dice": 0.6562791540449404,
+              "empty_false_positive_rate": 0.43902439024390244,
+              "empty_mean_false_positive_area_fraction": 0.004040466354109982,
+              "positive_zero_overlap_rate": 0.13043478260869565,
+              "positive_miss_rate": 0.06956521739130435,
+              "samples": 156,
+              "positive_samples": 115,
+              "empty_samples": 41
+            },
+            "abdomen_kidney": {
+              "positive_dice": 0.49090398303815164,
+              "empty_false_positive_rate": 0.9468085106382979,
+              "empty_mean_false_positive_area_fraction": 0.02112147117704346,
+              "positive_zero_overlap_rate": 0.12903225806451613,
+              "positive_miss_rate": 0.016129032258064516,
+              "samples": 156,
+              "positive_samples": 62,
+              "empty_samples": 94
+            },
+            "abdomen_vessels": {
+              "positive_dice": 0.2584601510793735,
+              "empty_false_positive_rate": 0.20512820512820512,
+              "empty_mean_false_positive_area_fraction": 0.0020097809619693085,
+              "positive_zero_overlap_rate": 0.5897435897435898,
+              "positive_miss_rate": 0.3076923076923077,
+              "samples": 156,
+              "positive_samples": 39,
+              "empty_samples": 117
+            },
+            "abdomen_gallbladder": {
+              "positive_dice": 0.5836500056087971,
+              "empty_false_positive_rate": 0.017241379310344827,
+              "empty_mean_false_positive_area_fraction": 0.00019901237231958294,
+              "positive_zero_overlap_rate": 0.325,
+              "positive_miss_rate": 0.325,
+              "samples": 156,
+              "positive_samples": 40,
+              "empty_samples": 116
+            },
+            "abdomen_spleen": {
+              "positive_dice": 0.42085844837129116,
+              "empty_false_positive_rate": 0.608,
+              "empty_mean_false_positive_area_fraction": 0.05675552333346054,
+              "positive_zero_overlap_rate": 0.1935483870967742,
+              "positive_miss_rate": 0.0,
+              "samples": 156,
+              "positive_samples": 31,
+              "empty_samples": 125
+            }
+          },
+          "abdomen_macro_empty_false_positive_rate": 0.44324049706415003,
+          "abdomen_macro_empty_false_positive_area_fraction": 0.016825250839780575,
+          "non_abdomen_macro_positive_dice": 0.8429385917516814
+        },
+        "guardrail_best": null,
+        "last": {
+          "epoch": 80,
+          "macro_positive_dice": 0.6741783599400576,
+          "abdomen_macro_positive_dice": 0.3256096559710323,
+          "guardrail_passed": false,
+          "abdomen": {
+            "abdomen_liver": {
+              "positive_dice": 0.7779271556145471,
+              "empty_false_positive_rate": 1.0,
+              "empty_mean_false_positive_area_fraction": 0.08801103623004682,
+              "positive_zero_overlap_rate": 0.034782608695652174,
+              "positive_miss_rate": 0.0,
+              "samples": 156,
+              "positive_samples": 115,
+              "empty_samples": 41
+            },
+            "abdomen_kidney": {
+              "positive_dice": 0.28373180416923377,
+              "empty_false_positive_rate": 0.11702127659574468,
+              "empty_mean_false_positive_area_fraction": 0.0013565715928005038,
+              "positive_zero_overlap_rate": 0.3870967741935484,
+              "positive_miss_rate": 0.2903225806451613,
+              "samples": 156,
+              "positive_samples": 62,
+              "empty_samples": 94
+            },
+            "abdomen_vessels": {
+              "positive_dice": 0.08610895658150697,
+              "empty_false_positive_rate": 0.0,
+              "empty_mean_false_positive_area_fraction": 0.0,
+              "positive_zero_overlap_rate": 0.8461538461538461,
+              "positive_miss_rate": 0.8461538461538461,
+              "samples": 156,
+              "positive_samples": 39,
+              "empty_samples": 117
+            },
+            "abdomen_gallbladder": {
+              "positive_dice": 0.4802803634898737,
+              "empty_false_positive_rate": 0.008620689655172414,
+              "empty_mean_false_positive_area_fraction": 7.59865421583862e-05,
+              "positive_zero_overlap_rate": 0.325,
+              "positive_miss_rate": 0.325,
+              "samples": 156,
+              "positive_samples": 40,
+              "empty_samples": 116
+            },
+            "abdomen_spleen": {
+              "positive_dice": 0.0,
+              "empty_false_positive_rate": 0.0,
+              "empty_mean_false_positive_area_fraction": 0.0,
+              "positive_zero_overlap_rate": 1.0,
+              "positive_miss_rate": 0.967741935483871,
+              "samples": 156,
+              "positive_samples": 31,
+              "empty_samples": 125
+            }
+          },
+          "abdomen_macro_empty_false_positive_rate": 0.2251283932501834,
+          "abdomen_macro_empty_false_positive_area_fraction": 0.01788871887300114,
+          "non_abdomen_macro_positive_dice": 0.8326186799259783
+        },
+        "run_summary_source": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/image_mean/region/seed_42/run_summary.json",
+          "mtime_asia_shanghai": "2026-10-09T02:02:34.320472+08:00"
+        },
+        "run_summary": {
+          "protocol_sha256": "80bb6228ed72d1400be050cc60adda2a2dbea58db1f988913a8a2d6d72f553a5",
+          "kind": "region",
+          "seed": 42,
+          "arm": "image_mean",
+          "initialization_sha256": "a45c9be4e6a046a690a4bd06bac335cddfe801d7275e9fa5c6630f5cc2a7c907",
+          "epochs_completed": 80,
+          "best_epoch": 46,
+          "guardrail_epoch": null,
+          "guardrail_selected": false,
+          "best_validation_macro_positive_dice": 0.7301547657131906,
+          "elapsed_seconds": 79589.46736432984,
+          "test_evaluated": false,
+          "parameter_count": 13311644
+        }
+      },
+      {
+        "kind": "region",
+        "arm": "organ_exposure",
+        "seed": 42,
+        "train_state_in_controller": "complete",
+        "test_state_in_controller": "pending",
+        "metrics_source": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/organ_exposure/region/seed_42/metrics.jsonl",
+          "mtime_asia_shanghai": "2026-10-09T16:10:49.378456+08:00",
+          "sha256": "0834222993b7aed94719b049d9fa3244ffbda4d0fdde70deb533ad0a6b42e312"
+        },
+        "epochs_completed_in_metrics": 80,
+        "primary_best": {
+          "epoch": 63,
+          "macro_positive_dice": 0.7573365166522859,
+          "abdomen_macro_positive_dice": 0.546962502469823,
+          "guardrail_passed": true,
+          "abdomen": {
+            "abdomen_liver": {
+              "positive_dice": 0.7642519451880261,
+              "empty_false_positive_rate": 0.8536585365853658,
+              "empty_mean_false_positive_area_fraction": 0.014579050281669297,
+              "positive_zero_overlap_rate": 0.06956521739130435,
+              "positive_miss_rate": 0.008695652173913044,
+              "samples": 156,
+              "positive_samples": 115,
+              "empty_samples": 41
+            },
+            "abdomen_kidney": {
+              "positive_dice": 0.38645154574225027,
+              "empty_false_positive_rate": 0.3829787234042553,
+              "empty_mean_false_positive_area_fraction": 0.006149543794593966,
+              "positive_zero_overlap_rate": 0.3387096774193548,
+              "positive_miss_rate": 0.1935483870967742,
+              "samples": 156,
+              "positive_samples": 62,
+              "empty_samples": 94
+            },
+            "abdomen_vessels": {
+              "positive_dice": 0.3609018350640933,
+              "empty_false_positive_rate": 0.5555555555555556,
+              "empty_mean_false_positive_area_fraction": 0.00845438633052629,
+              "positive_zero_overlap_rate": 0.28205128205128205,
+              "positive_miss_rate": 0.07692307692307693,
+              "samples": 156,
+              "positive_samples": 39,
+              "empty_samples": 117
+            },
+            "abdomen_gallbladder": {
+              "positive_dice": 0.7601763471961022,
+              "empty_false_positive_rate": 0.11206896551724138,
+              "empty_mean_false_positive_area_fraction": 0.0012194500735993336,
+              "positive_zero_overlap_rate": 0.1,
+              "positive_miss_rate": 0.075,
+              "samples": 156,
+              "positive_samples": 40,
+              "empty_samples": 116
+            },
+            "abdomen_spleen": {
+              "positive_dice": 0.4630308391586427,
+              "empty_false_positive_rate": 0.144,
+              "empty_mean_false_positive_area_fraction": 0.008424575767652044,
+              "positive_zero_overlap_rate": 0.22580645161290322,
+              "positive_miss_rate": 0.16129032258064516,
+              "samples": 156,
+              "positive_samples": 31,
+              "empty_samples": 125
+            }
+          },
+          "abdomen_macro_empty_false_positive_rate": 0.40965235621248364,
+          "abdomen_macro_empty_false_positive_area_fraction": 0.0077654012496081865,
+          "non_abdomen_macro_positive_dice": 0.8529610685534054
+        },
+        "guardrail_best": {
+          "epoch": 63,
+          "macro_positive_dice": 0.7573365166522859,
+          "abdomen_macro_positive_dice": 0.546962502469823,
+          "guardrail_passed": true,
+          "abdomen": {
+            "abdomen_liver": {
+              "positive_dice": 0.7642519451880261,
+              "empty_false_positive_rate": 0.8536585365853658,
+              "empty_mean_false_positive_area_fraction": 0.014579050281669297,
+              "positive_zero_overlap_rate": 0.06956521739130435,
+              "positive_miss_rate": 0.008695652173913044,
+              "samples": 156,
+              "positive_samples": 115,
+              "empty_samples": 41
+            },
+            "abdomen_kidney": {
+              "positive_dice": 0.38645154574225027,
+              "empty_false_positive_rate": 0.3829787234042553,
+              "empty_mean_false_positive_area_fraction": 0.006149543794593966,
+              "positive_zero_overlap_rate": 0.3387096774193548,
+              "positive_miss_rate": 0.1935483870967742,
+              "samples": 156,
+              "positive_samples": 62,
+              "empty_samples": 94
+            },
+            "abdomen_vessels": {
+              "positive_dice": 0.3609018350640933,
+              "empty_false_positive_rate": 0.5555555555555556,
+              "empty_mean_false_positive_area_fraction": 0.00845438633052629,
+              "positive_zero_overlap_rate": 0.28205128205128205,
+              "positive_miss_rate": 0.07692307692307693,
+              "samples": 156,
+              "positive_samples": 39,
+              "empty_samples": 117
+            },
+            "abdomen_gallbladder": {
+              "positive_dice": 0.7601763471961022,
+              "empty_false_positive_rate": 0.11206896551724138,
+              "empty_mean_false_positive_area_fraction": 0.0012194500735993336,
+              "positive_zero_overlap_rate": 0.1,
+              "positive_miss_rate": 0.075,
+              "samples": 156,
+              "positive_samples": 40,
+              "empty_samples": 116
+            },
+            "abdomen_spleen": {
+              "positive_dice": 0.4630308391586427,
+              "empty_false_positive_rate": 0.144,
+              "empty_mean_false_positive_area_fraction": 0.008424575767652044,
+              "positive_zero_overlap_rate": 0.22580645161290322,
+              "positive_miss_rate": 0.16129032258064516,
+              "samples": 156,
+              "positive_samples": 31,
+              "empty_samples": 125
+            }
+          },
+          "abdomen_macro_empty_false_positive_rate": 0.40965235621248364,
+          "abdomen_macro_empty_false_positive_area_fraction": 0.0077654012496081865,
+          "non_abdomen_macro_positive_dice": 0.8529610685534054
+        },
+        "last": {
+          "epoch": 80,
+          "macro_positive_dice": 0.7130344862198694,
+          "abdomen_macro_positive_dice": 0.41576322831279927,
+          "guardrail_passed": false,
+          "abdomen": {
+            "abdomen_liver": {
+              "positive_dice": 0.7273798162198585,
+              "empty_false_positive_rate": 0.36585365853658536,
+              "empty_mean_false_positive_area_fraction": 0.009979380193259006,
+              "positive_zero_overlap_rate": 0.1565217391304348,
+              "positive_miss_rate": 0.0782608695652174,
+              "samples": 156,
+              "positive_samples": 115,
+              "empty_samples": 41
+            },
+            "abdomen_kidney": {
+              "positive_dice": 0.24052145818789158,
+              "empty_false_positive_rate": 0.26595744680851063,
+              "empty_mean_false_positive_area_fraction": 0.005072950299944225,
+              "positive_zero_overlap_rate": 0.532258064516129,
+              "positive_miss_rate": 0.43548387096774194,
+              "samples": 156,
+              "positive_samples": 62,
+              "empty_samples": 94
+            },
+            "abdomen_vessels": {
+              "positive_dice": 0.2550978137132449,
+              "empty_false_positive_rate": 0.09401709401709402,
+              "empty_mean_false_positive_area_fraction": 0.0006586054588496684,
+              "positive_zero_overlap_rate": 0.6923076923076923,
+              "positive_miss_rate": 0.6410256410256411,
+              "samples": 156,
+              "positive_samples": 39,
+              "empty_samples": 117
+            },
+            "abdomen_gallbladder": {
+              "positive_dice": 0.7234638512134552,
+              "empty_false_positive_rate": 0.02586206896551724,
+              "empty_mean_false_positive_area_fraction": 1.8843910578548465e-05,
+              "positive_zero_overlap_rate": 0.175,
+              "positive_miss_rate": 0.125,
+              "samples": 156,
+              "positive_samples": 40,
+              "empty_samples": 116
+            },
+            "abdomen_spleen": {
+              "positive_dice": 0.13235320222954597,
+              "empty_false_positive_rate": 0.016,
+              "empty_mean_false_positive_area_fraction": 0.0019413351939776178,
+              "positive_zero_overlap_rate": 0.7419354838709677,
+              "positive_miss_rate": 0.7419354838709677,
+              "samples": 156,
+              "positive_samples": 31,
+              "empty_samples": 125
+            }
+          },
+          "abdomen_macro_empty_false_positive_rate": 0.15353805366554146,
+          "abdomen_macro_empty_false_positive_area_fraction": 0.0035342230113218132,
+          "non_abdomen_macro_positive_dice": 0.8481577852685376
+        },
+        "run_summary_source": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/organ_exposure/region/seed_42/run_summary.json",
+          "mtime_asia_shanghai": "2026-10-09T16:10:49.392090+08:00"
+        },
+        "run_summary": {
+          "protocol_sha256": "80bb6228ed72d1400be050cc60adda2a2dbea58db1f988913a8a2d6d72f553a5",
+          "kind": "region",
+          "seed": 42,
+          "arm": "organ_exposure",
+          "initialization_sha256": "a45c9be4e6a046a690a4bd06bac335cddfe801d7275e9fa5c6630f5cc2a7c907",
+          "epochs_completed": 80,
+          "best_epoch": 63,
+          "guardrail_epoch": 63,
+          "guardrail_selected": true,
+          "best_validation_macro_positive_dice": 0.7573365166522859,
+          "elapsed_seconds": 83179.8684487883,
+          "test_evaluated": false,
+          "parameter_count": 13311644
+        }
+      },
+      {
+        "kind": "region",
+        "arm": "organ_exposure_fg_bg",
+        "seed": 42,
+        "train_state_in_controller": "complete",
+        "test_state_in_controller": "pending",
+        "metrics_source": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/organ_exposure_fg_bg/region/seed_42/metrics.jsonl",
+          "mtime_asia_shanghai": "2026-10-09T17:46:21.498111+08:00",
+          "sha256": "0bda92b2608ab8e378114436671767fcaea0db52815e13453a31bc7c88823cc9"
+        },
+        "epochs_completed_in_metrics": 80,
+        "primary_best": {
+          "epoch": 55,
+          "macro_positive_dice": 0.7553298993159437,
+          "abdomen_macro_positive_dice": 0.5553913091016446,
+          "guardrail_passed": true,
+          "abdomen": {
+            "abdomen_liver": {
+              "positive_dice": 0.7601656774301891,
+              "empty_false_positive_rate": 0.43902439024390244,
+              "empty_mean_false_positive_area_fraction": 0.007030464637676264,
+              "positive_zero_overlap_rate": 0.09565217391304348,
+              "positive_miss_rate": 0.034782608695652174,
+              "samples": 156,
+              "positive_samples": 115,
+              "empty_samples": 41
+            },
+            "abdomen_kidney": {
+              "positive_dice": 0.4550313849157969,
+              "empty_false_positive_rate": 0.44680851063829785,
+              "empty_mean_false_positive_area_fraction": 0.011072936614187977,
+              "positive_zero_overlap_rate": 0.25806451612903225,
+              "positive_miss_rate": 0.16129032258064516,
+              "samples": 156,
+              "positive_samples": 62,
+              "empty_samples": 94
+            },
+            "abdomen_vessels": {
+              "positive_dice": 0.3751057428427232,
+              "empty_false_positive_rate": 0.23931623931623933,
+              "empty_mean_false_positive_area_fraction": 0.0021569142414718024,
+              "positive_zero_overlap_rate": 0.46153846153846156,
+              "positive_miss_rate": 0.3333333333333333,
+              "samples": 156,
+              "positive_samples": 39,
+              "empty_samples": 117
+            },
+            "abdomen_gallbladder": {
+              "positive_dice": 0.7308885335922242,
+              "empty_false_positive_rate": 0.06896551724137931,
+              "empty_mean_false_positive_area_fraction": 0.0006237757332160907,
+              "positive_zero_overlap_rate": 0.15,
+              "positive_miss_rate": 0.125,
+              "samples": 156,
+              "positive_samples": 40,
+              "empty_samples": 116
+            },
+            "abdomen_spleen": {
+              "positive_dice": 0.4557652067272894,
+              "empty_false_positive_rate": 0.112,
+              "empty_mean_false_positive_area_fraction": 0.008823509531259368,
+              "positive_zero_overlap_rate": 0.22580645161290322,
+              "positive_miss_rate": 0.1935483870967742,
+              "samples": 156,
+              "positive_samples": 31,
+              "empty_samples": 125
+            }
+          },
+          "abdomen_macro_empty_false_positive_rate": 0.26122293148796377,
+          "abdomen_macro_empty_false_positive_area_fraction": 0.0059415201515623005,
+          "non_abdomen_macro_positive_dice": 0.8462110766860795
+        },
+        "guardrail_best": {
+          "epoch": 55,
+          "macro_positive_dice": 0.7553298993159437,
+          "abdomen_macro_positive_dice": 0.5553913091016446,
+          "guardrail_passed": true,
+          "abdomen": {
+            "abdomen_liver": {
+              "positive_dice": 0.7601656774301891,
+              "empty_false_positive_rate": 0.43902439024390244,
+              "empty_mean_false_positive_area_fraction": 0.007030464637676264,
+              "positive_zero_overlap_rate": 0.09565217391304348,
+              "positive_miss_rate": 0.034782608695652174,
+              "samples": 156,
+              "positive_samples": 115,
+              "empty_samples": 41
+            },
+            "abdomen_kidney": {
+              "positive_dice": 0.4550313849157969,
+              "empty_false_positive_rate": 0.44680851063829785,
+              "empty_mean_false_positive_area_fraction": 0.011072936614187977,
+              "positive_zero_overlap_rate": 0.25806451612903225,
+              "positive_miss_rate": 0.16129032258064516,
+              "samples": 156,
+              "positive_samples": 62,
+              "empty_samples": 94
+            },
+            "abdomen_vessels": {
+              "positive_dice": 0.3751057428427232,
+              "empty_false_positive_rate": 0.23931623931623933,
+              "empty_mean_false_positive_area_fraction": 0.0021569142414718024,
+              "positive_zero_overlap_rate": 0.46153846153846156,
+              "positive_miss_rate": 0.3333333333333333,
+              "samples": 156,
+              "positive_samples": 39,
+              "empty_samples": 117
+            },
+            "abdomen_gallbladder": {
+              "positive_dice": 0.7308885335922242,
+              "empty_false_positive_rate": 0.06896551724137931,
+              "empty_mean_false_positive_area_fraction": 0.0006237757332160907,
+              "positive_zero_overlap_rate": 0.15,
+              "positive_miss_rate": 0.125,
+              "samples": 156,
+              "positive_samples": 40,
+              "empty_samples": 116
+            },
+            "abdomen_spleen": {
+              "positive_dice": 0.4557652067272894,
+              "empty_false_positive_rate": 0.112,
+              "empty_mean_false_positive_area_fraction": 0.008823509531259368,
+              "positive_zero_overlap_rate": 0.22580645161290322,
+              "positive_miss_rate": 0.1935483870967742,
+              "samples": 156,
+              "positive_samples": 31,
+              "empty_samples": 125
+            }
+          },
+          "abdomen_macro_empty_false_positive_rate": 0.26122293148796377,
+          "abdomen_macro_empty_false_positive_area_fraction": 0.0059415201515623005,
+          "non_abdomen_macro_positive_dice": 0.8462110766860795
+        },
+        "last": {
+          "epoch": 80,
+          "macro_positive_dice": 0.7382589115992899,
+          "abdomen_macro_positive_dice": 0.5009490408932361,
+          "guardrail_passed": false,
+          "abdomen": {
+            "abdomen_liver": {
+              "positive_dice": 0.746810843921064,
+              "empty_false_positive_rate": 0.1951219512195122,
+              "empty_mean_false_positive_area_fraction": 0.0068181373995218186,
+              "positive_zero_overlap_rate": 0.12173913043478261,
+              "positive_miss_rate": 0.0782608695652174,
+              "samples": 156,
+              "positive_samples": 115,
+              "empty_samples": 41
+            },
+            "abdomen_kidney": {
+              "positive_dice": 0.4351735209265532,
+              "empty_false_positive_rate": 0.2765957446808511,
+              "empty_mean_false_positive_area_fraction": 0.007284997639207046,
+              "positive_zero_overlap_rate": 0.27419354838709675,
+              "positive_miss_rate": 0.1935483870967742,
+              "samples": 156,
+              "positive_samples": 62,
+              "empty_samples": 94
+            },
+            "abdomen_vessels": {
+              "positive_dice": 0.2885160740369406,
+              "empty_false_positive_rate": 0.13675213675213677,
+              "empty_mean_false_positive_area_fraction": 0.0011629026777651194,
+              "positive_zero_overlap_rate": 0.6153846153846154,
+              "positive_miss_rate": 0.48717948717948717,
+              "samples": 156,
+              "positive_samples": 39,
+              "empty_samples": 117
+            },
+            "abdomen_gallbladder": {
+              "positive_dice": 0.6354199171066284,
+              "empty_false_positive_rate": 0.0,
+              "empty_mean_false_positive_area_fraction": 0.0,
+              "positive_zero_overlap_rate": 0.3,
+              "positive_miss_rate": 0.275,
+              "samples": 156,
+              "positive_samples": 40,
+              "empty_samples": 116
+            },
+            "abdomen_spleen": {
+              "positive_dice": 0.3988248484749948,
+              "empty_false_positive_rate": 0.152,
+              "empty_mean_false_positive_area_fraction": 0.008075181658117514,
+              "positive_zero_overlap_rate": 0.2903225806451613,
+              "positive_miss_rate": 0.22580645161290322,
+              "samples": 156,
+              "positive_samples": 31,
+              "empty_samples": 125
+            }
+          },
+          "abdomen_macro_empty_false_positive_rate": 0.1520939665305,
+          "abdomen_macro_empty_false_positive_area_fraction": 0.004668243874922299,
+          "non_abdomen_macro_positive_dice": 0.8461270346474963
+        },
+        "run_summary_source": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/organ_exposure_fg_bg/region/seed_42/run_summary.json",
+          "mtime_asia_shanghai": "2026-10-09T17:46:21.510566+08:00"
+        },
+        "run_summary": {
+          "protocol_sha256": "80bb6228ed72d1400be050cc60adda2a2dbea58db1f988913a8a2d6d72f553a5",
+          "kind": "region",
+          "seed": 42,
+          "arm": "organ_exposure_fg_bg",
+          "initialization_sha256": "a45c9be4e6a046a690a4bd06bac335cddfe801d7275e9fa5c6630f5cc2a7c907",
+          "epochs_completed": 80,
+          "best_epoch": 55,
+          "guardrail_epoch": 55,
+          "guardrail_selected": true,
+          "best_validation_macro_positive_dice": 0.7553298993159437,
+          "elapsed_seconds": 56522.26750384737,
+          "test_evaluated": false,
+          "parameter_count": 13311644
+        }
+      },
+      {
+        "kind": "task_id",
+        "arm": "image_mean",
+        "seed": 42,
+        "train_state_in_controller": "running",
+        "test_state_in_controller": "pending",
+        "metrics_source": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/image_mean/task_id/seed_42/metrics.jsonl",
+          "mtime_asia_shanghai": "2026-10-09T22:01:35.130115+08:00",
+          "sha256": "ee7a2788f09b7852c47fda20979fc527bb7df120674d64196b260cee1b5fab2a"
+        },
+        "epochs_completed_in_metrics": 68,
+        "primary_best": {
+          "epoch": 15,
+          "macro_positive_dice": 0.7182635714967106,
+          "abdomen_macro_positive_dice": 0.49189240178111,
+          "guardrail_passed": false,
+          "abdomen": {
+            "abdomen_liver": {
+              "positive_dice": 0.6890635626066638,
+              "empty_false_positive_rate": 0.975609756097561,
+              "empty_mean_false_positive_area_fraction": 0.07457924439423515,
+              "positive_zero_overlap_rate": 0.06086956521739131,
+              "positive_miss_rate": 0.0,
+              "samples": 156,
+              "positive_samples": 115,
+              "empty_samples": 41
+            },
+            "abdomen_kidney": {
+              "positive_dice": 0.43055356652926535,
+              "empty_false_positive_rate": 1.0,
+              "empty_mean_false_positive_area_fraction": 0.05021599718769304,
+              "positive_zero_overlap_rate": 0.11290322580645161,
+              "positive_miss_rate": 0.0,
+              "samples": 156,
+              "positive_samples": 62,
+              "empty_samples": 94
+            },
+            "abdomen_vessels": {
+              "positive_dice": 0.2979654096640073,
+              "empty_false_positive_rate": 0.48717948717948717,
+              "empty_mean_false_positive_area_fraction": 0.002248511463606667,
+              "positive_zero_overlap_rate": 0.5641025641025641,
+              "positive_miss_rate": 0.2564102564102564,
+              "samples": 156,
+              "positive_samples": 39,
+              "empty_samples": 117
+            },
+            "abdomen_gallbladder": {
+              "positive_dice": 0.6941263798624278,
+              "empty_false_positive_rate": 0.7241379310344828,
+              "empty_mean_false_positive_area_fraction": 0.0048775183406230905,
+              "positive_zero_overlap_rate": 0.125,
+              "positive_miss_rate": 0.0,
+              "samples": 156,
+              "positive_samples": 40,
+              "empty_samples": 116
+            },
+            "abdomen_spleen": {
+              "positive_dice": 0.34775309024318574,
+              "empty_false_positive_rate": 0.872,
+              "empty_mean_false_positive_area_fraction": 0.02823516072586934,
+              "positive_zero_overlap_rate": 0.25806451612903225,
+              "positive_miss_rate": 0.03225806451612903,
+              "samples": 156,
+              "positive_samples": 31,
+              "empty_samples": 125
+            }
+          },
+          "abdomen_macro_empty_false_positive_rate": 0.8117854348623061,
+          "abdomen_macro_empty_false_positive_area_fraction": 0.03203128642240546,
+          "non_abdomen_macro_positive_dice": 0.8211595577310743
+        },
+        "guardrail_best": null,
+        "last": {
+          "epoch": 68,
+          "macro_positive_dice": 0.6982694486416972,
+          "abdomen_macro_positive_dice": 0.3716357522472039,
+          "guardrail_passed": false,
+          "abdomen": {
+            "abdomen_liver": {
+              "positive_dice": 0.7010158668429105,
+              "empty_false_positive_rate": 0.43902439024390244,
+              "empty_mean_false_positive_area_fraction": 0.020196082941374417,
+              "positive_zero_overlap_rate": 0.1391304347826087,
+              "positive_miss_rate": 0.09565217391304348,
+              "samples": 156,
+              "positive_samples": 115,
+              "empty_samples": 41
+            },
+            "abdomen_kidney": {
+              "positive_dice": 0.4005463024605565,
+              "empty_false_positive_rate": 0.3404255319148936,
+              "empty_mean_false_positive_area_fraction": 0.01365571717248101,
+              "positive_zero_overlap_rate": 0.3225806451612903,
+              "positive_miss_rate": 0.3064516129032258,
+              "samples": 156,
+              "positive_samples": 62,
+              "empty_samples": 94
+            },
+            "abdomen_vessels": {
+              "positive_dice": 0.0,
+              "empty_false_positive_rate": 0.0,
+              "empty_mean_false_positive_area_fraction": 0.0,
+              "positive_zero_overlap_rate": 1.0,
+              "positive_miss_rate": 1.0,
+              "samples": 156,
+              "positive_samples": 39,
+              "empty_samples": 117
+            },
+            "abdomen_gallbladder": {
+              "positive_dice": 0.5065882412716747,
+              "empty_false_positive_rate": 0.008620689655172414,
+              "empty_mean_false_positive_area_fraction": 1.7199180228799847e-05,
+              "positive_zero_overlap_rate": 0.425,
+              "positive_miss_rate": 0.425,
+              "samples": 156,
+              "positive_samples": 40,
+              "empty_samples": 116
+            },
+            "abdomen_spleen": {
+              "positive_dice": 0.25002835066087786,
+              "empty_false_positive_rate": 0.048,
+              "empty_mean_false_positive_area_fraction": 0.004007740570948874,
+              "positive_zero_overlap_rate": 0.6451612903225806,
+              "positive_miss_rate": 0.6451612903225806,
+              "samples": 156,
+              "positive_samples": 31,
+              "empty_samples": 125
+            }
+          },
+          "abdomen_macro_empty_false_positive_rate": 0.1672141223627937,
+          "abdomen_macro_empty_false_positive_area_fraction": 0.00757534797300662,
+          "non_abdomen_macro_positive_dice": 0.8467393106391939
+        },
+        "run_summary_source": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/image_mean/task_id/seed_42/run_summary.json",
+          "mtime_asia_shanghai": "2026-10-09T22:01:35.136832+08:00"
+        },
+        "run_summary": {
+          "protocol_sha256": "80bb6228ed72d1400be050cc60adda2a2dbea58db1f988913a8a2d6d72f553a5",
+          "kind": "task_id",
+          "seed": 42,
+          "arm": "image_mean",
+          "initialization_sha256": "6a3a5931b83a366889382b7d4c274e9e12db8d6092ef9e1296a75ba67e773a8e",
+          "epochs_completed": 68,
+          "best_epoch": 15,
+          "guardrail_epoch": null,
+          "guardrail_selected": false,
+          "best_validation_macro_positive_dice": 0.7182635714967106,
+          "elapsed_seconds": 21004.600238868035,
+          "test_evaluated": false,
+          "parameter_count": 13257949
+        }
+      },
+      {
+        "kind": "task_id",
+        "arm": "organ_exposure",
+        "seed": 42,
+        "train_state_in_controller": "running",
+        "test_state_in_controller": "pending",
+        "metrics_source": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/organ_exposure/task_id/seed_42/metrics.jsonl",
+          "mtime_asia_shanghai": "2026-10-09T21:58:23.120159+08:00",
+          "sha256": "f88794dd3d705f98800c7bcb52a25998c543843d6304dd361f33fcb207cac5c2"
+        },
+        "epochs_completed_in_metrics": 55,
+        "primary_best": {
+          "epoch": 51,
+          "macro_positive_dice": 0.7488845241003456,
+          "abdomen_macro_positive_dice": 0.5370800343625095,
+          "guardrail_passed": false,
+          "abdomen": {
+            "abdomen_liver": {
+              "positive_dice": 0.7188447202800055,
+              "empty_false_positive_rate": 0.024390243902439025,
+              "empty_mean_false_positive_area_fraction": 0.0034380526308302076,
+              "positive_zero_overlap_rate": 0.19130434782608696,
+              "positive_miss_rate": 0.17391304347826086,
+              "samples": 156,
+              "positive_samples": 115,
+              "empty_samples": 41
+            },
+            "abdomen_kidney": {
+              "positive_dice": 0.4530941513700283,
+              "empty_false_positive_rate": 0.23404255319148937,
+              "empty_mean_false_positive_area_fraction": 0.008050878074641419,
+              "positive_zero_overlap_rate": 0.3064516129032258,
+              "positive_miss_rate": 0.24193548387096775,
+              "samples": 156,
+              "positive_samples": 62,
+              "empty_samples": 94
+            },
+            "abdomen_vessels": {
+              "positive_dice": 0.37633523956323284,
+              "empty_false_positive_rate": 0.15384615384615385,
+              "empty_mean_false_positive_area_fraction": 0.00126572824706911,
+              "positive_zero_overlap_rate": 0.5128205128205128,
+              "positive_miss_rate": 0.38461538461538464,
+              "samples": 156,
+              "positive_samples": 39,
+              "empty_samples": 117
+            },
+            "abdomen_gallbladder": {
+              "positive_dice": 0.7632674604654313,
+              "empty_false_positive_rate": 0.008620689655172414,
+              "empty_mean_false_positive_area_fraction": 7.772525709954905e-05,
+              "positive_zero_overlap_rate": 0.175,
+              "positive_miss_rate": 0.15,
+              "samples": 156,
+              "positive_samples": 40,
+              "empty_samples": 116
+            },
+            "abdomen_spleen": {
+              "positive_dice": 0.37385860013384975,
+              "empty_false_positive_rate": 0.08,
+              "empty_mean_false_positive_area_fraction": 0.003952139286668229,
+              "positive_zero_overlap_rate": 0.4838709677419355,
+              "positive_miss_rate": 0.45161290322580644,
+              "samples": 156,
+              "positive_samples": 31,
+              "empty_samples": 125
+            }
+          },
+          "abdomen_macro_empty_false_positive_rate": 0.10017992811905094,
+          "abdomen_macro_empty_false_positive_area_fraction": 0.003356904699261703,
+          "non_abdomen_macro_positive_dice": 0.8451592921629981
+        },
+        "guardrail_best": {
+          "epoch": 45,
+          "macro_positive_dice": 0.7486368915171989,
+          "abdomen_macro_positive_dice": 0.5294977902472411,
+          "guardrail_passed": true,
+          "abdomen": {
+            "abdomen_liver": {
+              "positive_dice": 0.7170264831055766,
+              "empty_false_positive_rate": 0.04878048780487805,
+              "empty_mean_false_positive_area_fraction": 0.0021928072253483357,
+              "positive_zero_overlap_rate": 0.19130434782608696,
+              "positive_miss_rate": 0.1391304347826087,
+              "samples": 156,
+              "positive_samples": 115,
+              "empty_samples": 41
+            },
+            "abdomen_kidney": {
+              "positive_dice": 0.4186356409390423,
+              "empty_false_positive_rate": 0.40425531914893614,
+              "empty_mean_false_positive_area_fraction": 0.014045935197016322,
+              "positive_zero_overlap_rate": 0.1935483870967742,
+              "positive_miss_rate": 0.12903225806451613,
+              "samples": 156,
+              "positive_samples": 62,
+              "empty_samples": 94
+            },
+            "abdomen_vessels": {
+              "positive_dice": 0.4081707176489708,
+              "empty_false_positive_rate": 0.3162393162393162,
+              "empty_mean_false_positive_area_fraction": 0.0030878420621619,
+              "positive_zero_overlap_rate": 0.48717948717948717,
+              "positive_miss_rate": 0.28205128205128205,
+              "samples": 156,
+              "positive_samples": 39,
+              "empty_samples": 117
+            },
+            "abdomen_gallbladder": {
+              "positive_dice": 0.7098912969231606,
+              "empty_false_positive_rate": 0.008620689655172414,
+              "empty_mean_false_positive_area_fraction": 0.0003089273519784978,
+              "positive_zero_overlap_rate": 0.225,
+              "positive_miss_rate": 0.2,
+              "samples": 156,
+              "positive_samples": 40,
+              "empty_samples": 116
+            },
+            "abdomen_spleen": {
+              "positive_dice": 0.3937648126194554,
+              "empty_false_positive_rate": 0.072,
+              "empty_mean_false_positive_area_fraction": 0.004350549744070559,
+              "positive_zero_overlap_rate": 0.41935483870967744,
+              "positive_miss_rate": 0.3870967741935484,
+              "samples": 156,
+              "positive_samples": 31,
+              "empty_samples": 125
+            }
+          },
+          "abdomen_macro_empty_false_positive_rate": 0.16997916256966056,
+          "abdomen_macro_empty_false_positive_area_fraction": 0.004797212316115123,
+          "non_abdomen_macro_positive_dice": 0.8482455739126341
+        },
+        "last": {
+          "epoch": 55,
+          "macro_positive_dice": 0.7284635631499456,
+          "abdomen_macro_positive_dice": 0.4661370390891362,
+          "guardrail_passed": false,
+          "abdomen": {
+            "abdomen_liver": {
+              "positive_dice": 0.7389191107044968,
+              "empty_false_positive_rate": 0.14634146341463414,
+              "empty_mean_false_positive_area_fraction": 0.006083168725434291,
+              "positive_zero_overlap_rate": 0.14782608695652175,
+              "positive_miss_rate": 0.12173913043478261,
+              "samples": 156,
+              "positive_samples": 115,
+              "empty_samples": 41
+            },
+            "abdomen_kidney": {
+              "positive_dice": 0.39544325396303565,
+              "empty_false_positive_rate": 0.3617021276595745,
+              "empty_mean_false_positive_area_fraction": 0.012252231271187554,
+              "positive_zero_overlap_rate": 0.3387096774193548,
+              "positive_miss_rate": 0.27419354838709675,
+              "samples": 156,
+              "positive_samples": 62,
+              "empty_samples": 94
+            },
+            "abdomen_vessels": {
+              "positive_dice": 0.20330567848988068,
+              "empty_false_positive_rate": 0.05982905982905983,
+              "empty_mean_false_positive_area_fraction": 0.0001686115701455115,
+              "positive_zero_overlap_rate": 0.7435897435897436,
+              "positive_miss_rate": 0.6923076923076923,
+              "samples": 156,
+              "positive_samples": 39,
+              "empty_samples": 117
+            },
+            "abdomen_gallbladder": {
+              "positive_dice": 0.64090144187212,
+              "empty_false_positive_rate": 0.0,
+              "empty_mean_false_positive_area_fraction": 0.0,
+              "positive_zero_overlap_rate": 0.25,
+              "positive_miss_rate": 0.25,
+              "samples": 156,
+              "positive_samples": 40,
+              "empty_samples": 116
+            },
+            "abdomen_spleen": {
+              "positive_dice": 0.3521157104161478,
+              "empty_false_positive_rate": 0.088,
+              "empty_mean_false_positive_area_fraction": 0.0049228722969326625,
+              "positive_zero_overlap_rate": 0.45161290322580644,
+              "positive_miss_rate": 0.45161290322580644,
+              "samples": 156,
+              "positive_samples": 31,
+              "empty_samples": 125
+            }
+          },
+          "abdomen_macro_empty_false_positive_rate": 0.1311745301806537,
+          "abdomen_macro_empty_false_positive_area_fraction": 0.004685376772740004,
+          "non_abdomen_macro_positive_dice": 0.8477028922684952
+        },
+        "run_summary_source": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/organ_exposure/task_id/seed_42/run_summary.json",
+          "mtime_asia_shanghai": "2026-10-09T21:58:23.127419+08:00"
+        },
+        "run_summary": {
+          "protocol_sha256": "80bb6228ed72d1400be050cc60adda2a2dbea58db1f988913a8a2d6d72f553a5",
+          "kind": "task_id",
+          "seed": 42,
+          "arm": "organ_exposure",
+          "initialization_sha256": "6a3a5931b83a366889382b7d4c274e9e12db8d6092ef9e1296a75ba67e773a8e",
+          "epochs_completed": 55,
+          "best_epoch": 51,
+          "guardrail_epoch": 45,
+          "guardrail_selected": true,
+          "best_validation_macro_positive_dice": 0.7488845241003456,
+          "elapsed_seconds": 15091.703278019093,
+          "test_evaluated": false,
+          "parameter_count": 13257949
+        }
+      },
+      {
+        "kind": "task_id",
+        "arm": "organ_exposure_fg_bg",
+        "seed": 42,
+        "train_state_in_controller": "pending",
+        "test_state_in_controller": "pending"
+      }
+    ]
+  },
+  "previous_fair80": {
+    "source": {
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20261001_fix/summary.json",
+      "mtime_asia_shanghai": "2026-10-06T01:52:53.546305+08:00"
+    },
+    "split_label": "test",
+    "runs": [
+      {
+        "kind": "task_id",
+        "seed": 42,
+        "best_epoch": 18,
+        "best_validation_macro_positive_dice": 0.7212330649466904,
+        "test_macro_positive_dice": 0.7119768921450875,
+        "test_abdomen_macro_positive_dice": 0.4460626438049364,
+        "test_vessels_positive_dice": 0.2754608375627073,
+        "test_vessels_empty_false_positive_rate": 0.24647887323943662
+      },
+      {
+        "kind": "region",
+        "seed": 42,
+        "best_epoch": 38,
+        "best_validation_macro_positive_dice": 0.7335720417396913,
+        "test_macro_positive_dice": 0.7109815096556681,
+        "test_abdomen_macro_positive_dice": 0.4269229049164314,
+        "test_vessels_positive_dice": 0.08014163452382539,
+        "test_vessels_empty_false_positive_rate": 0.06338028169014084
+      },
+      {
+        "kind": "task_id",
+        "seed": 43,
+        "best_epoch": 55,
+        "best_validation_macro_positive_dice": 0.7420772504832897,
+        "test_macro_positive_dice": 0.7140948283173715,
+        "test_abdomen_macro_positive_dice": 0.4386295008258361,
+        "test_vessels_positive_dice": 0.09013934650563246,
+        "test_vessels_empty_false_positive_rate": 0.028169014084507043
+      },
+      {
+        "kind": "region",
+        "seed": 43,
+        "best_epoch": 51,
+        "best_validation_macro_positive_dice": 0.747720359843101,
+        "test_macro_positive_dice": 0.7209050059739812,
+        "test_abdomen_macro_positive_dice": 0.45324897974388645,
+        "test_vessels_positive_dice": 0.1632748046606187,
+        "test_vessels_empty_false_positive_rate": 0.04225352112676056
+      },
+      {
+        "kind": "task_id",
+        "seed": 44,
+        "best_epoch": 17,
+        "best_validation_macro_positive_dice": 0.7223686719460425,
+        "test_macro_positive_dice": 0.7176577767438086,
+        "test_abdomen_macro_positive_dice": 0.4702434573999996,
+        "test_vessels_positive_dice": 0.4018440681424097,
+        "test_vessels_empty_false_positive_rate": 0.29577464788732394
+      },
+      {
+        "kind": "region",
+        "seed": 44,
+        "best_epoch": 70,
+        "best_validation_macro_positive_dice": 0.7270944229302894,
+        "test_macro_positive_dice": 0.7223269979590855,
+        "test_abdomen_macro_positive_dice": 0.4667289075188434,
+        "test_vessels_positive_dice": 0.41709167290084215,
+        "test_vessels_empty_false_positive_rate": 0.2323943661971831
+      }
+    ],
+    "three_seed_aggregates": {
+      "region": {
+        "test_macro_positive_dice": {
+          "mean": 0.718071171196245,
+          "sample_standard_deviation": 0.006180856807221478
+        },
+        "test_abdomen_macro_positive_dice": {
+          "mean": 0.4489669307263871,
+          "sample_standard_deviation": 0.02024552836151745
+        },
+        "test_vessels_positive_dice": {
+          "mean": 0.2201693706950954,
+          "sample_standard_deviation": 0.1755322643383741
+        }
+      },
+      "task_id": {
+        "test_macro_positive_dice": {
+          "mean": 0.7145764990687559,
+          "sample_standard_deviation": 0.0028709088265827885
+        },
+        "test_abdomen_macro_positive_dice": {
+          "mean": 0.45164520067692404,
+          "sample_standard_deviation": 0.016529799408643964
+        },
+        "test_vessels_positive_dice": {
+          "mean": 0.2558147507369165,
+          "sample_standard_deviation": 0.1567782986205045
+        }
+      }
+    }
+  }
+}

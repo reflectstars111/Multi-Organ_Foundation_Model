@@ -113,7 +113,7 @@ def main():
     parser.add_argument('--data-root', type=Path, required=True)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--epochs', type=int, default=50)
-    parser.add_argument('--size', type=int, default=256)
+    parser.add_argument('--size', type=int, default=512)
     parser.add_argument('--base', type=int, default=16)
     parser.add_argument('--top-k', type=int, default=2)
     parser.add_argument('--batch-size', type=int, default=2)

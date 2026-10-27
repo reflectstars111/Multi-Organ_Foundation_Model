@@ -183,7 +183,7 @@ def main():
     parser.add_argument('--mode', choices=['all', 'shared', 'independent', 'summarize'], default='all')
     parser.add_argument('--domains', default='', help='Comma-separated subset for independent mode')
     parser.add_argument('--epochs', type=int, default=50)
-    parser.add_argument('--size', type=int, default=256)
+    parser.add_argument('--size', type=int, default=512)
     parser.add_argument('--base', type=int, default=16)
     parser.add_argument('--batch-size', type=int, default=2)
     parser.add_argument('--quota', type=int, default=500, help='image draws per dataset per epoch')

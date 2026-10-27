@@ -1,0 +1,60 @@
+{
+  "created_at": "2026-10-26T15:35:33.982939+08:00",
+  "scope": "completed medical experiments; no new training or test-based selection",
+  "sources_sha256": {
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/medical_metrics_dsc_hd95_assd_20261012/metrics.csv": "c52265b9622c332bc962faf7552bc6a224365031e020eebecdbc8dda0964de96",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q02_routing_80_512_20261013/evaluation_metrics.csv": "44fe31adcea44a14dce21dab56b6fa8210fabdb80bedd2b163d733c9e93b69cf",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q05_visual_context_task_film_80_512_20261014/evaluation_metrics.csv": "e076e9d97177a932f1caad16dc2d055eefa91cf1d0cedbee8145215253036df2",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q06_region_reverse_kl_80_512_seed42_20261025/evaluation_metrics.csv": "cca103a5af03371f216bdabab5454ad71b529e760bf053dc8ff1a2fdb427d2c1",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q07_task_experts_80_512_seed42_20261025/evaluation_metrics.csv": "2634e38a8a11220486e0a9073db2676e94fe3d418d6b02bfae0d59c3a4efa159",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/remaining_reports/metrics.csv": "90ed2842170d418efae84d909f7f775718b350a1be4345ff1322ecf8b8ed62cf",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q07_task_experts_80_512_seed42_20261025/experts0/task_id/seed_42/benchmark.json": "46553cc976e1dc3441166834553843a5c608db8ef0599848a8cc7edc474deb43",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q07_task_experts_80_512_seed42_20261025/experts1/task_id/seed_42/benchmark.json": "7fcff3a3529217cb2fffd8d3f498a3fd81f061d75b20cc3b67e2b4670c23876d",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q07_task_experts_80_512_seed42_20261025/experts9/task_id/seed_42/benchmark.json": "8b2a3887fe60d4887a9097ba8a427c31319b2e5cf39b91598089b406b303bcf9",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/summary.json": "c2e3ee46ba40db8f82e474392679d938febcd72611e6f6b7609b703d9925e263",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q02_routing_80_512_20261013/summary.json": "380f4202de7085e4db9360166f8742a7198e7a1882112aa534772b164cd121bc",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q05_visual_context_task_film_80_512_20261014/summary.json": "643f744d4e8e07a6ed14fce6266ce5cc65ee864291d4ec674812dd02dc8e11cd"
+  },
+  "rows": 332,
+  "stages": [
+    "Fair50",
+    "Fair80",
+    "Q01",
+    "Q02",
+    "Q03",
+    "Q04",
+    "Q05",
+    "Q06",
+    "Q07",
+    "Single50",
+    "Single80"
+  ],
+  "output_csv": "/ssd1/code/Multi-Organ_Foundation_Model/docs/experiments/MEDICAL_MAINLINE_BASELINE_ALL_20261026.csv",
+  "output_csv_sha256": "e208603aed31e13c85fc2d033243c1d3d7191a0a404442a7c188726f4e0c6eba",
+  "report": "/ssd1/code/Multi-Organ_Foundation_Model/docs/MEDICAL_MAINLINE_BASELINE_SUMMARY_20261026.md",
+  "formal_completed_runs": 104,
+  "comparison_cohorts": [
+    "positive_surface_defined",
+    "all_surface_defined"
+  ],
+  "single_seed_stages": [
+    "Q06",
+    "Q07"
+  ],
+  "verified_main_run_counts": {
+    "fair_512_seed42_43_44_20260930": 9,
+    "single_channel_union_512_20260930": 3,
+    "fair_80_base24_batch16_512_20261001_fix": 9,
+    "single_channel_union_80_base24_batch16_512_20261001_fix": 3,
+    "q01_organ_weighted_80_512_20261007": 27,
+    "region_domain_norm_80_512_20261010": 12,
+    "q02_routing_80_512_20261013": 12,
+    "q05_visual_context_task_film_80_512_20261014": 12,
+    "q06_region_reverse_kl_80_512_seed42_20261025": 2,
+    "q07_task_experts_80_512_seed42_20261025": 3,
+    "q04_active_main_training": 12
+  },
+  "q04_result_rows": 24,
+  "q04_result_rows_include_best_and_last": true,
+  "report_sha256": "122439f4afaa04e13b4ebdc15b0ffd0c6fea9d952c2c3071eedf896f44177da7"
+}

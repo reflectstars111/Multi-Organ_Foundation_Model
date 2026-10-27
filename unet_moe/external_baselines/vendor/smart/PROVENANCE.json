@@ -1,0 +1,14 @@
+{
+  "source": "relate_baseline/挑战赛与资源索引 (Challenge Resources)/UUSIC 2025 第一名源码解析 (SMART Rank-1 Source)/utils",
+  "release": "https://zenodo.org/records/21807962",
+  "license": "Team-owned materials CC BY-NC 4.0; third-party components retain original licenses.",
+  "original_sha256": {
+    "QMOS.py": "7bf85d9354d148b82247a6fa1f6d2a9202adc066a67c0e05ef0430e7fc209604",
+    "QSegmenter.py": "f712d3d9850e3caaf253801694538ec86edd69bd70b7cfdbdbebd11102292532",
+    "QClassifier.py": "50524037d2cee514f33165432af5f5ca0f2bb958956cac96deb2d7dbd74bea1d",
+    "drop.py": "c8e3fb21646f5e919bd823b0f5a82516a21c48bcf5ecb3611db5e2856b5bf797",
+    "helpers.py": "f552ea203f238ddc3f527dbbd05deb40bbcdcfdbd032137d9adb3b924fcc6bf6",
+    "weight_init.py": "160c28c37b76405ea2ebb9944108584f525866e33c563718f6862615f4f4f4d8",
+    "grid.py": "94c33c6ccde0831ba7bd016a40207de3749901f63b370d38c3e94568c064c6df"
+  }
+}

@@ -173,7 +173,7 @@ def build_records(root, seed=42, abdomen_split='legacy', abdomen_fold=None,
 
 
 class SegmentationDataset(Dataset):
-    def __init__(self, records, size=256):
+    def __init__(self, records, size=512):
         self.records, self.size = records, size
 
     def __len__(self):

@@ -1,0 +1,639 @@
+{
+  "snapshot_at": "2026-10-13T19:20:47.264373+08:00",
+  "q04_controller": {
+    "schema": "external_baseline_controller_v1",
+    "state": "preparing_and_training",
+    "output": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013",
+    "reference_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007",
+    "evaluation_reference_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/medical_metrics_dsc_hd95_assd_20261012",
+    "protocol_sha256": "9a5857ebb6fc1f17e40e2a46da231514ec009b98e84928fe0477695b9f7e0216",
+    "controller_pid": 869636,
+    "started_at": "2026-10-12T17:18:56.855614+00:00",
+    "gpu_indices": [
+      0,
+      1
+    ],
+    "jobs": [
+      {
+        "method": "lanzhou",
+        "seed": 42,
+        "prior_state": "not_applicable",
+        "train_state": "complete",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": 1,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/lanzhou_seed42_train.log",
+        "free_mib_at_admission": 48496,
+        "completed_at": "2026-10-13T07:37:17.557945+00:00"
+      },
+      {
+        "method": "lanzhou",
+        "seed": 43,
+        "prior_state": "not_applicable",
+        "train_state": "complete",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": 0,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/lanzhou_seed43_train.log",
+        "free_mib_at_admission": 48118,
+        "completed_at": "2026-10-13T10:35:23.186534+00:00"
+      },
+      {
+        "method": "lanzhou",
+        "seed": 44,
+        "prior_state": "not_applicable",
+        "train_state": "running",
+        "evaluate_state": "pending",
+        "pid": 1238758,
+        "gpu": 1,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/lanzhou_seed44_train.log",
+        "free_mib_at_admission": 48496
+      },
+      {
+        "method": "aimagelab",
+        "seed": 42,
+        "prior_state": "not_applicable",
+        "train_state": "running",
+        "evaluate_state": "pending",
+        "pid": 1310226,
+        "gpu": 0,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/aimagelab_seed42_train.log",
+        "free_mib_at_admission": 48118
+      },
+      {
+        "method": "aimagelab",
+        "seed": 43,
+        "prior_state": "not_applicable",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "method": "aimagelab",
+        "seed": 44,
+        "prior_state": "not_applicable",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "method": "universeg",
+        "seed": 42,
+        "prior_state": "not_applicable",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "method": "universeg",
+        "seed": 43,
+        "prior_state": "not_applicable",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "method": "universeg",
+        "seed": 44,
+        "prior_state": "not_applicable",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "method": "smart",
+        "seed": 42,
+        "prior_state": "not_applicable",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "method": "smart",
+        "seed": 43,
+        "prior_state": "not_applicable",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "method": "smart",
+        "seed": 44,
+        "prior_state": "not_applicable",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "method": "mofo",
+        "seed": 42,
+        "prior_state": "complete",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": 0,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/mofo_seed42_mofo-prior.log",
+        "free_mib_at_admission": 48118,
+        "completed_at": "2026-10-13T06:29:13.220878+00:00"
+      },
+      {
+        "method": "mofo",
+        "seed": 43,
+        "prior_state": "pending",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "method": "mofo",
+        "seed": 44,
+        "prior_state": "pending",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      }
+    ],
+    "preflights": {
+      "lanzhou": {
+        "method": "lanzhou",
+        "state": "complete",
+        "pid": null,
+        "gpu": 0,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/lanzhou_seed42_preflight.log",
+        "free_mib_at_admission": 48118,
+        "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/preflight/lanzhou.json",
+        "required_free_mib": 8192,
+        "completed_at": "2026-10-13T03:32:39.018950+00:00"
+      },
+      "aimagelab": {
+        "method": "aimagelab",
+        "state": "complete",
+        "pid": null,
+        "gpu": 1,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/aimagelab_seed42_preflight.log",
+        "free_mib_at_admission": 48496,
+        "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/preflight/aimagelab.json",
+        "required_free_mib": 12500,
+        "completed_at": "2026-10-13T03:32:39.023935+00:00"
+      },
+      "universeg": {
+        "method": "universeg",
+        "state": "complete",
+        "pid": null,
+        "gpu": 0,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/universeg_seed42_preflight.log",
+        "free_mib_at_admission": 48118,
+        "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/preflight/universeg.json",
+        "required_free_mib": 14882,
+        "completed_at": "2026-10-13T03:32:54.082476+00:00"
+      },
+      "smart": {
+        "method": "smart",
+        "state": "complete",
+        "pid": null,
+        "gpu": 1,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/smart_seed42_preflight.log",
+        "free_mib_at_admission": 48496,
+        "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/preflight/smart.json",
+        "required_free_mib": 8192,
+        "completed_at": "2026-10-13T03:32:54.087513+00:00"
+      },
+      "mofo": {
+        "method": "mofo",
+        "state": "complete",
+        "pid": null,
+        "gpu": 0,
+        "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/mofo_seed42_preflight.log",
+        "free_mib_at_admission": 48118,
+        "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/preflight/mofo.json",
+        "required_free_mib": 8192,
+        "completed_at": "2026-10-13T06:29:28.256356+00:00"
+      }
+    },
+    "required_free_mib": {
+      "lanzhou": 8192,
+      "aimagelab": 12500,
+      "universeg": 14882,
+      "smart": 8192,
+      "mofo": 8192
+    },
+    "gpu_observations": {
+      "0": {
+        "state": "available",
+        "free_mib": 48118,
+        "time": "2026-10-13T10:35:23.212876+00:00"
+      },
+      "1": {
+        "state": "available",
+        "free_mib": 48496,
+        "time": "2026-10-13T07:37:17.583975+00:00"
+      }
+    },
+    "updated_at": "2026-10-13T11:20:39.358336+00:00",
+    "dependency_reason": "Q01 train/test and metric backfill are complete",
+    "dependencies_verified_at": "2026-10-13T03:32:23.957866+00:00",
+    "waiting_tasks": 11,
+    "control_child_pid": null
+  },
+  "q02_controller": {
+    "schema": "routing_optimization_controller_v1",
+    "state": "waiting_q04",
+    "output": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q02_routing_80_512_20261013",
+    "reference_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007",
+    "after_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013",
+    "protocol_sha256": "45f429a7652b4e30581cf2236d21749f20701c5acdb91d4bb1d8c056b0471d77",
+    "controller_pid": 893009,
+    "started_at": "2026-10-12T17:51:45.882243+00:00",
+    "gpu_indices": [
+      0,
+      1
+    ],
+    "jobs": [
+      {
+        "kind": "region",
+        "seed": 42,
+        "arm": "control",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "region",
+        "seed": 42,
+        "arm": "auxiliary",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "task_id",
+        "seed": 42,
+        "arm": "control",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "task_id",
+        "seed": 42,
+        "arm": "auxiliary",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "region",
+        "seed": 43,
+        "arm": "control",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "region",
+        "seed": 43,
+        "arm": "auxiliary",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "task_id",
+        "seed": 43,
+        "arm": "control",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "task_id",
+        "seed": 43,
+        "arm": "auxiliary",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "region",
+        "seed": 44,
+        "arm": "control",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "region",
+        "seed": 44,
+        "arm": "auxiliary",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "task_id",
+        "seed": 44,
+        "arm": "control",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      },
+      {
+        "kind": "task_id",
+        "seed": 44,
+        "arm": "auxiliary",
+        "train_state": "pending",
+        "evaluate_state": "pending",
+        "pid": null,
+        "gpu": null
+      }
+    ],
+    "preflights": {
+      "region_control": {
+        "kind": "region",
+        "arm": "control",
+        "state": "pending"
+      },
+      "region_auxiliary": {
+        "kind": "region",
+        "arm": "auxiliary",
+        "state": "pending"
+      },
+      "task_id_control": {
+        "kind": "task_id",
+        "arm": "control",
+        "state": "pending"
+      },
+      "task_id_auxiliary": {
+        "kind": "task_id",
+        "arm": "auxiliary",
+        "state": "pending"
+      }
+    },
+    "required_free_mib": {},
+    "gpu_observations": {},
+    "updated_at": "2026-10-13T11:20:34.045320+00:00",
+    "selection_reason": "All 27 Q01 validation histories reached 80 epochs",
+    "control_child_pid": null,
+    "main_loss_arm": "organ_exposure_fg_bg",
+    "selection_sha256": "1e8b0705079039cf75ffa788b1e540f0837188b1e93578c5bb62a22077becad9",
+    "dependency_reason": "Q04 controller is preparing_and_training"
+  },
+  "q04_counts": {
+    "train_state": {
+      "complete": 2,
+      "running": 2,
+      "pending": 11
+    },
+    "evaluate_state": {
+      "pending": 15
+    }
+  },
+  "q04_runs": [
+    {
+      "method": "lanzhou",
+      "seed": 42,
+      "state": "complete",
+      "gpu": 1,
+      "epochs_completed": 80,
+      "in_progress_epoch": null,
+      "best_epoch": 47,
+      "best_val_union_dsc_percent": 85.61030451487375,
+      "best_val_abdomen_union_dsc_percent": 73.1342924792857,
+      "recent_epoch_seconds": 182.51500007733702,
+      "history_path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/lanzhou/seed_42/metrics.jsonl",
+      "history_sha256": "97ba3f78c60b799355938426a8cb82d84f9b3a655d73095ed1e4a9c0ca31e3f5",
+      "checkpoint_bytes": {
+        "best.pt": 589110528,
+        "last.pt": 589136704
+      },
+      "run_summary": {
+        "method": "lanzhou",
+        "seed": 42,
+        "protocol_sha256": "9a5857ebb6fc1f17e40e2a46da231514ec009b98e84928fe0477695b9f7e0216",
+        "epochs_completed": 80,
+        "best_epoch": 47,
+        "best_validation_dsc_percent": 85.61030451487375,
+        "parameter_count": 50871312,
+        "elapsed_seconds": 14607.8224679064,
+        "test_evaluated": false
+      },
+      "raw_progress": {
+        "state": "training",
+        "epoch": 80,
+        "optimizer_step": 282,
+        "optimizer_steps_per_epoch": 282,
+        "completed_epochs": 79,
+        "updated_at": "2026-10-13T07:36:39.427740+00:00"
+      }
+    },
+    {
+      "method": "lanzhou",
+      "seed": 43,
+      "state": "complete",
+      "gpu": 0,
+      "epochs_completed": 80,
+      "in_progress_epoch": null,
+      "best_epoch": 71,
+      "best_val_union_dsc_percent": 85.5169006722361,
+      "best_val_abdomen_union_dsc_percent": 71.55802703534677,
+      "recent_epoch_seconds": 184.50791588425636,
+      "history_path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/lanzhou/seed_43/metrics.jsonl",
+      "history_sha256": "fd4fc91391e790ec2ff967ed5426acee8279a08c3a9af0ed8c04c7ac18cb9aa0",
+      "checkpoint_bytes": {
+        "best.pt": 589129472,
+        "last.pt": 589136576
+      },
+      "run_summary": {
+        "method": "lanzhou",
+        "seed": 43,
+        "protocol_sha256": "9a5857ebb6fc1f17e40e2a46da231514ec009b98e84928fe0477695b9f7e0216",
+        "epochs_completed": 80,
+        "best_epoch": 71,
+        "best_validation_dsc_percent": 85.5169006722361,
+        "parameter_count": 50871312,
+        "elapsed_seconds": 14702.10969708953,
+        "test_evaluated": false
+      },
+      "raw_progress": {
+        "state": "training",
+        "epoch": 80,
+        "optimizer_step": 282,
+        "optimizer_steps_per_epoch": 282,
+        "completed_epochs": 79,
+        "updated_at": "2026-10-13T10:34:48.052871+00:00"
+      }
+    },
+    {
+      "method": "lanzhou",
+      "seed": 44,
+      "state": "running",
+      "gpu": 1,
+      "epochs_completed": 73,
+      "in_progress_epoch": 74,
+      "best_epoch": 43,
+      "best_val_union_dsc_percent": 85.10506654616229,
+      "best_val_abdomen_union_dsc_percent": 70.51110840889264,
+      "recent_epoch_seconds": 183.3885241078213,
+      "history_path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/lanzhou/seed_44/metrics.jsonl",
+      "history_sha256": "716f62014cac30c62abbd813f0e3eecf936b928356304014b34fd1c61f47c184",
+      "checkpoint_bytes": {
+        "best.pt": 589107328,
+        "last.pt": 589131136
+      },
+      "run_summary": {
+        "method": "lanzhou",
+        "seed": 44,
+        "protocol_sha256": "9a5857ebb6fc1f17e40e2a46da231514ec009b98e84928fe0477695b9f7e0216",
+        "epochs_completed": 73,
+        "best_epoch": 43,
+        "best_validation_dsc_percent": 85.10506654616229,
+        "parameter_count": 50871312,
+        "elapsed_seconds": 13305.18639082741,
+        "test_evaluated": false
+      },
+      "raw_progress": {
+        "state": "training",
+        "epoch": 74,
+        "optimizer_step": 110,
+        "optimizer_steps_per_epoch": 282,
+        "completed_epochs": 73,
+        "updated_at": "2026-10-13T11:20:43.198465+00:00"
+      }
+    },
+    {
+      "method": "aimagelab",
+      "seed": 42,
+      "state": "running",
+      "gpu": 0,
+      "epochs_completed": 8,
+      "in_progress_epoch": 9,
+      "best_epoch": 8,
+      "best_val_union_dsc_percent": 83.45541962775646,
+      "best_val_abdomen_union_dsc_percent": 72.51127982623667,
+      "recent_epoch_seconds": 323.40485372953117,
+      "history_path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/aimagelab/seed_42/metrics.jsonl",
+      "history_sha256": "58a57c13f166c7531558e52306d260a9e689ff0043f6e22e39bc1db5acbdd9ba",
+      "checkpoint_bytes": {
+        "best.pt": 1957827327,
+        "last.pt": 1957827327
+      },
+      "run_summary": {
+        "method": "aimagelab",
+        "seed": 42,
+        "protocol_sha256": "9a5857ebb6fc1f17e40e2a46da231514ec009b98e84928fe0477695b9f7e0216",
+        "epochs_completed": 8,
+        "best_epoch": 8,
+        "best_validation_dsc_percent": 83.45541962775646,
+        "parameter_count": 163134744,
+        "elapsed_seconds": 2585.1565458681434,
+        "test_evaluated": false
+      },
+      "raw_progress": {
+        "state": "training",
+        "epoch": 9,
+        "optimizer_step": 110,
+        "optimizer_steps_per_epoch": 282,
+        "completed_epochs": 8,
+        "updated_at": "2026-10-13T11:20:45.944660+00:00"
+      }
+    }
+  ],
+  "core": {
+    "q01_organ_weighted_80_512_20261007": {
+      "state": "complete",
+      "jobs": 27,
+      "job_state_keys": [
+        "kind",
+        "seed",
+        "arm",
+        "train_state",
+        "test_state",
+        "pid",
+        "gpu",
+        "log",
+        "free_mib_at_admission"
+      ]
+    },
+    "region_domain_norm_80_512_20261010": {
+      "state": "complete",
+      "jobs": 12,
+      "job_state_keys": [
+        "kind",
+        "seed",
+        "arm",
+        "train_state",
+        "test_state",
+        "pid",
+        "gpu",
+        "log",
+        "free_mib_at_admission"
+      ]
+    }
+  },
+  "backfill_status": {
+    "state": "complete",
+    "updated_at": "2026-10-13T11:32:19.697618+08:00",
+    "controller_pid": 1060118,
+    "gpu_indices": [
+      0,
+      1
+    ],
+    "gpu": null,
+    "protocol_sha256": "96266238af40d9e73adca4d09008a8b503bd4820bd92357fdc67028cfc83060f",
+    "scheduler_sha256": "d1d93d2dd387f53c7909b15f1ad2059432de367c48e386198640196acc13457a",
+    "completed_jobs": 439,
+    "failed_jobs": 0,
+    "active_jobs": [],
+    "gpu_observations": {
+      "0": {
+        "state": "evaluating",
+        "free_mib_at_admission": 48118,
+        "job_id": "d8693ef05bd9138ee395ae4d2fed9c868062cebc4e7236bf45fbf2f6f1a7d538",
+        "worker_pid": 1061014
+      },
+      "1": {
+        "state": "evaluating",
+        "free_mib_at_admission": 48496,
+        "job_id": "cb62f78be10a5e116d080494fe08ec81c0382624542ba750775c06d470a53d8e",
+        "worker_pid": 1061017
+      }
+    },
+    "counts": {
+      "excluded": 97,
+      "complete": 439,
+      "not_selected": 24
+    },
+    "pending_jobs": 0
+  },
+  "completed_metric_csv_unchanged": true,
+  "source_sha256": {
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/medical_metrics_dsc_hd95_assd_20261012/metrics.csv": "c52265b9622c332bc962faf7552bc6a224365031e020eebecdbc8dda0964de96",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/medical_metrics_dsc_hd95_assd_20261012/protocol.json": "58b7d3897fe965a04417050b8825616d4db5f7d83fe45867dbcba85a6b66771c",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/summary.json": "c2e3ee46ba40db8f82e474392679d938febcd72611e6f6b7609b703d9925e263",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/summary.json": "a828cd25ae038195b6b8ea7446b7e897d193b6d4fb997716013c33cb7f71fe0f",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/q02_routing_80_512_20261013/main_loss_selection.json": "719c79abd7fc2b34025840db44c1fef8ae6bbc90c1159c9b3b8167f8959c014a"
+  },
+  "new_q04_test_artifacts": [],
+  "note": "Validation only for Q04. Completed training is verified by controller, 80 contiguous history rows, summary and checkpoints; progress.json may lag at epoch79."
+}

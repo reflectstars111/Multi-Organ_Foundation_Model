@@ -1,12 +1,12 @@
 # 九数据集 v6：冻结测试、更多训练样本与腹部跨来源验证
 
-状态：**代码与划分已就绪；2026-09-29 已在服务器启动旧 task-ID MoE 与无 task-ID 区域 MoT 的 512×512、Top-1、80 轮 v6 最终拟合，尚无新测试成绩。** 本文以下为实验协议，不是新模型成绩。当前任务及日志见 [REMOTE_4090.md](REMOTE_4090.md)。原 v5 结果见 [PAPER5_THREE_MODEL_ANALYSIS.md](PAPER5_THREE_MODEL_ANALYSIS.md)。`train.py` 是旧 task-ID 路线；图像区域驱动的 MoT 主线入口是 `python -m unet_moe.region_train`。
+状态（2026-09-30 更新）：**两条 512×512、Top-1、80 轮 v6 最终拟合均已完成，实际选用 last80。** 区域模型阳性宏 Dice 为 0.745073、含空宏 Dice 为 0.782768；旧 task-ID 的含空宏 Dice 为 0.780469，不能与前者的阳性指标直接比较。本文保留历史协议与未完成计划；五折尚未完成，新固定划分多种子架构比较也尚无完整结果。完成证据见 [实验状态](docs/EXPERIMENT_STATUS.md)，命令见 [REMOTE_4090.md](REMOTE_4090.md)。原 v5 历史报告见 [PAPER5_THREE_MODEL_ANALYSIS.md](PAPER5_THREE_MODEL_ANALYSIS.md)。
 
 ## 为什么这样改
 
 旧 v5 总计训练/验证/测试为 6400/1344/1618。AbdomenUS 的 477/156/293 来自 **7/2/4 个 CT 模拟来源**：发布包原 train 的 9 个来源中，7 个训练、2 个验证；发布包原 test 的 4 个来源共 293 张保持测试。按图像看测试比例较大，但逐图随机改成 80/10/10 会让同一 CT 来源泄漏到不同集合。故 v6 不挪动任何旧测试图：腹部先做 5 折来源级验证，再用发布包原 train 的全部 9 个来源训练最终模型。
 
-其他数据集仅将**项目自行定义**的部分验证样本转回训练；已发布的验证/测试名单、CAMUS 官方患者划分均保留。分组键保持不变，包括 CCA 来源、HC18 检查号。所有新旧测试图完全一致。v5 的训练结果与 v6 不可当作同协议直接比较；v6 的三个方案必须全部重训。
+其他数据集仅将**项目自行定义**的部分验证样本转回训练；已发布的验证/测试名单、CAMUS 官方患者划分均保留。分组键保持不变，包括 CCA 来源、HC18 检查号。固定同一划分 seed 时，新旧测试图完全一致；旧入口改变 `--seed` 仍会改变部分项目 test。v5 的训练结果与 v6 不可当作同协议直接比较；v6 的三个方案必须全部重训。
 
 ## 最终训练数据分布（独立图像数）
 
@@ -23,7 +23,7 @@
 | AbdomenUS | 477 | 633 | 0* | 293 |
 | **合计** | **6400** | **6893** | **851** | **1618** |
 
-\* 腹部最终拟合没有独立验证来源：此前的 5 折已完成腹部验证；最终 checkpoint **固定选最后一轮**，不得根据测试集挑 epoch。其他八个数据集仍有验证集，供监控，但不决定最终 checkpoint。固定测试集只是历史结果已被查看过的保留集合；新实验仍应避免继续按其调参，并在论文中说明这一局限。
+\* 腹部最终拟合没有独立验证来源：原计划先做 5 折来源验证，但这两条运行**没有先完成五折**；实际直接按预设配置拟合，最终 checkpoint **固定选最后一轮（80）**，不得称为腹部验证最优。其他八个数据集仍有验证集，供监控，但不决定最终 checkpoint。固定测试集只是历史结果已被查看过的保留集合；新实验仍应避免继续按其调参，并在论文中说明这一局限。
 
 腹部 5 折的验证来源及图像数：
 
@@ -41,13 +41,17 @@
 
 ## 已有结果反映的设计问题
 
+以下 v5 数字沿用 2026-09-29 历史报告；当前服务器缺该批次区域/共享模型原始产物，本轮不能独立复核对应路由与消融数字。已完成的新诊断与证据范围见[实验状态](docs/EXPERIMENT_STATUS.md)。
+
 - v5 测试阳性 Dice 宏平均：MoT 0.7199、共享 U-Net 0.7108、9 个独立 U-Net 0.7301。单种子约 0.9–1.0 个百分点的差距不能证明稳定排序。
 - v5 验证集**有前景类别**的 Top-1 路由在四个解码阶段分别正确 1939/1941、1939/1941、1932/1941、1931/1941。路由监督已基本解决已知正类的“选哪个专家”，继续提高此准确率不应是首要目标；这**不等于**模型能准确判断图中是否存在某器官，空图误检仍需单独报告。
 - 将 MoT 的专家输出暂时清零，验证阳性 Dice 从 0.7292 变为 0.4643；专家分支并非无效。共享 U-Net 接近不能直接解释为专家没有贡献，但 MoT 的额外复杂度目前仅换来小幅增益。
 - 当前主指标仅统计有前景图。v6 同时记录所有标注图的宏 Dice 和空前景图假阳性率；不能只追逐阳性 Dice 而忽略误检。
 - 50 epoch 的最优验证轮次接近末尾且曲线震荡（MoT 第 46 轮，共享第 49 轮）。延长训练并衰减学习率是**待验证假设**，不是已证实的优化。
 
-## 预先固定的对照顺序
+## 历史预设的对照顺序
+
+以下 256/320 分辨率候选是原文保留的历史计划，没有完成对应验证。2026-09-30 用户要求新实验全部改为 512×512，当前新候选与正式对照采用 base16、batch4，见 [实验状态](docs/EXPERIMENT_STATUS.md)；不再执行下列旧分辨率搜索。
 
 1. **协议效应对照**：先在 v6 折 0 用原 256×256、base16、batch2、每域每轮 500 次抽样、50 epoch、常数 3e-4 跑 MoT 与共享 U-Net，只看验证集。这样区分“数据调整”与“超参调整”。
 2. **训练预算候选**：在相同折上比较 256 与 320 分辨率；候选为 80 epoch、余弦学习率 3e-4→3e-5。分辨率和 batch 需先做显存单步检查；两模型保持同输入尺寸、每域抽样、优化器、批量与总步数。不要直接把 batch 从 2 提到 8 而使每 epoch 更新次数缩为四分之一。
@@ -58,13 +62,15 @@
 
 ## 命令模板
 
+以下单模型来源验证/最终拟合模板已统一更新为 512×512、base16、batch4，不表示五折已经运行。当前固定划分多种子三架构实验改用 [fair_suite 命令](REMOTE_4090.md)，将训练 seed 与划分 seed 分开；两个协议不得混为一组结果。
+
 在项目根目录，先运行折 0（其他折把两个命令中的 `0` 与输出目录同时改为 1–4）：
 
 ```powershell
-python -m unet_moe.region_train --data-root '数据集 (Datasets)/pointed_data' --output runs/mot_v6_cv0 --abdomen-labels paper5 --abdomen-split ct_cv5 --abdomen-fold 0 --split-policy trainmore_v6 --top-k 1 --size 256 --base 16 --batch-size 2 --quota-per-domain 500 --epochs 50 --lr 0.0003 --abdomen-positive-sampling 0.5 --workers 2
-python -m unet_moe.baseline_suite --data-root '数据集 (Datasets)/pointed_data' --output runs/unet_v6_cv0 --mode shared --abdomen-labels paper5 --abdomen-split ct_cv5 --abdomen-fold 0 --split-policy trainmore_v6 --size 256 --base 16 --batch-size 2 --quota 500 --epochs 50 --lr 0.0003 --abdomen-positive-sampling 0.5 --workers 2
+python -m unet_moe.region_train --data-root '数据集 (Datasets)/pointed_data' --output runs/mot_v6_512_cv0 --abdomen-labels paper5 --abdomen-split ct_cv5 --abdomen-fold 0 --split-policy trainmore_v6 --top-k 1 --size 512 --base 16 --batch-size 4 --quota-per-domain 500 --epochs 50 --lr 0.0003 --abdomen-positive-sampling 0.5 --workers 2
+python -m unet_moe.baseline_suite --data-root '数据集 (Datasets)/pointed_data' --output runs/unet_v6_512_cv0 --mode shared --abdomen-labels paper5 --abdomen-split ct_cv5 --abdomen-fold 0 --split-policy trainmore_v6 --size 512 --base 16 --batch-size 4 --quota 500 --epochs 50 --lr 0.0003 --abdomen-positive-sampling 0.5 --workers 2
 ```
 
-候选余弦实验在新输出目录加 `--epochs 80 --lr-schedule cosine --min-lr-ratio 0.1`；MoT 的辅助损失消融另加 `--coarse-weight 0.1 --route-weight 0.02`。独立基线折验证用 `--mode independent`，可用 `--domains` 分配到不同 GPU。折模式不会生成测试指标。
+原计划还提出余弦学习率和更低粗分割/路由权重，但它们不是本轮已启动配置。若未来执行，需要另行冻结参数和新输出目录；输入保持 512×512。独立基线折验证用 `--mode independent`，可用 `--domains` 分配到不同 GPU。折模式不会生成测试指标。
 
 最终拟合命令将 `--abdomen-split ct_cv5 --abdomen-fold 0` 换成 `--abdomen-split ct_final`，换全新输出目录；此模式腹部 633 图全部训练，并从 `last.pt` 而非验证最佳 checkpoint 测试。共享/独立入口使用同样新协议，`--mode all` 或分 GPU 跑 `--mode independent` 后汇总。**不要把 `--resume` 用于改变任一超参或划分。**

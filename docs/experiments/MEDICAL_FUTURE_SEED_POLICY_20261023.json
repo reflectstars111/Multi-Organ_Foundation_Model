@@ -1,0 +1,44 @@
+{
+  "schema": "medical_future_seed_policy_v1",
+  "effective_date": "2026-10-23",
+  "timezone": "Asia/Shanghai",
+  "authorization": "User: 之后的部分如果有3种子的考虑，就不用了，只使用常规的seed42",
+  "scope": "Q06, Q07 and subsequent new medical experiments",
+  "training_seeds": [42],
+  "automatic_additional_seeds": false,
+  "existing_frozen_runs_modified": false,
+  "q05": {
+    "training_seeds": [42, 43, 44],
+    "expected_training_runs": 12,
+    "policy": "Continue current frozen experiment and its original validation review"
+  },
+  "q06": {
+    "status": "conditional_plan_not_implemented",
+    "training_seeds": [42],
+    "arms": ["control", "routing"],
+    "expected_training_runs": 2,
+    "start_condition": "Unchanged Q05 validation-only review and task-relevant routing diagnosis",
+    "q05_evidence_seeds": [42, 43, 44],
+    "q05_exclusivity_review_threshold": 2
+  },
+  "q07": {
+    "status": "plan_not_implemented",
+    "training_seeds": [42],
+    "expert_counts": [0, 1, 9],
+    "expected_training_runs": 3,
+    "start_condition": "After Q06 decision and independent implementation/protocol/preflight acceptance"
+  },
+  "reporting": {
+    "scope": "Fixed seed42 and existing data split",
+    "paired_differences": true,
+    "checkpoints": ["best", "last", "guardrail"],
+    "metrics": ["DSC (%)", "HD95 (pixel)", "ASSD (pixel)"],
+    "cross_seed_standard_deviation": null,
+    "cross_seed_stability_claim": false
+  },
+  "universeg": {
+    "run": false,
+    "existing_artifacts_preserved": true
+  },
+  "runtime_integration": "Planning input for future implementations; not a replacement for frozen Q05 or reviewer configuration"
+}

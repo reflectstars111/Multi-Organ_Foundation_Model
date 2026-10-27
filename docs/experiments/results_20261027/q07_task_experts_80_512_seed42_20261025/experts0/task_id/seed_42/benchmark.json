@@ -1,0 +1,363 @@
+{
+  "schema": "q07_cost_benchmark_v1",
+  "complete": true,
+  "protocol_sha256": "8422facedcbb0c7761822d9e6c69b7efda1f71cf88e9236fc5eb1f95012f2d34",
+  "kind": "task_id",
+  "seed": 42,
+  "arm": "experts0",
+  "checkpoint_selection": "best",
+  "checkpoint_epoch": 72,
+  "checkpoint_sha256": "85145fe185a6c5a843dac6ce24150cde0990c26cc5c65283ee9394ce91b0436d",
+  "total_parameters": 5326321,
+  "trainable_parameters": 5326321,
+  "dtype": "float32",
+  "size": 512,
+  "device": "NVIDIA GeForce RTX 4090",
+  "torch_version": "2.5.1+cu124",
+  "cuda_version": "12.4",
+  "cuda_visible_devices": "0",
+  "cpu_threads": 4,
+  "input_indices": [
+    651,
+    652,
+    653,
+    654
+  ],
+  "input_split": "val",
+  "input_domain": "AbdomenUS",
+  "input_image_sha256": "704ee47df768ccd5cf07720719043556d6476a7237206428fc76e3f65dd2c4f7",
+  "query_counts": [
+    5,
+    5,
+    5,
+    5
+  ],
+  "workloads": [
+    {
+      "workload": "single_task_batch1",
+      "image_batch": 1,
+      "annotated_queries": 1,
+      "warmup": 5,
+      "repeats": 20,
+      "input_residency": "cuda_before_timing",
+      "output": "single_task_probability",
+      "median_ms": 8.899034502974246,
+      "p95_ms": 8.997398996143602,
+      "minimum_ms": 8.632636003312655,
+      "maximum_ms": 9.02885700634215,
+      "samples_ms": [
+        9.02885700634215,
+        8.890569006325677,
+        8.91159800812602,
+        8.92539399501402,
+        8.887051997589879,
+        8.887763004167937,
+        8.899526001187041,
+        8.997398996143602,
+        8.924150999519043,
+        8.930333002354018,
+        8.888113996363245,
+        8.896409999579191,
+        8.9061079925159,
+        8.910846008802764,
+        8.89854300476145,
+        8.887632997357287,
+        8.894136000890285,
+        8.911687997169793,
+        8.893714999430813,
+        8.632636003312655
+      ],
+      "peak_allocated_mib": 312,
+      "peak_reserved_mib": 392,
+      "invoked_parameters": 5326321,
+      "partial_flops": {
+        "available": true,
+        "value": 84392851152,
+        "coverage": "PyTorch profiler supported convolution/matmul ops only; excludes normalization, activation, routing, pooling and union operations"
+      },
+      "gpu_processes_before": {
+        "available": true,
+        "processes": [
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 3134,
+            "memory_mib": "1536"
+          },
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 63098,
+            "memory_mib": "854"
+          },
+          {
+            "gpu_uuid": "GPU-32288092-5604-3b8c-b59c-78631c8140b3",
+            "pid": 63104,
+            "memory_mib": "7744"
+          }
+        ],
+        "other_processes": [
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 3134,
+            "memory_mib": "1536"
+          },
+          {
+            "gpu_uuid": "GPU-32288092-5604-3b8c-b59c-78631c8140b3",
+            "pid": 63104,
+            "memory_mib": "7744"
+          }
+        ]
+      },
+      "gpu_processes_after": {
+        "available": true,
+        "processes": [
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 3134,
+            "memory_mib": "1536"
+          },
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 63098,
+            "memory_mib": "866"
+          },
+          {
+            "gpu_uuid": "GPU-32288092-5604-3b8c-b59c-78631c8140b3",
+            "pid": 63104,
+            "memory_mib": "7744"
+          }
+        ],
+        "other_processes": [
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 3134,
+            "memory_mib": "1536"
+          },
+          {
+            "gpu_uuid": "GPU-32288092-5604-3b8c-b59c-78631c8140b3",
+            "pid": 63104,
+            "memory_mib": "7744"
+          }
+        ]
+      },
+      "isolated_device_claimed": false
+    },
+    {
+      "workload": "complete_union_batch1",
+      "image_batch": 1,
+      "annotated_queries": 5,
+      "warmup": 5,
+      "repeats": 20,
+      "input_residency": "cuda_before_timing",
+      "output": "annotated_union_probability",
+      "median_ms": 29.081999498885125,
+      "p95_ms": 29.253199012600817,
+      "minimum_ms": 28.615135001018643,
+      "maximum_ms": 29.44840599957388,
+      "samples_ms": [
+        29.24765000352636,
+        29.169363013352267,
+        29.44840599957388,
+        29.09738800371997,
+        29.14675099600572,
+        29.144006010028534,
+        29.114479999407195,
+        29.12184399610851,
+        29.11245600262191,
+        29.253199012600817,
+        29.06661099405028,
+        29.031714992015623,
+        28.794962010579184,
+        28.714831001707353,
+        28.70112599339336,
+        28.7058550020447,
+        28.82391599996481,
+        28.798958999686874,
+        28.769725002348423,
+        28.615135001018643
+      ],
+      "peak_allocated_mib": 1175,
+      "peak_reserved_mib": 1540,
+      "invoked_parameters": 5326321,
+      "partial_flops": {
+        "available": true,
+        "value": 421968450074,
+        "coverage": "PyTorch profiler supported convolution/matmul ops only; excludes normalization, activation, routing, pooling and union operations"
+      },
+      "gpu_processes_before": {
+        "available": true,
+        "processes": [
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 3134,
+            "memory_mib": "1536"
+          },
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 63098,
+            "memory_mib": "2014"
+          },
+          {
+            "gpu_uuid": "GPU-32288092-5604-3b8c-b59c-78631c8140b3",
+            "pid": 63104,
+            "memory_mib": "7744"
+          }
+        ],
+        "other_processes": [
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 3134,
+            "memory_mib": "1536"
+          },
+          {
+            "gpu_uuid": "GPU-32288092-5604-3b8c-b59c-78631c8140b3",
+            "pid": 63104,
+            "memory_mib": "7744"
+          }
+        ]
+      },
+      "gpu_processes_after": {
+        "available": true,
+        "processes": [
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 3134,
+            "memory_mib": "1536"
+          },
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 63098,
+            "memory_mib": "2014"
+          },
+          {
+            "gpu_uuid": "GPU-32288092-5604-3b8c-b59c-78631c8140b3",
+            "pid": 63104,
+            "memory_mib": "7744"
+          }
+        ],
+        "other_processes": [
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 3134,
+            "memory_mib": "1536"
+          },
+          {
+            "gpu_uuid": "GPU-32288092-5604-3b8c-b59c-78631c8140b3",
+            "pid": 63104,
+            "memory_mib": "7744"
+          }
+        ]
+      },
+      "isolated_device_claimed": false
+    },
+    {
+      "workload": "complete_union_batch4",
+      "image_batch": 4,
+      "annotated_queries": 20,
+      "warmup": 5,
+      "repeats": 20,
+      "input_residency": "cuda_before_timing",
+      "output": "annotated_union_probability",
+      "median_ms": 112.9607470065821,
+      "p95_ms": 114.83819800196216,
+      "minimum_ms": 112.60552699968684,
+      "maximum_ms": 114.99021199415438,
+      "samples_ms": [
+        113.96603401226457,
+        114.99021199415438,
+        114.83819800196216,
+        114.12040400318801,
+        114.0150760038523,
+        113.87287999968976,
+        113.55344200273976,
+        113.34178499237169,
+        113.04060199472588,
+        113.01785901014227,
+        112.90363500302192,
+        112.6551500055939,
+        112.67932500049938,
+        112.70022401004098,
+        112.82956598734017,
+        112.6308739912929,
+        112.65764400013722,
+        112.7029199997196,
+        112.66191299364436,
+        112.60552699968684
+      ],
+      "peak_allocated_mib": 4409,
+      "peak_reserved_mib": 6330,
+      "invoked_parameters": 5326321,
+      "partial_flops": {
+        "available": true,
+        "value": 1687873800296,
+        "coverage": "PyTorch profiler supported convolution/matmul ops only; excludes normalization, activation, routing, pooling and union operations"
+      },
+      "gpu_processes_before": {
+        "available": true,
+        "processes": [
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 3134,
+            "memory_mib": "1536"
+          },
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 63098,
+            "memory_mib": "6804"
+          },
+          {
+            "gpu_uuid": "GPU-32288092-5604-3b8c-b59c-78631c8140b3",
+            "pid": 63104,
+            "memory_mib": "7744"
+          }
+        ],
+        "other_processes": [
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 3134,
+            "memory_mib": "1536"
+          },
+          {
+            "gpu_uuid": "GPU-32288092-5604-3b8c-b59c-78631c8140b3",
+            "pid": 63104,
+            "memory_mib": "7744"
+          }
+        ]
+      },
+      "gpu_processes_after": {
+        "available": true,
+        "processes": [
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 3134,
+            "memory_mib": "1536"
+          },
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 63098,
+            "memory_mib": "6804"
+          },
+          {
+            "gpu_uuid": "GPU-32288092-5604-3b8c-b59c-78631c8140b3",
+            "pid": 63104,
+            "memory_mib": "7744"
+          }
+        ],
+        "other_processes": [
+          {
+            "gpu_uuid": "GPU-b6d827cf-dd05-8961-d39f-a30d538279f3",
+            "pid": 3134,
+            "memory_mib": "1536"
+          },
+          {
+            "gpu_uuid": "GPU-32288092-5604-3b8c-b59c-78631c8140b3",
+            "pid": 63104,
+            "memory_mib": "7744"
+          }
+        ]
+      },
+      "isolated_device_claimed": false
+    }
+  ],
+  "scope": "Fixed validation abdomen subset; actual conditional expert usage can vary with input",
+  "isolated_device_claimed": false
+}

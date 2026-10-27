@@ -1,0 +1,283 @@
+{
+  "protocol_version": "q06_q07_mechanism_v1",
+  "stage": "q06",
+  "config": {
+    "size": 512,
+    "base": 24,
+    "epochs": 80,
+    "batch_size": 16,
+    "micro_batch_size": 4,
+    "quota_per_domain": 500,
+    "workers": 0,
+    "lr": 0.0001,
+    "weight_decay": 0.0001,
+    "experts": 9,
+    "top_k": 1,
+    "split_seed": 42,
+    "split_policy": "trainmore_v6",
+    "abdomen_split": "ct7_2",
+    "task_ids": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      6,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      16,
+      18,
+      20
+    ],
+    "dtype": "float32",
+    "gradient_clip_norm": 5.0,
+    "lr_schedule": "constant",
+    "augmentation": "none",
+    "threshold": 0.5,
+    "optimizer": "AdamW",
+    "optimizer_betas": [
+      0.9,
+      0.999
+    ],
+    "optimizer_eps": 1e-08,
+    "primary_selection": "best_validation_macro_positive_dice",
+    "diagnostic_epochs": [
+      0,
+      1,
+      10,
+      20,
+      40,
+      60,
+      80
+    ],
+    "region_coarse_weight": 0.1,
+    "task_id_balance_weight": 0.01,
+    "routing_diagnostics": "full_validation_and_fixed_train_gradient_probes",
+    "region_routing_weight": 0.1,
+    "region_routing_layer": 3,
+    "region_routing_scope": "annotated_positive_queries_per_physical_microbatch",
+    "region_routing_divergence": "KL(uniform_experts || mean_positive_query_softmax)",
+    "seed_policy": "future_experiments_seed42_only",
+    "models": [
+      "region"
+    ],
+    "arms": [
+      "control",
+      "routing"
+    ],
+    "seeds": [
+      42
+    ],
+    "data_root": "/ssd1/data/Multi-Organ_Foundation_Model/pointed_data"
+  },
+  "config_sha256": "f1e0490405cee761e5c21ccc1d416c98b83eb95973c9f59dc779a914d4619c11",
+  "reference_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q05_visual_context_task_film_80_512_20261014",
+  "after_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q05_visual_context_task_film_80_512_20261014",
+  "reference_protocol_sha256": "5f1dc7ab5b81d49ac605413862f4072de06b59c885e872618a6f6d0d0fdc4124",
+  "reference_protocol_file_sha256": "e9cda615be90a5f45da4fb4597eebe2cc3fc5df683050ddc4984b0fe6a4b1839",
+  "after_protocol_sha256": "5f1dc7ab5b81d49ac605413862f4072de06b59c885e872618a6f6d0d0fdc4124",
+  "reference_selection_sha256": "f3a54173311148b0470b598f2342e960f990377d1bbcc49fbf411d52bda6817f",
+  "reference_selection_file_sha256": "3b31b1a932dedac97794a70881dbb48aae07b60e553a1cf36f3b3747130c398f",
+  "reference_provenance_files": {
+    "reference_provenance/protocol.json": "e9cda615be90a5f45da4fb4597eebe2cc3fc5df683050ddc4984b0fe6a4b1839",
+    "reference_provenance/main_loss_selection.json": "3b31b1a932dedac97794a70881dbb48aae07b60e553a1cf36f3b3747130c398f",
+    "reference_provenance/q02_protocol.json": "d0088d0663e24a4fb7d56808807d2676485c3648869f7afa33a7b98bbda705fb",
+    "reference_provenance/q02_main_loss_selection.json": "719c79abd7fc2b34025840db44c1fef8ae6bbc90c1159c9b3b8167f8959c014a"
+  },
+  "review_evidence_files": {
+    "review_provenance/q05_validation_review.json": "51f529e2a2772cd3d042ede0352d37141d37da2025d54fcdf52cb7bae5c669ce",
+    "review_provenance/next_steps.json": "eb443ed7aa3e2b276b5d6c7756a73cefc5263c050499acdcd5ed96f405419335",
+    "review_provenance/review_manifest.json": "37568998841515939456481492608ebcf8367c9d65389bc40f1c5fe1a5e06871"
+  },
+  "source_files": {
+    "unet_moe/__init__.py": "d042ac29a22ad0dc261b1259871488e4c41040ac31bb3188e3cd2fb2850a2adb",
+    "unet_moe/abdomen.py": "50065c19c3064afcdcecb2ad88ed2a9b1ecc68234b34f5d2e8a1a4a75de15d28",
+    "unet_moe/abdomen_recovery.py": "1f008377345aab7b18f552469cc07b14259587aeaa43ae3590565c0a47c8397c",
+    "unet_moe/audit_splits.py": "8ab830d027dc522a338f834042c60463482b8c3639357bc062b6f764f0189763",
+    "unet_moe/baseline.py": "6e7d9c819faba0d31a88a884ec92eed5c3ab825109d820552195874130077034",
+    "unet_moe/baseline_suite.py": "7533d77fd4948e60134461f9924a3616c3b089ee8c7914c64698b65e95b60d53",
+    "unet_moe/data.py": "ad5419a1732e79cf373863ad4436adf3aa2e2e49369a76f226cf9e66cbf91310",
+    "unet_moe/diagnostics.py": "d5e3cb3aa52036aace4f8f4f03e37b9990f1b2d833e7d2856da713b5b86652f0",
+    "unet_moe/empty_loss.py": "37929ef8a1b316418b7e4bd3b76558991e4ced336b92f38ad2c73120a1122acf",
+    "unet_moe/external_baseline_suite.py": "3d8fe111324ed0183e3424ec3cb51784faca2979a44f90f9f0b870fd5257ce56",
+    "unet_moe/external_baselines/__init__.py": "d2f29e722e2cb26a0cb5462572eda1124750370f3bf9de511b48ff2847c97513",
+    "unet_moe/external_baselines/aimagelab.py": "d39b5277769ba7cc311759d4470e7ab658e48cb9df8dd7749332e7d7d14ca7d6",
+    "unet_moe/external_baselines/lanzhou.py": "4b953b67eb967a3971af21b8432db67f55bfeedc71b317a73bee6ce48fd94a63",
+    "unet_moe/external_baselines/mofo.py": "1e8c558842d748cb9ccaa48f878a13a038598b7de2a43b69c6228feef823824d",
+    "unet_moe/external_baselines/mofo_prior.py": "7f8863451ea9f873022156ee8f5a02c9ed691dff242bd468ce238eed8209fb54",
+    "unet_moe/external_baselines/mofo_prompts.py": "ca8d8066ed7fdee6d2d784051fbc920573f39476262f6123945da127c37fd174",
+    "unet_moe/external_baselines/preflight.py": "35045dda95b9e68c8afcda34953bc62daac53de376273e80d26249c2ad1b6b8e",
+    "unet_moe/external_baselines/protocol.py": "fd947e22a1b1d13b63de98bac815bfdfea6da48420adaca84cf1cd5c96c661b9",
+    "unet_moe/external_baselines/smart.py": "f6d41fb1662b110fb1e80a36f4bf3349820b28fb06dfde7540bd703c06220efa",
+    "unet_moe/external_baselines/support.py": "a9ee7ae7aed5a3c21f0587a9ba4fcad6a59f1fcfe831b16c51e15df6db1783e8",
+    "unet_moe/external_baselines/universeg.py": "030a29c03fe8e20200e4b90c598a49c516fa0dfec864f9fcc2d12699da06d9dd",
+    "unet_moe/external_baselines/valid_region.py": "b77566a303409e5907ee7bd3b1db09c299b9c8c99d350ae221fd33c83172a094",
+    "unet_moe/external_baselines/vendor/aimagelab/__init__.py": "e12f8192ee1f974822b27739e99da557114923f0291eb039ec7977f62c39031d",
+    "unet_moe/external_baselines/vendor/aimagelab/net.py": "81ea5d260bec7e05cfe1548ed66e6bf89f7116f2abd0ab463ef6494d122b7ffe",
+    "unet_moe/external_baselines/vendor/aimagelab/utils.py": "301f1b81cc8eaabc5e0d404c6e42cb0c58e3b6e135c9624c41a2896a129f5769",
+    "unet_moe/external_baselines/vendor/lanzhou/__init__.py": "e12f8192ee1f974822b27739e99da557114923f0291eb039ec7977f62c39031d",
+    "unet_moe/external_baselines/vendor/lanzhou/exact_model.py": "2fda3b471f11187ff29707bbe25985cdd7e3348ce822c83190ec33b1d062a12c",
+    "unet_moe/external_baselines/vendor/mofo/__init__.py": "f885bd6367018b877fb762bdd46de045e111210c638d6588031ada68c0719ad2",
+    "unet_moe/external_baselines/vendor/mofo/network.py": "ff8cc29526d7b400f5ced7a6a5113861bcc43e75b4996fd5384a77b10be72642",
+    "unet_moe/external_baselines/vendor/mofo/prior.py": "8b56aac4792add6f5cef4dfa8a229ca82b29b98db628f79e8124dee8e4ecef7b",
+    "unet_moe/external_baselines/vendor/smart/QClassifier.py": "50524037d2cee514f33165432af5f5ca0f2bb958956cac96deb2d7dbd74bea1d",
+    "unet_moe/external_baselines/vendor/smart/QMOS.py": "bc20691b53e8c0448b40e403e16f8bc880dd42e189fffb81af3f851dec47b7fb",
+    "unet_moe/external_baselines/vendor/smart/QSegmenter.py": "f712d3d9850e3caaf253801694538ec86edd69bd70b7cfdbdbebd11102292532",
+    "unet_moe/external_baselines/vendor/smart/__init__.py": "8af91dfa9df73565d6e50d141722086b9e88e82da8b598c99a373c72fb76cf6c",
+    "unet_moe/external_baselines/vendor/smart/drop.py": "51a070ea4a518d6daa16a30cabd46ebba223855eee6f6537a0430b2500961193",
+    "unet_moe/external_baselines/vendor/smart/grid.py": "94c33c6ccde0831ba7bd016a40207de3749901f63b370d38c3e94568c064c6df",
+    "unet_moe/external_baselines/vendor/smart/helpers.py": "f552ea203f238ddc3f527dbbd05deb40bbcdcfdbd032137d9adb3b924fcc6bf6",
+    "unet_moe/external_baselines/vendor/smart/weight_init.py": "160c28c37b76405ea2ebb9944108584f525866e33c563718f6862615f4f4f4d8",
+    "unet_moe/external_baselines/vendor/universeg/__init__.py": "839fd315834bb61609819ce92498d4189eea9c77693d704ca039702d6d319e06",
+    "unet_moe/external_baselines/vendor/universeg/model.py": "6df2930a343aef0022975b20f572cf3f7cf1bfe1eb47992b7cff7d19940be7b9",
+    "unet_moe/external_baselines/vendor/universeg/nn/__init__.py": "494bc64b25fc3af4ef0d7cf2d723959fdfeb1a01110e318bb0235f3c9695ac09",
+    "unet_moe/external_baselines/vendor/universeg/nn/cross_conv.py": "aa0c5df3685288caf3ca1ec8914f024d63408dbeeb78dab8efb12d9ac7a8f50c",
+    "unet_moe/external_baselines/vendor/universeg/nn/init.py": "a625dcff0420e4ef02577bacf1fa1c33b5d3ac8c391c649ad29c2ec3e599cec2",
+    "unet_moe/external_baselines/vendor/universeg/nn/vmap.py": "fb4c4fa8bf5d5ea9d4f01de40b09993b5697e33d0c8d53cb5785dd3e136ff391",
+    "unet_moe/external_baselines/vendor/universeg/validation.py": "9feb1f047aef039ed54baa7b865ebce45d89eb679b02ccc4b284e903a90915b7",
+    "unet_moe/fair_suite.py": "29311b8c614b50b399accbe777b74ffa3ed371704d71daf0407b79f8785f6df4",
+    "unet_moe/fair_suite_accum.py": "5169490a4182230abc6316be52871d86a7e3b5e5ff977cfdbaf39aa7a311bfcb",
+    "unet_moe/inspect_abdomen.py": "f22f9655b4b843a5ccb40ea3f8c0f2cdcd4d0844c0a0b8327d8789c429aaf7fc",
+    "unet_moe/mechanism_benchmark.py": "bceaf9d34afdff026bcf6b049b7e0b2dc38537aa85e60b95a52bdfbf43ae9861",
+    "unet_moe/mechanism_diagnostics.py": "e51d9e4dcbf7a47b9d14b3b446367c2c4021c3686906b90e3016656375a24340",
+    "unet_moe/mechanism_evaluation.py": "f189af86ece2a0e53680229062f4ed5d6aecef262f827e79b155f1853203ea6e",
+    "unet_moe/mechanism_models.py": "2e26186971e834071d256b0f3b870ed4b5576301d99fe110b032634ad6975edc",
+    "unet_moe/mechanism_objective.py": "835ded5921e495fd4460218e21d958bf90d8231f7915a6a190103b674b38b4cc",
+    "unet_moe/mechanism_suite.py": "afc358bcbdb0643df148b5960624ce4c3cdd3cebdec59a2dba951cc421f73012",
+    "unet_moe/model.py": "779fb81b16ee6c49aae2a383f99fe17149520b80da3fc2a5eaa804a678f84d9e",
+    "unet_moe/normalization.py": "3931fdc3e9d78393d3bd5ea2bbb1cef9edd5996cbb286b9739cf62cb1bb29cb2",
+    "unet_moe/organ_diagnostics.py": "3dd9b9bc26076351060d0163b56828a63ec6728bf7542302c84e290dbbfc2866",
+    "unet_moe/organ_weighted_suite.py": "fee7cccb9707d360c5dab6a5cf96df1c4f125daeec3cba232f155355eddc9df9",
+    "unet_moe/organ_weighting.py": "caf8e8a133f6fda9bf8f5cea76a2555c53abed58cac29f737609d099810d4173",
+    "unet_moe/predict.py": "13ed6094465e946290872819563117d9daebf2658602b8126c6721535924b82e",
+    "unet_moe/reevaluation_inference.py": "fd5827fd6dbeecf18865b89d9e721141c4c4821fc9d7c96555301b7a039c52a9",
+    "unet_moe/reevaluation_inventory.py": "b0aa2e019f1a7f6aff71ef297b6f15bba67af0e4482e440da2e1e3484c77ec82",
+    "unet_moe/reevaluation_report.py": "4f6145b8729f0f5c420f3ed802cf9b187c1d8336aa44c52bcb6d565ee098e421",
+    "unet_moe/refinement_diagnostics.py": "d093d05f57d367831704669e0fdb63f9c4215527d6c276d37e55938dd3864ef0",
+    "unet_moe/refinement_evaluation.py": "78dae5857824aa130de847946523ae566fab4b85fefb27861792f406f36d1f69",
+    "unet_moe/refinement_models.py": "742df790b7a3bd0a5c605e8a613f1567960ba6239b106da5d044f79f8c73562d",
+    "unet_moe/refinement_suite.py": "20c34adba28cd6715069434aaa90460595df515c0f6e3c9a924db38b963cd8ff",
+    "unet_moe/region.py": "b1a64701994d97fe532de378e7028098b285f5cb08acb3823937b67846ae41c9",
+    "unet_moe/region_normalization_suite.py": "ab836369bfa68ef524405bf1c6ed6089e9bd34104eb748c9b99b3a0edabbd475",
+    "unet_moe/region_predict.py": "f5b50123ce3dc81bc298f7f77e6ee9f56a0d2676bfa04b32364a151446e904c5",
+    "unet_moe/region_train.py": "bbaa9e233700ad990ef0d4df925174075ec8ebb5f9f7fbe09099eca6a935759d",
+    "unet_moe/routing_diagnostics.py": "881a15bfe55495f4be64c6b7888b569efcdcab61a16520d9cd0735d2bece5f5c",
+    "unet_moe/routing_evaluation.py": "b05dd36cede1eaacc651211756458511d934f12f809f0130d67d47fcf39f6411",
+    "unet_moe/routing_objective.py": "ec92fed94c47e36163a2be6db4793269d393474ab969c7fc1d0a8b14b7b870d0",
+    "unet_moe/routing_suite.py": "220e115f285415e50b30ee63f1c6399e7db891f17b5e5237ae0bea2fdffa2d04",
+    "unet_moe/sampling.py": "3a75c1dde84a1242acd503f1fc658957b92ff589fb401eb10f9cd53e9e1ecf2a",
+    "unet_moe/schedule.py": "011edb0818d4ef644e0be46a075a825fbcad460251155634a50ab021908a2e7f",
+    "unet_moe/single_channel_suite.py": "ecbbbdb38d23f4a5e53f1b6a94c2ea29da9cd1253014594392090ccf9b555d98",
+    "unet_moe/smoke.py": "76cf06042a91ddae3c35cae2048576b7ce83c1a4b4ea1a6da59bad3b395fc60c",
+    "unet_moe/surface_metrics.py": "6dca72a6b2e15acdb44a89105bcc01f09072127eaaaf6df90bef2172a86fd429",
+    "unet_moe/train.py": "8472a96af667994cf9c6264c7bb2911c0d9a41cc45142197d58704e158220bef",
+    "unet_moe/union_evaluate.py": "1708acf2a3b9c1822c564548f2b45dffed6f07fee706cb302fa21804ab593b72",
+    "unet_moe/union_evaluate_80.py": "e8ec9860678c58aaecace370836cc95240703a1baddf728705942c648f266323",
+    "scripts/__init__.py": "e1d8817ad987182f856e8e6d69235cd143fd3217be482118fea58cf1c67e65c1",
+    "scripts/run_moe_refinement.py": "f32b48e67e9823b4b677cbb36d3949d1a30822bc092c8d42b39c90c442c38038",
+    "scripts/run_routing_optimization.py": "2d337068d025c66346654ae1f7548a6f94e137ea9986af1531b30bf5d4263f98",
+    "scripts/run_organ_weighted.py": "612864da755cb853ee38866a60ab702b2bca92fd009b0b2971a4f46f9899707d",
+    "scripts/preflight_fair80.py": "07d74ca878dec3083056c4c059810373ecf50a09b0907fd365530ecb170e9693",
+    "scripts/run_moe_mechanisms.py": "2bd9c620554e35d637336b05ee6142e05647aa4778787bedc99eb34dc7f9b2fc"
+  },
+  "source_sha256": "e74fb7a1432ce2f08bb1309bf77db4570a6fe49bb13eacce26ca772efba66ff6",
+  "initialization_sha256": {
+    "region": {
+      "42": {
+        "control": "c5b61e459ac078191f7d7833facc026ce7ad4ed4190aae6837931c3d4d673785",
+        "routing": "c5b61e459ac078191f7d7833facc026ce7ad4ed4190aae6837931c3d4d673785"
+      }
+    }
+  },
+  "common_initialization_sha256": {
+    "region": {
+      "42": "1aba20ee2591d863716f32e144e36244a0f1c043c2f961bbd61bb8f9f4a158f5"
+    }
+  },
+  "model_counts": {
+    "region": {
+      "control": {
+        "parameters": 13360604,
+        "experts": 9
+      },
+      "routing": {
+        "parameters": 13360604,
+        "experts": 9
+      }
+    }
+  },
+  "guardrail": {
+    "minimum_positive_dice": 0.1,
+    "minimum_vessels_positive_dice": 0.2,
+    "minimum_abdomen_macro_positive_dice": 0.4,
+    "maximum_positive_zero_overlap_rate": 0.5,
+    "maximum_empty_false_positive_area_fraction": 0.02,
+    "require_all_five_organs": true
+  },
+  "diagnostic_indices": [
+    581,
+    1070,
+    3822,
+    1980,
+    0,
+    2449,
+    3062,
+    1171,
+    5137,
+    4660,
+    4676,
+    4661,
+    4665,
+    4670,
+    4664
+  ],
+  "main_loss_selection_rule": {
+    "version": "reuse_frozen_q05_validation_choice_v1",
+    "source": "completed Q05 selection and its exact Q02 validation-only provenance chain",
+    "expected_main_loss": "organ_exposure_fg_bg",
+    "test_used": false,
+    "reuse": "one unchanged C choice for every arm; no outcome-based re-selection"
+  },
+  "budget": {
+    "images_per_epoch": 4500,
+    "optimizer_steps_per_epoch": 282,
+    "epochs": 80,
+    "runs": 2,
+    "images_per_run": 360000
+  },
+  "architecture_policy": {
+    "region": "Q05 refined visual foreground/background contrast; router never receives organ/domain ID",
+    "task_id": "Q05 refined shared backbone/Task-FiLM; construct all 9 experts then retain 0/1/9",
+    "initialization": "Q05 refined from-scratch initialization; never fine-tune completed Q05 weights"
+  },
+  "auxiliary_policy": {
+    "region": "main + 0.1 coarse; routing arm additionally 0.1 final-layer positive-query reverse KL",
+    "task_id": "main + 0.01 original balance for 9 experts; balance omitted for 0/1 experts"
+  },
+  "test_policy": "all declared stage runs fully trained and verified before any stage test decode; no test tuning",
+  "selection_policy": "original best validation positive structure macro; last; unchanged guardrail; no substitution",
+  "numerical_scope": {
+    "version": "native_updates_strict_resume_v1",
+    "native_training_updates": 2,
+    "deterministic_continuation_updates": 2,
+    "checkpoint_prediction_scope": "strict_deterministic",
+    "production_training_scope": "native_fp32_no_bitwise_continuation_claim",
+    "cublas_workspace_config": ":4096:8"
+  },
+  "environment": {
+    "python": "3.11.15 | packaged by conda-forge | (main, Jun 11 2026, 03:34:02) [GCC 14.3.0]",
+    "torch": "2.5.1+cu124",
+    "numpy": "1.26.4",
+    "cuda": "12.4"
+  },
+  "record_sha256": "f621896f10234777d3067a019d96a7cb1dae3b6add305bca32815298744315e0",
+  "draws_sha256": "5f1ca1d0ad4ebc654534b7b061ebadc65ff7e103c63e76f3b70dcfa273c37f1a",
+  "content_sha256": "4febb90bf743ead2dcfcea36df4bf6e1ecee767ffbed13ed7264938dcbd399dd",
+  "statistics_sha256": "62dfafd00a13d8665fdbd1b92cad4a815ae2c91a03c822303c52cfce94b03a3e",
+  "protocol_sha256": "fb5713e8bdaf3afdd245f779af4345d094ac70c4784e5d38fc5c3c2c2e39aade"
+}

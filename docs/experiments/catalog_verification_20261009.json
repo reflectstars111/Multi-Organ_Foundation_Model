@@ -1,0 +1,82 @@
+{
+  "schema": "medical_catalog_verification_v1",
+  "verified_at": "2026-10-09T11:09:56.983235+08:00",
+  "scope": "Documentation/catalog checks only; no model training, inference, checkpoint deserialization, or ML test suite rerun.",
+  "all_checks_passed": true,
+  "checks": {
+    "markdown_files": 13,
+    "local_markdown_links": 141,
+    "missing_local_links": 0,
+    "json_exports_valid": 5,
+    "csv_exports_valid": 5,
+    "medical_root_entries": 37,
+    "medical_directories": 36,
+    "resource_files": 1,
+    "formal_training_runs_complete": 24,
+    "derived_union_evaluations_complete": 18,
+    "formal_csv_rows": 42,
+    "formal_aggregate_rows": 14,
+    "formal_aggregate_mean_sample_sd_recomputed": true,
+    "formal_summary_sha256_matches": 6,
+    "catalog_source_sha256_matches": 3,
+    "sampling_paired_seed_epochs_verified_in_source_catalog": 390,
+    "q01_matrix_unique_jobs": 27,
+    "q01_train_counts": {
+      "complete": 4,
+      "running": 2,
+      "pending": 21
+    },
+    "q01_test_counts": {
+      "pending": 27
+    },
+    "q01_snapshot_time": "2026-10-09T11:00:31+08:00",
+    "data_domains": 9,
+    "data_images": {
+      "train": 6737,
+      "val": 1007,
+      "test": 1618
+    },
+    "git_diff_check": "passed"
+  },
+  "review_notes": [
+    "Independent review matched 14 formal main mean/SD pairs and 15 abdomen organ means to source artifacts.",
+    "Independent Q01 review matched completed and running validation results and guardrail statements; file-content manifest covers all splits while weighting statistics are train only.",
+    "Running Q01 results and controller state are dated snapshots, not live dashboard data."
+  ],
+  "summary_sources_checked": [
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_512_seed42_43_44_20260930/summary.json",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20261001_fix/summary.json",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_512_20260930/summary.json",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_80_base24_batch16_512_20261001_fix/summary.json",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_512_20260930/summary.json",
+    "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_80_base24_batch16_512_20261001_fix/summary.json",
+    "/ssd1/code/Multi-Organ_Foundation_Model/docs/experiments/historical_experiments_20261009.json",
+    "/ssd1/code/Multi-Organ_Foundation_Model/docs/experiments/fair_comparisons_20261009.json",
+    "/ssd1/code/Multi-Organ_Foundation_Model/docs/experiments/q01_snapshot_20261009.json"
+  ],
+  "document_and_export_sha256": {
+    "README.md": "54d11abd0a01a230b79420f692924e1eaaea5bbc95892211cc69cc623b0a1304",
+    "docs/ABDOMEN_IMPROVEMENT_512.md": "c647c14879e51d150331aad4de374b4497b73802c14d222eac7870dd4a604260",
+    "docs/EXPERIMENT_QUEUE.md": "021bf20ac925ace48ecad3ddee1eb011df64611f7b96f840a82c9595c5942479",
+    "docs/EXPERIMENT_STATUS.md": "903ab3935e25e83be2ffb82d972e38bcd940e7acb86bb2179e7b3d64a1ae5477",
+    "docs/EXPERIMENT_STATUS_ARCHIVE_20261005.md": "c34d57dd64d40be97cfe8f1885e0030c6428ee2e7b26f6fbd6d2833cd850d78d",
+    "docs/MEDICAL_EXPERIMENT_OVERVIEW.md": "2245c32af404ebd34e515c5b6a9f11af37c323c055d7babf6ccb9849ded03611",
+    "docs/Q01_ORGAN_WEIGHTED_512.md": "bc231f9e3914b76abe84beaacb75b1d5f9807e7c68c3a9d00281d4215f7be3c5",
+    "docs/SINGLE_CHANNEL_UNION_512.md": "5defac54ba20723e6f30adf4d09edaba22d883cd5ed398eb840f0f0019bd9434",
+    "docs/UNIFIED_80_512.md": "c6198a1e060e43b8bea01e26803b56b544eadb7a7ada1d9eef928ed6a63da9af",
+    "docs/experiments/FAIR_COMPARISONS_20261009.md": "c63b8ed748337d3bc33f4783cd1576fb20063a7d5793560396de3a9e139bb3a2",
+    "docs/experiments/HISTORICAL_AND_ABDOMEN_20261009.md": "64cd1744e05b960bb57a0f1b27b49707afbd61bb6909091d7028b758aed3e9ca",
+    "docs/experiments/Q01_SNAPSHOT_20261009.md": "37f2002285fd6e096008124fa1102ec8fc6975314d94b7b61ab8b5593f8166f0",
+    "docs/experiments/data_protocol_20261009.json": "a1db699520779cc04d3ad4c735d3761e65a8978efc753f4e0fd3acb473a91e4f",
+    "docs/experiments/data_split_20261009.csv": "6b8117c56b9c1966c05abb81b47a305753e6f5960b1007e6c7134542207de7de",
+    "docs/experiments/fair_comparisons_20261009.json": "4e8de2746e2ef0c3fc8aa6602be62b8ca10b9e5de1d33fad550676583bd83f6b",
+    "docs/experiments/formal_results_aggregate_20261009.csv": "53d104fb1bebd15968cf26f29198e7d5db28e9dfb4b9ce296414be01481c8f7c",
+    "docs/experiments/formal_results_per_seed_20261009.csv": "1a9302641f9a08bdec0202d1ca72420ae6cf57c1bbe94db1407bffc33ce7ba33",
+    "docs/experiments/historical_experiments_20261009.json": "34eeb3f9f2323f914300830fe4c7ac31eaee16b26278e7883000a9eea0a9fe45",
+    "docs/experiments/medical_run_inventory_20261009.csv": "cab06c3bbde806dffd113f7025b5310d6d6c0081898e5a1d9c588922d94228a3",
+    "docs/experiments/medical_run_inventory_20261009.json": "fcbc78f258c79c8aa84d398cb5d41cf2039d5782393bcf5ddb7229fdbd9900c1",
+    "docs/experiments/q01_matrix_20261009.csv": "77c1e18cfb59817a8ab3c81c5fc7c26b1c5d983fd2493df20e3faeda08fc8474",
+    "docs/experiments/q01_snapshot_20261009.json": "edebc13deb5b6b6f2ab2a8f0dce81cc6e8f9327b9aa30ade29521ca74576dd22",
+    "unet_moe/README.md": "ea7962b2215d906cd0f2430a4aa827efc8554ae56399b74fe0d847a956b074a5"
+  }
+}

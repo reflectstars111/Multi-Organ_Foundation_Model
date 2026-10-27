@@ -1,113 +1,64 @@
-# 初版：面向多器官超声的 U-Net + Decoder MoE
+# 多器官超声分割：架构与数据约定
 
-> 新增图像独立输入的**器官区域特征路由版本**：见 [README_REGION.md](README_REGION.md)。使用 `region_train` / `region_predict` 入口，9 组专家、19 个结构输出，不输入 task ID。下文保留旧 task-ID 基线说明，与新版本不要混用。
+更新日期：2026-10-09。全部医学实验及最新证据见[医学实验总览](../docs/MEDICAL_EXPERIMENT_OVERVIEW.md)，服务器命令见[REMOTE_4090.md](../REMOTE_4090.md)。本页说明架构和数据约定；历史smoke与训练运行见文末。
 
-这是可训练的研究基线，尚无完整训练精度结论。一个共享模型接受灰度图像与目标 task ID，返回该目标的二值分割 logits。对同一图像指定多个 task 可得到多个结构；首版不是自动识别所有器官的单次多类输出模型。
+用户定义的共享U-Net为所有已标注器官合并到一个前景通道；其与原设计MoE的对比见[主对照结果](../docs/SHARED_UNION_VS_MOE.md)。代码名`shared`保留历史含义，指16通道附加对照。
 
-## 设计与论文的关系
+## 五种模型设置
 
-参考 `relate_paper/2506.08356v2.pdf`（MedMoE）§4.2–4.6 的多尺度视觉特征、条件专家选择及辅助路由思想。原文研究视觉语言学习，不是 U-Net 分割论文；正文 §4.3 用报告 embedding 路由，图 2 描述图像 embedding 路由，二者表述不完全一致。
-
-本实现：
-
-1. 五级 CNN 编码器，通道默认 24/48/96/192/384，GroupNorm 适合小 batch。
-2. 四级解码器：上采样 → 拼接同尺度 skip → 卷积融合 → MoE。
-3. 每级路由器输入全局池化视觉特征和 32 维 task embedding，默认 4 个卷积专家，按样本选择 Top-2；仅对选中的样本执行对应专家。
-4. 共享分支输出 + 被选专家输出的加权和。权重使用完整 softmax 中选中的概率（不重新归一化），保证 Top-1 时仍有分割梯度进入路由器。
-5. 损失 = BCE + soft Dice + 0.01 × load balance + 0.001 × router z-loss。记录每级专家使用比例。
-
-与论文的区别：无文本编码器、无图文对比学习、无专家内部跨尺度注意力；多尺度通过 U-Net skip 与逐级解码融合。专家没有预先固定为某个器官，器官条件来自 task embedding，专长由训练学习。Top-2、共享专家及均衡损失是本基线的设计选择。
-
-## 数据入口与标签
-
-从 `pointed_data/*/processed_png/manifest.csv` 自动读取 image/mask 相对路径，只使用 `paired` 行。
-
-| 数据集 | task 名称 | 处理 |
+| 模型 / 入口 | 输入和输出 | 主要区别 |
 |---|---|---|
-| BUSI | breast_lesion | 二值 mask |
-| MMOTU | ovarian_lesion | 二值 mask |
-| DDTI | thyroid_nodule | 作者预处理版 |
-| AUL | liver / liver_mass / ultrasound_outline | 各标签独立监督 |
-| FALLMUD | aponeurosis / fascicle | 各标签独立监督 |
-| Fetal HC | head_contour | 保留原轮廓，不填充成头部区域 |
-| CCA | carotid | 原始二值标签语义 |
-| CAMUS | lv_cavity / myocardium / left_atrium | 原索引 1/2/3 各自转二值目标 |
-| AbdomenUS | abdomen_liver / kidney / pancreas / vessels / adrenal / gallbladder / bone / spleen（各名均带 abdomen_ 前缀） | 926 对 AUS，精确 RGB→索引 1–8；深灰为 ignore=255 |
+| 共享 U-Net（单通道主基线） / `single_channel_suite` | 灰度图 → 1个前景并集logit | 普通U-Net，不输入域或任务ID，不输出器官身份；见[并集协议](../docs/SINGLE_CHANNEL_UNION_512.md) |
+| 16通道 U-Net（附加对照） / `baseline_suite --mode shared` | 灰度图 → 16 个结构 logits（paper5） | 所有数据集共享主干；这是现有 `shared` 协议，不是单通道并集基线 |
+| 独立 U-Net / `baseline_suite --mode independent` | 灰度图 → 本数据集结构 logits | 九套参数；部署需知道数据集归属 |
+| task-ID MoE / `train --decoder moe` | 灰度图 + task ID → 单结构 logits | 每级视觉池化特征与 task embedding 共同路由 |
+| 区域 MoE / `region_train` | 灰度图 → 多结构 logits | 预测软区域特征路由，无需输入 task ID；见 [区域文档](README_REGION.md) |
 
-未标注目标不参与损失。不同任务共享模型参数，不将其他数据集的缺失类别当作负标签。PNG 调色板通过 NumPy 直接读取索引；普通二值 mask 用阈值 128 去除 JPEG 灰度伪影。图像双线性、mask 最近邻缩放；首版固定缩放为正方形，可能改变长宽比，细线目标可能因降采样消失，应在正式实验中验证分辨率。
+`train --decoder shared` 是保留 task embedding 的共享解码器消融，与不输入 task ID 的普通共享 U-Net 不同。task-ID 模型包含五级 CNN 编码器、四级解码器、GroupNorm、共享卷积分支及稀疏专家。Top-k 权重来自完整 softmax，不对选中权重重新归一化；Top-1 仍有分割梯度进入路由器。专家数量由 `--experts` 控制，不等于输出结构数。
 
-CAMUS 默认只用 ED/ES，跳过 half_sequence。划分已改为下述 source_aware_v1 协议。原始患者信息不足的数据集，分组无交集不等于患者独立；跨数据集重复患者或图像仍需核查。
+架构比较入口`fair_suite`及累积梯度版本`fair_suite_accum`在固定记录上统一三种结构模型的图像抽样、逐图像有效通道BCE+Dice、验证指标与训练预算。已完成的50轮对照使用512×512/base16/batch4/lr3e-4；80轮对照使用512×512/base24/有效batch16/lr1e-4，结构模型物理microbatch4。单通道各有对应配置的三种子并集实验；Q01另在80轮配置下做器官损失加权消融。历史256实验保留原记录。Task-ID为每张图的已标注结构分别前向；相同更新步数不代表相同FLOPs。正式对照辅助损失均为0，模型参数量与推理条件见[结果总览](../docs/MEDICAL_EXPERIMENT_OVERVIEW.md)。
 
-## 当前划分协议（source_aware_v3_abdomen）
+## 标签数量与监督
 
-- CAMUS：严格读取原包 subgroup_training/validation/testing.txt，固定 400/50/50 名患者；缺名单、重复患者或患者未列入名单时报错，不回退随机划分。
-- HC18：按用户要求，将原官方 train 的 999 张带标签图按检查编号哈希约 70%/15%/15% 划为项目训练/验证/测试；seed=42 实际为 706/154/139 张。335 张官方无标签测试图单独保留并计入 skipped。新的 139 张测试图可计算 Dice，但不是官方挑战赛测试集。
-- FALLMUD：包含来源名称的图像分组按哈希阈值分配约 68%/17%/15%，即参考论文 85% 开发、15% 评估，再从开发部分留 20% 验证。这不是原作者固定名单，也未保证序列/患者独立。
-- MMOTU：本地已有 test 固定保留，train 内留约 20% 验证；未划分的 CEUS 使用项目 70%/15%/15%。本地缺原官方名单，不能称作官方复现。
-- BUSI、DDTI、AUL、CCA：项目约 70%/15%/15%；DDTI 未采用衍生代码的五折或默认 val/test 复用。CCA 按序列前缀分组，不保证患者独立；AUL 同图全部任务同组。
-- AbdomenUS 已启用：优先读取 `manifest_indexed.csv`，不再使用含失效 RUS 路径的旧索引；没有转换结果时报错。8 个新增任务使总任务数变为 21；原 13 个 ID 不变。按 CT 编号划分，seed=42 的 train/val/test 为 321/312/293 张（5/4/4 个 CT），哈希在小组数下偏离目标比例明显。所有已有显式 test/val 均保留。
+`data.TASKS` 保留 **21 个兼容槽位**，不是当前所有模型都输出 21 个有效结构。
 
-AbdomenUS 转换脚本为 `python scripts/convert_abdomen_masks.py`，保留原始 RGB 标签；只接受核查到的准确颜色，未知颜色报错。深灰 `(10,10,10)` 的语义未指定，编码为 255；Dataset 转为 target=-1，BCE、Dice 损失和评估屏蔽该区域。新数据集需重新训练 21-task 模型，不可将旧 13-task checkpoint 视为已经学过腹部任务。当前已启动的 `runs/moe_full_hc_v2` 仍为旧 13-task 实验，本次没有中断或重启它。
+| 配置 | 有效目标 | 排除规则 |
+|---|---:|---|
+| 旧 task-ID `all8` 数据入口 | 20 | 保留 AUL outline；FALLMUD fascicle（ID 7）没有记录 |
+| 区域/普通 U-Net `all8` | 19 | 另排除 AUL ultrasound_outline（ID 5） |
+| `paper5` / 新公平对照 | 16 | 在 19 结构基础上排除腹部胰腺、肾上腺、骨（ID 15/17/19） |
 
-比例为确定性哈希的期望值，不是精确张数；固定 seed 和分组键即可重现，变更 seed 会改变项目划分。每条记录新增 split_protocol 和 split_version，导出时检查同图及同组不跨集合。此检查不涵盖尚未知的患者关系。训练仍仅用 val 选 best，test 不进入训练或选模；当前未提供独立测试评分命令。
+paper5 含非腹部 11 类和腹部肝、肾、血管、胆囊、脾 5 类。腹部“血管”和“整肾”是本地标签语义，不等价于论文中的主动脉或肾内部细分。AbdomenUS 当前只使用 AUS 模拟超声，不能据此推断真实腹部超声泛化。
 
-```powershell
-python -m unet_moe.audit_splits --data-root "数据集 (Datasets)/pointed_data" --output runs/split_audit.json --seed 42
+manifest 只取 `paired` 行。图像双线性缩放至正方形，mask 最近邻缩放；普通二值 mask 阈值为 128，CAMUS 按索引 1/2/3 解码，AbdomenUS 按索引 1–8 解码。腹部 ignore=255 转为 target=-1；缺失通道同样为 -1，不参与损失或指标。AUL 使用独立 liver/mass 标签，保留重叠和缺失标注，不读取合并标签作为完整多类真值。
+
+**HC18 当前使用填实标签。** `build_records` 优先读取 `manifest_filled.csv`，记录 `label_version=hc18_filled_v1`；区域/普通 U-Net 入口校验全部 999 张标注图均为填实版本。兼容 task 名仍叫 `head_contour`，名称不代表当前 mask 是细轮廓。旧 task-ID 入口未强制填实，复现实验需检查 records 中的版本。原轮廓 mask 保留；生成脚本为 `scripts/fill_hc18_masks.py`。
+
+## 划分
+
+CAMUS 使用官方 400/50/50 患者名单，跳过 half_sequence；名单缺失或冲突时报错。HC18 按文件名检查编号分组，官方 335 张无标签测试图不参加有监督评分；本项目 HC18 test 来自 999 张有标注发布训练图。CCA 按序列前缀分组，AUL 同图标签保持同组；其他来源混合发布划分和项目哈希划分，不能统称患者独立或官方复现。
+
+腹部 `ct7_2` 保留发布测试的 4 个 CT 来源，原训练来源中 ct3/ct4 留验证，独立图像数为 477/156/293。`ct_cv5` 按 5 组来源验证且不运行 test；ct15 出现于两折，因此不是九个 CT 等权且互斥的标准五折。`ct_final` 将原训练 9 个 CT 的 633 图全部用于训练，**腹部没有验证集**，固定选择最后一轮。2026-09-29 启动的两条 v6 实验实际使用 last epoch 80，没有先完成五折。
+
+`trainmore_v6` 只将部分项目验证样本转回训练；同一 split seed 下 test 保持一致。旧三个训练入口的 `--seed` 同时改变划分和训练随机性；新 `fair_suite --split-seed 42 --seeds 42,43,44` 分开控制二者。完整 records、分组键和标签版本应随每次运行保存；仅比较 seed 数值不足以证明样本相同。
+
+## 评估与续训
+
+当前 Dice 在缩放后的网格上、阈值 0.5 计算，先按结构内图像平均，再对结构等权平均。`macro_positive_dice` 仅统计该结构真值有前景的图像；`macro_all_dice` 包含空标签图像，空预测+空真值计 1。旧 task-ID 的 `macro_dice` 属于后者。`macro_empty_false_positive_rate` 是空真值图像上出现任意预测前景的比例，仅覆盖已标注通道。它们不是像素全局 Dice、患者平均或 HD95；阳性与含空指标不可混比。
+
+`train`、`region_train`、`baseline_suite` 均支持 `--resume`，需要保持配置和冻结记录一致，不能用它修改超参。旧区域/普通基线 checkpoint 未保存完整随机状态；支持续训不等于逐位重现中断前轨迹。旧 task-ID 保存 PyTorch CPU/CUDA RNG，但没有完整 Python/NumPy RNG。新统一入口保存完整 RNG 和配置校验信息，并默认不评估 test。各入口目前无 AMP/DDP 训练路径。
+
+以下独立预测命令适用于旧 `train` / `region_train` 产出的 checkpoint。新 `fair_suite` schema 由统一 runner 评估，不能直接交给旧预测入口：
+
+```bash
+python -m unet_moe.predict --checkpoint /path/to/task_id/best.pt --image /path/to/image.png --task lv_cavity --output /path/to/prediction.png
+python -m unet_moe.region_predict --checkpoint /path/to/region/best.pt --image /path/to/image.png --output /path/to/predictions
 ```
 
-审核文件含完整记录、独立图像数、分组数、协议及跳过原因；为保护旧结果，输出文件已存在时报错。已验证报告为 `runs/split_audit_v3.json`。新协议与旧实验不兼容，请使用新的输出目录重新训练；下文旧验证数量是历史运行结果。
+checkpoint 架构须与预测入口一致。两种预测都还原原图尺寸；task-ID 拒绝无训练记录的任务，多结构独立 sigmoid 输出允许重叠。
 
-## 运行
+## 历史记录
 
-### 下次实验变更（不影响已启动的 v3 实验）
+2026-09-16 的 `moe_smoke*`、`moe_*check*`、`shared_check_v2`、`region_check_v1` 使用 base=4、32×32 和少量优化步骤，仅验证工程链路。早期 `moe_full_hc_v2`、`moe_full_9datasets_v3` 为 13-task/21-task 阶段实验，历史记录显示已停止，不应继续称其“当前后台训练”。其任务集合、HC18 标签与新协议不同。原 README 的验证张数为对应旧记录计数，不能用于当前图像数或精度结论。
 
-默认 `--experts 9`，Top-2 保持不变：每个解码阶段有 9 个可路由专家及 1 个共享分支，专家由路由器学习选择，并未固定绑定数据集。9 数据集不等于 9 个分割目标。
-
-FALLMUD 仅使用 aponeurosis；fascicle 从新建的训练、验证、测试记录中全部排除，原始文件保留，跳过原因记录为 `FALLMUD:disabled_fascicle`。当前为 20 个有效分割目标；为兼容旧 checkpoint 的 task 编号，TASKS 的 21 个槽位保留，fascicle 的 ID=7 不再有训练数据。现有后台 v3 仍按原配置运行；下次须使用新输出目录从头训练。
-
-当前目标计数：BUSI/MMOTU/DDTI/HC18/CCA 各 1，AUL 3，FALLMUD 1，CAMUS 3，AbdomenUS 8，共 20；先前 FALLMUD 含 2 个目标，因此共 21。若需要“每个数据集固定一个专家”，需另行改为固定数据集路由，不能仅设置专家数量实现。
-
-当前正式实验：`runs/moe_full_9datasets_v3/`，从随机初始化训练全部 9 个数据集、21 个任务，50 epochs，256×256，batch=4，base=24，4 experts / Top-2，seed=42。日志在 `runs/moe_full_9datasets_v3-logs/stdout.log`，错误日志为同目录 `stderr.log`。旧 `moe_full_hc_v2` 已停止、结果保留。启动前已核对全部引用文件存在；训练/验证/测试任务记录数为 13,278 / 4,381 / 4,365。完成后自动对验证最优模型评估测试集，保存 `test_metrics.json`；启动不代表已完成训练。
-
-### 本轮更新
-
-- 增加 `--decoder shared`：关闭稀疏专家与路由，保留 task embedding 条件和共享卷积分支，作为任务条件 U-Net 对照；默认 `--decoder moe` 保持原架构。两者参数量不同，比较时应报告参数量。
-- HC18 改为按文件名首段检查编号分组，例如 `010_HC` 与 `010_2HC` 不会跨训练/验证集合。这会改变旧版划分，请重新生成实验记录。
-- AUL 仍读取原始独立 liver/mass/outline 标签，不读取新增 `manifest_liver_mass.csv`：合并 PNG 中 103 张存在缺失标注，不能直接作为完整多类监督；独立标签也保留了原始重叠关系。
-- 新 checkpoint 记录有训练数据的 task ID，推理拒绝没有训练记录的目标。原 checkpoint 配置仍兼容。
-
-共享 U-Net 对照运行示例（其他参数与 MoE 实验保持一致）：
-
-```powershell
-python -m unet_moe.train --data-root "数据集 (Datasets)/pointed_data" --output runs/shared_experiment01 --decoder shared --epochs 50 --batch-size 8 --size 256
-python -m pytest tests/test_unet_moe.py -q
-```
-
-在项目根目录安装 `requirements-unet-moe.txt`；CUDA 版 PyTorch 按本机驱动环境安装。代码已在现有 PyTorch 环境验证。
-
-```powershell
-python -m unet_moe.smoke --data-root "数据集 (Datasets)/pointed_data"
-python -m unet_moe.train --data-root "数据集 (Datasets)/pointed_data" --output runs/experiment01 --epochs 50 --batch-size 8 --size 256
-```
-
-显存不足时降低 `--batch-size` 或 `--base`（须为 4 的倍数）。`--workers 0` 适合 Windows 初次排查。训练按任务频次反比采样，避免 CAMUS 主导梯度。输出 `records.json`（固定划分及跳过原因）、`metrics.jsonl`（每任务验证 Dice/宏平均/路由负载）、`best.pt` 和 `last.pt`。best 仅由验证宏平均 Dice 选择；空真值且空预测计 Dice=1。评估为任务内样本均值，尚非患者级平均，也未加入 HD95。
-
-```powershell
-python -m unet_moe.predict --checkpoint runs/experiment01/best.pt --image "数据集 (Datasets)/pointed_data/心脏超声心动图数据集 (CAMUS)/processed_png/images/patient0001/patient0001_2CH_ED.png" --task lv_cavity --output runs/prediction.png
-```
-
-推理将 logits 还原到原图尺寸再阈值化，输出 0/255 PNG。指定目标必须是已训练任务。多目标预测可能重叠，需要进一步设计多类别融合。smoke.pt 只用于链路验证，不能作为有分割能力的预训练模型。
-
-## 文件
-
-本轮验证（2026-09-16）：4 项模型/标签/分组测试通过；13 个任务真实样本前后向和 checkpoint 回读通过。MoE 与 shared 两种模型均在 RTX 5070 Laptop GPU 上以 base=4、32×32、batch=8 完成 2 个优化步骤、全部 2,710 条验证记录及单图推理。当前划分为 train=11,524、val=2,710、test=382；记录数按任务计，不等于独立图像数。产物分别在 `runs/moe_smoke_v2/`、`runs/moe_check_v2/`、`runs/shared_check_v2/`，包括 checkpoint、验证指标与预测 PNG。仅为链路验证，不用于精度比较。
-
-本地验证结果：2 个模型/标签测试通过；13 个任务真实样本完成前后向及 checkpoint 一致性检查；小模型（base=4、32×32、2 个优化步骤）已跑通完整训练与 2,723 条验证记录，并成功执行单图推理。结果保存在 `runs/moe_smoke/` 和 `runs/moe_train_check/`。这些运行仅检验工程链路，不能据此评价模型准确率或临床能力。
-
-- `model.py`：U-Net、稀疏路由、损失。
-- `data.py`：manifest 读取、任务定义、分组划分、PNG 处理。
-- `train.py`：训练、验证、任务均衡采样、checkpoint。
-- `predict.py`：单图单目标推理。
-- `smoke.py`：真实样本逐任务前后向和 checkpoint 回读。
-
-建议实验顺序：先训练共享 U-Net 对照，再比较 MoE 的专家数与 Top-k，最后验证患者独立划分下的跨数据集泛化。已提供任务条件共享 U-Net 对照开关；尚未实现 AMP、DDP 或断点续训。
+当前服务器可核验的正式历史结果包括 `region_top1_v1`、`unet_baseline_9v1`、`unet_paper5_ct7_2_v1` 独立模型及两条 v6 80 轮实验，详见[实验状态](../docs/EXPERIMENT_STATUS.md)。

@@ -1,0 +1,3784 @@
+{
+  "schema": "medical_historical_catalog_v1",
+  "snapshot_date": "2026-10-09",
+  "generated_at": "2026-10-09T11:00:32.495008+08:00",
+  "runs_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs",
+  "method": "Read JSON/log artifacts; do not load checkpoints, rerun evaluation, or modify training. Metric values are fractions unless explicitly named percentage_points.",
+  "directory_classification": [
+    {
+      "name": "region_top1_512_v6_final_seed42",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_top1_512_v6_final_seed42",
+      "category": "historical_training",
+      "status": "completed_test_artifacts_present",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_top1_512_v6_final_seed42/test_metrics.json"
+      ],
+      "note": "历史协议，训练末轮达到 80；测试产物存在，不与当前公平协议直接排名。"
+    },
+    {
+      "name": "task_id_top1_512_v6_final_seed42",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/task_id_top1_512_v6_final_seed42",
+      "category": "historical_training",
+      "status": "completed_test_artifacts_present",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/task_id_top1_512_v6_final_seed42/test_metrics.json"
+      ],
+      "note": "历史协议，训练末轮达到 80；测试产物存在，不与当前公平协议直接排名。"
+    },
+    {
+      "name": "region_top1_v1",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_top1_v1",
+      "category": "historical_training",
+      "status": "completed_test_artifacts_present",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_top1_v1/test_metrics.json"
+      ],
+      "note": "历史协议，训练末轮达到 50；测试产物存在，不与当前公平协议直接排名。"
+    },
+    {
+      "name": "unet_baseline_9v1",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/unet_baseline_9v1",
+      "category": "historical_training",
+      "status": "completed_test_artifacts_present",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/unet_baseline_9v1/comparison.json"
+      ],
+      "note": "历史协议，训练末轮达到 50；测试产物存在，不与当前公平协议直接排名。"
+    },
+    {
+      "name": "unet_paper5_ct7_2_v1",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/unet_paper5_ct7_2_v1",
+      "category": "historical_training",
+      "status": "completed_test_artifacts_present",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/unet_paper5_ct7_2_v1/independent_comparison.json"
+      ],
+      "note": "历史协议，训练末轮达到 50；测试产物存在，不与当前公平协议直接排名。"
+    },
+    {
+      "name": "abdomen_audit_20260930",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_audit_20260930",
+      "category": "exploratory_diagnosis",
+      "status": "completed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_audit_20260930/findings.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_audit_20260930/protocol.json"
+      ],
+      "note": "固定旧 Region epoch80 的训练/测试诊断；不是新训练，测试已被探索性查看。"
+    },
+    {
+      "name": "abdomen_postprocess_512_20260930",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_postprocess_512_20260930",
+      "category": "invalid_exploration",
+      "status": "superseded_invalid",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_postprocess_512_20260930/superseded.json"
+      ],
+      "note": "连通域筛选前使用真值有效像素掩膜，规则选择无效。",
+      "replacement": "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_postprocess_512_20260930_v2"
+    },
+    {
+      "name": "abdomen_postprocess_512_20260930_v2",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_postprocess_512_20260930_v2",
+      "category": "exploratory_postprocessing",
+      "status": "completed_no_rule_selected",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_postprocess_512_20260930_v2/screen.json"
+      ],
+      "note": "80 组规则应用于 5 器官；仅肾脏 precision 候选进入对侧 CT 检查但未通过。"
+    },
+    {
+      "name": "abdomen_recovery_512_20260930",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_recovery_512_20260930",
+      "category": "exploratory_finetuning",
+      "status": "completed_no_candidate_selected",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_recovery_512_20260930/comparison.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_recovery_512_20260930/status.json"
+      ],
+      "note": "18/18 次 8 轮微调完成；12/18 次选择 epoch0，5 候选未通过，未测试。"
+    },
+    {
+      "name": "empty_ablation_20260930",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/empty_ablation_20260930",
+      "category": "superseded_pilot",
+      "status": "interrupted_superseded",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/empty_ablation_20260930/status.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/empty_ablation_20260930/weight_0/region/seed_42/metrics.jsonl",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/empty_ablation_20260930/weight_0.1/region/seed_42/metrics.jsonl"
+      ],
+      "note": "256 输入：weight0 完成12轮、weight0.1 完成7轮；因用户要求512而替代。",
+      "replacement": "/ssd1/data/Multi-Organ_Foundation_Model/runs/empty_ablation_512_20260930"
+    },
+    {
+      "name": "empty_ablation_512_20260930",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/empty_ablation_512_20260930",
+      "category": "exploratory_loss_pilot",
+      "status": "completed_candidate_rejected",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/empty_ablation_512_20260930/comparison.json"
+      ],
+      "note": "Region seed42，两组各12轮；weight0.1 降误检但导致严重漏检，保持默认权重0。"
+    },
+    {
+      "name": "fair_smoke_20260930",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_smoke_20260930",
+      "category": "engineering_smoke",
+      "status": "completed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_smoke_20260930/summary.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_smoke_20260930/protocol.json"
+      ],
+      "note": "三模型各1轮、64输入/base4/每域2图，不作为效果实验。"
+    },
+    {
+      "name": "migration_smoke_v1",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/migration_smoke_v1",
+      "category": "engineering_smoke",
+      "status": "completed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/migration_smoke_v1/summary.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/migration_smoke_v1/protocol.json"
+      ],
+      "note": "共享模型1轮、32输入/base4/每域2图；有测试产物，仅验证迁移链路。"
+    },
+    {
+      "name": "fair_80_base24_batch16_512_20260930",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20260930",
+      "category": "failed_pipeline",
+      "status": "failed_preflight_no_training",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20260930-logs/controller_status.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20260930-logs/controller.log",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20260930/shards/gpu0/summary.json"
+      ],
+      "note": "仅元数据 dry_run 和预检 started，CUDA reset_peak_memory_stats 报 Invalid device argument，runs为空。",
+      "replacement": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20261001_fix"
+    },
+    {
+      "name": "fair80_preflight_fix_20261001",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair80_preflight_fix_20261001",
+      "category": "engineering_preflight",
+      "status": "passed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair80_preflight_fix_20261001/shared.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair80_preflight_fix_20261001/region.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair80_preflight_fix_20261001/task_id.json"
+      ],
+      "note": "修复后的三架构显存/优化器预检，非训练结果。"
+    },
+    {
+      "name": "paper5_ct7_2_v1-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/paper5_ct7_2_v1-logs",
+      "category": "historical_controller_logs",
+      "status": "incomplete_waiting_only",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/paper5_ct7_2_v1-logs/finalizer.log",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/paper5_ct7_2_v1-logs/controller_gpu0.log"
+      ],
+      "note": "旧控制器末条仍等待；不能证明 region_top1_moe/shared_unet 训练完成，当前无对应输出目录。独立9模型后来由新日志确认完成。",
+      "replacement": "/ssd1/data/Multi-Organ_Foundation_Model/runs/paper5_ct7_2_independent-logs"
+    },
+    {
+      "name": "paper5_ct7_2_independent-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/paper5_ct7_2_independent-logs",
+      "category": "controller_logs",
+      "status": "completed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/paper5_ct7_2_independent-logs/finalizer.log",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/unet_paper5_ct7_2_v1/independent_comparison.json"
+      ],
+      "note": "九个独立 U-Net 的实际完成日志；不是另9次实验。"
+    },
+    {
+      "name": "top1_512_v6_logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/top1_512_v6_logs",
+      "category": "controller_logs",
+      "status": "completed_results_elsewhere",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_top1_512_v6_final_seed42/test_metrics.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/task_id_top1_512_v6_final_seed42/test_metrics.json"
+      ],
+      "note": "对应两项 v6 seed42 历史训练，pid文件仅历史记录。"
+    },
+    {
+      "name": "unet_baseline_9v1-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/unet_baseline_9v1-logs",
+      "category": "controller_logs",
+      "status": "completed_results_elsewhere",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/unet_baseline_9v1/comparison.json"
+      ],
+      "note": "对应旧9独立+1共享训练，不另计实验。"
+    },
+    {
+      "name": "research_512_20260930-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/research_512_20260930-logs",
+      "category": "controller_logs",
+      "status": "completed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/research_512_20260930-logs/status.json"
+      ],
+      "note": "旧50轮公平对照和512空标签消融的外层队列。"
+    },
+    {
+      "name": "abdomen_recovery_512_20260930-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_recovery_512_20260930-logs",
+      "category": "controller_logs",
+      "status": "complete",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_recovery_512_20260930-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。"
+    },
+    {
+      "name": "fair_80_base24_batch16_512_20260930-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20260930-logs",
+      "category": "controller_logs",
+      "status": "failed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20260930-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。旧依赖失败，后续输出未产生；恢复链路见替代目录。",
+      "replacement": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20261001_fix-logs"
+    },
+    {
+      "name": "fair_80_base24_batch16_512_20261001_fix-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20261001_fix-logs",
+      "category": "controller_logs",
+      "status": "complete",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20261001_fix-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。"
+    },
+    {
+      "name": "fair_union_eval_512_20260930-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_512_20260930-logs",
+      "category": "controller_logs",
+      "status": "complete",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_512_20260930-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。"
+    },
+    {
+      "name": "fair_union_eval_80_base24_batch16_512_20260930-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_80_base24_batch16_512_20260930-logs",
+      "category": "controller_logs",
+      "status": "failed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_80_base24_batch16_512_20260930-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。旧依赖失败，后续输出未产生；恢复链路见替代目录。",
+      "replacement": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_80_base24_batch16_512_20261001_fix-logs"
+    },
+    {
+      "name": "fair_union_eval_80_base24_batch16_512_20261001_fix-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_80_base24_batch16_512_20261001_fix-logs",
+      "category": "controller_logs",
+      "status": "complete",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_80_base24_batch16_512_20261001_fix-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。"
+    },
+    {
+      "name": "single_channel_union_512_20260930-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_512_20260930-logs",
+      "category": "controller_logs",
+      "status": "complete",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_512_20260930-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。"
+    },
+    {
+      "name": "single_channel_union_80_base24_batch16_512_20260930-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_80_base24_batch16_512_20260930-logs",
+      "category": "controller_logs",
+      "status": "failed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_80_base24_batch16_512_20260930-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。旧依赖失败，后续输出未产生；恢复链路见替代目录。",
+      "replacement": "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_80_base24_batch16_512_20261001_fix-logs"
+    },
+    {
+      "name": "single_channel_union_80_base24_batch16_512_20261001_fix-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_80_base24_batch16_512_20261001_fix-logs",
+      "category": "controller_logs",
+      "status": "complete",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_80_base24_batch16_512_20261001_fix-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。"
+    },
+    {
+      "name": "resources_20260930.json",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/resources_20260930.json",
+      "category": "resource_snapshot",
+      "status": "historical_snapshot",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/resources_20260930.json"
+      ],
+      "note": "当时资源清单，非实验且不是当前 GPU 状态。"
+    }
+  ],
+  "legacy_models": [
+    {
+      "name": "region_top1_512_v6_final_seed42",
+      "epochs_logged": 80,
+      "last_epoch": 80,
+      "configuration": {
+        "base": 24,
+        "top_k": 1,
+        "task_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          16,
+          18,
+          20
+        ],
+        "size": 512,
+        "epochs": 80,
+        "batch_size": 16,
+        "quota_per_domain": 500,
+        "steps_per_epoch": 0,
+        "seed": 42,
+        "lr": 0.0001,
+        "lr_schedule": "constant",
+        "min_lr_ratio": 0.1,
+        "coarse_weight": 0.3,
+        "route_weight": 0.1,
+        "max_positive_weight": 8.0,
+        "abdomen_split": "ct_final",
+        "abdomen_labels": "paper5",
+        "abdomen_fold": null,
+        "split_policy": "trainmore_v6",
+        "abdomen_positive_sampling": 0.5,
+        "loss": "per_image_valid_channel_bce_dice_v2",
+        "abdomen_positive_balance": {
+          "abdomen_liver": {
+            "positive_images": 456,
+            "images": 633,
+            "positive_weight": 1.0
+          },
+          "abdomen_kidney": {
+            "positive_images": 298,
+            "images": 633,
+            "positive_weight": 1.1241610738255035
+          },
+          "abdomen_vessels": {
+            "positive_images": 192,
+            "images": 633,
+            "positive_weight": 2.296875
+          },
+          "abdomen_gallbladder": {
+            "positive_images": 169,
+            "images": 633,
+            "positive_weight": 2.7455621301775146
+          },
+          "abdomen_spleen": {
+            "positive_images": 153,
+            "images": 633,
+            "positive_weight": 3.1372549019607843
+          }
+        },
+        "record_sha256": "ce45e1b973a4d9cb7f73ecc18412561bd77db26312b68236989bd5fce212e88a"
+      },
+      "test_metrics": {
+        "macro_positive_dice": 0.7450729934522453,
+        "macro_all_dice": 0.7827682216115814,
+        "macro_empty_false_positive_rate": 0.40655697613358127,
+        "per_structure": {
+          "breast_lesion": {
+            "dice": 0.7040487442595454,
+            "positive_dice": 0.7665288696965474,
+            "samples": 104,
+            "positive_samples": 89,
+            "empty_samples": 15,
+            "empty_false_positive_rate": 0.6666666666666666
+          },
+          "ovarian_lesion": {
+            "dice": 0.8275096590200002,
+            "positive_dice": 0.8275096590200002,
+            "samples": 413,
+            "positive_samples": 413,
+            "empty_samples": 0,
+            "empty_false_positive_rate": null
+          },
+          "thyroid_nodule": {
+            "dice": 0.8500825051429137,
+            "positive_dice": 0.8500825051429137,
+            "samples": 106,
+            "positive_samples": 106,
+            "empty_samples": 0,
+            "empty_false_positive_rate": null
+          },
+          "liver": {
+            "dice": 0.9096066912015279,
+            "positive_dice": 0.9096066912015279,
+            "samples": 90,
+            "positive_samples": 90,
+            "empty_samples": 0,
+            "empty_false_positive_rate": null
+          },
+          "liver_mass": {
+            "dice": 0.5696731583264313,
+            "positive_dice": 0.5696731583264313,
+            "samples": 76,
+            "positive_samples": 76,
+            "empty_samples": 0,
+            "empty_false_positive_rate": null
+          },
+          "aponeurosis": {
+            "dice": 0.8216193189987769,
+            "positive_dice": 0.8216193189987769,
+            "samples": 130,
+            "positive_samples": 130,
+            "empty_samples": 0,
+            "empty_false_positive_rate": null
+          },
+          "head_contour": {
+            "dice": 0.9698565066289558,
+            "positive_dice": 0.9698565066289558,
+            "samples": 139,
+            "positive_samples": 139,
+            "empty_samples": 0,
+            "empty_false_positive_rate": null
+          },
+          "carotid": {
+            "dice": 0.9478081549313051,
+            "positive_dice": 0.9478081549313051,
+            "samples": 141,
+            "positive_samples": 141,
+            "empty_samples": 0,
+            "empty_false_positive_rate": null
+          },
+          "lv_cavity": {
+            "dice": 0.9255983304977417,
+            "positive_dice": 0.9255983304977417,
+            "samples": 200,
+            "positive_samples": 200,
+            "empty_samples": 0,
+            "empty_false_positive_rate": null
+          },
+          "myocardium": {
+            "dice": 0.8532436218857765,
+            "positive_dice": 0.8532436218857765,
+            "samples": 200,
+            "positive_samples": 200,
+            "empty_samples": 0,
+            "empty_false_positive_rate": null
+          },
+          "left_atrium": {
+            "dice": 0.8935624302923679,
+            "positive_dice": 0.8935624302923679,
+            "samples": 200,
+            "positive_samples": 200,
+            "empty_samples": 0,
+            "empty_false_positive_rate": null
+          },
+          "abdomen_liver": {
+            "dice": 0.5706643604088587,
+            "positive_dice": 0.7321791083691437,
+            "samples": 293,
+            "positive_samples": 227,
+            "empty_samples": 66,
+            "empty_false_positive_rate": 0.9848484848484849
+          },
+          "abdomen_kidney": {
+            "dice": 0.4839283656885167,
+            "positive_dice": 0.4355805238318126,
+            "samples": 293,
+            "positive_samples": 174,
+            "empty_samples": 119,
+            "empty_false_positive_rate": 0.44537815126050423
+          },
+          "abdomen_vessels": {
+            "dice": 0.6251543096613151,
+            "positive_dice": 0.37198816377990296,
+            "samples": 293,
+            "positive_samples": 151,
+            "empty_samples": 142,
+            "empty_false_positive_rate": 0.1056338028169014
+          },
+          "abdomen_gallbladder": {
+            "dice": 0.8450973716663013,
+            "positive_dice": 0.740150332202514,
+            "samples": 293,
+            "positive_samples": 90,
+            "empty_samples": 203,
+            "empty_false_positive_rate": 0.10837438423645321
+          },
+          "abdomen_spleen": {
+            "dice": 0.7268380171749678,
+            "positive_dice": 0.30618052043020727,
+            "samples": 293,
+            "positive_samples": 75,
+            "empty_samples": 218,
+            "empty_false_positive_rate": 0.12844036697247707
+          }
+        },
+        "checkpoint_epoch": 80,
+        "checkpoint_selection": "fixed_final_epoch",
+        "record_sha256": "ce45e1b973a4d9cb7f73ecc18412561bd77db26312b68236989bd5fce212e88a"
+      },
+      "validation_abdomen_present": false
+    },
+    {
+      "name": "task_id_top1_512_v6_final_seed42",
+      "epochs_logged": 80,
+      "last_epoch": 80,
+      "configuration": {
+        "data_root": "/ssd1/data/Multi-Organ_Foundation_Model/pointed_data",
+        "output": "/ssd1/data/Multi-Organ_Foundation_Model/runs/task_id_top1_512_v6_final_seed42",
+        "epochs": 80,
+        "batch_size": 16,
+        "size": 512,
+        "base": 24,
+        "experts": 9,
+        "top_k": 1,
+        "decoder": "moe",
+        "workers": 0,
+        "lr": 0.0001,
+        "seed": 42,
+        "steps_per_epoch": 282,
+        "abdomen_split": "ct_final",
+        "abdomen_fold": null,
+        "split_policy": "trainmore_v6",
+        "abdomen_labels": "paper5",
+        "device": "cuda:0",
+        "record_sha256": "ce45e1b973a4d9cb7f73ecc18412561bd77db26312b68236989bd5fce212e88a"
+      },
+      "test_metrics": {
+        "macro_dice": 0.7804689745814111,
+        "per_task_dice": {
+          "aponeurosis": 0.8277532114432409,
+          "breast_lesion": 0.6389536783815577,
+          "ovarian_lesion": 0.8056039907417055,
+          "lv_cavity": 0.9323492148518562,
+          "myocardium": 0.861499171257019,
+          "left_atrium": 0.898922113776207,
+          "thyroid_nodule": 0.8502891569767358,
+          "liver": 0.9003171483675639,
+          "liver_mass": 0.5862767493450328,
+          "head_contour": 0.9666928953404049,
+          "abdomen_liver": 0.7405513291574582,
+          "abdomen_kidney": 0.48663786491188427,
+          "abdomen_vessels": 0.593342388086911,
+          "abdomen_gallbladder": 0.740905260292133,
+          "abdomen_spleen": 0.7160240252348896,
+          "carotid": 0.9413853951379763
+        },
+        "checkpoint_epoch": 80,
+        "records": 3264,
+        "checkpoint_selection": "fixed_final_epoch",
+        "record_sha256": "ce45e1b973a4d9cb7f73ecc18412561bd77db26312b68236989bd5fce212e88a",
+        "note": "Resized-grid task-wise Dice; datasets mix official and project splits. HC18 test is held out from the labelled release training set, not the official challenge test set."
+      },
+      "validation_abdomen_present": false
+    },
+    {
+      "name": "region_top1_v1",
+      "epochs_logged": 50,
+      "last_epoch": 50,
+      "configuration": {
+        "data_root": "数据集 (Datasets)\\pointed_data",
+        "output": "runs\\region_top1_v1",
+        "epochs": 50,
+        "size": 256,
+        "base": 16,
+        "top_k": 1,
+        "batch_size": 2,
+        "workers": 2,
+        "steps_per_epoch": 0,
+        "seed": 42,
+        "lr": 0.0003,
+        "device": "cuda"
+      },
+      "test_metrics": {
+        "macro_positive_dice": 0.5462994416327446,
+        "per_structure": {
+          "breast_lesion": {
+            "dice": 0.7655333211788764,
+            "positive_dice": 0.7484883753101478,
+            "samples": 104,
+            "positive_samples": 89
+          },
+          "ovarian_lesion": {
+            "dice": 0.8077329510674061,
+            "positive_dice": 0.8077329510674061,
+            "samples": 413,
+            "positive_samples": 413
+          },
+          "thyroid_nodule": {
+            "dice": 0.8714513953001994,
+            "positive_dice": 0.8714513953001994,
+            "samples": 106,
+            "positive_samples": 106
+          },
+          "liver": {
+            "dice": 0.9074472500218286,
+            "positive_dice": 0.9074472500218286,
+            "samples": 90,
+            "positive_samples": 90
+          },
+          "liver_mass": {
+            "dice": 0.5150625892473679,
+            "positive_dice": 0.5150625892473679,
+            "samples": 76,
+            "positive_samples": 76
+          },
+          "aponeurosis": {
+            "dice": 0.8062588423490524,
+            "positive_dice": 0.8062588423490524,
+            "samples": 130,
+            "positive_samples": 130
+          },
+          "head_contour": {
+            "dice": 0.24215463337843582,
+            "positive_dice": 0.24215463337843582,
+            "samples": 139,
+            "positive_samples": 139
+          },
+          "carotid": {
+            "dice": 0.9338728797139851,
+            "positive_dice": 0.9338728797139851,
+            "samples": 141,
+            "positive_samples": 141
+          },
+          "lv_cavity": {
+            "dice": 0.9289235371351242,
+            "positive_dice": 0.9289235371351242,
+            "samples": 200,
+            "positive_samples": 200
+          },
+          "myocardium": {
+            "dice": 0.867968483865261,
+            "positive_dice": 0.867968483865261,
+            "samples": 200,
+            "positive_samples": 200
+          },
+          "left_atrium": {
+            "dice": 0.9112446528673172,
+            "positive_dice": 0.9112446528673172,
+            "samples": 200,
+            "positive_samples": 200
+          },
+          "abdomen_liver": {
+            "dice": 0.6155478182414057,
+            "positive_dice": 0.688790796232299,
+            "samples": 293,
+            "positive_samples": 227
+          },
+          "abdomen_kidney": {
+            "dice": 0.42601647406320625,
+            "positive_dice": 0.24036107414091626,
+            "samples": 293,
+            "positive_samples": 174
+          },
+          "abdomen_pancreas": {
+            "dice": 0.39338197492844973,
+            "positive_dice": 0.1426522202812874,
+            "samples": 293,
+            "positive_samples": 121
+          },
+          "abdomen_vessels": {
+            "dice": 0.48464163822525597,
+            "positive_dice": 0.0,
+            "samples": 293,
+            "positive_samples": 151
+          },
+          "abdomen_adrenal": {
+            "dice": 0.8054607508532423,
+            "positive_dice": 0.0,
+            "samples": 293,
+            "positive_samples": 57
+          },
+          "abdomen_gallbladder": {
+            "dice": 0.7225776148940923,
+            "positive_dice": 0.5412804573774338,
+            "samples": 293,
+            "positive_samples": 90
+          },
+          "abdomen_bone": {
+            "dice": 0.3310580204778157,
+            "positive_dice": 0.0,
+            "samples": 293,
+            "positive_samples": 196
+          },
+          "abdomen_spleen": {
+            "dice": 0.7302045868773255,
+            "positive_dice": 0.22599925273408492,
+            "samples": 293,
+            "positive_samples": 75
+          }
+        },
+        "checkpoint_epoch": 35
+      },
+      "validation_abdomen_present": true
+    }
+  ],
+  "old_unet_comparison": {
+    "record_sha256": "e6390b66e986db096027dd8370e427d7a8c14c7a51f806e9e2afaf70d0b4db93",
+    "structures": [
+      "breast_lesion",
+      "ovarian_lesion",
+      "thyroid_nodule",
+      "liver",
+      "liver_mass",
+      "aponeurosis",
+      "head_contour",
+      "carotid",
+      "lv_cavity",
+      "myocardium",
+      "left_atrium",
+      "abdomen_liver",
+      "abdomen_kidney",
+      "abdomen_pancreas",
+      "abdomen_vessels",
+      "abdomen_adrenal",
+      "abdomen_gallbladder",
+      "abdomen_bone",
+      "abdomen_spleen"
+    ],
+    "shared_macro_positive_dice": 0.5694050766398586,
+    "independent_macro_positive_dice": 0.6124866165201297,
+    "shared_parameters": 1965587,
+    "independent_total_parameters": 17687699,
+    "per_structure": {
+      "breast_lesion": {
+        "shared": {
+          "dice": 0.7272731621678059,
+          "positive_dice": 0.7599596501736159,
+          "samples": 104,
+          "positive_samples": 89,
+          "empty_samples": 15,
+          "empty_false_positive_rate": 0.4666666666666667
+        },
+        "independent": {
+          "dice": 0.6581359238435442,
+          "positive_dice": 0.7578217537048157,
+          "samples": 104,
+          "positive_samples": 89,
+          "empty_samples": 15,
+          "empty_false_positive_rate": 0.9333333333333333
+        }
+      },
+      "ovarian_lesion": {
+        "shared": {
+          "dice": 0.8097076084107931,
+          "positive_dice": 0.8097076084107931,
+          "samples": 413,
+          "positive_samples": 413,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        },
+        "independent": {
+          "dice": 0.8088415585194442,
+          "positive_dice": 0.8088415585194442,
+          "samples": 413,
+          "positive_samples": 413,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        }
+      },
+      "thyroid_nodule": {
+        "shared": {
+          "dice": 0.8637904943722599,
+          "positive_dice": 0.8637904943722599,
+          "samples": 106,
+          "positive_samples": 106,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        },
+        "independent": {
+          "dice": 0.8535511909790758,
+          "positive_dice": 0.8535511909790758,
+          "samples": 106,
+          "positive_samples": 106,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        }
+      },
+      "liver": {
+        "shared": {
+          "dice": 0.895626774099138,
+          "positive_dice": 0.895626774099138,
+          "samples": 90,
+          "positive_samples": 90,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        },
+        "independent": {
+          "dice": 0.9042955623732672,
+          "positive_dice": 0.9042955623732672,
+          "samples": 90,
+          "positive_samples": 90,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        }
+      },
+      "liver_mass": {
+        "shared": {
+          "dice": 0.5112774575031117,
+          "positive_dice": 0.5112774575031117,
+          "samples": 76,
+          "positive_samples": 76,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        },
+        "independent": {
+          "dice": 0.575226569989402,
+          "positive_dice": 0.575226569989402,
+          "samples": 76,
+          "positive_samples": 76,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        }
+      },
+      "aponeurosis": {
+        "shared": {
+          "dice": 0.8285212149986854,
+          "positive_dice": 0.8285212149986854,
+          "samples": 130,
+          "positive_samples": 130,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        },
+        "independent": {
+          "dice": 0.8223193588165136,
+          "positive_dice": 0.8223193588165136,
+          "samples": 130,
+          "positive_samples": 130,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        }
+      },
+      "head_contour": {
+        "shared": {
+          "dice": 0.9631352244521216,
+          "positive_dice": 0.9631352244521216,
+          "samples": 139,
+          "positive_samples": 139,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        },
+        "independent": {
+          "dice": 0.9688081507631343,
+          "positive_dice": 0.9688081507631343,
+          "samples": 139,
+          "positive_samples": 139,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        }
+      },
+      "carotid": {
+        "shared": {
+          "dice": 0.9429861433962559,
+          "positive_dice": 0.9429861433962559,
+          "samples": 141,
+          "positive_samples": 141,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        },
+        "independent": {
+          "dice": 0.9525802727286697,
+          "positive_dice": 0.9525802727286697,
+          "samples": 141,
+          "positive_samples": 141,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        }
+      },
+      "lv_cavity": {
+        "shared": {
+          "dice": 0.9254708138108253,
+          "positive_dice": 0.9254708138108253,
+          "samples": 200,
+          "positive_samples": 200,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        },
+        "independent": {
+          "dice": 0.9345201885700226,
+          "positive_dice": 0.9345201885700226,
+          "samples": 200,
+          "positive_samples": 200,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        }
+      },
+      "myocardium": {
+        "shared": {
+          "dice": 0.8560704761743545,
+          "positive_dice": 0.8560704761743545,
+          "samples": 200,
+          "positive_samples": 200,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        },
+        "independent": {
+          "dice": 0.8728373017907143,
+          "positive_dice": 0.8728373017907143,
+          "samples": 200,
+          "positive_samples": 200,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        }
+      },
+      "left_atrium": {
+        "shared": {
+          "dice": 0.900408366471529,
+          "positive_dice": 0.900408366471529,
+          "samples": 200,
+          "positive_samples": 200,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        },
+        "independent": {
+          "dice": 0.9175830772519111,
+          "positive_dice": 0.9175830772519111,
+          "samples": 200,
+          "positive_samples": 200,
+          "empty_samples": 0,
+          "empty_false_positive_rate": null
+        }
+      },
+      "abdomen_liver": {
+        "shared": {
+          "dice": 0.6155416768889734,
+          "positive_dice": 0.6182982877906132,
+          "samples": 293,
+          "positive_samples": 227,
+          "empty_samples": 66,
+          "empty_false_positive_rate": 0.3939393939393939
+        },
+        "independent": {
+          "dice": 0.6285164141646068,
+          "positive_dice": 0.6746929927322899,
+          "samples": 293,
+          "positive_samples": 227,
+          "empty_samples": 66,
+          "empty_false_positive_rate": 0.5303030303030303
+        }
+      },
+      "abdomen_kidney": {
+        "shared": {
+          "dice": 0.34412491991130617,
+          "positive_dice": 0.21165862950582015,
+          "samples": 293,
+          "positive_samples": 174,
+          "empty_samples": 119,
+          "empty_false_positive_rate": 0.46218487394957986
+        },
+        "independent": {
+          "dice": 0.3348898676207365,
+          "positive_dice": 0.2363375357061828,
+          "samples": 293,
+          "positive_samples": 174,
+          "empty_samples": 119,
+          "empty_false_positive_rate": 0.5210084033613446
+        }
+      },
+      "abdomen_pancreas": {
+        "shared": {
+          "dice": 0.48422441358992724,
+          "positive_dice": 0.032047546957427064,
+          "samples": 293,
+          "positive_samples": 121,
+          "empty_samples": 172,
+          "empty_false_positive_rate": 0.19767441860465115
+        },
+        "independent": {
+          "dice": 0.5007526469114951,
+          "positive_dice": 0.08033492186006681,
+          "samples": 293,
+          "positive_samples": 121,
+          "empty_samples": 172,
+          "empty_false_positive_rate": 0.20348837209302326
+        }
+      },
+      "abdomen_vessels": {
+        "shared": {
+          "dice": 0.48464163822525597,
+          "positive_dice": 0.0,
+          "samples": 293,
+          "positive_samples": 151,
+          "empty_samples": 142,
+          "empty_false_positive_rate": 0.0
+        },
+        "independent": {
+          "dice": 0.5481798665108534,
+          "positive_dice": 0.1961370919713911,
+          "samples": 293,
+          "positive_samples": 151,
+          "empty_samples": 142,
+          "empty_false_positive_rate": 0.07746478873239436
+        }
+      },
+      "abdomen_adrenal": {
+        "shared": {
+          "dice": 0.8054607508532423,
+          "positive_dice": 0.0,
+          "samples": 293,
+          "positive_samples": 57,
+          "empty_samples": 236,
+          "empty_false_positive_rate": 0.0
+        },
+        "independent": {
+          "dice": 0.8054607508532423,
+          "positive_dice": 0.0,
+          "samples": 293,
+          "positive_samples": 57,
+          "empty_samples": 236,
+          "empty_false_positive_rate": 0.0
+        }
+      },
+      "abdomen_gallbladder": {
+        "shared": {
+          "dice": 0.7835769800551923,
+          "positive_dice": 0.4620895017352369,
+          "samples": 293,
+          "positive_samples": 90,
+          "empty_samples": 203,
+          "empty_false_positive_rate": 0.07389162561576355
+        },
+        "independent": {
+          "dice": 0.7873554289239258,
+          "positive_dice": 0.6299460074967809,
+          "samples": 293,
+          "positive_samples": 90,
+          "empty_samples": 203,
+          "empty_false_positive_rate": 0.14285714285714285
+        }
+      },
+      "abdomen_bone": {
+        "shared": {
+          "dice": 0.3310580204778157,
+          "positive_dice": 0.0,
+          "samples": 293,
+          "positive_samples": 196,
+          "empty_samples": 97,
+          "empty_false_positive_rate": 0.0
+        },
+        "independent": {
+          "dice": 0.4071337387336056,
+          "positive_dice": 0.12392951759666547,
+          "samples": 293,
+          "positive_samples": 196,
+          "empty_samples": 97,
+          "empty_false_positive_rate": 0.020618556701030927
+        }
+      },
+      "abdomen_spleen": {
+        "shared": {
+          "dice": 0.7229475084399811,
+          "positive_dice": 0.2376482663055261,
+          "samples": 293,
+          "positive_samples": 75,
+          "empty_samples": 218,
+          "empty_false_positive_rate": 0.11009174311926606
+        },
+        "independent": {
+          "dice": 0.6708573364416685,
+          "positive_dice": 0.3274826610321179,
+          "samples": 293,
+          "positive_samples": 75,
+          "empty_samples": 218,
+          "empty_false_positive_rate": 0.21100917431192662
+        }
+      }
+    }
+  },
+  "paper5_independent_comparison": {
+    "protocol": "paper5_ct7_2_v1",
+    "record_sha256": "776250ea8507ba4302f64585b97955a3a2e7a2dd61237e38535112b6fc82766e",
+    "macro_positive_dice": 0.7300550108358703,
+    "parameters_total": 17687648,
+    "parameters_by_domain": {
+      "BUSI": 1965281,
+      "MMOTU": 1965281,
+      "DDTI": 1965281,
+      "AUL": 1965298,
+      "FALLMUD": 1965281,
+      "Fetal_HC": 1965281,
+      "CCA": 1965281,
+      "CAMUS": 1965315,
+      "AbdomenUS": 1965349
+    },
+    "best_epoch_by_domain": {
+      "BUSI": 34,
+      "MMOTU": 34,
+      "DDTI": 24,
+      "AUL": 33,
+      "FALLMUD": 33,
+      "Fetal_HC": 39,
+      "CCA": 25,
+      "CAMUS": 36,
+      "AbdomenUS": 27
+    },
+    "per_structure": {
+      "breast_lesion": {
+        "dice": 0.6240100025091894,
+        "positive_dice": 0.7291802276511875,
+        "samples": 104,
+        "positive_samples": 89,
+        "empty_samples": 15,
+        "empty_false_positive_rate": 1.0
+      },
+      "ovarian_lesion": {
+        "dice": 0.802070590710272,
+        "positive_dice": 0.802070590710272,
+        "samples": 413,
+        "positive_samples": 413,
+        "empty_samples": 0,
+        "empty_false_positive_rate": null
+      },
+      "thyroid_nodule": {
+        "dice": 0.8520333199006207,
+        "positive_dice": 0.8520333199006207,
+        "samples": 106,
+        "positive_samples": 106,
+        "empty_samples": 0,
+        "empty_false_positive_rate": null
+      },
+      "liver": {
+        "dice": 0.910937409930759,
+        "positive_dice": 0.910937409930759,
+        "samples": 90,
+        "positive_samples": 90,
+        "empty_samples": 0,
+        "empty_false_positive_rate": null
+      },
+      "liver_mass": {
+        "dice": 0.5882630465601227,
+        "positive_dice": 0.5882630465601227,
+        "samples": 76,
+        "positive_samples": 76,
+        "empty_samples": 0,
+        "empty_false_positive_rate": null
+      },
+      "aponeurosis": {
+        "dice": 0.8338345037056849,
+        "positive_dice": 0.8338345037056849,
+        "samples": 130,
+        "positive_samples": 130,
+        "empty_samples": 0,
+        "empty_false_positive_rate": null
+      },
+      "head_contour": {
+        "dice": 0.9725909872020749,
+        "positive_dice": 0.9725909872020749,
+        "samples": 139,
+        "positive_samples": 139,
+        "empty_samples": 0,
+        "empty_false_positive_rate": null
+      },
+      "carotid": {
+        "dice": 0.9452848637357671,
+        "positive_dice": 0.9452848637357671,
+        "samples": 141,
+        "positive_samples": 141,
+        "empty_samples": 0,
+        "empty_false_positive_rate": null
+      },
+      "lv_cavity": {
+        "dice": 0.92988371104002,
+        "positive_dice": 0.92988371104002,
+        "samples": 200,
+        "positive_samples": 200,
+        "empty_samples": 0,
+        "empty_false_positive_rate": null
+      },
+      "myocardium": {
+        "dice": 0.8656853953003883,
+        "positive_dice": 0.8656853953003883,
+        "samples": 200,
+        "positive_samples": 200,
+        "empty_samples": 0,
+        "empty_false_positive_rate": null
+      },
+      "left_atrium": {
+        "dice": 0.9137743133306503,
+        "positive_dice": 0.9137743133306503,
+        "samples": 200,
+        "positive_samples": 200,
+        "empty_samples": 0,
+        "empty_false_positive_rate": null
+      },
+      "abdomen_liver": {
+        "dice": 0.6604920689083331,
+        "positive_dice": 0.6983443885028264,
+        "samples": 293,
+        "positive_samples": 227,
+        "empty_samples": 66,
+        "empty_false_positive_rate": 0.4696969696969697
+      },
+      "abdomen_kidney": {
+        "dice": 0.26919852151080914,
+        "positive_dice": 0.3728457862222246,
+        "samples": 293,
+        "positive_samples": 174,
+        "empty_samples": 119,
+        "empty_false_positive_rate": 0.8823529411764706
+      },
+      "abdomen_vessels": {
+        "dice": 0.5658669003218717,
+        "positive_dice": 0.29668213108813524,
+        "samples": 293,
+        "positive_samples": 151,
+        "empty_samples": 142,
+        "empty_false_positive_rate": 0.14788732394366197
+      },
+      "abdomen_gallbladder": {
+        "dice": 0.7480963689240122,
+        "positive_dice": 0.6688026232748396,
+        "samples": 293,
+        "positive_samples": 90,
+        "empty_samples": 203,
+        "empty_false_positive_rate": 0.21674876847290642
+      },
+      "abdomen_spleen": {
+        "dice": 0.5650171182299535,
+        "positive_dice": 0.30066687521835167,
+        "samples": 293,
+        "positive_samples": 75,
+        "empty_samples": 218,
+        "empty_false_positive_rate": 0.3440366972477064
+      }
+    }
+  },
+  "abdomen_audit": {
+    "protocol": {
+      "checkpoint": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_top1_512_v6_final_seed42/last.pt",
+      "checkpoint_sha256": "e1294cc23a1670a85d3217a1e15f6b173d1722939b02cdd337054440f831b9d9",
+      "checkpoint_epoch": 80,
+      "checkpoint_selection": "provided_frozen_checkpoint",
+      "records": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_top1_512_v6_final_seed42/records.json",
+      "records_file_sha256": "8371a59e3dbc25ac77a4b7eb75b4552527dc77c405272f0f049b39933430356a",
+      "records_semantic_sha256": "ce45e1b973a4d9cb7f73ecc18412561bd77db26312b68236989bd5fce212e88a",
+      "size": 512,
+      "threshold": 0.5,
+      "area_bin_edges": [
+        0,
+        1,
+        4,
+        16,
+        64,
+        256,
+        1024,
+        4096,
+        16384,
+        65536,
+        262144
+      ],
+      "batch_size": 4,
+      "purpose": "Diagnosis only; no training, threshold search, area filtering, or calibration.",
+      "analysis": "Same fixed metrics on all available abdominal splits and CT groups.",
+      "test_reuse_warning": "Test findings are exploratory evidence; new changes require train/validation selection and fresh confirmatory evaluation.",
+      "routing": "Top-1 expert and mean probability of expert 8, by present/empty organ.",
+      "missing_channels": "Outputs without annotation are counted separately and are not false positives.",
+      "split_ct_counts": {
+        "test:AbdomenUS/ct1": 74,
+        "test:AbdomenUS/ct10": 80,
+        "test:AbdomenUS/ct11": 71,
+        "test:AbdomenUS/ct12": 68,
+        "train:AbdomenUS/ct14": 63,
+        "train:AbdomenUS/ct15": 50,
+        "train:AbdomenUS/ct2": 74,
+        "train:AbdomenUS/ct3": 66,
+        "train:AbdomenUS/ct4": 90,
+        "train:AbdomenUS/ct5": 81,
+        "train:AbdomenUS/ct7": 62,
+        "train:AbdomenUS/ct8": 72,
+        "train:AbdomenUS/ct9": 75
+      }
+    },
+    "findings": {
+      "status": "Diagnostic evidence completed; proposed auxiliary loss is not yet validated as an improvement.",
+      "no_tuning": true,
+      "hypothesis_results": [
+        {
+          "hypothesis": "Empty-image false-positive rate is driven by isolated single pixels.",
+          "supported": false,
+          "evidence": "Test liver 65/66 empty images contain predictions; none has <=16 predicted pixels. Median 4,246; mean 9,590; pixel FP rate 5.15% over valid empty-image pixels."
+        },
+        {
+          "hypothesis": "Resizing removes abdominal foreground labels.",
+          "supported": false,
+          "evidence": "All 926 images are 449x464. Nearest-neighbor resize to512 preserves positive-image presence for all five structures; zero disappeared masks in train/test."
+        },
+        {
+          "hypothesis": "Ignore pixels are incorrectly scored as background.",
+          "supported": false,
+          "evidence": "Native ignore fraction30.1129%; resized30.0198%; diagnostics excludes ignore from TP/FP/FN/TN. This does not verify unknown semantic meaning of gray mask region."
+        },
+        {
+          "hypothesis": "Abdominal region proposals route to incorrect experts.",
+          "supported": false,
+          "evidence": "All five abdominal channels choose expert8 at all four levels for every train/test image, both empty and positive. Routing weights/other channels may still affect representation."
+        },
+        {
+          "hypothesis": "Liver false positives are only a held-out-domain generalization issue.",
+          "supported": false,
+          "evidence": "Train liver emptyFP134/177=75.71%, median area1044.5; test65/66=98.48%, median4246. Error exists in fitting and is larger on held-out CTs."
+        },
+        {
+          "hypothesis": "Rare-organ weakness includes missed detections and domain generalization.",
+          "supported": true,
+          "evidence": "Test zero-overlap kidney46/174, vessels78/151, spleen34/75; spleen trainDice0.8247 vs test0.3062. Vessels trainDice0.6229 vs test0.3720. Association supports underfitting/generalization hypotheses but does not identify a unique causal mechanism."
+        }
+      ],
+      "proposed_candidate": {
+        "module": "unet_moe.empty_loss.empty_top_fraction_loss",
+        "fraction": 0.01,
+        "weight": 0.1,
+        "scope": "Only abdomen channel indices with >=1 valid pixel and zero valid positive pixels; missing/ignored/positive pixels are never treated as negative.",
+        "rationale": "Current empty-channel BCE averages over ~183449 valid pixels and can dilute local high-confidence false positives. Top1% concentrates a small auxiliary negative penalty; existing positive loss remains unchanged.",
+        "limitations": "Could worsen recall through shared parameters; retain positive Dice and recall safeguards. It addresses FP specifically and does not establish a remedy for all abdominal weaknesses.",
+        "evaluation": "Fresh training on source train CTs, select only on held-out training CT validation. Do not fine-tune the all9-CT checkpoint and report CT3/4 as unseen validation. Never select threshold, area filter, loss weight, or checkpoint on release test."
+      },
+      "source_record_sha256": "ce45e1b973a4d9cb7f73ecc18412561bd77db26312b68236989bd5fce212e88a",
+      "reproduction": {
+        "checkpoint": "last.pt",
+        "epoch": 80,
+        "threshold": 0.5,
+        "original_metric_max_positive_dice_absolute_delta": 2.0335054198850067e-05,
+        "note": "Small differences from stored metrics are compatible with batch4 versus batch16 floating-point execution near threshold; every empty false-positive image count matches."
+      },
+      "empty_prediction_confusion": {
+        "train": {
+          "abdomen_liver": {
+            "prediction_by_truth_label": {
+              "0": 215720,
+              "1": 0,
+              "2": 51394,
+              "3": 5462,
+              "4": 681,
+              "5": 606,
+              "6": 0,
+              "7": 0,
+              "8": 10641
+            },
+            "fractions": {
+              "0": 0.7582318702021764,
+              "1": 0.0,
+              "2": 0.1806442088687681,
+              "3": 0.019198324100891374,
+              "4": 0.0023936394567387453,
+              "5": 0.002130022776481174,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.03740193459494418
+            }
+          },
+          "abdomen_kidney": {
+            "prediction_by_truth_label": {
+              "0": 99062,
+              "1": 16486,
+              "2": 0,
+              "3": 0,
+              "4": 3642,
+              "5": 277,
+              "6": 0,
+              "7": 11909,
+              "8": 693
+            },
+            "fractions": {
+              "0": 0.7500776109457935,
+              "1": 0.12482868803428511,
+              "2": 0.0,
+              "3": 0.0,
+              "4": 0.02757649410535402,
+              "5": 0.002097388486321544,
+              "6": 0.0,
+              "7": 0.09017256131264717,
+              "8": 0.005247257115598664
+            }
+          },
+          "abdomen_vessels": {
+            "prediction_by_truth_label": {
+              "0": 8982,
+              "1": 0,
+              "2": 418,
+              "3": 79,
+              "4": 0,
+              "5": 1146,
+              "6": 199,
+              "7": 0,
+              "8": 0
+            },
+            "fractions": {
+              "0": 0.8298226164079823,
+              "1": 0.0,
+              "2": 0.03861788617886179,
+              "3": 0.0072985957132298595,
+              "4": 0.0,
+              "5": 0.10587583148558759,
+              "6": 0.01838507021433851,
+              "7": 0.0,
+              "8": 0.0
+            }
+          },
+          "abdomen_gallbladder": {
+            "prediction_by_truth_label": {
+              "0": 3405,
+              "1": 326,
+              "2": 0,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 0,
+              "7": 0,
+              "8": 0
+            },
+            "fractions": {
+              "0": 0.9126239614044492,
+              "1": 0.08737603859555079,
+              "2": 0.0,
+              "3": 0.0,
+              "4": 0.0,
+              "5": 0.0,
+              "6": 0.0,
+              "7": 0.0,
+              "8": 0.0
+            }
+          },
+          "abdomen_spleen": {
+            "prediction_by_truth_label": {
+              "0": 79774,
+              "1": 47644,
+              "2": 8986,
+              "3": 76,
+              "4": 10,
+              "5": 0,
+              "6": 0,
+              "7": 27,
+              "8": 0
+            },
+            "fractions": {
+              "0": 0.5843521319689123,
+              "1": 0.3489968282338463,
+              "2": 0.06582330405737015,
+              "3": 0.000556707223276222,
+              "4": 7.325095043108184e-05,
+              "5": 0.0,
+              "6": 0.0,
+              "7": 0.00019777756616392098,
+              "8": 0.0
+            }
+          }
+        },
+        "test": {
+          "abdomen_liver": {
+            "prediction_by_truth_label": {
+              "0": 435515,
+              "1": 0,
+              "2": 36910,
+              "3": 7241,
+              "4": 1500,
+              "5": 776,
+              "6": 0,
+              "7": 207,
+              "8": 141222
+            },
+            "fractions": {
+              "0": 0.6986449481929702,
+              "1": 0.0,
+              "2": 0.05921032579314726,
+              "3": 0.011615875618211306,
+              "4": 0.0024062717065760197,
+              "5": 0.001244844562868661,
+              "6": 0.0,
+              "7": 0.0003320654955074907,
+              "8": 0.2265456686307191
+            }
+          },
+          "abdomen_kidney": {
+            "prediction_by_truth_label": {
+              "0": 216943,
+              "1": 3745,
+              "2": 0,
+              "3": 0,
+              "4": 6745,
+              "5": 260,
+              "6": 1371,
+              "7": 62695,
+              "8": 29094
+            },
+            "fractions": {
+              "0": 0.6761445272445638,
+              "1": 0.011672011793562784,
+              "2": 0.0,
+              "3": 0.0,
+              "4": 0.021022087996683838,
+              "5": 0.0008103399376038249,
+              "6": 0.004272984824826322,
+              "7": 0.19540100918489153,
+              "8": 0.090677039017868
+            }
+          },
+          "abdomen_vessels": {
+            "prediction_by_truth_label": {
+              "0": 7741,
+              "1": 24,
+              "2": 3080,
+              "3": 0,
+              "4": 0,
+              "5": 0,
+              "6": 2983,
+              "7": 959,
+              "8": 0
+            },
+            "fractions": {
+              "0": 0.523500371948333,
+              "1": 0.0016230472712517752,
+              "2": 0.20829106647731116,
+              "3": 0.0,
+              "4": 0.0,
+              "5": 0.0,
+              "6": 0.20173125042266857,
+              "7": 0.06485426388043551,
+              "8": 0.0
+            }
+          },
+          "abdomen_gallbladder": {
+            "prediction_by_truth_label": {
+              "0": 19960,
+              "1": 0,
+              "2": 0,
+              "3": 0,
+              "4": 26537,
+              "5": 0,
+              "6": 0,
+              "7": 10388,
+              "8": 0
+            },
+            "fractions": {
+              "0": 0.3508833611672673,
+              "1": 0.0,
+              "2": 0.0,
+              "3": 0.0,
+              "4": 0.46650259295068996,
+              "5": 0.0,
+              "6": 0.0,
+              "7": 0.18261404588204272,
+              "8": 0.0
+            }
+          },
+          "abdomen_spleen": {
+            "prediction_by_truth_label": {
+              "0": 79358,
+              "1": 129984,
+              "2": 43391,
+              "3": 14,
+              "4": 3120,
+              "5": 22,
+              "6": 0,
+              "7": 124,
+              "8": 0
+            },
+            "fractions": {
+              "0": 0.30997644650857575,
+              "1": 0.5077242171295989,
+              "2": 0.16948748696355262,
+              "3": 5.468472304140805e-05,
+              "4": 0.012186881134942366,
+              "5": 8.593313620792694e-05,
+              "6": 0.0,
+              "7": 0.00048435040408104275,
+              "8": 0.0
+            }
+          }
+        }
+      },
+      "raw_rgb_masks_reverified": false,
+      "raw_rgb_note": "Indexed label domain, image/mask dimensions and resized presence verified directly. Archived conversion report states exact mapping and roundtrip checks; original RGB mask directory is absent locally.",
+      "unannotated_output_limitation": {
+        "evidence": "On abdominal test images, unannotated breast_lesion output predicts mean145631.8/262144 pixels; aponeurosis46573.4; thyroid_nodule28910.5 at0.5. Counts include the full output field because no target exists for these heads.",
+        "interpretation": "These predictions are unvalidated, not numerically established false positives. Missing labels are not negatives. Masked reported Dice/FP rates do not certify all-channel automatic inference reliability.",
+        "candidate_scope": "Empty-channel auxiliary loss deliberately leaves missing channels untouched and does not solve cross-domain head calibration."
+      }
+    }
+  },
+  "empty_ablation_512": {
+    "protocol": "prespecified_empty_ablation_pilot_v1",
+    "record_sha256": "f621896f10234777d3067a019d96a7cb1dae3b6add305bca32815298744315e0",
+    "source_sha256": "2833331b3b2fdf30ee37841cc19a49b427681fe8cbd8c856b71e671760aef901",
+    "full_budget": {
+      "images_per_epoch": 1152,
+      "optimizer_steps_per_epoch": 288,
+      "planned_epochs": 12,
+      "planned_images_per_run": 13824,
+      "seeds": [
+        42
+      ],
+      "models": [
+        "region"
+      ]
+    },
+    "selection": {
+      "method": "best_validation_macro_positive_dice",
+      "tie_break": "first epoch",
+      "test_data_used": false,
+      "aggregation": "Unweighted mean over structures with applicable denominators; abdomen uses exactly five structures.",
+      "prespecified_limits": {
+        "abdomen_empty_fp_rate_increase": 0.01,
+        "abdomen_positive_dice_decrease": 0.01,
+        "overall_positive_dice_decrease": 0.005,
+        "abdomen_zero_overlap_increase": 0.01
+      },
+      "area_improvement": "strict decrease",
+      "inclusive_bound_numeric_tolerance": 1e-12
+    },
+    "baseline": {
+      "folder": "/ssd1/data/Multi-Organ_Foundation_Model/runs/empty_ablation_512_20260930/weight_0",
+      "empty_weight": 0.0,
+      "selected_epoch": 11,
+      "overall": {
+        "positive_dice": 0.5122326457433753,
+        "empty_false_positive_rate": 0.5412859809411533,
+        "empty_mean_false_positive_area_fraction": 0.0472951878007555,
+        "positive_zero_overlap_rate": 0.22610377846790888,
+        "empty_mean_false_positive_pixels": 9214.264910822249
+      },
+      "abdomen": {
+        "positive_dice": 0.15616442139399664,
+        "empty_false_positive_rate": 0.449543177129384,
+        "empty_mean_false_positive_area_fraction": 0.04855024766387075,
+        "positive_zero_overlap_rate": 0.6956521739130435,
+        "empty_mean_false_positive_pixels": 8906.494363574933
+      },
+      "per_structure": {
+        "breast_lesion": {
+          "samples": 86,
+          "positive_samples": 69,
+          "empty_samples": 17,
+          "positive_dice": 0.5617935525968779,
+          "empty_false_positive_rate": 1.0,
+          "empty_mean_false_positive_area_fraction": 0.04101988848517923,
+          "positive_zero_overlap_rate": 0.057971014492753624,
+          "empty_mean_false_positive_pixels": 10753.117647058823
+        },
+        "ovarian_lesion": {
+          "samples": 121,
+          "positive_samples": 121,
+          "empty_samples": 0,
+          "positive_dice": 0.6706164153069084,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "thyroid_nodule": {
+          "samples": 62,
+          "positive_samples": 62,
+          "empty_samples": 0,
+          "positive_dice": 0.7592338900412282,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "liver": {
+          "samples": 62,
+          "positive_samples": 62,
+          "empty_samples": 0,
+          "positive_dice": 0.7885316062358118,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "liver_mass": {
+          "samples": 56,
+          "positive_samples": 56,
+          "empty_samples": 0,
+          "positive_dice": 0.34215340294239077,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.07142857142857142,
+          "empty_mean_false_positive_pixels": null
+        },
+        "aponeurosis": {
+          "samples": 70,
+          "positive_samples": 70,
+          "empty_samples": 0,
+          "positive_dice": 0.7556796810456685,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "head_contour": {
+          "samples": 100,
+          "positive_samples": 100,
+          "empty_samples": 0,
+          "positive_dice": 0.8663607168197632,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "carotid": {
+          "samples": 150,
+          "positive_samples": 150,
+          "empty_samples": 0,
+          "positive_dice": 0.9207489196459452,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "lv_cavity": {
+          "samples": 200,
+          "positive_samples": 200,
+          "empty_samples": 0,
+          "positive_dice": 0.7177535817027092,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "myocardium": {
+          "samples": 200,
+          "positive_samples": 200,
+          "empty_samples": 0,
+          "positive_dice": 0.5756349565088749,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "left_atrium": {
+          "samples": 200,
+          "positive_samples": 200,
+          "empty_samples": 0,
+          "positive_dice": 0.45639350207784446,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.01,
+          "empty_mean_false_positive_pixels": null
+        },
+        "abdomen_liver": {
+          "samples": 156,
+          "positive_samples": 115,
+          "empty_samples": 41,
+          "positive_dice": 0.3982754147215493,
+          "empty_false_positive_rate": 1.0,
+          "empty_mean_false_positive_area_fraction": 0.23066635575236344,
+          "positive_zero_overlap_rate": 0.0782608695652174,
+          "empty_mean_false_positive_pixels": 42315.51219512195
+        },
+        "abdomen_kidney": {
+          "samples": 156,
+          "positive_samples": 62,
+          "empty_samples": 94,
+          "positive_dice": 0.0,
+          "empty_false_positive_rate": 0.0,
+          "empty_mean_false_positive_area_fraction": 0.0,
+          "positive_zero_overlap_rate": 1.0,
+          "empty_mean_false_positive_pixels": 0.0
+        },
+        "abdomen_vessels": {
+          "samples": 156,
+          "positive_samples": 39,
+          "empty_samples": 117,
+          "positive_dice": 0.0,
+          "empty_false_positive_rate": 0.26495726495726496,
+          "empty_mean_false_positive_area_fraction": 0.0019552233272919785,
+          "positive_zero_overlap_rate": 1.0,
+          "empty_mean_false_positive_pixels": 358.6837606837607
+        },
+        "abdomen_gallbladder": {
+          "samples": 156,
+          "positive_samples": 40,
+          "empty_samples": 116,
+          "positive_dice": 0.38254669224843385,
+          "empty_false_positive_rate": 0.9827586206896551,
+          "empty_mean_false_positive_area_fraction": 0.010129659239698318,
+          "positive_zero_overlap_rate": 0.4,
+          "empty_mean_false_positive_pixels": 1858.2758620689656
+        },
+        "abdomen_spleen": {
+          "samples": 156,
+          "positive_samples": 31,
+          "empty_samples": 125,
+          "positive_dice": 0.0,
+          "empty_false_positive_rate": 0.0,
+          "empty_mean_false_positive_area_fraction": 0.0,
+          "positive_zero_overlap_rate": 1.0,
+          "empty_mean_false_positive_pixels": 0.0
+        }
+      },
+      "input_sha256": {
+        "protocol.json": "9fb956b671d649706f21ae6e5e95afe6c01c4477b2ee2d98cd4a5cfdaeb9e1df",
+        "region/seed_42/metrics.jsonl": "6de462e1eb7a75d77ba9f71d20cc3d9cd171d4a78bcc1562244a444cb06a0760"
+      }
+    },
+    "candidate": {
+      "folder": "/ssd1/data/Multi-Organ_Foundation_Model/runs/empty_ablation_512_20260930/weight_0.1",
+      "empty_weight": 0.1,
+      "selected_epoch": 12,
+      "overall": {
+        "positive_dice": 0.46240122511328846,
+        "empty_false_positive_rate": 0.16666666666666666,
+        "empty_mean_false_positive_area_fraction": 0.00926821839575674,
+        "positive_zero_overlap_rate": 0.3179343601885598,
+        "empty_mean_false_positive_pixels": 2429.607843137255
+      },
+      "abdomen": {
+        "positive_dice": 0.0035758322477340695,
+        "empty_false_positive_rate": 0.0,
+        "empty_mean_false_positive_area_fraction": 0.0,
+        "positive_zero_overlap_rate": 0.9949999999999999,
+        "empty_mean_false_positive_pixels": 0.0
+      },
+      "per_structure": {
+        "breast_lesion": {
+          "samples": 86,
+          "positive_samples": 69,
+          "empty_samples": 17,
+          "positive_dice": 0.5325908442399047,
+          "empty_false_positive_rate": 1.0,
+          "empty_mean_false_positive_area_fraction": 0.05560931037454044,
+          "positive_zero_overlap_rate": 0.057971014492753624,
+          "empty_mean_false_positive_pixels": 14577.64705882353
+        },
+        "ovarian_lesion": {
+          "samples": 121,
+          "positive_samples": 121,
+          "empty_samples": 0,
+          "positive_dice": 0.6846524283967235,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.008264462809917356,
+          "empty_mean_false_positive_pixels": null
+        },
+        "thyroid_nodule": {
+          "samples": 62,
+          "positive_samples": 62,
+          "empty_samples": 0,
+          "positive_dice": 0.7461290647906642,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "liver": {
+          "samples": 62,
+          "positive_samples": 62,
+          "empty_samples": 0,
+          "positive_dice": 0.7943673917362767,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "liver_mass": {
+          "samples": 56,
+          "positive_samples": 56,
+          "empty_samples": 0,
+          "positive_dice": 0.3298711855272164,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.03571428571428571,
+          "empty_mean_false_positive_pixels": null
+        },
+        "aponeurosis": {
+          "samples": 70,
+          "positive_samples": 70,
+          "empty_samples": 0,
+          "positive_dice": 0.7597245218498366,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "head_contour": {
+          "samples": 100,
+          "positive_samples": 100,
+          "empty_samples": 0,
+          "positive_dice": 0.8599810418486595,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "carotid": {
+          "samples": 150,
+          "positive_samples": 150,
+          "empty_samples": 0,
+          "positive_dice": 0.938183244864146,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "lv_cavity": {
+          "samples": 200,
+          "positive_samples": 200,
+          "empty_samples": 0,
+          "positive_dice": 0.7107047939300537,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "myocardium": {
+          "samples": 200,
+          "positive_samples": 200,
+          "empty_samples": 0,
+          "positive_dice": 0.5905420346558095,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "left_atrium": {
+          "samples": 200,
+          "positive_samples": 200,
+          "empty_samples": 0,
+          "positive_dice": 0.4337938887346536,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.01,
+          "empty_mean_false_positive_pixels": null
+        },
+        "abdomen_liver": {
+          "samples": 156,
+          "positive_samples": 115,
+          "empty_samples": 41,
+          "positive_dice": 0.0,
+          "empty_false_positive_rate": 0.0,
+          "empty_mean_false_positive_area_fraction": 0.0,
+          "positive_zero_overlap_rate": 1.0,
+          "empty_mean_false_positive_pixels": 0.0
+        },
+        "abdomen_kidney": {
+          "samples": 156,
+          "positive_samples": 62,
+          "empty_samples": 94,
+          "positive_dice": 0.0,
+          "empty_false_positive_rate": 0.0,
+          "empty_mean_false_positive_area_fraction": 0.0,
+          "positive_zero_overlap_rate": 1.0,
+          "empty_mean_false_positive_pixels": 0.0
+        },
+        "abdomen_vessels": {
+          "samples": 156,
+          "positive_samples": 39,
+          "empty_samples": 117,
+          "positive_dice": 0.0,
+          "empty_false_positive_rate": 0.0,
+          "empty_mean_false_positive_area_fraction": 0.0,
+          "positive_zero_overlap_rate": 1.0,
+          "empty_mean_false_positive_pixels": 0.0
+        },
+        "abdomen_gallbladder": {
+          "samples": 156,
+          "positive_samples": 40,
+          "empty_samples": 116,
+          "positive_dice": 0.01787916123867035,
+          "empty_false_positive_rate": 0.0,
+          "empty_mean_false_positive_area_fraction": 0.0,
+          "positive_zero_overlap_rate": 0.975,
+          "empty_mean_false_positive_pixels": 0.0
+        },
+        "abdomen_spleen": {
+          "samples": 156,
+          "positive_samples": 31,
+          "empty_samples": 125,
+          "positive_dice": 0.0,
+          "empty_false_positive_rate": 0.0,
+          "empty_mean_false_positive_area_fraction": 0.0,
+          "positive_zero_overlap_rate": 1.0,
+          "empty_mean_false_positive_pixels": 0.0
+        }
+      },
+      "input_sha256": {
+        "protocol.json": "4765a715efa9005207ea71a1ec8950e94af82ace1a2896f8c38a35fc4a497609",
+        "region/seed_42/metrics.jsonl": "9a9f03196a90aed5a154c7ca7978146fa435eb64667e41c3d7cfa0cbd5f9b267"
+      }
+    },
+    "differences": {
+      "overall": {
+        "positive_dice": -0.04983142063008689,
+        "empty_false_positive_rate": -0.3746193142744867,
+        "empty_mean_false_positive_area_fraction": -0.03802696940499876,
+        "positive_zero_overlap_rate": 0.09183058172065092,
+        "empty_mean_false_positive_pixels": -6784.657067684993
+      },
+      "abdomen": {
+        "positive_dice": -0.15258858914626258,
+        "empty_false_positive_rate": -0.449543177129384,
+        "empty_mean_false_positive_area_fraction": -0.04855024766387075,
+        "positive_zero_overlap_rate": 0.2993478260869564,
+        "empty_mean_false_positive_pixels": -8906.494363574933
+      },
+      "per_structure": {
+        "breast_lesion": {
+          "positive_dice": -0.02920270835697325,
+          "empty_false_positive_rate": 0.0,
+          "empty_mean_false_positive_area_fraction": 0.014589421889361215,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": 3824.5294117647063
+        },
+        "ovarian_lesion": {
+          "positive_dice": 0.014036013089815058,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.008264462809917356,
+          "empty_mean_false_positive_pixels": null
+        },
+        "thyroid_nodule": {
+          "positive_dice": -0.013104825250564,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "liver": {
+          "positive_dice": 0.0058357855004649295,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "liver_mass": {
+          "positive_dice": -0.012282217415174379,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": -0.03571428571428571,
+          "empty_mean_false_positive_pixels": null
+        },
+        "aponeurosis": {
+          "positive_dice": 0.004044840804168115,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "head_contour": {
+          "positive_dice": -0.006379674971103699,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "carotid": {
+          "positive_dice": 0.017434325218200764,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "lv_cavity": {
+          "positive_dice": -0.007048787772655496,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "myocardium": {
+          "positive_dice": 0.014907078146934594,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "left_atrium": {
+          "positive_dice": -0.022599613343190883,
+          "empty_false_positive_rate": null,
+          "empty_mean_false_positive_area_fraction": null,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": null
+        },
+        "abdomen_liver": {
+          "positive_dice": -0.3982754147215493,
+          "empty_false_positive_rate": -1.0,
+          "empty_mean_false_positive_area_fraction": -0.23066635575236344,
+          "positive_zero_overlap_rate": 0.9217391304347826,
+          "empty_mean_false_positive_pixels": -42315.51219512195
+        },
+        "abdomen_kidney": {
+          "positive_dice": 0.0,
+          "empty_false_positive_rate": 0.0,
+          "empty_mean_false_positive_area_fraction": 0.0,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": 0.0
+        },
+        "abdomen_vessels": {
+          "positive_dice": 0.0,
+          "empty_false_positive_rate": -0.26495726495726496,
+          "empty_mean_false_positive_area_fraction": -0.0019552233272919785,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": -358.6837606837607
+        },
+        "abdomen_gallbladder": {
+          "positive_dice": -0.3646675310097635,
+          "empty_false_positive_rate": -0.9827586206896551,
+          "empty_mean_false_positive_area_fraction": -0.010129659239698318,
+          "positive_zero_overlap_rate": 0.575,
+          "empty_mean_false_positive_pixels": -1858.2758620689656
+        },
+        "abdomen_spleen": {
+          "positive_dice": 0.0,
+          "empty_false_positive_rate": 0.0,
+          "empty_mean_false_positive_area_fraction": 0.0,
+          "positive_zero_overlap_rate": 0.0,
+          "empty_mean_false_positive_pixels": 0.0
+        }
+      }
+    },
+    "decision": {
+      "status": "not_selected",
+      "checks": {
+        "abdomen_empty_area_reduced": {
+          "candidate_minus_baseline": -0.04855024766387075,
+          "operator": "<",
+          "bound": 0.0,
+          "passed": true
+        },
+        "abdomen_empty_fp_rate_preserved": {
+          "candidate_minus_baseline": -0.449543177129384,
+          "operator": "<=",
+          "bound": 0.01,
+          "passed": true
+        },
+        "abdomen_positive_dice_preserved": {
+          "candidate_minus_baseline": -0.15258858914626258,
+          "operator": ">=",
+          "bound": -0.01,
+          "passed": false
+        },
+        "overall_positive_dice_preserved": {
+          "candidate_minus_baseline": -0.04983142063008689,
+          "operator": ">=",
+          "bound": -0.005,
+          "passed": false
+        },
+        "abdomen_zero_overlap_preserved": {
+          "candidate_minus_baseline": 0.2993478260869564,
+          "operator": "<=",
+          "bound": 0.01,
+          "passed": false
+        }
+      },
+      "next_step": "Retain disabled empty loss; this candidate fails the prespecified safeguards.",
+      "interpretation": "Single-seed validation pilot only; no proven improvement or test claim."
+    },
+    "default_empty_weight": 0.0
+  },
+  "recovery": {
+    "plan": {
+      "schema": "abdomen_recovery_v1",
+      "fair_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_512_seed42_43_44_20260930",
+      "output": "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_recovery_512_20260930",
+      "fair_plan_sha256": "67f7d56164a5cd8ed5b433b51efa971a8deb184e776c73088948bdb38ae6e4f2",
+      "fair_record_sha256": "f621896f10234777d3067a019d96a7cb1dae3b6add305bca32815298744315e0",
+      "fair_source_sha256": "2833331b3b2fdf30ee37841cc19a49b427681fe8cbd8c856b71e671760aef901",
+      "fair_summary_sha256": "1a7d82da1c041a4388a9f3665fa70a52341f2e9018b17bd0c78f821ef697f578",
+      "train_val_record_sha256": "69fb23f5f246a3537a33f00b10b6eadb9cfca5e84578c7daae94e77264d11491",
+      "train_val_content": {
+        "files": 16046,
+        "sha256": "314cad6c5b79fcb31bacd470c1e4f5ca85bbedff1bc8e9c97dc037734a33bfd5"
+      },
+      "source_files": {
+        "fair_suite.py": "983c63c02d50a8f401249bb1034fc7f1b65a9294d5f0f43483e2e8b5e580e7b0",
+        "baseline.py": "6e7d9c819faba0d31a88a884ec92eed5c3ab825109d820552195874130077034",
+        "model.py": "779fb81b16ee6c49aae2a383f99fe17149520b80da3fc2a5eaa804a678f84d9e",
+        "region.py": "448d17f14924a29dcc77cb447028b29a076ea19f007b830b7d90a51d691e3681",
+        "data.py": "ad5419a1732e79cf373863ad4436adf3aa2e2e49369a76f226cf9e66cbf91310",
+        "sampling.py": "3a75c1dde84a1242acd503f1fc658957b92ff589fb401eb10f9cd53e9e1ecf2a",
+        "schedule.py": "011edb0818d4ef644e0be46a075a825fbcad460251155634a50ab021908a2e7f",
+        "empty_loss.py": "37929ef8a1b316418b7e4bd3b76558991e4ced336b92f38ad2c73120a1122acf"
+      },
+      "extension_sha256": "44bb9d1f3f2d996e1050d9d68a2cc3333961e0c0cf41514d71193a3bfee625e9",
+      "initial_checkpoints": {
+        "42": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_512_seed42_43_44_20260930/shards/gpu1/region/seed_42/best.pt",
+          "sha256": "4f7d5ab6170eee928a08aa4d23d6befad2cd4d71fd677a84ea98917bea8d1689",
+          "best_epoch": 39,
+          "best_validation_macro_positive_dice": 0.7060206139836528
+        },
+        "43": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_512_seed42_43_44_20260930/shards/gpu1/region/seed_43/best.pt",
+          "sha256": "e2aaba968c962f56bdbf951caeb5acd82fd0ba38fcf7d26d11ed41965ab7a77a",
+          "best_epoch": 50,
+          "best_validation_macro_positive_dice": 0.7237800277928456
+        },
+        "44": {
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_512_seed42_43_44_20260930/shards/gpu1/region/seed_44/best.pt",
+          "sha256": "b813a8ac33ec3482feaa97b1333603d0e100be05773ec27cb422615eabdf476b",
+          "best_epoch": 31,
+          "best_validation_macro_positive_dice": 0.7074387516936941
+        }
+      },
+      "seeds": [
+        42,
+        43,
+        44
+      ],
+      "arms": [
+        {
+          "name": "control",
+          "empty_weight": 0.0,
+          "rare_positive_weight": 1.0,
+          "abdomen_sampling_weight": 1.0
+        },
+        {
+          "name": "empty_0p002",
+          "empty_weight": 0.002,
+          "rare_positive_weight": 1.0,
+          "abdomen_sampling_weight": 1.0
+        },
+        {
+          "name": "empty_0p01",
+          "empty_weight": 0.01,
+          "rare_positive_weight": 1.0,
+          "abdomen_sampling_weight": 1.0
+        },
+        {
+          "name": "rare_positive_x2",
+          "empty_weight": 0.0,
+          "rare_positive_weight": 2.0,
+          "abdomen_sampling_weight": 1.0
+        },
+        {
+          "name": "abdomen_positive_sampling_x3",
+          "empty_weight": 0.0,
+          "rare_positive_weight": 1.0,
+          "abdomen_sampling_weight": 3.0
+        },
+        {
+          "name": "rare_positive_x2_empty_0p002",
+          "empty_weight": 0.002,
+          "rare_positive_weight": 2.0,
+          "abdomen_sampling_weight": 1.0
+        }
+      ],
+      "design": {
+        "size": 512,
+        "base": 16,
+        "top_k": 1,
+        "batch_size": 4,
+        "epochs": 8,
+        "quota_per_domain": 128,
+        "workers": 2,
+        "images_per_epoch": 1152,
+        "optimizer_steps_per_epoch": 288,
+        "lr": 0.0001,
+        "weight_decay": 0.0001,
+        "empty_fraction": 0.01,
+        "gradient_clip_norm": 5.0,
+        "all_arms_start_from": "each seed fair Region best.pt; AdamW optimizer reset",
+        "checkpoint_selection": "max abdomen validation positive Dice among epochs 0..8 satisfying fixed baseline guards",
+        "random_seed_policy": "same seed and epoch train draws across arms except declared abdomen sampling arm",
+        "test_policy": "no test image or mask opened; no test metric used for model selection",
+        "selection_guards": {
+          "overall_positive_dice_decline": 0.015,
+          "abdomen_empty_fp_area_increase": 0.015,
+          "abdomen_empty_fp_rate_increase": 0.05,
+          "abdomen_zero_overlap_increase": 0.02,
+          "kidney_empty_fp_area_increase": 0.005,
+          "kidney_positive_dice_decline": 0.02
+        },
+        "comparison_guards": {
+          "min_mean_abdomen_positive_dice_gain": 0.01,
+          "max_mean_overall_positive_dice_decline": 0.01,
+          "max_mean_abdomen_empty_fp_area_increase": 0.0,
+          "max_mean_abdomen_empty_fp_rate_increase": 0.03,
+          "max_mean_abdomen_zero_overlap_increase": 0.01,
+          "max_individual_seed_abdomen_positive_dice_decline": 0.01,
+          "max_mean_liver_empty_fp_rate_increase": 0.03,
+          "max_mean_kidney_empty_fp_area_increase": 0.002,
+          "max_mean_kidney_positive_dice_decline": 0.02
+        },
+        "mask_positive_definition": "indexed original training mask has class 4 vessel or class 8 spleen",
+        "abdomen_positive_images": 236,
+        "abdomen_train_images": 477,
+        "abdomen_positive_mapping_sha256": "6ddbbd88e3167b5dfa8d2025ad56775003b6df3a1236b90fbd44c7cdf2e6ed66",
+        "abdomen_mask_sha256": "a7a3588bf0ef1859a83ad179faf3c7deb42789c504929e05413d4021a19512c1",
+        "minimum_free_mib": 22528
+      },
+      "plan_sha256": "d7adcfeb3a19a2e81a4e439769e4f00e5a2b525b77c05b3838d10a745757b579"
+    },
+    "run_count": 18,
+    "initial_checkpoint_selected_count": 12,
+    "runs": [
+      {
+        "arm": "control",
+        "seed": 42,
+        "epochs_completed": 8,
+        "selected_epoch": 0,
+        "validation": {
+          "overall_positive_dice": 0.7060206139836528,
+          "abdomen_positive_dice": 0.4152518515318505,
+          "abdomen_empty_fp_rate": 0.43072011166186497,
+          "abdomen_empty_fp_area": 0.014357752637256327,
+          "abdomen_zero_overlap": 0.3594740532959327,
+          "liver_empty_fp_rate": 0.6097560975609756,
+          "kidney_empty_fp_area": 0.03916811258556876,
+          "kidney_positive_dice": 0.4993716682041732
+        }
+      },
+      {
+        "arm": "empty_0p002",
+        "seed": 42,
+        "epochs_completed": 8,
+        "selected_epoch": 0,
+        "validation": {
+          "overall_positive_dice": 0.7060206139836528,
+          "abdomen_positive_dice": 0.4152518515318505,
+          "abdomen_empty_fp_rate": 0.43072011166186497,
+          "abdomen_empty_fp_area": 0.014357752637256327,
+          "abdomen_zero_overlap": 0.3594740532959327,
+          "liver_empty_fp_rate": 0.6097560975609756,
+          "kidney_empty_fp_area": 0.03916811258556876,
+          "kidney_positive_dice": 0.4993716682041732
+        }
+      },
+      {
+        "arm": "empty_0p01",
+        "seed": 42,
+        "epochs_completed": 8,
+        "selected_epoch": 0,
+        "validation": {
+          "overall_positive_dice": 0.7060206139836528,
+          "abdomen_positive_dice": 0.4152518515318505,
+          "abdomen_empty_fp_rate": 0.43072011166186497,
+          "abdomen_empty_fp_area": 0.014357752637256327,
+          "abdomen_zero_overlap": 0.3594740532959327,
+          "liver_empty_fp_rate": 0.6097560975609756,
+          "kidney_empty_fp_area": 0.03916811258556876,
+          "kidney_positive_dice": 0.4993716682041732
+        }
+      },
+      {
+        "arm": "rare_positive_x2",
+        "seed": 42,
+        "epochs_completed": 8,
+        "selected_epoch": 0,
+        "validation": {
+          "overall_positive_dice": 0.7060206139836528,
+          "abdomen_positive_dice": 0.4152518515318505,
+          "abdomen_empty_fp_rate": 0.43072011166186497,
+          "abdomen_empty_fp_area": 0.014357752637256327,
+          "abdomen_zero_overlap": 0.3594740532959327,
+          "liver_empty_fp_rate": 0.6097560975609756,
+          "kidney_empty_fp_area": 0.03916811258556876,
+          "kidney_positive_dice": 0.4993716682041732
+        }
+      },
+      {
+        "arm": "abdomen_positive_sampling_x3",
+        "seed": 42,
+        "epochs_completed": 8,
+        "selected_epoch": 0,
+        "validation": {
+          "overall_positive_dice": 0.7060206139836528,
+          "abdomen_positive_dice": 0.4152518515318505,
+          "abdomen_empty_fp_rate": 0.43072011166186497,
+          "abdomen_empty_fp_area": 0.014357752637256327,
+          "abdomen_zero_overlap": 0.3594740532959327,
+          "liver_empty_fp_rate": 0.6097560975609756,
+          "kidney_empty_fp_area": 0.03916811258556876,
+          "kidney_positive_dice": 0.4993716682041732
+        }
+      },
+      {
+        "arm": "rare_positive_x2_empty_0p002",
+        "seed": 42,
+        "epochs_completed": 8,
+        "selected_epoch": 0,
+        "validation": {
+          "overall_positive_dice": 0.7060206139836528,
+          "abdomen_positive_dice": 0.4152518515318505,
+          "abdomen_empty_fp_rate": 0.43072011166186497,
+          "abdomen_empty_fp_area": 0.014357752637256327,
+          "abdomen_zero_overlap": 0.3594740532959327,
+          "liver_empty_fp_rate": 0.6097560975609756,
+          "kidney_empty_fp_area": 0.03916811258556876,
+          "kidney_positive_dice": 0.4993716682041732
+        }
+      },
+      {
+        "arm": "control",
+        "seed": 43,
+        "epochs_completed": 8,
+        "selected_epoch": 6,
+        "validation": {
+          "overall_positive_dice": 0.7300034712961696,
+          "abdomen_positive_dice": 0.47414599745802866,
+          "abdomen_empty_fp_rate": 0.39132623516990855,
+          "abdomen_empty_fp_area": 0.019069672573133915,
+          "abdomen_zero_overlap": 0.32082748948106593,
+          "liver_empty_fp_rate": 0.926829268292683,
+          "kidney_empty_fp_area": 0.01859314370224812,
+          "kidney_positive_dice": 0.5401392462377008
+        }
+      },
+      {
+        "arm": "empty_0p002",
+        "seed": 43,
+        "epochs_completed": 8,
+        "selected_epoch": 8,
+        "validation": {
+          "overall_positive_dice": 0.7215460641463566,
+          "abdomen_positive_dice": 0.4636380755999196,
+          "abdomen_empty_fp_rate": 0.27441166007551493,
+          "abdomen_empty_fp_area": 0.0059486936474682965,
+          "abdomen_zero_overlap": 0.34072230014025245,
+          "liver_empty_fp_rate": 0.6341463414634146,
+          "kidney_empty_fp_area": 0.010848977448210674,
+          "kidney_positive_dice": 0.49949147673971545
+        }
+      },
+      {
+        "arm": "empty_0p01",
+        "seed": 43,
+        "epochs_completed": 8,
+        "selected_epoch": 0,
+        "validation": {
+          "overall_positive_dice": 0.7237800277928456,
+          "abdomen_positive_dice": 0.45665810105292226,
+          "abdomen_empty_fp_rate": 0.4052380294543958,
+          "abdomen_empty_fp_area": 0.008742517609576528,
+          "abdomen_zero_overlap": 0.34604488078541373,
+          "liver_empty_fp_rate": 0.7073170731707317,
+          "kidney_empty_fp_area": 0.014283174289011321,
+          "kidney_positive_dice": 0.5170868612382741
+        }
+      },
+      {
+        "arm": "rare_positive_x2",
+        "seed": 43,
+        "epochs_completed": 8,
+        "selected_epoch": 6,
+        "validation": {
+          "overall_positive_dice": 0.7295809955343345,
+          "abdomen_positive_dice": 0.4694437718786035,
+          "abdomen_empty_fp_rate": 0.3942289784013027,
+          "abdomen_empty_fp_area": 0.018930589048650703,
+          "abdomen_zero_overlap": 0.3308976157082749,
+          "liver_empty_fp_rate": 0.8780487804878049,
+          "kidney_empty_fp_area": 0.018205825015103712,
+          "kidney_positive_dice": 0.5450246964448466
+        }
+      },
+      {
+        "arm": "abdomen_positive_sampling_x3",
+        "seed": 43,
+        "epochs_completed": 8,
+        "selected_epoch": 2,
+        "validation": {
+          "overall_positive_dice": 0.7269825609611905,
+          "abdomen_positive_dice": 0.46139942488999486,
+          "abdomen_empty_fp_rate": 0.37618890181271586,
+          "abdomen_empty_fp_area": 0.008062653309328429,
+          "abdomen_zero_overlap": 0.3593057503506311,
+          "liver_empty_fp_rate": 0.6585365853658537,
+          "kidney_empty_fp_area": 0.014002094381736397,
+          "kidney_positive_dice": 0.5118807403243056
+        }
+      },
+      {
+        "arm": "rare_positive_x2_empty_0p002",
+        "seed": 43,
+        "epochs_completed": 8,
+        "selected_epoch": 4,
+        "validation": {
+          "overall_positive_dice": 0.7284157680680784,
+          "abdomen_positive_dice": 0.46645514623738754,
+          "abdomen_empty_fp_rate": 0.37855279065189773,
+          "abdomen_empty_fp_area": 0.007862521641795624,
+          "abdomen_zero_overlap": 0.33785413744740533,
+          "liver_empty_fp_rate": 0.6829268292682927,
+          "kidney_empty_fp_area": 0.01577828516785806,
+          "kidney_positive_dice": 0.544947495023089
+        }
+      },
+      {
+        "arm": "control",
+        "seed": 44,
+        "epochs_completed": 8,
+        "selected_epoch": 1,
+        "validation": {
+          "overall_positive_dice": 0.7145986867109582,
+          "abdomen_positive_dice": 0.4298945456708822,
+          "abdomen_empty_fp_rate": 0.44687910097883077,
+          "abdomen_empty_fp_area": 0.01757576690545812,
+          "abdomen_zero_overlap": 0.3636816269284712,
+          "liver_empty_fp_rate": 0.7317073170731707,
+          "kidney_empty_fp_area": 0.02652595319724493,
+          "kidney_positive_dice": 0.47646376337750906
+        }
+      },
+      {
+        "arm": "empty_0p002",
+        "seed": 44,
+        "epochs_completed": 8,
+        "selected_epoch": 0,
+        "validation": {
+          "overall_positive_dice": 0.7074387516936941,
+          "abdomen_positive_dice": 0.4292175219416472,
+          "abdomen_empty_fp_rate": 0.4786985308591164,
+          "abdomen_empty_fp_area": 0.022080127028081636,
+          "abdomen_zero_overlap": 0.3650981767180926,
+          "liver_empty_fp_rate": 0.8780487804878049,
+          "kidney_empty_fp_area": 0.02188358211331317,
+          "kidney_positive_dice": 0.492498364945453
+        }
+      },
+      {
+        "arm": "empty_0p01",
+        "seed": 44,
+        "epochs_completed": 8,
+        "selected_epoch": 0,
+        "validation": {
+          "overall_positive_dice": 0.7074387516936941,
+          "abdomen_positive_dice": 0.4292175219416472,
+          "abdomen_empty_fp_rate": 0.4786985308591164,
+          "abdomen_empty_fp_area": 0.022080127028081636,
+          "abdomen_zero_overlap": 0.3650981767180926,
+          "liver_empty_fp_rate": 0.8780487804878049,
+          "kidney_empty_fp_area": 0.02188358211331317,
+          "kidney_positive_dice": 0.492498364945453
+        }
+      },
+      {
+        "arm": "rare_positive_x2",
+        "seed": 44,
+        "epochs_completed": 8,
+        "selected_epoch": 0,
+        "validation": {
+          "overall_positive_dice": 0.7074387516936941,
+          "abdomen_positive_dice": 0.4292175219416472,
+          "abdomen_empty_fp_rate": 0.4786985308591164,
+          "abdomen_empty_fp_area": 0.022080127028081636,
+          "abdomen_zero_overlap": 0.3650981767180926,
+          "liver_empty_fp_rate": 0.8780487804878049,
+          "kidney_empty_fp_area": 0.02188358211331317,
+          "kidney_positive_dice": 0.492498364945453
+        }
+      },
+      {
+        "arm": "abdomen_positive_sampling_x3",
+        "seed": 44,
+        "epochs_completed": 8,
+        "selected_epoch": 0,
+        "validation": {
+          "overall_positive_dice": 0.7074387516936941,
+          "abdomen_positive_dice": 0.4292175219416472,
+          "abdomen_empty_fp_rate": 0.4786985308591164,
+          "abdomen_empty_fp_area": 0.022080127028081636,
+          "abdomen_zero_overlap": 0.3650981767180926,
+          "liver_empty_fp_rate": 0.8780487804878049,
+          "kidney_empty_fp_area": 0.02188358211331317,
+          "kidney_positive_dice": 0.492498364945453
+        }
+      },
+      {
+        "arm": "rare_positive_x2_empty_0p002",
+        "seed": 44,
+        "epochs_completed": 8,
+        "selected_epoch": 0,
+        "validation": {
+          "overall_positive_dice": 0.7074387516936941,
+          "abdomen_positive_dice": 0.4292175219416472,
+          "abdomen_empty_fp_rate": 0.4786985308591164,
+          "abdomen_empty_fp_area": 0.022080127028081636,
+          "abdomen_zero_overlap": 0.3650981767180926,
+          "liver_empty_fp_rate": 0.8780487804878049,
+          "kidney_empty_fp_area": 0.02188358211331317,
+          "kidney_positive_dice": 0.492498364945453
+        }
+      }
+    ],
+    "candidate_comparisons": {
+      "empty_0p002": {
+        "paired_differences": {
+          "abdomen_positive_dice": [
+            0.0,
+            -0.01050792185810906,
+            -0.0006770237292350045
+          ],
+          "overall_positive_dice": [
+            0.0,
+            -0.008457407149813023,
+            -0.007159935017264085
+          ],
+          "abdomen_empty_fp_area": [
+            0.0,
+            -0.013120978925665619,
+            0.004504360122623514
+          ],
+          "abdomen_empty_fp_rate": [
+            0.0,
+            -0.11691457509439362,
+            0.03181942988028563
+          ],
+          "abdomen_zero_overlap": [
+            0.0,
+            0.019894810659186524,
+            0.0014165497896213575
+          ],
+          "liver_empty_fp_rate": [
+            0.0,
+            -0.29268292682926833,
+            0.14634146341463417
+          ],
+          "kidney_empty_fp_area": [
+            0.0,
+            -0.007744166254037446,
+            -0.00464237108393176
+          ],
+          "kidney_positive_dice": [
+            0.0,
+            -0.040647769497985375,
+            0.01603460156794395
+          ]
+        },
+        "mean_difference": {
+          "abdomen_positive_dice": -0.0037283151957813545,
+          "overall_positive_dice": -0.005205780722359036,
+          "abdomen_empty_fp_area": -0.0028722062676807014,
+          "abdomen_empty_fp_rate": -0.028365048404702664,
+          "abdomen_zero_overlap": 0.007103786816269293,
+          "liver_empty_fp_rate": -0.04878048780487806,
+          "kidney_empty_fp_area": -0.004128845779323069,
+          "kidney_positive_dice": -0.008204389310013807
+        },
+        "checks": {
+          "abdomen_positive_dice": false,
+          "overall_positive_dice": true,
+          "abdomen_empty_fp_area": true,
+          "abdomen_empty_fp_rate": true,
+          "abdomen_zero_overlap": true,
+          "each_seed_abdomen_positive_dice": false,
+          "liver_empty_fp_rate": true,
+          "kidney_empty_fp_area": true,
+          "kidney_positive_dice": true
+        },
+        "selected": false
+      },
+      "empty_0p01": {
+        "paired_differences": {
+          "abdomen_positive_dice": [
+            0.0,
+            -0.017487896405106396,
+            -0.0006770237292350045
+          ],
+          "overall_positive_dice": [
+            0.0,
+            -0.006223443503324044,
+            -0.007159935017264085
+          ],
+          "abdomen_empty_fp_area": [
+            0.0,
+            -0.010327154963557387,
+            0.004504360122623514
+          ],
+          "abdomen_empty_fp_rate": [
+            0.0,
+            0.013911794284487244,
+            0.03181942988028563
+          ],
+          "abdomen_zero_overlap": [
+            0.0,
+            0.025217391304347803,
+            0.0014165497896213575
+          ],
+          "liver_empty_fp_rate": [
+            0.0,
+            -0.2195121951219513,
+            0.14634146341463417
+          ],
+          "kidney_empty_fp_area": [
+            0.0,
+            -0.004309969413236799,
+            -0.00464237108393176
+          ],
+          "kidney_positive_dice": [
+            0.0,
+            -0.023052384999426745,
+            0.01603460156794395
+          ]
+        },
+        "mean_difference": {
+          "abdomen_positive_dice": -0.0060549733781138,
+          "overall_positive_dice": -0.004461126173529377,
+          "abdomen_empty_fp_area": -0.001940931613644624,
+          "abdomen_empty_fp_rate": 0.015243741388257626,
+          "abdomen_zero_overlap": 0.008877980364656387,
+          "liver_empty_fp_rate": -0.024390243902439046,
+          "kidney_empty_fp_area": -0.0029841134990561866,
+          "kidney_positive_dice": -0.002339261143827598
+        },
+        "checks": {
+          "abdomen_positive_dice": false,
+          "overall_positive_dice": true,
+          "abdomen_empty_fp_area": true,
+          "abdomen_empty_fp_rate": true,
+          "abdomen_zero_overlap": true,
+          "each_seed_abdomen_positive_dice": false,
+          "liver_empty_fp_rate": true,
+          "kidney_empty_fp_area": true,
+          "kidney_positive_dice": true
+        },
+        "selected": false
+      },
+      "rare_positive_x2": {
+        "paired_differences": {
+          "abdomen_positive_dice": [
+            0.0,
+            -0.004702225579425179,
+            -0.0006770237292350045
+          ],
+          "overall_positive_dice": [
+            0.0,
+            -0.00042247576183507274,
+            -0.007159935017264085
+          ],
+          "abdomen_empty_fp_area": [
+            0.0,
+            -0.00013908352448321198,
+            0.004504360122623514
+          ],
+          "abdomen_empty_fp_rate": [
+            0.0,
+            0.002902743231394167,
+            0.03181942988028563
+          ],
+          "abdomen_zero_overlap": [
+            0.0,
+            0.010070126227208986,
+            0.0014165497896213575
+          ],
+          "liver_empty_fp_rate": [
+            0.0,
+            -0.04878048780487809,
+            0.14634146341463417
+          ],
+          "kidney_empty_fp_area": [
+            0.0,
+            -0.0003873186871444084,
+            -0.00464237108393176
+          ],
+          "kidney_positive_dice": [
+            0.0,
+            0.004885450207145814,
+            0.01603460156794395
+          ]
+        },
+        "mean_difference": {
+          "abdomen_positive_dice": -0.0017930831028867278,
+          "overall_positive_dice": -0.002527470259699719,
+          "abdomen_empty_fp_area": 0.0014550921993801008,
+          "abdomen_empty_fp_rate": 0.011574057703893267,
+          "abdomen_zero_overlap": 0.0038288920056101148,
+          "liver_empty_fp_rate": 0.03252032520325202,
+          "kidney_empty_fp_area": -0.0016765632570253895,
+          "kidney_positive_dice": 0.006973350591696588
+        },
+        "checks": {
+          "abdomen_positive_dice": false,
+          "overall_positive_dice": true,
+          "abdomen_empty_fp_area": false,
+          "abdomen_empty_fp_rate": true,
+          "abdomen_zero_overlap": true,
+          "each_seed_abdomen_positive_dice": true,
+          "liver_empty_fp_rate": false,
+          "kidney_empty_fp_area": true,
+          "kidney_positive_dice": true
+        },
+        "selected": false
+      },
+      "abdomen_positive_sampling_x3": {
+        "paired_differences": {
+          "abdomen_positive_dice": [
+            0.0,
+            -0.012746572568033798,
+            -0.0006770237292350045
+          ],
+          "overall_positive_dice": [
+            0.0,
+            -0.003020910334979088,
+            -0.007159935017264085
+          ],
+          "abdomen_empty_fp_area": [
+            0.0,
+            -0.011007019263805486,
+            0.004504360122623514
+          ],
+          "abdomen_empty_fp_rate": [
+            0.0,
+            -0.015137333357192695,
+            0.03181942988028563
+          ],
+          "abdomen_zero_overlap": [
+            0.0,
+            0.038478260869565184,
+            0.0014165497896213575
+          ],
+          "liver_empty_fp_rate": [
+            0.0,
+            -0.2682926829268293,
+            0.14634146341463417
+          ],
+          "kidney_empty_fp_area": [
+            0.0,
+            -0.004591049320511723,
+            -0.00464237108393176
+          ],
+          "kidney_positive_dice": [
+            0.0,
+            -0.028258505913395182,
+            0.01603460156794395
+          ]
+        },
+        "mean_difference": {
+          "abdomen_positive_dice": -0.004474532099089601,
+          "overall_positive_dice": -0.003393615117414391,
+          "abdomen_empty_fp_area": -0.002167553047060657,
+          "abdomen_empty_fp_rate": 0.0055606988410309794,
+          "abdomen_zero_overlap": 0.013298270219728847,
+          "liver_empty_fp_rate": -0.04065040650406504,
+          "kidney_empty_fp_area": -0.003077806801481161,
+          "kidney_positive_dice": -0.004074634781817077
+        },
+        "checks": {
+          "abdomen_positive_dice": false,
+          "overall_positive_dice": true,
+          "abdomen_empty_fp_area": true,
+          "abdomen_empty_fp_rate": true,
+          "abdomen_zero_overlap": false,
+          "each_seed_abdomen_positive_dice": false,
+          "liver_empty_fp_rate": true,
+          "kidney_empty_fp_area": true,
+          "kidney_positive_dice": true
+        },
+        "selected": false
+      },
+      "rare_positive_x2_empty_0p002": {
+        "paired_differences": {
+          "abdomen_positive_dice": [
+            0.0,
+            -0.007690851220641115,
+            -0.0006770237292350045
+          ],
+          "overall_positive_dice": [
+            0.0,
+            -0.0015877032280912085,
+            -0.007159935017264085
+          ],
+          "abdomen_empty_fp_area": [
+            0.0,
+            -0.01120715093133829,
+            0.004504360122623514
+          ],
+          "abdomen_empty_fp_rate": [
+            0.0,
+            -0.012773444518010824,
+            0.03181942988028563
+          ],
+          "abdomen_zero_overlap": [
+            0.0,
+            0.017026647966339403,
+            0.0014165497896213575
+          ],
+          "liver_empty_fp_rate": [
+            0.0,
+            -0.24390243902439024,
+            0.14634146341463417
+          ],
+          "kidney_empty_fp_area": [
+            0.0,
+            -0.00281485853439006,
+            -0.00464237108393176
+          ],
+          "kidney_positive_dice": [
+            0.0,
+            0.004808248785388214,
+            0.01603460156794395
+          ]
+        },
+        "mean_difference": {
+          "abdomen_positive_dice": -0.0027892916499587064,
+          "overall_positive_dice": -0.002915879415118431,
+          "abdomen_empty_fp_area": -0.0022342636029049254,
+          "abdomen_empty_fp_rate": 0.006348661787424936,
+          "abdomen_zero_overlap": 0.006147732585320254,
+          "liver_empty_fp_rate": -0.03252032520325202,
+          "kidney_empty_fp_area": -0.0024857432061072735,
+          "kidney_positive_dice": 0.006947616784444055
+        },
+        "checks": {
+          "abdomen_positive_dice": false,
+          "overall_positive_dice": true,
+          "abdomen_empty_fp_area": true,
+          "abdomen_empty_fp_rate": true,
+          "abdomen_zero_overlap": true,
+          "each_seed_abdomen_positive_dice": true,
+          "liver_empty_fp_rate": true,
+          "kidney_empty_fp_area": true,
+          "kidney_positive_dice": true
+        },
+        "selected": false
+      }
+    },
+    "selected_candidate": null,
+    "test_evaluated": false,
+    "completed_at": "2026-09-30T22:24:21.805611+00:00"
+  },
+  "postprocessing_v2": {
+    "protocol": {
+      "purpose": "Validation-only exploratory postprocessing screen; no test images or masks opened",
+      "checkpoint": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_512_seed42_43_44_20260930/shards/gpu1/region/seed_42/best.pt",
+      "checkpoint_sha256": "4f7d5ab6170eee928a08aa4d23d6befad2cd4d71fd677a84ea98917bea8d1689",
+      "last_checkpoint_sha256": "0a72a086e69ebfb7073d034f553940324dea361e2ffbcdf756d198c376db5da1",
+      "checkpoint_epoch": 39,
+      "completed_training_epochs": 50,
+      "checkpoint_kind": "region",
+      "seed": 42,
+      "input_size": 512,
+      "fair_config_sha256": "02c3f7f237fdd5a3cff1db2a7329def55c3e61eafff85affaca658ddb3c89ed3",
+      "fair_record_sha256": "f621896f10234777d3067a019d96a7cb1dae3b6add305bca32815298744315e0",
+      "fair_source_sha256": "2833331b3b2fdf30ee37841cc19a49b427681fe8cbd8c856b71e671760aef901",
+      "records_file_sha256": "7c0239d21e7087173ee7ab7eb1b68f2ef564a5c75a4dd89e3b58c898de32e098",
+      "usual_calibration_ct": "AbdomenUS/ct3",
+      "usual_confirmation_ct": "AbdomenUS/ct4",
+      "vessel_calibration_ct": "AbdomenUS/ct4",
+      "vessel_confirmation_ct": "AbdomenUS/ct3",
+      "note": "Both CT sources were inspected in superseded v1; this second screen is exploratory. The checkpoint was selected using validation data from both CTs. There is no independent validation source for model or postprocessing.",
+      "independent_units": "2 CT source groups; image counts are descriptive, not independent CT replicates",
+      "candidate_grid": [
+        {
+          "id": "s000",
+          "threshold": 0.05,
+          "min_area": 0,
+          "largest_only": false
+        },
+        {
+          "id": "s001",
+          "threshold": 0.05,
+          "min_area": 0,
+          "largest_only": true
+        },
+        {
+          "id": "s002",
+          "threshold": 0.05,
+          "min_area": 32,
+          "largest_only": false
+        },
+        {
+          "id": "s003",
+          "threshold": 0.05,
+          "min_area": 32,
+          "largest_only": true
+        },
+        {
+          "id": "s004",
+          "threshold": 0.05,
+          "min_area": 128,
+          "largest_only": false
+        },
+        {
+          "id": "s005",
+          "threshold": 0.05,
+          "min_area": 128,
+          "largest_only": true
+        },
+        {
+          "id": "s006",
+          "threshold": 0.05,
+          "min_area": 512,
+          "largest_only": false
+        },
+        {
+          "id": "s007",
+          "threshold": 0.05,
+          "min_area": 512,
+          "largest_only": true
+        },
+        {
+          "id": "s008",
+          "threshold": 0.1,
+          "min_area": 0,
+          "largest_only": false
+        },
+        {
+          "id": "s009",
+          "threshold": 0.1,
+          "min_area": 0,
+          "largest_only": true
+        },
+        {
+          "id": "s010",
+          "threshold": 0.1,
+          "min_area": 32,
+          "largest_only": false
+        },
+        {
+          "id": "s011",
+          "threshold": 0.1,
+          "min_area": 32,
+          "largest_only": true
+        },
+        {
+          "id": "s012",
+          "threshold": 0.1,
+          "min_area": 128,
+          "largest_only": false
+        },
+        {
+          "id": "s013",
+          "threshold": 0.1,
+          "min_area": 128,
+          "largest_only": true
+        },
+        {
+          "id": "s014",
+          "threshold": 0.1,
+          "min_area": 512,
+          "largest_only": false
+        },
+        {
+          "id": "s015",
+          "threshold": 0.1,
+          "min_area": 512,
+          "largest_only": true
+        },
+        {
+          "id": "s016",
+          "threshold": 0.15,
+          "min_area": 0,
+          "largest_only": false
+        },
+        {
+          "id": "s017",
+          "threshold": 0.15,
+          "min_area": 0,
+          "largest_only": true
+        },
+        {
+          "id": "s018",
+          "threshold": 0.15,
+          "min_area": 32,
+          "largest_only": false
+        },
+        {
+          "id": "s019",
+          "threshold": 0.15,
+          "min_area": 32,
+          "largest_only": true
+        },
+        {
+          "id": "s020",
+          "threshold": 0.15,
+          "min_area": 128,
+          "largest_only": false
+        },
+        {
+          "id": "s021",
+          "threshold": 0.15,
+          "min_area": 128,
+          "largest_only": true
+        },
+        {
+          "id": "s022",
+          "threshold": 0.15,
+          "min_area": 512,
+          "largest_only": false
+        },
+        {
+          "id": "s023",
+          "threshold": 0.15,
+          "min_area": 512,
+          "largest_only": true
+        },
+        {
+          "id": "s024",
+          "threshold": 0.2,
+          "min_area": 0,
+          "largest_only": false
+        },
+        {
+          "id": "s025",
+          "threshold": 0.2,
+          "min_area": 0,
+          "largest_only": true
+        },
+        {
+          "id": "s026",
+          "threshold": 0.2,
+          "min_area": 32,
+          "largest_only": false
+        },
+        {
+          "id": "s027",
+          "threshold": 0.2,
+          "min_area": 32,
+          "largest_only": true
+        },
+        {
+          "id": "s028",
+          "threshold": 0.2,
+          "min_area": 128,
+          "largest_only": false
+        },
+        {
+          "id": "s029",
+          "threshold": 0.2,
+          "min_area": 128,
+          "largest_only": true
+        },
+        {
+          "id": "s030",
+          "threshold": 0.2,
+          "min_area": 512,
+          "largest_only": false
+        },
+        {
+          "id": "s031",
+          "threshold": 0.2,
+          "min_area": 512,
+          "largest_only": true
+        },
+        {
+          "id": "s032",
+          "threshold": 0.3,
+          "min_area": 0,
+          "largest_only": false
+        },
+        {
+          "id": "s033",
+          "threshold": 0.3,
+          "min_area": 0,
+          "largest_only": true
+        },
+        {
+          "id": "s034",
+          "threshold": 0.3,
+          "min_area": 32,
+          "largest_only": false
+        },
+        {
+          "id": "s035",
+          "threshold": 0.3,
+          "min_area": 32,
+          "largest_only": true
+        },
+        {
+          "id": "s036",
+          "threshold": 0.3,
+          "min_area": 128,
+          "largest_only": false
+        },
+        {
+          "id": "s037",
+          "threshold": 0.3,
+          "min_area": 128,
+          "largest_only": true
+        },
+        {
+          "id": "s038",
+          "threshold": 0.3,
+          "min_area": 512,
+          "largest_only": false
+        },
+        {
+          "id": "s039",
+          "threshold": 0.3,
+          "min_area": 512,
+          "largest_only": true
+        },
+        {
+          "id": "s040",
+          "threshold": 0.4,
+          "min_area": 0,
+          "largest_only": false
+        },
+        {
+          "id": "s041",
+          "threshold": 0.4,
+          "min_area": 0,
+          "largest_only": true
+        },
+        {
+          "id": "s042",
+          "threshold": 0.4,
+          "min_area": 32,
+          "largest_only": false
+        },
+        {
+          "id": "s043",
+          "threshold": 0.4,
+          "min_area": 32,
+          "largest_only": true
+        },
+        {
+          "id": "s044",
+          "threshold": 0.4,
+          "min_area": 128,
+          "largest_only": false
+        },
+        {
+          "id": "s045",
+          "threshold": 0.4,
+          "min_area": 128,
+          "largest_only": true
+        },
+        {
+          "id": "s046",
+          "threshold": 0.4,
+          "min_area": 512,
+          "largest_only": false
+        },
+        {
+          "id": "s047",
+          "threshold": 0.4,
+          "min_area": 512,
+          "largest_only": true
+        },
+        {
+          "id": "s048",
+          "threshold": 0.5,
+          "min_area": 0,
+          "largest_only": false
+        },
+        {
+          "id": "s049",
+          "threshold": 0.5,
+          "min_area": 0,
+          "largest_only": true
+        },
+        {
+          "id": "s050",
+          "threshold": 0.5,
+          "min_area": 32,
+          "largest_only": false
+        },
+        {
+          "id": "s051",
+          "threshold": 0.5,
+          "min_area": 32,
+          "largest_only": true
+        },
+        {
+          "id": "s052",
+          "threshold": 0.5,
+          "min_area": 128,
+          "largest_only": false
+        },
+        {
+          "id": "s053",
+          "threshold": 0.5,
+          "min_area": 128,
+          "largest_only": true
+        },
+        {
+          "id": "s054",
+          "threshold": 0.5,
+          "min_area": 512,
+          "largest_only": false
+        },
+        {
+          "id": "s055",
+          "threshold": 0.5,
+          "min_area": 512,
+          "largest_only": true
+        },
+        {
+          "id": "s056",
+          "threshold": 0.6,
+          "min_area": 0,
+          "largest_only": false
+        },
+        {
+          "id": "s057",
+          "threshold": 0.6,
+          "min_area": 0,
+          "largest_only": true
+        },
+        {
+          "id": "s058",
+          "threshold": 0.6,
+          "min_area": 32,
+          "largest_only": false
+        },
+        {
+          "id": "s059",
+          "threshold": 0.6,
+          "min_area": 32,
+          "largest_only": true
+        },
+        {
+          "id": "s060",
+          "threshold": 0.6,
+          "min_area": 128,
+          "largest_only": false
+        },
+        {
+          "id": "s061",
+          "threshold": 0.6,
+          "min_area": 128,
+          "largest_only": true
+        },
+        {
+          "id": "s062",
+          "threshold": 0.6,
+          "min_area": 512,
+          "largest_only": false
+        },
+        {
+          "id": "s063",
+          "threshold": 0.6,
+          "min_area": 512,
+          "largest_only": true
+        },
+        {
+          "id": "s064",
+          "threshold": 0.7,
+          "min_area": 0,
+          "largest_only": false
+        },
+        {
+          "id": "s065",
+          "threshold": 0.7,
+          "min_area": 0,
+          "largest_only": true
+        },
+        {
+          "id": "s066",
+          "threshold": 0.7,
+          "min_area": 32,
+          "largest_only": false
+        },
+        {
+          "id": "s067",
+          "threshold": 0.7,
+          "min_area": 32,
+          "largest_only": true
+        },
+        {
+          "id": "s068",
+          "threshold": 0.7,
+          "min_area": 128,
+          "largest_only": false
+        },
+        {
+          "id": "s069",
+          "threshold": 0.7,
+          "min_area": 128,
+          "largest_only": true
+        },
+        {
+          "id": "s070",
+          "threshold": 0.7,
+          "min_area": 512,
+          "largest_only": false
+        },
+        {
+          "id": "s071",
+          "threshold": 0.7,
+          "min_area": 512,
+          "largest_only": true
+        },
+        {
+          "id": "s072",
+          "threshold": 0.8,
+          "min_area": 0,
+          "largest_only": false
+        },
+        {
+          "id": "s073",
+          "threshold": 0.8,
+          "min_area": 0,
+          "largest_only": true
+        },
+        {
+          "id": "s074",
+          "threshold": 0.8,
+          "min_area": 32,
+          "largest_only": false
+        },
+        {
+          "id": "s075",
+          "threshold": 0.8,
+          "min_area": 32,
+          "largest_only": true
+        },
+        {
+          "id": "s076",
+          "threshold": 0.8,
+          "min_area": 128,
+          "largest_only": false
+        },
+        {
+          "id": "s077",
+          "threshold": 0.8,
+          "min_area": 128,
+          "largest_only": true
+        },
+        {
+          "id": "s078",
+          "threshold": 0.8,
+          "min_area": 512,
+          "largest_only": false
+        },
+        {
+          "id": "s079",
+          "threshold": 0.8,
+          "min_area": 512,
+          "largest_only": true
+        }
+      ],
+      "minimum_positive_images_per_ct": 10,
+      "vessel_confirmation_minimum_positive_images": 5,
+      "minimum_empty_images_per_ct": 10,
+      "selection": "Precision and recall rules selected under fixed safeguards on CT3 for four organs, CT4 for vessels; opposite CT is a limited check. Ignore labels are never used to form components.",
+      "confirmation_reporting": "Only baseline and preselected candidate metrics appear in screen.json; per_image_counts.jsonl is an audit trace and must not be used to pick a replacement rule.",
+      "device": "cpu",
+      "batch_size": 1,
+      "torch_threads": 4,
+      "code_sha256": "f48dcf0fb69a0b38a5fb171c4a1a3e296a2f532b8e0f8febc356488616de824f"
+    },
+    "validation_images": 156,
+    "rules_per_organ": 80,
+    "per_structure": {
+      "abdomen_liver": {
+        "baseline": {
+          "rule": {
+            "id": "s048",
+            "threshold": 0.5,
+            "min_area": 0,
+            "largest_only": false
+          },
+          "calibration": {
+            "images": 66,
+            "positive_images": 48,
+            "empty_images": 18,
+            "positive_dice": 0.6718786955243973,
+            "positive_miss_rate": 0.0625,
+            "positive_zero_overlap_rate": 0.10416666666666667,
+            "empty_false_positive_rate": 0.3888888888888889,
+            "empty_mean_false_positive_area_fraction": 0.007236040776697854,
+            "empty_mean_false_positive_pixels": 1327.4444444444443
+          },
+          "confirmation": {
+            "images": 90,
+            "positive_images": 67,
+            "empty_images": 23,
+            "positive_dice": 0.6612881357892311,
+            "positive_miss_rate": 0.07462686567164178,
+            "positive_zero_overlap_rate": 0.14925373134328357,
+            "empty_false_positive_rate": 0.782608695652174,
+            "empty_mean_false_positive_area_fraction": 0.006709837848547884,
+            "empty_mean_false_positive_pixels": 1230.9130434782608
+          },
+          "pooled": {
+            "images": 156,
+            "positive_images": 115,
+            "empty_images": 41,
+            "positive_dice": 0.6657085433308656,
+            "positive_miss_rate": 0.06956521739130435,
+            "positive_zero_overlap_rate": 0.13043478260869565,
+            "empty_false_positive_rate": 0.6097560975609756,
+            "empty_mean_false_positive_area_fraction": 0.006940853768223481,
+            "empty_mean_false_positive_pixels": 1273.2926829268292
+          }
+        },
+        "candidates": {
+          "precision": {
+            "status": "none_selected"
+          },
+          "recall": {
+            "status": "none_selected"
+          }
+        }
+      },
+      "abdomen_kidney": {
+        "baseline": {
+          "rule": {
+            "id": "s048",
+            "threshold": 0.5,
+            "min_area": 0,
+            "largest_only": false
+          },
+          "calibration": {
+            "images": 66,
+            "positive_images": 19,
+            "empty_images": 47,
+            "positive_dice": 0.47287532864647036,
+            "positive_miss_rate": 0.0,
+            "positive_zero_overlap_rate": 0.0,
+            "empty_false_positive_rate": 0.9787234042553191,
+            "empty_mean_false_positive_area_fraction": 0.032290729999398055,
+            "empty_mean_false_positive_pixels": 5923.702127659574
+          },
+          "confirmation": {
+            "images": 90,
+            "positive_images": 43,
+            "empty_images": 47,
+            "positive_dice": 0.5110844177640796,
+            "positive_miss_rate": 0.0,
+            "positive_zero_overlap_rate": 0.06976744186046512,
+            "empty_false_positive_rate": 1.0,
+            "empty_mean_false_positive_area_fraction": 0.046038999998028324,
+            "empty_mean_false_positive_pixels": 8445.808510638299
+          },
+          "pooled": {
+            "images": 156,
+            "positive_images": 62,
+            "empty_images": 94,
+            "positive_dice": 0.49937518077642523,
+            "positive_miss_rate": 0.0,
+            "positive_zero_overlap_rate": 0.04838709677419355,
+            "empty_false_positive_rate": 0.9893617021276596,
+            "empty_mean_false_positive_area_fraction": 0.03916486499871319,
+            "empty_mean_false_positive_pixels": 7184.755319148936
+          }
+        },
+        "candidates": {
+          "precision": {
+            "status": "not_confirmed",
+            "rule": {
+              "id": "s060",
+              "threshold": 0.6,
+              "min_area": 128,
+              "largest_only": false
+            },
+            "calibration": {
+              "images": 66,
+              "positive_images": 19,
+              "empty_images": 47,
+              "positive_dice": 0.4724894048657511,
+              "positive_miss_rate": 0.0,
+              "positive_zero_overlap_rate": 0.0,
+              "empty_false_positive_rate": 0.9574468085106383,
+              "empty_mean_false_positive_area_fraction": 0.028093494127824734,
+              "empty_mean_false_positive_pixels": 5153.723404255319
+            },
+            "confirmation": {
+              "images": 90,
+              "positive_images": 43,
+              "empty_images": 47,
+              "positive_dice": 0.5127194476766047,
+              "positive_miss_rate": 0.0,
+              "positive_zero_overlap_rate": 0.09302325581395349,
+              "empty_false_positive_rate": 1.0,
+              "empty_mean_false_positive_area_fraction": 0.041178468872385306,
+              "empty_mean_false_positive_pixels": 7554.148936170212
+            },
+            "pooled": {
+              "images": 156,
+              "positive_images": 62,
+              "empty_images": 94,
+              "positive_dice": 0.5003908861700528,
+              "positive_miss_rate": 0.0,
+              "positive_zero_overlap_rate": 0.06451612903225806,
+              "empty_false_positive_rate": 0.9787234042553191,
+              "empty_mean_false_positive_area_fraction": 0.03463598150010502,
+              "empty_mean_false_positive_pixels": 6353.936170212766
+            }
+          },
+          "recall": {
+            "status": "none_selected"
+          }
+        }
+      },
+      "abdomen_vessels": {
+        "baseline": {
+          "rule": {
+            "id": "s048",
+            "threshold": 0.5,
+            "min_area": 0,
+            "largest_only": false
+          },
+          "calibration": {
+            "images": 90,
+            "positive_images": 30,
+            "empty_images": 60,
+            "positive_dice": 0.0,
+            "positive_miss_rate": 1.0,
+            "positive_zero_overlap_rate": 1.0,
+            "empty_false_positive_rate": 0.0,
+            "empty_mean_false_positive_area_fraction": 0.0,
+            "empty_mean_false_positive_pixels": 0.0
+          },
+          "confirmation": {
+            "images": 66,
+            "positive_images": 9,
+            "empty_images": 57,
+            "positive_dice": 0.0,
+            "positive_miss_rate": 1.0,
+            "positive_zero_overlap_rate": 1.0,
+            "empty_false_positive_rate": 0.0,
+            "empty_mean_false_positive_area_fraction": 0.0,
+            "empty_mean_false_positive_pixels": 0.0
+          },
+          "pooled": {
+            "images": 156,
+            "positive_images": 39,
+            "empty_images": 117,
+            "positive_dice": 0.0,
+            "positive_miss_rate": 1.0,
+            "positive_zero_overlap_rate": 1.0,
+            "empty_false_positive_rate": 0.0,
+            "empty_mean_false_positive_area_fraction": 0.0,
+            "empty_mean_false_positive_pixels": 0.0
+          }
+        },
+        "candidates": {
+          "precision": {
+            "status": "none_selected"
+          },
+          "recall": {
+            "status": "none_selected"
+          }
+        }
+      },
+      "abdomen_gallbladder": {
+        "baseline": {
+          "rule": {
+            "id": "s048",
+            "threshold": 0.5,
+            "min_area": 0,
+            "largest_only": false
+          },
+          "calibration": {
+            "images": 66,
+            "positive_images": 15,
+            "empty_images": 51,
+            "positive_dice": 0.4941081383101619,
+            "positive_miss_rate": 0.4666666666666667,
+            "positive_zero_overlap_rate": 0.4666666666666667,
+            "empty_false_positive_rate": 0.058823529411764705,
+            "empty_mean_false_positive_area_fraction": 0.0005581505315523392,
+            "empty_mean_false_positive_pixels": 102.3921568627451
+          },
+          "confirmation": {
+            "images": 90,
+            "positive_images": 25,
+            "empty_images": 65,
+            "positive_dice": 0.5277125835793874,
+            "positive_miss_rate": 0.4,
+            "positive_zero_overlap_rate": 0.4,
+            "empty_false_positive_rate": 0.015384615384615385,
+            "empty_mean_false_positive_area_fraction": 1.0986075777925284e-05,
+            "empty_mean_false_positive_pixels": 2.0153846153846153
+          },
+          "pooled": {
+            "images": 156,
+            "positive_images": 40,
+            "empty_images": 116,
+            "positive_dice": 0.5151109166034278,
+            "positive_miss_rate": 0.425,
+            "positive_zero_overlap_rate": 0.425,
+            "empty_false_positive_rate": 0.034482758620689655,
+            "empty_mean_false_positive_area_fraction": 0.00025154975892012455,
+            "empty_mean_false_positive_pixels": 46.14655172413793
+          }
+        },
+        "candidates": {
+          "precision": {
+            "status": "none_selected"
+          },
+          "recall": {
+            "status": "none_selected"
+          }
+        }
+      },
+      "abdomen_spleen": {
+        "baseline": {
+          "rule": {
+            "id": "s048",
+            "threshold": 0.5,
+            "min_area": 0,
+            "largest_only": false
+          },
+          "calibration": {
+            "images": 66,
+            "positive_images": 13,
+            "empty_images": 53,
+            "positive_dice": 0.25652244489601067,
+            "positive_miss_rate": 0.0,
+            "positive_zero_overlap_rate": 0.3076923076923077,
+            "empty_false_positive_rate": 0.5094339622641509,
+            "empty_mean_false_positive_area_fraction": 0.032098890884999454,
+            "empty_mean_false_positive_pixels": 5888.509433962264
+          },
+          "confirmation": {
+            "images": 90,
+            "positive_images": 18,
+            "empty_images": 72,
+            "positive_dice": 0.49691306769541693,
+            "positive_miss_rate": 0.0,
+            "positive_zero_overlap_rate": 0.1111111111111111,
+            "empty_false_positive_rate": 0.5277777777777778,
+            "empty_mean_false_positive_area_fraction": 0.020531819016002633,
+            "empty_mean_false_positive_pixels": 3766.5416666666665
+          },
+          "pooled": {
+            "images": 156,
+            "positive_images": 31,
+            "empty_images": 125,
+            "positive_dice": 0.3961040968440532,
+            "positive_miss_rate": 0.0,
+            "positive_zero_overlap_rate": 0.1935483870967742,
+            "empty_false_positive_rate": 0.52,
+            "empty_mean_false_positive_area_fraction": 0.025436257488457282,
+            "empty_mean_false_positive_pixels": 4666.256
+          }
+        },
+        "candidates": {
+          "precision": {
+            "status": "none_selected"
+          },
+          "recall": {
+            "status": "none_selected"
+          }
+        }
+      }
+    }
+  },
+  "missing_outputs": [
+    {
+      "name": "single_channel_union_80_base24_batch16_512_20260930",
+      "exists": false,
+      "meaning": "旧启动日志所指输出不存在，不能算已完成或补写历史指标。"
+    },
+    {
+      "name": "fair_union_eval_80_base24_batch16_512_20260930",
+      "exists": false,
+      "meaning": "旧启动日志所指输出不存在，不能算已完成或补写历史指标。"
+    },
+    {
+      "name": "region_paper5_ct7_2_v1",
+      "exists": false,
+      "meaning": "旧paper5报告和三方汇总脚本引用此目录；本次服务器未发现原始产物，未重核其历史指标。"
+    },
+    {
+      "name": "unet_paper5_ct7_2_v1/shared",
+      "exists": false,
+      "meaning": "旧paper5报告的共享模型当前缺少原始权重/指标，不能当作本次已复核结果。"
+    }
+  ]
+}

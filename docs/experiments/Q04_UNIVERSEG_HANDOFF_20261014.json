@@ -1,0 +1,77 @@
+{
+  "checked_at": "2026-10-14T14:41:14.222783+08:00",
+  "deferral_sha256": "12748dc6f0c20ae7951f975ea0a086784b010affbd71d08285220a3cebb6bfc9",
+  "tests_passed": 97,
+  "universeg_artifact_hashes_unchanged": true,
+  "source_snapshot_python_files_unchanged": {
+    "q04_external_baselines_80_512_20261013": 106,
+    "q02_routing_80_512_20261013": 77
+  },
+  "old_controllers_and_universeg_workers_exited": true,
+  "controllers": [
+    {
+      "root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013",
+      "controller_pid": 1777399,
+      "state": "preparing_and_training",
+      "updated_at": "2026-10-14T06:41:11.582214+00:00",
+      "train_counts": {
+        "complete": 6,
+        "deferred": 3,
+        "running": 2,
+        "pending": 4
+      },
+      "active_workers": [
+        {
+          "method": "smart",
+          "seed": 42,
+          "gpu": 0,
+          "pid": 1777967,
+          "train_state": "running",
+          "progress": {
+            "state": "training",
+            "epoch": 1,
+            "optimizer_step": 90,
+            "optimizer_steps_per_epoch": 282,
+            "completed_epochs": 0,
+            "updated_at": "2026-10-14T06:41:10.769881+00:00"
+          }
+        },
+        {
+          "method": "smart",
+          "seed": 43,
+          "gpu": 1,
+          "pid": 1777973,
+          "train_state": "running",
+          "progress": {
+            "state": "training",
+            "epoch": 1,
+            "optimizer_step": 90,
+            "optimizer_steps_per_epoch": 282,
+            "completed_epochs": 0,
+            "updated_at": "2026-10-14T06:41:10.417197+00:00"
+          }
+        }
+      ]
+    },
+    {
+      "root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q02_routing_80_512_20261013",
+      "controller_pid": 1777775,
+      "state": "waiting_q04",
+      "updated_at": "2026-10-14T06:41:08.733600+00:00",
+      "train_counts": {
+        "pending": 12
+      },
+      "active_workers": []
+    },
+    {
+      "root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q05_visual_context_task_film_80_512_20261014",
+      "controller_pid": 1730462,
+      "state": "waiting_q02",
+      "updated_at": "2026-10-14T06:41:10.755397+00:00",
+      "train_counts": {
+        "pending": 12
+      },
+      "active_workers": []
+    }
+  ]
+}

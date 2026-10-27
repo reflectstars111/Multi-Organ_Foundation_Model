@@ -1,0 +1,527 @@
+{
+  "schema": "medical_run_inventory_v1",
+  "snapshot_date": "2026-10-09",
+  "generated_at": "2026-10-09T11:07:46.037222+08:00",
+  "runs_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs",
+  "scope": "All direct entries currently present in the medical runs root; logs, evaluations, preflights and superseded attempts are not additional training runs.",
+  "entry_count": 37,
+  "entry_type_counts": {
+    "directory": 36,
+    "file": 1
+  },
+  "category_counts": {
+    "exploratory_diagnosis": 1,
+    "invalid_exploration": 1,
+    "exploratory_postprocessing": 1,
+    "exploratory_finetuning": 1,
+    "controller_logs": 13,
+    "superseded_pilot": 1,
+    "exploratory_loss_pilot": 1,
+    "engineering_preflight": 1,
+    "formal_training": 4,
+    "failed_pipeline": 1,
+    "engineering_smoke": 2,
+    "derived_union_evaluation": 2,
+    "historical_controller_logs": 1,
+    "paired_organ_weighting": 1,
+    "historical_training": 5,
+    "resource_snapshot": 1
+  },
+  "q01_snapshot_time": "2026-10-09T11:00:31+08:00",
+  "sources": [
+    {
+      "path": "/ssd1/code/Multi-Organ_Foundation_Model/docs/experiments/historical_experiments_20261009.json",
+      "sha256": "34eeb3f9f2323f914300830fe4c7ac31eaee16b26278e7883000a9eea0a9fe45"
+    },
+    {
+      "path": "/ssd1/code/Multi-Organ_Foundation_Model/docs/experiments/fair_comparisons_20261009.json",
+      "sha256": "4e8de2746e2ef0c3fc8aa6602be62b8ca10b9e5de1d33fad550676583bd83f6b"
+    },
+    {
+      "path": "/ssd1/code/Multi-Organ_Foundation_Model/docs/experiments/q01_snapshot_20261009.json",
+      "sha256": "edebc13deb5b6b6f2ab2a8f0dce81cc6e8f9327b9aa30ade29521ca74576dd22"
+    }
+  ],
+  "entries": [
+    {
+      "name": "abdomen_audit_20260930",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_audit_20260930",
+      "category": "exploratory_diagnosis",
+      "status": "completed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_audit_20260930/findings.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_audit_20260930/protocol.json"
+      ],
+      "note": "固定旧 Region epoch80 的训练/测试诊断；不是新训练，测试已被探索性查看。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "abdomen_postprocess_512_20260930",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_postprocess_512_20260930",
+      "category": "invalid_exploration",
+      "status": "superseded_invalid",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_postprocess_512_20260930/superseded.json"
+      ],
+      "note": "连通域筛选前使用真值有效像素掩膜，规则选择无效。",
+      "replacement": "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_postprocess_512_20260930_v2",
+      "entry_type": "directory"
+    },
+    {
+      "name": "abdomen_postprocess_512_20260930_v2",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_postprocess_512_20260930_v2",
+      "category": "exploratory_postprocessing",
+      "status": "completed_no_rule_selected",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_postprocess_512_20260930_v2/screen.json"
+      ],
+      "note": "80 组规则应用于 5 器官；仅肾脏 precision 候选进入对侧 CT 检查但未通过。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "abdomen_recovery_512_20260930",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_recovery_512_20260930",
+      "category": "exploratory_finetuning",
+      "status": "completed_no_candidate_selected",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_recovery_512_20260930/comparison.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_recovery_512_20260930/status.json"
+      ],
+      "note": "18/18 次 8 轮微调完成；12/18 次选择 epoch0，5 候选未通过，未测试。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "abdomen_recovery_512_20260930-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_recovery_512_20260930-logs",
+      "category": "controller_logs",
+      "status": "complete",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/abdomen_recovery_512_20260930-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "empty_ablation_20260930",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/empty_ablation_20260930",
+      "category": "superseded_pilot",
+      "status": "interrupted_superseded",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/empty_ablation_20260930/status.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/empty_ablation_20260930/weight_0/region/seed_42/metrics.jsonl",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/empty_ablation_20260930/weight_0.1/region/seed_42/metrics.jsonl"
+      ],
+      "note": "256 输入：weight0 完成12轮、weight0.1 完成7轮；因用户要求512而替代。",
+      "replacement": "/ssd1/data/Multi-Organ_Foundation_Model/runs/empty_ablation_512_20260930",
+      "entry_type": "directory"
+    },
+    {
+      "name": "empty_ablation_512_20260930",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/empty_ablation_512_20260930",
+      "category": "exploratory_loss_pilot",
+      "status": "completed_candidate_rejected",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/empty_ablation_512_20260930/comparison.json"
+      ],
+      "note": "Region seed42，两组各12轮；weight0.1 降误检但导致严重漏检，保持默认权重0。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "fair80_preflight_fix_20261001",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair80_preflight_fix_20261001",
+      "category": "engineering_preflight",
+      "status": "passed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair80_preflight_fix_20261001/shared.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair80_preflight_fix_20261001/region.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair80_preflight_fix_20261001/task_id.json"
+      ],
+      "note": "修复后的三架构显存/优化器预检，非训练结果。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "fair_512_seed42_43_44_20260930",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_512_seed42_43_44_20260930",
+      "category": "formal_training",
+      "status": "completed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_512_seed42_43_44_20260930/summary.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_512_seed42_43_44_20260930/shards/gpu0/protocol.json"
+      ],
+      "note": "50轮协议，9项训练及原始测试全部完成。",
+      "experiment_key": "fair50",
+      "training_runs": 9,
+      "evaluation_runs": 9,
+      "entry_type": "directory"
+    },
+    {
+      "name": "fair_80_base24_batch16_512_20260930",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20260930",
+      "category": "failed_pipeline",
+      "status": "failed_preflight_no_training",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20260930-logs/controller_status.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20260930-logs/controller.log",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20260930/shards/gpu0/summary.json"
+      ],
+      "note": "仅元数据 dry_run 和预检 started，CUDA reset_peak_memory_stats 报 Invalid device argument，runs为空。",
+      "replacement": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20261001_fix",
+      "entry_type": "directory"
+    },
+    {
+      "name": "fair_80_base24_batch16_512_20260930-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20260930-logs",
+      "category": "controller_logs",
+      "status": "failed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20260930-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。旧依赖失败，后续输出未产生；恢复链路见替代目录。",
+      "replacement": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20261001_fix-logs",
+      "entry_type": "directory"
+    },
+    {
+      "name": "fair_80_base24_batch16_512_20261001_fix",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20261001_fix",
+      "category": "formal_training",
+      "status": "completed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20261001_fix/summary.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20261001_fix/shards/gpu0/protocol.json"
+      ],
+      "note": "80轮协议，9项训练及原始测试全部完成。",
+      "experiment_key": "fair80",
+      "training_runs": 9,
+      "evaluation_runs": 9,
+      "entry_type": "directory"
+    },
+    {
+      "name": "fair_80_base24_batch16_512_20261001_fix-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20261001_fix-logs",
+      "category": "controller_logs",
+      "status": "complete",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_80_base24_batch16_512_20261001_fix-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "fair_smoke_20260930",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_smoke_20260930",
+      "category": "engineering_smoke",
+      "status": "completed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_smoke_20260930/summary.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_smoke_20260930/protocol.json"
+      ],
+      "note": "三模型各1轮、64输入/base4/每域2图，不作为效果实验。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "fair_union_eval_512_20260930",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_512_20260930",
+      "category": "derived_union_evaluation",
+      "status": "completed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_512_20260930/summary.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_512_20260930/protocol.json"
+      ],
+      "note": "50轮协议，9项派生并集测试；不另计训练。",
+      "experiment_key": "union50",
+      "training_runs": 0,
+      "evaluation_runs": 9,
+      "entry_type": "directory"
+    },
+    {
+      "name": "fair_union_eval_512_20260930-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_512_20260930-logs",
+      "category": "controller_logs",
+      "status": "complete",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_512_20260930-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "fair_union_eval_80_base24_batch16_512_20260930-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_80_base24_batch16_512_20260930-logs",
+      "category": "controller_logs",
+      "status": "failed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_80_base24_batch16_512_20260930-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。旧依赖失败，后续输出未产生；恢复链路见替代目录。",
+      "replacement": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_80_base24_batch16_512_20261001_fix-logs",
+      "entry_type": "directory"
+    },
+    {
+      "name": "fair_union_eval_80_base24_batch16_512_20261001_fix",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_80_base24_batch16_512_20261001_fix",
+      "category": "derived_union_evaluation",
+      "status": "completed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_80_base24_batch16_512_20261001_fix/summary.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_80_base24_batch16_512_20261001_fix/protocol.json"
+      ],
+      "note": "80轮协议，9项派生并集测试；不另计训练。",
+      "experiment_key": "union80",
+      "training_runs": 0,
+      "evaluation_runs": 9,
+      "entry_type": "directory"
+    },
+    {
+      "name": "fair_union_eval_80_base24_batch16_512_20261001_fix-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_80_base24_batch16_512_20261001_fix-logs",
+      "category": "controller_logs",
+      "status": "complete",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/fair_union_eval_80_base24_batch16_512_20261001_fix-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "migration_smoke_v1",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/migration_smoke_v1",
+      "category": "engineering_smoke",
+      "status": "completed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/migration_smoke_v1/summary.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/migration_smoke_v1/protocol.json"
+      ],
+      "note": "共享模型1轮、32输入/base4/每域2图；有测试产物，仅验证迁移链路。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "paper5_ct7_2_independent-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/paper5_ct7_2_independent-logs",
+      "category": "controller_logs",
+      "status": "completed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/paper5_ct7_2_independent-logs/finalizer.log",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/unet_paper5_ct7_2_v1/independent_comparison.json"
+      ],
+      "note": "九个独立 U-Net 的实际完成日志；不是另9次实验。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "paper5_ct7_2_v1-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/paper5_ct7_2_v1-logs",
+      "category": "historical_controller_logs",
+      "status": "incomplete_waiting_only",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/paper5_ct7_2_v1-logs/finalizer.log",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/paper5_ct7_2_v1-logs/controller_gpu0.log"
+      ],
+      "note": "旧控制器末条仍等待；不能证明 region_top1_moe/shared_unet 训练完成，当前无对应输出目录。独立9模型后来由新日志确认完成。",
+      "replacement": "/ssd1/data/Multi-Organ_Foundation_Model/runs/paper5_ct7_2_independent-logs",
+      "entry_type": "directory"
+    },
+    {
+      "name": "q01_organ_weighted_80_512_20261007",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007",
+      "category": "paired_organ_weighting",
+      "status": "running",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/controller_status.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/protocol.json"
+      ],
+      "note": "27项计划：4项训练完成、2项运行、21项待执行；27项测试待执行。状态为2026-10-09 11:00:31北京时间快照。",
+      "training_runs_planned": 27,
+      "training_runs_completed": 4,
+      "training_runs_running": 2,
+      "training_runs_pending": 21,
+      "test_runs_completed": 0,
+      "snapshot_time": "2026-10-09T11:00:31+08:00",
+      "entry_type": "directory"
+    },
+    {
+      "name": "region_top1_512_v6_final_seed42",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_top1_512_v6_final_seed42",
+      "category": "historical_training",
+      "status": "completed_test_artifacts_present",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_top1_512_v6_final_seed42/test_metrics.json"
+      ],
+      "note": "历史协议，训练末轮达到 80；测试产物存在，不与当前公平协议直接排名。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "region_top1_v1",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_top1_v1",
+      "category": "historical_training",
+      "status": "completed_test_artifacts_present",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_top1_v1/test_metrics.json"
+      ],
+      "note": "历史协议，训练末轮达到 50；测试产物存在，不与当前公平协议直接排名。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "research_512_20260930-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/research_512_20260930-logs",
+      "category": "controller_logs",
+      "status": "completed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/research_512_20260930-logs/status.json"
+      ],
+      "note": "旧50轮公平对照和512空标签消融的外层队列。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "resources_20260930.json",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/resources_20260930.json",
+      "category": "resource_snapshot",
+      "status": "historical_snapshot",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/resources_20260930.json"
+      ],
+      "note": "当时资源清单，非实验且不是当前 GPU 状态。",
+      "entry_type": "file"
+    },
+    {
+      "name": "single_channel_union_512_20260930",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_512_20260930",
+      "category": "formal_training",
+      "status": "completed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_512_20260930/summary.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_512_20260930/protocol.json"
+      ],
+      "note": "50轮协议，3项训练及原始测试全部完成。",
+      "experiment_key": "single50",
+      "training_runs": 3,
+      "evaluation_runs": 3,
+      "entry_type": "directory"
+    },
+    {
+      "name": "single_channel_union_512_20260930-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_512_20260930-logs",
+      "category": "controller_logs",
+      "status": "complete",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_512_20260930-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "single_channel_union_80_base24_batch16_512_20260930-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_80_base24_batch16_512_20260930-logs",
+      "category": "controller_logs",
+      "status": "failed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_80_base24_batch16_512_20260930-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。旧依赖失败，后续输出未产生；恢复链路见替代目录。",
+      "replacement": "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_80_base24_batch16_512_20261001_fix-logs",
+      "entry_type": "directory"
+    },
+    {
+      "name": "single_channel_union_80_base24_batch16_512_20261001_fix",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_80_base24_batch16_512_20261001_fix",
+      "category": "formal_training",
+      "status": "completed",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_80_base24_batch16_512_20261001_fix/summary.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_80_base24_batch16_512_20261001_fix/protocol.json"
+      ],
+      "note": "80轮协议，3项训练及原始测试全部完成。",
+      "experiment_key": "single80",
+      "training_runs": 3,
+      "evaluation_runs": 3,
+      "entry_type": "directory"
+    },
+    {
+      "name": "single_channel_union_80_base24_batch16_512_20261001_fix-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_80_base24_batch16_512_20261001_fix-logs",
+      "category": "controller_logs",
+      "status": "complete",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/single_channel_union_80_base24_batch16_512_20261001_fix-logs/controller_status.json"
+      ],
+      "note": "控制器状态文件；日志目录不单计训练。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "task_id_top1_512_v6_final_seed42",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/task_id_top1_512_v6_final_seed42",
+      "category": "historical_training",
+      "status": "completed_test_artifacts_present",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/task_id_top1_512_v6_final_seed42/test_metrics.json"
+      ],
+      "note": "历史协议，训练末轮达到 80；测试产物存在，不与当前公平协议直接排名。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "top1_512_v6_logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/top1_512_v6_logs",
+      "category": "controller_logs",
+      "status": "completed_results_elsewhere",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_top1_512_v6_final_seed42/test_metrics.json",
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/task_id_top1_512_v6_final_seed42/test_metrics.json"
+      ],
+      "note": "对应两项 v6 seed42 历史训练，pid文件仅历史记录。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "unet_baseline_9v1",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/unet_baseline_9v1",
+      "category": "historical_training",
+      "status": "completed_test_artifacts_present",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/unet_baseline_9v1/comparison.json"
+      ],
+      "note": "历史协议，训练末轮达到 50；测试产物存在，不与当前公平协议直接排名。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "unet_baseline_9v1-logs",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/unet_baseline_9v1-logs",
+      "category": "controller_logs",
+      "status": "completed_results_elsewhere",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/unet_baseline_9v1/comparison.json"
+      ],
+      "note": "对应旧9独立+1共享训练，不另计实验。",
+      "entry_type": "directory"
+    },
+    {
+      "name": "unet_paper5_ct7_2_v1",
+      "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/unet_paper5_ct7_2_v1",
+      "category": "historical_training",
+      "status": "completed_test_artifacts_present",
+      "evidence": [
+        "/ssd1/data/Multi-Organ_Foundation_Model/runs/unet_paper5_ct7_2_v1/independent_comparison.json"
+      ],
+      "note": "历史协议，训练末轮达到 50；测试产物存在，不与当前公平协议直接排名。",
+      "entry_type": "directory"
+    }
+  ],
+  "missing_historical_outputs": [
+    {
+      "name": "single_channel_union_80_base24_batch16_512_20260930",
+      "exists": false,
+      "meaning": "旧启动日志所指输出不存在，不能算已完成或补写历史指标。"
+    },
+    {
+      "name": "fair_union_eval_80_base24_batch16_512_20260930",
+      "exists": false,
+      "meaning": "旧启动日志所指输出不存在，不能算已完成或补写历史指标。"
+    },
+    {
+      "name": "region_paper5_ct7_2_v1",
+      "exists": false,
+      "meaning": "旧paper5报告和三方汇总脚本引用此目录；本次服务器未发现原始产物，未重核其历史指标。"
+    },
+    {
+      "name": "unet_paper5_ct7_2_v1/shared",
+      "exists": false,
+      "meaning": "旧paper5报告的共享模型当前缺少原始权重/指标，不能当作本次已复核结果。"
+    }
+  ]
+}

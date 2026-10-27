@@ -1,0 +1,49 @@
+{
+  "checked_at": "2026-10-14T03:37:54.196171+00:00",
+  "state": "prepared_not_enqueued",
+  "protocol_sha256": "5f1dc7ab5b81d49ac605413862f4072de06b59c885e872618a6f6d0d0fdc4124",
+  "main_loss": "organ_exposure_fg_bg",
+  "source_files": 82,
+  "source_manifest_verified": true,
+  "train_val_content_verified": true,
+  "test_content_opened": false,
+  "planned_training_jobs": 12,
+  "sampling_epochs": 240,
+  "controller_started": false,
+  "gpu_preflight_passed": false,
+  "reference_protocol_sha256": "45f429a7652b4e30581cf2236d21749f20701c5acdb91d4bb1d8c056b0471d77",
+  "model_parameter_additions": {
+    "region": 48960,
+    "task_id": 23760
+  },
+  "cuda_training_started": false,
+  "recorded_at": "2026-10-14T03:39:17.198550+00:00",
+  "tests": {
+    "medical": {
+      "passed": 780,
+      "skipped": 2,
+      "warnings": 7,
+      "elapsed_seconds": 74.1,
+      "command": "CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=2 MKL_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2 .conda/bin/python -m pytest tests -q"
+    },
+    "q05": {
+      "passed": 90,
+      "elapsed_seconds": 5.61
+    }
+  },
+  "cpu_verification": {
+    "file": "/ssd1/data/Multi-Organ_Foundation_Model/verification/q05_20261014/cpu_512.json",
+    "sha256": "a25b01b2d239932b13ffbe3dfc7b72e7cbfb739cb205f1fd1d600224e8bc9b48",
+    "passed": true,
+    "physical_image_batch": 1,
+    "queries": 5,
+    "formal_gpu_admission": false
+  },
+  "dry_run": {
+    "main_loss_provenance_valid": true,
+    "dependency_state": "waiting_q02",
+    "dependency_reason": "Q02 controller is waiting_q04",
+    "no_worker_started": true
+  },
+  "performance_improvement_established": false
+}

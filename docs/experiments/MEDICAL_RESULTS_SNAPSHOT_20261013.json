@@ -1,0 +1,1029 @@
+{
+  "snapshot_at": "2026-10-13T14:49:46.613202+08:00",
+  "metric_csv": "/ssd1/data/Multi-Organ_Foundation_Model/runs/medical_metrics_dsc_hd95_assd_20261012/metrics.csv",
+  "metric_csv_sha256": "c52265b9622c332bc962faf7552bc6a224365031e020eebecdbc8dda0964de96",
+  "summary_json": "/ssd1/data/Multi-Organ_Foundation_Model/runs/medical_metrics_dsc_hd95_assd_20261012/summary.json",
+  "summary_json_sha256": "8ff433f4f522186e5edae9fe2aa1c31a1dc6b359862ae591b3427afc225ab6af",
+  "aggregate_csv": "docs/experiments/MEDICAL_RESULTS_BEST_TEST_20261013.csv",
+  "aggregation": "Across training seeds; sample standard deviation; source metrics.csv rounded to 4 decimals; any NA/Inf remains missing instead of dropping a seed.",
+  "aggregate_rows": 4772,
+  "input_best_test_rows": 10956,
+  "backfill": {
+    "state": "complete",
+    "updated_at": "2026-10-13T11:32:19.697618+08:00",
+    "controller_pid": 1060118,
+    "gpu_indices": [
+      0,
+      1
+    ],
+    "gpu": null,
+    "protocol_sha256": "96266238af40d9e73adca4d09008a8b503bd4820bd92357fdc67028cfc83060f",
+    "scheduler_sha256": "d1d93d2dd387f53c7909b15f1ad2059432de367c48e386198640196acc13457a",
+    "completed_jobs": 439,
+    "failed_jobs": 0,
+    "active_jobs": [],
+    "gpu_observations": {
+      "0": {
+        "state": "evaluating",
+        "free_mib_at_admission": 48118,
+        "job_id": "d8693ef05bd9138ee395ae4d2fed9c868062cebc4e7236bf45fbf2f6f1a7d538",
+        "worker_pid": 1061014
+      },
+      "1": {
+        "state": "evaluating",
+        "free_mib_at_admission": 48496,
+        "job_id": "cb62f78be10a5e116d080494fe08ec81c0382624542ba750775c06d470a53d8e",
+        "worker_pid": 1061017
+      }
+    },
+    "counts": {
+      "excluded": 97,
+      "complete": 439,
+      "not_selected": 24
+    },
+    "pending_jobs": 0
+  },
+  "controllers": {
+    "q01_organ_weighted_80_512_20261007": {
+      "schema": "organ_weighted_controller_v1",
+      "state": "complete",
+      "output": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007",
+      "protocol_sha256": "80bb6228ed72d1400be050cc60adda2a2dbea58db1f988913a8a2d6d72f553a5",
+      "controller_pid": 605084,
+      "started_at": "2026-10-12T03:37:56.482838+00:00",
+      "gpu_indices": [
+        0,
+        1
+      ],
+      "required_free_mib": {
+        "shared": 7452,
+        "region": 11320,
+        "task_id": 34284
+      },
+      "jobs": [
+        {
+          "kind": "shared",
+          "seed": 42,
+          "arm": "image_mean",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "shared",
+          "seed": 42,
+          "arm": "organ_exposure",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "shared",
+          "seed": 42,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "region",
+          "seed": 42,
+          "arm": "image_mean",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "region",
+          "seed": 42,
+          "arm": "organ_exposure",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "region",
+          "seed": 42,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "task_id",
+          "seed": 42,
+          "arm": "image_mean",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "task_id",
+          "seed": 42,
+          "arm": "organ_exposure",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "task_id",
+          "seed": 42,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "shared",
+          "seed": 43,
+          "arm": "image_mean",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "shared",
+          "seed": 43,
+          "arm": "organ_exposure",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "shared",
+          "seed": 43,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "region",
+          "seed": 43,
+          "arm": "image_mean",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "region",
+          "seed": 43,
+          "arm": "organ_exposure",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "region",
+          "seed": 43,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "task_id",
+          "seed": 43,
+          "arm": "image_mean",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "task_id",
+          "seed": 43,
+          "arm": "organ_exposure",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "task_id",
+          "seed": 43,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "shared",
+          "seed": 44,
+          "arm": "image_mean",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "shared",
+          "seed": 44,
+          "arm": "organ_exposure",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "shared",
+          "seed": 44,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "region",
+          "seed": 44,
+          "arm": "image_mean",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "region",
+          "seed": 44,
+          "arm": "organ_exposure",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "region",
+          "seed": 44,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "task_id",
+          "seed": 44,
+          "arm": "image_mean",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "task_id",
+          "seed": 44,
+          "arm": "organ_exposure",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "task_id",
+          "seed": 44,
+          "arm": "organ_exposure_fg_bg",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        }
+      ],
+      "gpu_observations": {
+        "0": {
+          "state": "available",
+          "free_mib": 48114,
+          "time": "2026-10-12T21:00:11.556414+00:00"
+        },
+        "1": {
+          "state": "available",
+          "free_mib": 48496,
+          "time": "2026-10-12T21:01:27.926284+00:00"
+        }
+      },
+      "updated_at": "2026-10-12T21:04:12.706774+00:00",
+      "control_child_pid": null,
+      "waiting_jobs": 0,
+      "training_barrier_verified_at": "2026-10-12T20:35:24.051200+00:00",
+      "completed_at": "2026-10-12T21:04:12.706752+00:00",
+      "summary": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007/summary.json"
+    },
+    "region_domain_norm_80_512_20261010": {
+      "schema": "region_normalization_controller_v1",
+      "state": "complete",
+      "output": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010",
+      "reference_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007",
+      "protocol_sha256": "13835cabeb0fb18e06905b4d7aa55618aaae3ea378b824c6712b602cda536442",
+      "reference_protocol_sha256": "80bb6228ed72d1400be050cc60adda2a2dbea58db1f988913a8a2d6d72f553a5",
+      "controller_pid": 4085471,
+      "started_at": "2026-10-10T19:28:43.721260+00:00",
+      "gpu_indices": [
+        0,
+        1
+      ],
+      "preflight_min_free_mib": 24576,
+      "required_free_mib": {
+        "shared_gn": 11186,
+        "domain_gn": 12240,
+        "shared_bn": 11348,
+        "domain_bn": 12390
+      },
+      "preflights": {
+        "shared_gn": {
+          "state": "complete",
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/preflight/shared_gn.json",
+          "required_free_mib": 11186
+        },
+        "domain_gn": {
+          "state": "complete",
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/preflight/domain_gn.json",
+          "required_free_mib": 12240
+        },
+        "shared_bn": {
+          "state": "complete",
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/preflight/shared_bn.json",
+          "required_free_mib": 11348
+        },
+        "domain_bn": {
+          "state": "complete",
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/preflight/domain_bn.json",
+          "required_free_mib": 12390
+        }
+      },
+      "jobs": [
+        {
+          "kind": "region",
+          "seed": 42,
+          "arm": "shared_gn",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "region",
+          "seed": 42,
+          "arm": "domain_gn",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "region",
+          "seed": 42,
+          "arm": "shared_bn",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "region",
+          "seed": 42,
+          "arm": "domain_bn",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "region",
+          "seed": 43,
+          "arm": "shared_gn",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "region",
+          "seed": 43,
+          "arm": "domain_gn",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "region",
+          "seed": 43,
+          "arm": "shared_bn",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "region",
+          "seed": 43,
+          "arm": "domain_bn",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "region",
+          "seed": 44,
+          "arm": "shared_gn",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "region",
+          "seed": 44,
+          "arm": "domain_gn",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/logs/gpu0.log",
+          "free_mib_at_admission": 48114
+        },
+        {
+          "kind": "region",
+          "seed": 44,
+          "arm": "shared_bn",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "kind": "region",
+          "seed": 44,
+          "arm": "domain_bn",
+          "train_state": "complete",
+          "test_state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/logs/gpu1.log",
+          "free_mib_at_admission": 48496
+        }
+      ],
+      "gpu_observations": {
+        "0": {
+          "state": "available",
+          "free_mib": 48114,
+          "time": "2026-10-12T03:31:39.426235+00:00"
+        },
+        "1": {
+          "state": "available",
+          "free_mib": 48496,
+          "time": "2026-10-12T03:34:25.949478+00:00"
+        }
+      },
+      "updated_at": "2026-10-12T03:37:40.637715+00:00",
+      "reference_policy": "verified_priority_handoff",
+      "priority_order": [
+        "finish_active_q01",
+        "q03",
+        "remaining_q01"
+      ],
+      "priority_manifest": "/ssd1/data/Multi-Organ_Foundation_Model/runs/medical_priority_q03_20261011/plan.json",
+      "priority_plan_sha256": "f3f5d3627b821270ab94a65558cfac2e54d8678bd9b21f32176ec9b33885a768",
+      "reference_wait_reason": null,
+      "priority_handoff_sha256": "69163c861c5023d34ea59cf947eb6381d9e223dc7e723e7d14c5aa1a761da4c2",
+      "reference_data_verified": true,
+      "reference_training_completion_required": false,
+      "control_child_pid": null,
+      "waiting_jobs": 0,
+      "training_barrier_verified_at": "2026-10-12T03:15:53.974648+00:00",
+      "completed_at": "2026-10-12T03:37:40.637700+00:00",
+      "summary": "/ssd1/data/Multi-Organ_Foundation_Model/runs/region_domain_norm_80_512_20261010/summary.json"
+    },
+    "q04_external_baselines_80_512_20261013": {
+      "schema": "external_baseline_controller_v1",
+      "state": "preparing_and_training",
+      "output": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013",
+      "reference_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007",
+      "evaluation_reference_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/medical_metrics_dsc_hd95_assd_20261012",
+      "protocol_sha256": "9a5857ebb6fc1f17e40e2a46da231514ec009b98e84928fe0477695b9f7e0216",
+      "controller_pid": 869636,
+      "started_at": "2026-10-12T17:18:56.855614+00:00",
+      "gpu_indices": [
+        0,
+        1
+      ],
+      "jobs": [
+        {
+          "method": "lanzhou",
+          "seed": 42,
+          "prior_state": "not_applicable",
+          "train_state": "running",
+          "evaluate_state": "pending",
+          "pid": 1062221,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/lanzhou_seed42_train.log",
+          "free_mib_at_admission": 48496
+        },
+        {
+          "method": "lanzhou",
+          "seed": 43,
+          "prior_state": "not_applicable",
+          "train_state": "running",
+          "evaluate_state": "pending",
+          "pid": 1183040,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/lanzhou_seed43_train.log",
+          "free_mib_at_admission": 48118
+        },
+        {
+          "method": "lanzhou",
+          "seed": 44,
+          "prior_state": "not_applicable",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "method": "aimagelab",
+          "seed": 42,
+          "prior_state": "not_applicable",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "method": "aimagelab",
+          "seed": 43,
+          "prior_state": "not_applicable",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "method": "aimagelab",
+          "seed": 44,
+          "prior_state": "not_applicable",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "method": "universeg",
+          "seed": 42,
+          "prior_state": "not_applicable",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "method": "universeg",
+          "seed": 43,
+          "prior_state": "not_applicable",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "method": "universeg",
+          "seed": 44,
+          "prior_state": "not_applicable",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "method": "smart",
+          "seed": 42,
+          "prior_state": "not_applicable",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "method": "smart",
+          "seed": 43,
+          "prior_state": "not_applicable",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "method": "smart",
+          "seed": 44,
+          "prior_state": "not_applicable",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "method": "mofo",
+          "seed": 42,
+          "prior_state": "complete",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/mofo_seed42_mofo-prior.log",
+          "free_mib_at_admission": 48118,
+          "completed_at": "2026-10-13T06:29:13.220878+00:00"
+        },
+        {
+          "method": "mofo",
+          "seed": 43,
+          "prior_state": "pending",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "method": "mofo",
+          "seed": 44,
+          "prior_state": "pending",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        }
+      ],
+      "preflights": {
+        "lanzhou": {
+          "method": "lanzhou",
+          "state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/lanzhou_seed42_preflight.log",
+          "free_mib_at_admission": 48118,
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/preflight/lanzhou.json",
+          "required_free_mib": 8192,
+          "completed_at": "2026-10-13T03:32:39.018950+00:00"
+        },
+        "aimagelab": {
+          "method": "aimagelab",
+          "state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/aimagelab_seed42_preflight.log",
+          "free_mib_at_admission": 48496,
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/preflight/aimagelab.json",
+          "required_free_mib": 12500,
+          "completed_at": "2026-10-13T03:32:39.023935+00:00"
+        },
+        "universeg": {
+          "method": "universeg",
+          "state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/universeg_seed42_preflight.log",
+          "free_mib_at_admission": 48118,
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/preflight/universeg.json",
+          "required_free_mib": 14882,
+          "completed_at": "2026-10-13T03:32:54.082476+00:00"
+        },
+        "smart": {
+          "method": "smart",
+          "state": "complete",
+          "pid": null,
+          "gpu": 1,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/smart_seed42_preflight.log",
+          "free_mib_at_admission": 48496,
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/preflight/smart.json",
+          "required_free_mib": 8192,
+          "completed_at": "2026-10-13T03:32:54.087513+00:00"
+        },
+        "mofo": {
+          "method": "mofo",
+          "state": "complete",
+          "pid": null,
+          "gpu": 0,
+          "log": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/logs/mofo_seed42_preflight.log",
+          "free_mib_at_admission": 48118,
+          "path": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013/preflight/mofo.json",
+          "required_free_mib": 8192,
+          "completed_at": "2026-10-13T06:29:28.256356+00:00"
+        }
+      },
+      "required_free_mib": {
+        "lanzhou": 8192,
+        "aimagelab": 12500,
+        "universeg": 14882,
+        "smart": 8192,
+        "mofo": 8192
+      },
+      "gpu_observations": {
+        "0": {
+          "state": "available",
+          "free_mib": 48118,
+          "time": "2026-10-13T06:29:28.281374+00:00"
+        },
+        "1": {
+          "state": "available",
+          "free_mib": 48496,
+          "time": "2026-10-13T03:32:54.135010+00:00"
+        }
+      },
+      "updated_at": "2026-10-13T06:49:43.760798+00:00",
+      "dependency_reason": "Q01 train/test and metric backfill are complete",
+      "dependencies_verified_at": "2026-10-13T03:32:23.957866+00:00",
+      "waiting_tasks": 13
+    },
+    "q02_routing_80_512_20261013": {
+      "schema": "routing_optimization_controller_v1",
+      "state": "waiting_q04",
+      "output": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q02_routing_80_512_20261013",
+      "reference_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q01_organ_weighted_80_512_20261007",
+      "after_root": "/ssd1/data/Multi-Organ_Foundation_Model/runs/q04_external_baselines_80_512_20261013",
+      "protocol_sha256": "45f429a7652b4e30581cf2236d21749f20701c5acdb91d4bb1d8c056b0471d77",
+      "controller_pid": 893009,
+      "started_at": "2026-10-12T17:51:45.882243+00:00",
+      "gpu_indices": [
+        0,
+        1
+      ],
+      "jobs": [
+        {
+          "kind": "region",
+          "seed": 42,
+          "arm": "control",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "region",
+          "seed": 42,
+          "arm": "auxiliary",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "task_id",
+          "seed": 42,
+          "arm": "control",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "task_id",
+          "seed": 42,
+          "arm": "auxiliary",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "region",
+          "seed": 43,
+          "arm": "control",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "region",
+          "seed": 43,
+          "arm": "auxiliary",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "task_id",
+          "seed": 43,
+          "arm": "control",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "task_id",
+          "seed": 43,
+          "arm": "auxiliary",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "region",
+          "seed": 44,
+          "arm": "control",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "region",
+          "seed": 44,
+          "arm": "auxiliary",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "task_id",
+          "seed": 44,
+          "arm": "control",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        },
+        {
+          "kind": "task_id",
+          "seed": 44,
+          "arm": "auxiliary",
+          "train_state": "pending",
+          "evaluate_state": "pending",
+          "pid": null,
+          "gpu": null
+        }
+      ],
+      "preflights": {
+        "region_control": {
+          "kind": "region",
+          "arm": "control",
+          "state": "pending"
+        },
+        "region_auxiliary": {
+          "kind": "region",
+          "arm": "auxiliary",
+          "state": "pending"
+        },
+        "task_id_control": {
+          "kind": "task_id",
+          "arm": "control",
+          "state": "pending"
+        },
+        "task_id_auxiliary": {
+          "kind": "task_id",
+          "arm": "auxiliary",
+          "state": "pending"
+        }
+      },
+      "required_free_mib": {},
+      "gpu_observations": {},
+      "updated_at": "2026-10-13T06:49:43.129898+00:00",
+      "selection_reason": "All 27 Q01 validation histories reached 80 epochs",
+      "control_child_pid": null,
+      "main_loss_arm": "organ_exposure_fg_bg",
+      "selection_sha256": "1e8b0705079039cf75ffa788b1e540f0837188b1e93578c5bb62a22077becad9",
+      "dependency_reason": "Q04 controller is preparing_and_training"
+    }
+  },
+  "live_q04": {
+    "lanzhou_42": {
+      "gpu": 1,
+      "progress": {
+        "state": "training",
+        "epoch": 65,
+        "optimizer_step": 170,
+        "optimizer_steps_per_epoch": 282,
+        "completed_epochs": 64,
+        "updated_at": "2026-10-13T06:49:43.348189+00:00"
+      },
+      "summary": {
+        "method": "lanzhou",
+        "seed": 42,
+        "protocol_sha256": "9a5857ebb6fc1f17e40e2a46da231514ec009b98e84928fe0477695b9f7e0216",
+        "epochs_completed": 64,
+        "best_epoch": 47,
+        "best_validation_dsc_percent": 85.61030451487375,
+        "parameter_count": 50871312,
+        "elapsed_seconds": 11677.452619092539,
+        "test_evaluated": false
+      },
+      "recent_mean_epoch_seconds": 184.68348730821162
+    },
+    "lanzhou_43": {
+      "gpu": 0,
+      "progress": {
+        "state": "training",
+        "epoch": 7,
+        "optimizer_step": 160,
+        "optimizer_steps_per_epoch": 282,
+        "completed_epochs": 6,
+        "updated_at": "2026-10-13T06:49:41.375270+00:00"
+      },
+      "summary": {
+        "method": "lanzhou",
+        "seed": 43,
+        "protocol_sha256": "9a5857ebb6fc1f17e40e2a46da231514ec009b98e84928fe0477695b9f7e0216",
+        "epochs_completed": 6,
+        "best_epoch": 6,
+        "best_validation_dsc_percent": 79.4895743897008,
+        "parameter_count": 50871312,
+        "elapsed_seconds": 1112.689772374928,
+        "test_evaluated": false
+      },
+      "recent_mean_epoch_seconds": 185.6533721620217
+    }
+  }
+}

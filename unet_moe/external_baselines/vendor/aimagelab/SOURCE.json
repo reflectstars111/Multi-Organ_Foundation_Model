@@ -1,0 +1,12 @@
+{
+  "source_directory": "relate_baseline/挑战赛与资源索引 (Challenge Resources)/UUSIC 2025 第二名源码解析 (AImageLab Rank-2 Source)",
+  "source_file": "nets/net.py",
+  "source_sha256": "5a446a4d2dd0ee1f6af1eef0abfce8af07ef022a97d1341eb6f20635f3706fc6",
+  "release_doi": "10.5281/zenodo.21807962",
+  "license": "CC BY-NC 4.0 for participant material; third-party dependencies retain their own licenses",
+  "changes": [
+    "package-relative utility import",
+    "Extract only tensor padding functions and class-count mapping; do not import filesystem/image processing code",
+    "Check only spatial dimensions when padding; initialize no-op pads for divisible inputs"
+  ]
+}
